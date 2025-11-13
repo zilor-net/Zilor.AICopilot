@@ -1,5 +1,8 @@
+using Zilor.AICopilot.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 builder.AddServiceDefaults();
+builder.AddNpgsqlDbContext<AiCopilotDbContext>("ai-copilot");
 // Add services to the container.
 
 builder.Services.AddControllers();
