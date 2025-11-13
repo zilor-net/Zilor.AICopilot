@@ -10,6 +10,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Zilor.AICopilot.HttpApi\Zilor.AICopilot.HttpApi.csproj" />
+      <ProjectReference Include="..\Zilor.AICopilot.MigrationWorkApp\Zilor.AICopilot.MigrationWorkApp.csproj" />
     </ItemGroup>
 
     <ItemGroup>
