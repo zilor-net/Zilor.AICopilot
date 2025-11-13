@@ -12,6 +12,7 @@ var migration = builder.AddProject<Zilor_AICopilot_MigrationWorkApp>("aicopilot-
     .WaitFor(postgresdb);
 
 builder.AddProject<Zilor_AICopilot_HttpApi>("aicopilot-httpapi")
+    .WithUrl("swagger")
     .WaitFor(postgresdb)
     .WithReference(postgresdb)
     .WithReference(migration)

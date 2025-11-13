@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Zilor.AICopilot.EntityFrameworkCore;
 
@@ -19,7 +20,10 @@ public class Worker(
         {
             using var scope = serviceProvider.CreateScope();
             var dbContext = scope.ServiceProvider.GetRequiredService<AiCopilotDbContext>();
+            var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+            var userManager = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
             await RunMigrationAsync(dbContext, cancellationToken);
+            await SeedDataAsync(roleManager, userManager, cancellationToken);
         }
         catch (Exception ex)
         {
@@ -37,5 +41,43 @@ public class Worker(
         {
             await dbContext.Database.MigrateAsync(cancellationToken);
         });
+    }
+    
+    private static async Task SeedDataAsync(
+        RoleManager<IdentityRole> roleManager, UserManager<IdentityUser> userManager, CancellationToken cancellationToken)
+    {   
+        // 创建默认角色
+        var roles = new[] { "Admin", "User" };
+
+        foreach (var role in roles)
+        {
+            if (!await roleManager.RoleExistsAsync(role))
+            {
+                await roleManager.CreateAsync(new IdentityRole(role));
+            }
+        }
+        
+        // 创建默认管理员账户
+        const string adminUserName = "admin";
+        const string adminPassword = "Admin123!";
+
+        var adminUser = await userManager.FindByNameAsync(adminUserName);
+        if (adminUser == null)
+        {
+            adminUser = new IdentityUser
+            {
+                UserName = adminUserName
+            };
+
+            var result = await userManager.CreateAsync(adminUser, adminPassword);
+            if (result.Succeeded)
+            {
+                await userManager.AddToRoleAsync(adminUser, "Admin");
+            }
+            else
+            {
+                Console.WriteLine("创建管理员失败：" + string.Join(",", result.Errors.Select(e => e.Description)));
+            }
+        }
     }
 }
