@@ -4,14 +4,15 @@ using Zilor.AICopilot.MigrationWorkApp;
 var builder = Host.CreateApplicationBuilder(args);
 
 builder.AddServiceDefaults();
+builder.AddNpgsqlDbContext<AiCopilotDbContext>("ai-copilot");
+
 builder.Services.AddHostedService<Worker>();
 
-builder.Services.AddInfrastructures(builder.Configuration);
+builder.Services.AddIdentityEfCore();
 
 builder.Services.AddOpenTelemetry()
     .WithTracing(tracing => tracing.AddSource(Worker.ActivitySourceName));
 
-builder.AddNpgsqlDbContext<AiCopilotDbContext>("ai-copilot");
 
 var host = builder.Build();
 host.Run();

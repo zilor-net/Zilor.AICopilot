@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Zilor.AICopilot.IdentityService;
@@ -10,6 +11,12 @@ public static class DependencyInjection
         services.AddMediatR(cfg =>
         { 
             cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
+        });
+        
+        services.Configure<IdentityOptions>(options =>
+        {
+            options.Password.RequireNonAlphanumeric = false;
+            options.Password.RequiredLength = 8;
         });
     }
 }
