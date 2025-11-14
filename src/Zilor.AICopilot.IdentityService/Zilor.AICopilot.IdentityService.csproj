@@ -12,6 +12,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Zilor.AICopilot.Infrastructure\Zilor.AICopilot.Infrastructure.csproj" />
       <ProjectReference Include="..\Zilor.AICopilot.SharedKernel\Zilor.AICopilot.SharedKernel.csproj" />
     </ItemGroup>
 

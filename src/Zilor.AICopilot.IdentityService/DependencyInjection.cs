@@ -12,11 +12,5 @@ public static class DependencyInjection
         { 
             cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
         });
-        
-        services.Configure<IdentityOptions>(options =>
-        {
-            options.Password.RequireNonAlphanumeric = false;
-            options.Password.RequiredLength = 8;
-        });
     }
 }

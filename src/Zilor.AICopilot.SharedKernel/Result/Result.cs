@@ -94,9 +94,12 @@ public class Result : Result<Result>
         return new Result(ResultStatus.Forbidden);
     }
 
-    public static Result Unauthorized()
+    public static Result Unauthorized(params string[] errors)
     {
-        return new Result(ResultStatus.Unauthorized);
+        return new Result(ResultStatus.Unauthorized)
+        {
+            Errors = errors
+        };
     }
 
     public static Result Invalid()
