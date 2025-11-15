@@ -8,6 +8,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Zilor.AICopilot.EntityFrameworkCore\Zilor.AICopilot.EntityFrameworkCore.csproj" />
+      <ProjectReference Include="..\Zilor.AICopilot.Services.Contracts\Zilor.AICopilot.Services.Contracts.csproj" />
     </ItemGroup>
 
     <ItemGroup>

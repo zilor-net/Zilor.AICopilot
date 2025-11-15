@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using Zilor.AICopilot.Infrastructure.Authentication;
+using Zilor.AICopilot.Services.Contracts;
 using Zilor.AICopilot.SharedKernel.Messaging;
 using Zilor.AICopilot.SharedKernel.Result;
 

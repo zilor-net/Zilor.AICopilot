@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace Zilor.AICopilot.Infrastructure.Authentication;
+namespace Zilor.AICopilot.Services.Contracts;
 
 public interface IJwtTokenGenerator
 {
