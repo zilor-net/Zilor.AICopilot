@@ -9,16 +9,16 @@ namespace Zilor.AICopilot.AiGatewayService.LanguageModels.Commands;
 [AuthorizeRequirement("AiGateway.DeleteLanguageModel")]
 public record DeleteLanguageModelCommand(Guid Id) : ICommand<Result>;
     
-public class DeleteLanguageModelCommandHandler(IRepository<LanguageModel> modelRepo) 
+public class DeleteLanguageModelCommandHandler(IRepository<LanguageModel> repo) 
     : ICommandHandler<DeleteLanguageModelCommand, Result>
 {
     public async Task<Result> Handle(DeleteLanguageModelCommand request, CancellationToken cancellationToken)
     {
-        var model = await modelRepo.GetByIdAsync(request.Id, cancellationToken);
-        if (model == null) return Result.Success();
+        var result = await repo.GetByIdAsync(request.Id, cancellationToken);
+        if (result == null) return Result.Success();
         
-        modelRepo.Delete(model);
-        await modelRepo.SaveChangesAsync(cancellationToken);
+        repo.Delete(result);
+        await repo.SaveChangesAsync(cancellationToken);
         
         return Result.Success();
     }

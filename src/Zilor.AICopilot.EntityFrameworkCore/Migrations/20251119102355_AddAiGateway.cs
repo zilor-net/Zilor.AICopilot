@@ -51,6 +51,7 @@ namespace Zilor.AICopilot.EntityFrameworkCore.Migrations
                 columns: table => new
                 {
                     id = table.Column<Guid>(type: "uuid", nullable: false),
+                    title = table.Column<string>(type: "character varying(20)", maxLength: 20, nullable: false),
                     user_id = table.Column<Guid>(type: "uuid", nullable: false),
                     template_id = table.Column<Guid>(type: "uuid", nullable: false)
                 },

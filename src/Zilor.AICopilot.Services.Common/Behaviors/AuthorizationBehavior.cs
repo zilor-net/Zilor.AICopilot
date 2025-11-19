@@ -22,8 +22,11 @@ public class AuthorizationBehavior<TRequest, TResponse>(ICurrentUser user) : IPi
         
         // 1. 用户是否已认证
         if (!user.IsAuthenticated) throw new ForbiddenException("用户未登录");
+        // 管理员角色可以访问所有用例
+        if (user.Role == "Admin")
+            return await next(cancellationToken);
         
-        // 2. 获取这些角色包含的权限（可以从数据库查询）
+        // 2. 获取角色包含的权限（可以从数据库查询）
         var userPermissions = LoadPermissions(user.Role!);
         
         // 4. 权限校验
@@ -37,8 +40,7 @@ public class AuthorizationBehavior<TRequest, TResponse>(ICurrentUser user) : IPi
     {
         var permissions = new Dictionary<string, List<string>>()
         {
-            ["Admin"] = ["Identity.CreateRole"],
-            ["User"] = []
+            ["User"] = ["AiGateway.CreateSession", "AiGateway.DeleteSession", "AiGateway.GetListSessions"]
         };
 
         return permissions[role];

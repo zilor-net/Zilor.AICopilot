@@ -16,7 +16,7 @@ public record CreateConversationTemplateCommand(
     int? MaxTokens,
     double? Temperature) : ICommand<Result<CreatedConversationTemplateDto>>;
     
-public class CreateConversationTemplateCommandHandler(IRepository<ConversationTemplate> modelRepo) 
+public class CreateConversationTemplateCommandHandler(IRepository<ConversationTemplate> repo) 
     : ICommandHandler<CreateConversationTemplateCommand, Result<CreatedConversationTemplateDto>>
 {
     public async Task<Result<CreatedConversationTemplateDto>> Handle(CreateConversationTemplateCommand request, CancellationToken cancellationToken)
@@ -31,9 +31,9 @@ public class CreateConversationTemplateCommandHandler(IRepository<ConversationTe
                 Temperature = request.Temperature 
             });
         
-        modelRepo.Add(model);
+        repo.Add(model);
 
-        await modelRepo.SaveChangesAsync(cancellationToken);
+        await repo.SaveChangesAsync(cancellationToken);
         
         return Result.Success(new CreatedConversationTemplateDto(model.Id, model.Name));
     }

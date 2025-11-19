@@ -12,7 +12,7 @@ using Zilor.AICopilot.EntityFrameworkCore;
 namespace Zilor.AICopilot.EntityFrameworkCore.Migrations
 {
     [DbContext(typeof(AiCopilotDbContext))]
-    [Migration("20251119034040_AddAiGateway")]
+    [Migration("20251119102355_AddAiGateway")]
     partial class AddAiGateway
     {
         /// <inheritdoc />
@@ -334,6 +334,12 @@ namespace Zilor.AICopilot.EntityFrameworkCore.Migrations
                     b.Property<Guid>("TemplateId")
                         .HasColumnType("uuid")
                         .HasColumnName("template_id");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("character varying(20)")
+                        .HasColumnName("title");
 
                     b.Property<Guid>("UserId")
                         .HasColumnType("uuid")

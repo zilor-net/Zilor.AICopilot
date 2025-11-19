@@ -2,9 +2,10 @@
 
 namespace Zilor.AICopilot.Core.AiGateway.Aggregates.Sessions;
 
-public class Session : IAggregateRoot<Guid>
+public class Session : IAggregateRoot
 {
     public Guid Id { get; set; }
+    public string Title { get; set; }
     public Guid UserId { get; set; }
     public Guid TemplateId { get; set; }
 
@@ -17,6 +18,7 @@ public class Session : IAggregateRoot<Guid>
     public Session(Guid userId, Guid templateId)
     {
         Id = Guid.NewGuid();
+        Title = "新会话";
         UserId = userId;
         TemplateId = templateId;
     }

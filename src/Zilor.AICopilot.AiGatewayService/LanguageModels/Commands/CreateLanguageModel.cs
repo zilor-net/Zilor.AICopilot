@@ -17,12 +17,12 @@ public record CreateLanguageModelCommand(
     int MaxTokens,
     double Temperature = 0.7) : ICommand<Result<CreatedLanguageModelDto>>;
     
-public class CreateLanguageModelCommandHandler(IRepository<LanguageModel> modelRepo) 
+public class CreateLanguageModelCommandHandler(IRepository<LanguageModel> repo) 
     : ICommandHandler<CreateLanguageModelCommand, Result<CreatedLanguageModelDto>>
 {
     public async Task<Result<CreatedLanguageModelDto>> Handle(CreateLanguageModelCommand request, CancellationToken cancellationToken)
     {
-        var model = new LanguageModel(
+        var result = new LanguageModel(
             request.Name, 
             request.Provider,
             request.BaseUrl,
@@ -33,10 +33,10 @@ public class CreateLanguageModelCommandHandler(IRepository<LanguageModel> modelR
                 Temperature = request.Temperature 
             });
         
-        modelRepo.Add(model);
+        repo.Add(result);
 
-        await modelRepo.SaveChangesAsync(cancellationToken);
+        await repo.SaveChangesAsync(cancellationToken);
         
-        return Result.Success(new CreatedLanguageModelDto(model.Id, model.Provider, model.Name));
+        return Result.Success(new CreatedLanguageModelDto(result.Id, result.Provider, result.Name));
     }
 }

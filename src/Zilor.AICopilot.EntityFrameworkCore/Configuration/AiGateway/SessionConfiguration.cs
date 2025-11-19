@@ -14,14 +14,17 @@ public class SessionConfiguration : IEntityTypeConfiguration<Session>
         // 配置主键
         builder.HasKey(s => s.Id);
         builder.Property(s => s.Id).HasColumnName("id");
-
-        // 配置外键和索引
-        // 引用 ConversationTemplate 聚合
+        
+        // 配置属性
+        builder.Property(s => s.Title)
+            .HasMaxLength(20)
+            .IsRequired()
+            .HasColumnName("title");
+        
         builder.Property(s => s.TemplateId)
             .IsRequired()
             .HasColumnName("template_id");
         
-        // 引用 外部的 User 聚合/实体
         builder.Property(s => s.UserId)
             .IsRequired()
             .HasColumnName("user_id");
