@@ -32,6 +32,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zilor.AICopilot.Services.Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zilor.AICopilot.Services.Contracts", "src\Zilor.AICopilot.Services.Contracts\Zilor.AICopilot.Services.Contracts.csproj", "{1F112584-7B7B-4716-B509-5B61EC0576E5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zilor.AICopilot.Core.AiGateway", "src\Zilor.AICopilot.Core.AiGateway\Zilor.AICopilot.Core.AiGateway.csproj", "{9B93745C-D7CA-463B-97ED-6D90F1F1BA9D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +55,7 @@ Global
 		{AF552A49-C09F-4DEE-8ECD-3386019FCC51} = {AA58CFB8-FDE3-4BAC-BA9B-D060D85348E0}
 		{1251CD0A-5BF6-4351-89AE-FE21D3AACF3B} = {B1FD4B1B-84C6-48E6-9522-0E567C589A5F}
 		{1F112584-7B7B-4716-B509-5B61EC0576E5} = {B1FD4B1B-84C6-48E6-9522-0E567C589A5F}
+		{9B93745C-D7CA-463B-97ED-6D90F1F1BA9D} = {50F4E192-9CFA-4E59-AF90-B3E6043B1C44}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{928FA5D9-DEE1-4B92-94F7-D4171D1D7C97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -95,5 +98,9 @@ Global
 		{1F112584-7B7B-4716-B509-5B61EC0576E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F112584-7B7B-4716-B509-5B61EC0576E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1F112584-7B7B-4716-B509-5B61EC0576E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B93745C-D7CA-463B-97ED-6D90F1F1BA9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B93745C-D7CA-463B-97ED-6D90F1F1BA9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B93745C-D7CA-463B-97ED-6D90F1F1BA9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B93745C-D7CA-463B-97ED-6D90F1F1BA9D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
