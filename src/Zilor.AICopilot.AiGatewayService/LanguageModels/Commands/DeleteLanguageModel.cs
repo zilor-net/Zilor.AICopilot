@@ -4,7 +4,7 @@ using Zilor.AICopilot.SharedKernel.Messaging;
 using Zilor.AICopilot.SharedKernel.Repository;
 using Zilor.AICopilot.SharedKernel.Result;
 
-namespace Zilor.AICopilot.AiGatewayService.Commands;
+namespace Zilor.AICopilot.AiGatewayService.LanguageModels.Commands;
 
 [AuthorizeRequirement("AiGateway.DeleteLanguageModel")]
 public record DeleteLanguageModelCommand(Guid Id) : ICommand<Result>;

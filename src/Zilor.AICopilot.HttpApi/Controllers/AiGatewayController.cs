@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Zilor.AICopilot.AiGatewayService.Commands;
+using Zilor.AICopilot.AiGatewayService.LanguageModels.Commands;
+using Zilor.AICopilot.AiGatewayService.LanguageModels.Queries;
 using Zilor.AICopilot.HttpApi.Infrastructure;
 
 namespace Zilor.AICopilot.HttpApi.Controllers;
@@ -20,6 +21,13 @@ public class AiGatewayController : ApiControllerBase
     {
         var result = await Sender.Send(command);
 
+        return ReturnResult(result);
+    }
+    
+    [HttpGet("language-model/list")]
+    public async Task<IActionResult> GetListLanguageModels()
+    {
+        var result = await Sender.Send(new GetListLanguageModelsQuery());
         return ReturnResult(result);
     }
 }
