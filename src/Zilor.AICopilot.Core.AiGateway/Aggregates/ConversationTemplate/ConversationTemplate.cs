@@ -2,18 +2,18 @@
 
 namespace Zilor.AICopilot.Core.AiGateway.Aggregates.ConversationTemplate;
 
-public class ConversationTemplate : IAggregateRoot<Guid>
+public class ConversationTemplate : IAggregateRoot
 {
     public Guid Id { get; set; }
-    public string Name { get; private set; }
+    public string Name { get; set; }
     
     public string Description { get; set; }
     
     public string SystemPrompt { get; set; }
     
-    public TemplateSpecification Specification { get; private set; }
+    public TemplateSpecification Specification { get; set; }
     
-    public bool IsEnabled { get; private set; }
+    public bool IsEnabled { get; set; }
     
     protected ConversationTemplate() { }
     
