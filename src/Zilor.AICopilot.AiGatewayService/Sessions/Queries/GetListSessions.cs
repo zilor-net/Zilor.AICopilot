@@ -7,8 +7,8 @@ namespace Zilor.AICopilot.AiGatewayService.Sessions.Queries;
 
 public record SessionDto
 {
-    public Guid Id;
-    public required string Title;
+    public Guid Id { get; set; }
+    public required string Title { get; set; }
 }
 
 [AuthorizeRequirement("AiGateway.GetListSessions")]

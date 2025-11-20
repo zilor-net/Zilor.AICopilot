@@ -1,21 +1,11 @@
-﻿using Zilor.AICopilot.AiGatewayService.LanguageModels.Queries;
+﻿using Zilor.AICopilot.AiGatewayService.ConversationTemplates.Dtos;
+using Zilor.AICopilot.AiGatewayService.LanguageModels.Queries;
 using Zilor.AICopilot.Services.Common.Attributes;
 using Zilor.AICopilot.Services.Contracts;
 using Zilor.AICopilot.SharedKernel.Messaging;
 using Zilor.AICopilot.SharedKernel.Result;
 
 namespace Zilor.AICopilot.AiGatewayService.ConversationTemplates.Queries;
-
-public record ConversationTemplateDto
-{
-    public Guid Id;
-    public required string Name;
-    public required string Description;
-    public required string SystemPrompt;
-    public int? MaxTokens;
-    public double? Temperature;
-    public bool IsEnabled;
-}
 
 [AuthorizeRequirement("AiGateway.GetListConversationTemplates")]
 public record GetListConversationTemplatesQuery : IQuery<Result<IList<ConversationTemplateDto>>>;

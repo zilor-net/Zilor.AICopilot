@@ -1,4 +1,4 @@
-﻿using Zilor.AICopilot.AiGatewayService.LanguageModels.Queries;
+﻿using Zilor.AICopilot.AiGatewayService.ConversationTemplates.Dtos;
 using Zilor.AICopilot.Services.Common.Attributes;
 using Zilor.AICopilot.Services.Contracts;
 using Zilor.AICopilot.SharedKernel.Messaging;
@@ -15,6 +15,7 @@ public class GetConversationTemplateQueryHandler(
     public async Task<Result<ConversationTemplateDto>> Handle(GetConversationTemplateQuery request, CancellationToken cancellationToken)
     {
         var queryable = dataQueryService.ConversationTemplates
+            .Where(template => template.Id == request.Id)
             .Select(ct => new ConversationTemplateDto
             {
                 Id = ct.Id,

@@ -7,13 +7,13 @@ namespace Zilor.AICopilot.AiGatewayService.LanguageModels.Queries;
 
 public record LanguageModelDto
 {
-    public Guid Id;
-    public required string Provider;
-    public required string Name;
-    public required string BaseUrl;
-    public string? ApiKey;
-    public int MaxTokens;
-    public double Temperature;
+    public Guid Id { get; set; }
+    public required string Provider { get; set; }
+    public required string Name { get; set; }
+    public required string BaseUrl { get; set; }
+    public string? ApiKey { get; set; }
+    public int MaxTokens { get; set; }
+    public double Temperature { get; set; }
 }
 
 [AuthorizeRequirement("AiGateway.GetListLanguageModels")]
