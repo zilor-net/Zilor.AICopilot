@@ -1,8 +1,11 @@
-﻿using Zilor.AICopilot.Core.AiGateway.Aggregates.ConversationTemplate;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Zilor.AICopilot.Core.AiGateway.Aggregates.ConversationTemplate;
 using Zilor.AICopilot.Core.AiGateway.Aggregates.LanguageModel;
 using Zilor.AICopilot.Core.AiGateway.Aggregates.Sessions;
 
-namespace Zilor.AICopilot.Services.Contracts;
+namespace Zilor.AICopilot.Services.Common.Contracts;
 
 public interface IDataQueryService
 {

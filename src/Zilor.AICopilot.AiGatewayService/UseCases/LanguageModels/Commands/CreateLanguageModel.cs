@@ -7,7 +7,7 @@ using Zilor.AICopilot.SharedKernel.Messaging;
 using Zilor.AICopilot.SharedKernel.Repository;
 using Zilor.AICopilot.SharedKernel.Result;
 
-namespace Zilor.AICopilot.AiGatewayService.LanguageModels.Commands;
+namespace Zilor.AICopilot.AiGatewayService.UseCases.LanguageModels.Commands;
 
 public record CreatedLanguageModelDto(Guid Id, string Provider, string Name);
 

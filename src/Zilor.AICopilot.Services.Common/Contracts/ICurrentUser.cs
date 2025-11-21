@@ -1,4 +1,4 @@
-﻿namespace Zilor.AICopilot.Services.Contracts;
+﻿namespace Zilor.AICopilot.Services.Common.Contracts;
 
 public interface ICurrentUser
 {

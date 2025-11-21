@@ -7,7 +7,7 @@ using Zilor.AICopilot.SharedKernel.Messaging;
 using Zilor.AICopilot.SharedKernel.Repository;
 using Zilor.AICopilot.SharedKernel.Result;
 
-namespace Zilor.AICopilot.AiGatewayService.ConversationTemplates.Commands;
+namespace Zilor.AICopilot.AiGatewayService.UseCases.ConversationTemplates.Commands;
 
 public record CreatedConversationTemplateDto(Guid Id, string Name);
 
@@ -16,6 +16,7 @@ public record CreateConversationTemplateCommand(
     string Name,
     string Description,
     string SystemPrompt,
+    Guid ModelId,
     int? MaxTokens,
     double? Temperature) : ICommand<Result<CreatedConversationTemplateDto>>;
 
@@ -29,6 +30,7 @@ public class CreateConversationTemplateCommandHandler(IRepository<ConversationTe
             request.Name,
             request.Description,
             request.SystemPrompt,
+            request.ModelId,
             new TemplateSpecification
             {
                 MaxTokens = request.MaxTokens,

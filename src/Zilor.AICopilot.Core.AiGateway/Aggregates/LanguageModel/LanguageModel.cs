@@ -20,15 +20,15 @@ public class LanguageModel : IAggregateRoot
 
     public Guid Id { get; set; }
 
-    public string Provider { get; set; }
+    public string Provider { get; set; } = null!;
 
-    public string Name { get; set; }
+    public string Name { get; set; } = null!;
 
-    public string BaseUrl { get; set; }
+    public string BaseUrl { get; set; } = null!;
 
     public string? ApiKey { get; set; }
 
-    public ModelParameters Parameters { get; set; }
+    public ModelParameters Parameters { get; set; } = null!;
 
     public void UpdateParameters(ModelParameters parameters)
     {

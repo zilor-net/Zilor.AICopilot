@@ -7,7 +7,7 @@ using Zilor.AICopilot.SharedKernel.Messaging;
 using Zilor.AICopilot.SharedKernel.Repository;
 using Zilor.AICopilot.SharedKernel.Result;
 
-namespace Zilor.AICopilot.AiGatewayService.ConversationTemplates.Commands;
+namespace Zilor.AICopilot.AiGatewayService.UseCases.ConversationTemplates.Commands;
 
 [AuthorizeRequirement("AiGateway.DeleteConversationTemplate")]
 public record DeleteConversationTemplateCommand(Guid Id) : ICommand<Result>;

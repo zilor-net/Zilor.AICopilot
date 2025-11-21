@@ -4,8 +4,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 using Zilor.AICopilot.Services.Common.Attributes;
+using Zilor.AICopilot.Services.Common.Contracts;
 using Zilor.AICopilot.Services.Common.Exceptions;
-using Zilor.AICopilot.Services.Contracts;
 
 namespace Zilor.AICopilot.Services.Common.Behaviors;
 

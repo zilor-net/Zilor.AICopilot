@@ -7,7 +7,7 @@ using Zilor.AICopilot.SharedKernel.Messaging;
 using Zilor.AICopilot.SharedKernel.Repository;
 using Zilor.AICopilot.SharedKernel.Result;
 
-namespace Zilor.AICopilot.AiGatewayService.Sessions.Commands;
+namespace Zilor.AICopilot.AiGatewayService.UseCases.Sessions.Commands;
 
 [AuthorizeRequirement("AiGateway.DeleteSession")]
 public record DeleteSessionCommand(Guid Id) : ICommand<Result>;

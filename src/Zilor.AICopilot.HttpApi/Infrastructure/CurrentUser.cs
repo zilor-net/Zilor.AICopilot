@@ -1,5 +1,5 @@
 ﻿using System.Security.Claims;
-using Zilor.AICopilot.Services.Contracts;
+using Zilor.AICopilot.Services.Common.Contracts;
 
 namespace Zilor.AICopilot.HttpApi.Infrastructure;
 

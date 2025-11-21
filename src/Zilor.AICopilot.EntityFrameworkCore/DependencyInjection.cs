@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Zilor.AICopilot.EntityFrameworkCore.Repository;
-using Zilor.AICopilot.Services.Contracts;
+using Zilor.AICopilot.Services.Common.Contracts;
 using Zilor.AICopilot.SharedKernel.Repository;
 
 namespace Zilor.AICopilot.EntityFrameworkCore;

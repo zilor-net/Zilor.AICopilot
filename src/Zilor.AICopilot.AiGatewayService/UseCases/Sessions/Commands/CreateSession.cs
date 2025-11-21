@@ -3,12 +3,12 @@ using System.Threading;
 using System.Threading.Tasks;
 using Zilor.AICopilot.Core.AiGateway.Aggregates.Sessions;
 using Zilor.AICopilot.Services.Common.Attributes;
-using Zilor.AICopilot.Services.Contracts;
+using Zilor.AICopilot.Services.Common.Contracts;
 using Zilor.AICopilot.SharedKernel.Messaging;
 using Zilor.AICopilot.SharedKernel.Repository;
 using Zilor.AICopilot.SharedKernel.Result;
 
-namespace Zilor.AICopilot.AiGatewayService.Sessions.Commands;
+namespace Zilor.AICopilot.AiGatewayService.UseCases.Sessions.Commands;
 
 public record CreatedSessionDto(Guid Id);
 

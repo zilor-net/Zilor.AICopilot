@@ -8,7 +8,7 @@ public class Message : IEntity<int>
     {
     }
 
-    internal Message(Session session, string content, MessageType type)
+    public Message(Session session, string content, MessageType type)
     {
         Session = session;
         SessionId = session.Id;
@@ -17,11 +17,11 @@ public class Message : IEntity<int>
         CreatedAt = DateTime.UtcNow;
     }
 
-    public Guid SessionId { get; private set; }
-    public string Content { get; private set; }
-    public DateTime CreatedAt { get; private set; }
-    public MessageType Type { get; private set; }
+    public Guid SessionId { get; set; }
+    public string Content { get; set; } = null!;
+    public DateTime CreatedAt { get; set; }
+    public MessageType Type { get; set; }
 
-    public virtual Session Session { get; private set; }
+    public Session Session { get; set; } = null!;
     public int Id { get; set; }
 }

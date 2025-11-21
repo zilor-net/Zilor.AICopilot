@@ -4,11 +4,11 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Zilor.AICopilot.Services.Common.Attributes;
-using Zilor.AICopilot.Services.Contracts;
+using Zilor.AICopilot.Services.Common.Contracts;
 using Zilor.AICopilot.SharedKernel.Messaging;
 using Zilor.AICopilot.SharedKernel.Result;
 
-namespace Zilor.AICopilot.AiGatewayService.Sessions.Queries;
+namespace Zilor.AICopilot.AiGatewayService.UseCases.Sessions.Queries;
 
 public record SessionDto
 {

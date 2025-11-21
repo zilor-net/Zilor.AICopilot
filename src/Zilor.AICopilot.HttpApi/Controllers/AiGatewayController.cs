@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Zilor.AICopilot.AiGatewayService.ConversationTemplates.Commands;
-using Zilor.AICopilot.AiGatewayService.ConversationTemplates.Queries;
-using Zilor.AICopilot.AiGatewayService.LanguageModels.Commands;
-using Zilor.AICopilot.AiGatewayService.LanguageModels.Queries;
-using Zilor.AICopilot.AiGatewayService.Sessions.Commands;
-using Zilor.AICopilot.AiGatewayService.Sessions.Queries;
+using Zilor.AICopilot.AiGatewayService.UseCases.ConversationTemplates.Commands;
+using Zilor.AICopilot.AiGatewayService.UseCases.ConversationTemplates.Queries;
+using Zilor.AICopilot.AiGatewayService.UseCases.LanguageModels.Commands;
+using Zilor.AICopilot.AiGatewayService.UseCases.LanguageModels.Queries;
+using Zilor.AICopilot.AiGatewayService.UseCases.Sessions.Commands;
+using Zilor.AICopilot.AiGatewayService.UseCases.Sessions.Queries;
 using Zilor.AICopilot.HttpApi.Infrastructure;
 
 namespace Zilor.AICopilot.HttpApi.Controllers;

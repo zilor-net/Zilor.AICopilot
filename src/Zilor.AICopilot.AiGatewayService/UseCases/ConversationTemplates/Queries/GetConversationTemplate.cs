@@ -2,13 +2,13 @@
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Zilor.AICopilot.AiGatewayService.ConversationTemplates.Dtos;
+using Zilor.AICopilot.AiGatewayService.UseCases.ConversationTemplates.Dtos;
 using Zilor.AICopilot.Services.Common.Attributes;
-using Zilor.AICopilot.Services.Contracts;
+using Zilor.AICopilot.Services.Common.Contracts;
 using Zilor.AICopilot.SharedKernel.Messaging;
 using Zilor.AICopilot.SharedKernel.Result;
 
-namespace Zilor.AICopilot.AiGatewayService.ConversationTemplates.Queries;
+namespace Zilor.AICopilot.AiGatewayService.UseCases.ConversationTemplates.Queries;
 
 [AuthorizeRequirement("AiGateway.GetConversationTemplate")]
 public record GetConversationTemplateQuery(Guid Id) : IQuery<Result<ConversationTemplateDto>>;

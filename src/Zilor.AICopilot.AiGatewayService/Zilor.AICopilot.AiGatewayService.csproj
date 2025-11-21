@@ -11,4 +11,8 @@
         <ProjectReference Include="..\Zilor.AICopilot.Services.Common\Zilor.AICopilot.Services.Common.csproj"/>
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="UseCases\" />
+    </ItemGroup>
+
 </Project>

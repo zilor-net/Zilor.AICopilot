@@ -12,7 +12,7 @@ using Zilor.AICopilot.EntityFrameworkCore;
 namespace Zilor.AICopilot.EntityFrameworkCore.Migrations
 {
     [DbContext(typeof(AiCopilotDbContext))]
-    [Migration("20251119102355_AddAiGateway")]
+    [Migration("20251121060529_AddAiGateway")]
     partial class AddAiGateway
     {
         /// <inheritdoc />
@@ -238,6 +238,9 @@ namespace Zilor.AICopilot.EntityFrameworkCore.Migrations
                         .HasColumnType("boolean")
                         .HasColumnName("is_enabled");
 
+                    b.Property<Guid>("ModelId")
+                        .HasColumnType("uuid");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(200)
@@ -247,7 +250,7 @@ namespace Zilor.AICopilot.EntityFrameworkCore.Migrations
                     b.Property<string>("SystemPrompt")
                         .IsRequired()
                         .HasColumnType("text")
-                        .HasColumnName("system_prompt");
+                        .HasColumnName("model_id");
 
                     b.HasKey("Id");
 

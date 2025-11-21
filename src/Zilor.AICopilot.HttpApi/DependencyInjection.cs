@@ -6,7 +6,7 @@ using Microsoft.IdentityModel.Tokens;
 using Zilor.AICopilot.HttpApi.Infrastructure;
 using Zilor.AICopilot.Infrastructure.Authentication;
 using Zilor.AICopilot.Services.Common.Behaviors;
-using Zilor.AICopilot.Services.Contracts;
+using Zilor.AICopilot.Services.Common.Contracts;
 
 namespace Zilor.AICopilot.HttpApi;
 
