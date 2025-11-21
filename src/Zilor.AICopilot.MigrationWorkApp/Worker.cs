@@ -37,26 +37,20 @@ public class Worker(
     private static async Task RunMigrationAsync(AiCopilotDbContext dbContext, CancellationToken cancellationToken)
     {
         var strategy = dbContext.Database.CreateExecutionStrategy();
-        await strategy.ExecuteAsync(async () =>
-        {
-            await dbContext.Database.MigrateAsync(cancellationToken);
-        });
+        await strategy.ExecuteAsync(async () => { await dbContext.Database.MigrateAsync(cancellationToken); });
     }
-    
+
     private static async Task SeedDataAsync(
-        RoleManager<IdentityRole> roleManager, UserManager<IdentityUser> userManager, CancellationToken cancellationToken)
-    {   
+        RoleManager<IdentityRole> roleManager, UserManager<IdentityUser> userManager,
+        CancellationToken cancellationToken)
+    {
         // 创建默认角色
         var roles = new[] { "Admin", "User" };
 
         foreach (var role in roles)
-        {
             if (!await roleManager.RoleExistsAsync(role))
-            {
                 await roleManager.CreateAsync(new IdentityRole(role));
-            }
-        }
-        
+
         // 创建默认管理员账户
         const string adminUserName = "admin";
         const string adminPassword = "Admin123!";
@@ -71,13 +65,9 @@ public class Worker(
 
             var result = await userManager.CreateAsync(adminUser, adminPassword);
             if (result.Succeeded)
-            {
                 await userManager.AddToRoleAsync(adminUser, "Admin");
-            }
             else
-            {
                 Console.WriteLine("创建管理员失败：" + string.Join(",", result.Errors.Select(e => e.Description)));
-            }
         }
     }
 }

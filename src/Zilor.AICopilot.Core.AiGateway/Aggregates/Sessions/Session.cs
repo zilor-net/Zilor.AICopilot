@@ -4,17 +4,12 @@ namespace Zilor.AICopilot.Core.AiGateway.Aggregates.Sessions;
 
 public class Session : IAggregateRoot
 {
-    public Guid Id { get; set; }
-    public string Title { get; set; }
-    public Guid UserId { get; set; }
-    public Guid TemplateId { get; set; }
-
     private readonly List<Message> _messages = [];
-    
-    public IReadOnlyCollection<Message> Messages => _messages.AsReadOnly();
-    
-    protected Session() {}
-    
+
+    protected Session()
+    {
+    }
+
     public Session(Guid userId, Guid templateId)
     {
         Id = Guid.NewGuid();
@@ -22,6 +17,13 @@ public class Session : IAggregateRoot
         UserId = userId;
         TemplateId = templateId;
     }
+
+    public Guid Id { get; set; }
+    public string Title { get; set; }
+    public Guid UserId { get; set; }
+    public Guid TemplateId { get; set; }
+
+    public IReadOnlyCollection<Message> Messages => _messages.AsReadOnly();
 
     public void AddMessage(string content, MessageType type)
     {

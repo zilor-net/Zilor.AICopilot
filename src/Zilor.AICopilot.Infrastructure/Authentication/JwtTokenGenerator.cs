@@ -31,7 +31,7 @@ public class JwtTokenGenerator(
         {
             new(ClaimTypes.NameIdentifier, user.Id),
             new(ClaimTypes.Name, user.UserName!),
-            new(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()), // 保证 Token 唯一性
+            new(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()) // 保证 Token 唯一性
         };
 
         // 添加用户角色到 Claims

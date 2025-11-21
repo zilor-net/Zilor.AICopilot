@@ -27,7 +27,7 @@ public class ConversationTemplateConfiguration : IEntityTypeConfiguration<Conver
 
         builder.Property(ct => ct.SystemPrompt)
             .IsRequired()
-            .HasColumnName("system_prompt"); 
+            .HasColumnName("system_prompt");
 
         builder.Property(ct => ct.IsEnabled)
             .IsRequired()
@@ -39,7 +39,7 @@ public class ConversationTemplateConfiguration : IEntityTypeConfiguration<Conver
             // 列名将默认为 Specification_MaxTokens 等
             specBuilder.Property(s => s.MaxTokens)
                 .HasColumnName("max_tokens");
-            
+
             specBuilder.Property(s => s.Temperature)
                 .HasColumnName("temperature");
         });

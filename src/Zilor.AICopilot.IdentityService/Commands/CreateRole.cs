@@ -23,7 +23,9 @@ public class CreateRoleCommandHandler(
         };
 
         var result = await roleManager.CreateAsync(role);
-        
-        return !result.Succeeded ? Result.Failure(result.Errors) : Result.Success(new CreatedRoleDto(role.Id, role.Name));
+
+        return !result.Succeeded
+            ? Result.Failure(result.Errors)
+            : Result.Success(new CreatedRoleDto(role.Id, role.Name));
     }
 }

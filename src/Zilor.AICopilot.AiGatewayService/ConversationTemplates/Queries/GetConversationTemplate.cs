@@ -16,7 +16,8 @@ public record GetConversationTemplateQuery(Guid Id) : IQuery<Result<Conversation
 public class GetConversationTemplateQueryHandler(
     IDataQueryService dataQueryService) : IQueryHandler<GetConversationTemplateQuery, Result<ConversationTemplateDto>>
 {
-    public async Task<Result<ConversationTemplateDto>> Handle(GetConversationTemplateQuery request, CancellationToken cancellationToken)
+    public async Task<Result<ConversationTemplateDto>> Handle(GetConversationTemplateQuery request,
+        CancellationToken cancellationToken)
     {
         var queryable = dataQueryService.ConversationTemplates
             .Where(template => template.Id == request.Id)
@@ -29,8 +30,8 @@ public class GetConversationTemplateQueryHandler(
                 MaxTokens = ct.Specification.MaxTokens,
                 Temperature = ct.Specification.Temperature
             });
-        var result= await dataQueryService.FirstOrDefaultAsync(queryable);
-        
+        var result = await dataQueryService.FirstOrDefaultAsync(queryable);
+
         return result == null ? Result.NotFound() : Result.Success(result);
     }
 }

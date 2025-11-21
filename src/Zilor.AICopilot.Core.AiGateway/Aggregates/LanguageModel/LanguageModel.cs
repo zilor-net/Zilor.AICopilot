@@ -4,19 +4,9 @@ namespace Zilor.AICopilot.Core.AiGateway.Aggregates.LanguageModel;
 
 public class LanguageModel : IAggregateRoot
 {
-    public Guid Id { get; set; }
-    
-    public string Provider { get;set; } 
-    
-    public string Name { get;set; }
-    
-    public string BaseUrl { get; set; }
-    
-    public string? ApiKey { get; set; }
-
-    public ModelParameters Parameters { get; set; }
-    
-    protected LanguageModel() { }
+    protected LanguageModel()
+    {
+    }
 
     public LanguageModel(string name, string provider, string baseUrl, string? apiKey, ModelParameters parameters)
     {
@@ -28,9 +18,20 @@ public class LanguageModel : IAggregateRoot
         Parameters = parameters;
     }
 
+    public Guid Id { get; set; }
+
+    public string Provider { get; set; }
+
+    public string Name { get; set; }
+
+    public string BaseUrl { get; set; }
+
+    public string? ApiKey { get; set; }
+
+    public ModelParameters Parameters { get; set; }
+
     public void UpdateParameters(ModelParameters parameters)
     {
         Parameters = parameters;
     }
-    
 }

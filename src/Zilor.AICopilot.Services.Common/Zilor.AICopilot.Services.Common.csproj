@@ -8,9 +8,9 @@
 
     <ItemGroup>
 
-      <ProjectReference Include="..\Zilor.AICopilot.Services.Contracts\Zilor.AICopilot.Services.Contracts.csproj" />
+        <ProjectReference Include="..\Zilor.AICopilot.Services.Contracts\Zilor.AICopilot.Services.Contracts.csproj"/>
 
-      <ProjectReference Include="..\Zilor.AICopilot.SharedKernel\Zilor.AICopilot.SharedKernel.csproj" />
+        <ProjectReference Include="..\Zilor.AICopilot.SharedKernel\Zilor.AICopilot.SharedKernel.csproj"/>
     </ItemGroup>
 
 </Project>

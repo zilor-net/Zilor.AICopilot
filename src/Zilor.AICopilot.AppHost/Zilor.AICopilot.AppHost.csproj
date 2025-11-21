@@ -9,12 +9,14 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Zilor.AICopilot.HttpApi\Zilor.AICopilot.HttpApi.csproj" />
-      <ProjectReference Include="..\Zilor.AICopilot.MigrationWorkApp\Zilor.AICopilot.MigrationWorkApp.csproj" />
+
+        <ProjectReference Include="..\Zilor.AICopilot.HttpApi\Zilor.AICopilot.HttpApi.csproj"/>
+
+        <ProjectReference Include="..\Zilor.AICopilot.MigrationWorkApp\Zilor.AICopilot.MigrationWorkApp.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Aspire.Hosting.PostgreSQL" Version="13.0.0" />
+        <PackageReference Include="Aspire.Hosting.PostgreSQL" Version="13.0.0"/>
     </ItemGroup>
 
 </Project>

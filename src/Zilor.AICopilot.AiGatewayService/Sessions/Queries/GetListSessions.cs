@@ -22,7 +22,8 @@ public record GetListSessionsQuery : IQuery<Result<IList<SessionDto>>>;
 public class GetListSessionsQueryHandler(
     IDataQueryService dataQueryService) : IQueryHandler<GetListSessionsQuery, Result<IList<SessionDto>>>
 {
-    public async Task<Result<IList<SessionDto>>> Handle(GetListSessionsQuery request, CancellationToken cancellationToken)
+    public async Task<Result<IList<SessionDto>>> Handle(GetListSessionsQuery request,
+        CancellationToken cancellationToken)
     {
         var queryable = dataQueryService.Sessions
             .Select(s => new SessionDto
@@ -30,7 +31,7 @@ public class GetListSessionsQueryHandler(
                 Id = s.Id,
                 Title = s.Title
             });
-        var result= await dataQueryService.ToListAsync(queryable);
+        var result = await dataQueryService.ToListAsync(queryable);
         return Result.Success(result);
     }
 }

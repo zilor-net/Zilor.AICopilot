@@ -27,7 +27,8 @@ public record GetListLanguageModelsQuery : IQuery<Result<IList<LanguageModelDto>
 public class GetListLanguageModelsQueryHandler(
     IDataQueryService dataQueryService) : IQueryHandler<GetListLanguageModelsQuery, Result<IList<LanguageModelDto>>>
 {
-    public async Task<Result<IList<LanguageModelDto>>> Handle(GetListLanguageModelsQuery request, CancellationToken cancellationToken)
+    public async Task<Result<IList<LanguageModelDto>>> Handle(GetListLanguageModelsQuery request,
+        CancellationToken cancellationToken)
     {
         var queryable = dataQueryService.LanguageModels
             .Select(lm => new LanguageModelDto
@@ -40,7 +41,7 @@ public class GetListLanguageModelsQueryHandler(
                 MaxTokens = lm.Parameters.MaxTokens,
                 Temperature = lm.Parameters.Temperature
             });
-        var result= await dataQueryService.ToListAsync(queryable);
+        var result = await dataQueryService.ToListAsync(queryable);
         return Result.Success(result);
     }
 }

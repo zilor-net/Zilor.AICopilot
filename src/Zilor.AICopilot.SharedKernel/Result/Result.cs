@@ -80,7 +80,7 @@ public class Result : Result<Result>
     {
         return new Result(ResultStatus.NotFound);
     }
-    
+
     public static Result NotFound(params string[] error)
     {
         return new Result(ResultStatus.NotFound)

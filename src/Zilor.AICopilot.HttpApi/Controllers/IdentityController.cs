@@ -17,21 +17,21 @@ public class IdentityController : ApiControllerBase
 
         return ReturnResult(result);
     }
-    
+
     [HttpPost("login")]
     public async Task<IActionResult> Login(UserLoginRequest request)
     {
         var result = await Sender.Send(new LoginUserCommand(request.Username, request.Password));
         return ReturnResult(result);
     }
-    
+
     [HttpPost("role")]
     public async Task<IActionResult> CreateRole(CreateRoleRequest request)
     {
         var result = await Sender.Send(new CreateRoleCommand(request.RoleName));
         return ReturnResult(result);
     }
-    
+
     [Authorize]
     [HttpPost("test")]
     public IActionResult Test()

@@ -7,8 +7,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Zilor.AICopilot.Core.AiGateway\Zilor.AICopilot.Core.AiGateway.csproj" />
-      <ProjectReference Include="..\Zilor.AICopilot.Services.Common\Zilor.AICopilot.Services.Common.csproj" />
+        <ProjectReference Include="..\Zilor.AICopilot.Core.AiGateway\Zilor.AICopilot.Core.AiGateway.csproj"/>
+        <ProjectReference Include="..\Zilor.AICopilot.Services.Common\Zilor.AICopilot.Services.Common.csproj"/>
     </ItemGroup>
 
 </Project>
