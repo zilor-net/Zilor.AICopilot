@@ -30,7 +30,7 @@ public class ConversationTemplate : IAggregateRoot
     public string Description { get; set; } = null!;
 
     public string SystemPrompt { get; set; } = null!;
-    
+
     public Guid ModelId { get; set; }
 
     public TemplateSpecification Specification { get; set; } = null!;
