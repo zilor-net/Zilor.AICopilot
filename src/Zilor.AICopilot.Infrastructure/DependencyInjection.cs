@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Hosting;
 using Zilor.AICopilot.EntityFrameworkCore;
 using Zilor.AICopilot.IdentityService;
+using Zilor.AICopilot.IdentityService.Contracts;
 using Zilor.AICopilot.Infrastructure.Authentication;
 
 namespace Zilor.AICopilot.Infrastructure;

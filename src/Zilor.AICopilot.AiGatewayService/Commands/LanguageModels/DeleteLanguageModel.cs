@@ -1,21 +1,21 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Zilor.AICopilot.Core.AiGateway.Aggregates.Sessions;
+using Zilor.AICopilot.Core.AiGateway.Aggregates.LanguageModel;
 using Zilor.AICopilot.Services.Common.Attributes;
 using Zilor.AICopilot.SharedKernel.Messaging;
 using Zilor.AICopilot.SharedKernel.Repository;
 using Zilor.AICopilot.SharedKernel.Result;
 
-namespace Zilor.AICopilot.AiGatewayService.UseCases.Sessions.Commands;
+namespace Zilor.AICopilot.AiGatewayService.Commands.LanguageModels;
 
-[AuthorizeRequirement("AiGateway.DeleteSession")]
-public record DeleteSessionCommand(Guid Id) : ICommand<Result>;
+[AuthorizeRequirement("AiGateway.DeleteLanguageModel")]
+public record DeleteLanguageModelCommand(Guid Id) : ICommand<Result>;
 
-public class DeleteSessionCommandHandler(IRepository<Session> repo)
-    : ICommandHandler<DeleteSessionCommand, Result>
+public class DeleteLanguageModelCommandHandler(IRepository<LanguageModel> repo)
+    : ICommandHandler<DeleteLanguageModelCommand, Result>
 {
-    public async Task<Result> Handle(DeleteSessionCommand request, CancellationToken cancellationToken)
+    public async Task<Result> Handle(DeleteLanguageModelCommand request, CancellationToken cancellationToken)
     {
         var result = await repo.GetByIdAsync(request.Id, cancellationToken);
         if (result == null) return Result.Success();

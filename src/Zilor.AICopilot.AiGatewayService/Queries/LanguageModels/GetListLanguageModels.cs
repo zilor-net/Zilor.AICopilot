@@ -8,7 +8,7 @@ using Zilor.AICopilot.Services.Common.Contracts;
 using Zilor.AICopilot.SharedKernel.Messaging;
 using Zilor.AICopilot.SharedKernel.Result;
 
-namespace Zilor.AICopilot.AiGatewayService.UseCases.LanguageModels.Queries;
+namespace Zilor.AICopilot.AiGatewayService.Queries.LanguageModels;
 
 public record LanguageModelDto
 {

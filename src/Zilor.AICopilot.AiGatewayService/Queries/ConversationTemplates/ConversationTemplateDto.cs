@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Zilor.AICopilot.AiGatewayService.UseCases.ConversationTemplates.Dtos;
+namespace Zilor.AICopilot.AiGatewayService.Queries.ConversationTemplates;
 
 public record ConversationTemplateDto
 {

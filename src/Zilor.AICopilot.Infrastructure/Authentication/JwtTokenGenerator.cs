@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Zilor.AICopilot.IdentityService;
+using Zilor.AICopilot.IdentityService.Contracts;
 
 namespace Zilor.AICopilot.Infrastructure.Authentication;
 
