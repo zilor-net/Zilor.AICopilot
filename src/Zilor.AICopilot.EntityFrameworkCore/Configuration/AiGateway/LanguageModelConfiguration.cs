@@ -25,6 +25,10 @@ public class LanguageModelConfiguration : IEntityTypeConfiguration<LanguageModel
             .IsRequired()
             .HasMaxLength(100)
             .HasColumnName("name");
+        
+        // 唯一约束
+        builder.HasIndex(lm => new { lm.Provider, lm.Name })
+            .IsUnique();
 
         builder.Property(lm => lm.BaseUrl)
             .IsRequired()
