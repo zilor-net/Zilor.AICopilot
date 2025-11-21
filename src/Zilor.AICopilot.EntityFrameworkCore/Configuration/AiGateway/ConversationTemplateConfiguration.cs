@@ -14,12 +14,16 @@ public class ConversationTemplateConfiguration : IEntityTypeConfiguration<Conver
         // 配置主键
         builder.HasKey(ct => ct.Id);
         builder.Property(ct => ct.Id).HasColumnName("id");
-
+        
         // 配置属性
         builder.Property(ct => ct.Name)
             .IsRequired()
             .HasMaxLength(200)
             .HasColumnName("name");
+        
+        // 唯一约束
+        builder.HasIndex(ct => ct.Name)
+            .IsUnique();
 
         builder.Property(ct => ct.Description)
             .HasMaxLength(1000)

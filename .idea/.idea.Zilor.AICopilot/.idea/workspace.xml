@@ -9,25 +9,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f4f71ff8-869c-4e55-85b9-f9116211e89c" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Agents/ChatAgent.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Agents/IChatAgent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/UseCases/ConversationTemplates/Commands/CreateConversationTemplate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Commands/ConversationTemplates/CreateConversationTemplate.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/UseCases/ConversationTemplates/Commands/DeleteConversationTemplate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Commands/ConversationTemplates/DeleteConversationTemplate.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/UseCases/ConversationTemplates/Dtos/ConversationTemplateDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Queries/ConversationTemplates/ConversationTemplateDto.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/UseCases/ConversationTemplates/Queries/GetConversationTemplate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Queries/ConversationTemplates/GetConversationTemplate.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/UseCases/ConversationTemplates/Queries/GetListConversationTemplates.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Queries/ConversationTemplates/GetListConversationTemplates.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/UseCases/LanguageModels/Commands/CreateLanguageModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Commands/LanguageModels/CreateLanguageModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/UseCases/LanguageModels/Commands/DeleteLanguageModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Commands/LanguageModels/DeleteLanguageModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/UseCases/LanguageModels/Queries/GetListLanguageModels.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Queries/LanguageModels/GetListLanguageModels.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/UseCases/Sessions/Commands/CreateSession.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Commands/Sessions/CreateSession.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/UseCases/Sessions/Commands/DeleteSession.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Commands/Sessions/DeleteSession.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/UseCases/Sessions/Queries/GetListSessions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Queries/Sessions/GetListSessions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Zilor.AICopilot.AiGatewayService.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Zilor.AICopilot.AiGatewayService.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.HttpApi/Controllers/AiGatewayController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.HttpApi/Controllers/AiGatewayController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.IdentityService/Commands/LoginUser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.IdentityService/Commands/LoginUser.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.IdentityService/IJwtTokenGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.IdentityService/Contracts/IJwtTokenGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.Infrastructure/Authentication/JwtTokenGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.Infrastructure/Authentication/JwtTokenGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.Infrastructure/DependencyInjection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.Infrastructure/DependencyInjection.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,14 +25,30 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Agents/ChatAgent.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Agents/IChatAgent.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2f2b1d92f1ffcf2dabd664473f8c9dafa6039595ac228ce4b75a0f1619c5991/AsyncTaskMethodBuilderT.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/57eeaef20b98437245dacd25ea360f88c7c52d752b9af35578b2976c422e/OpenAIClientOptions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/58ba75c92c3631aaa2bcfd903364d62cac751a5bb4abcd4fb9b0bf91434a11c7/OpenAIClientOptions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/69bc68e9420a6e628e801fd8651369ad2af3593c76dcc11a4270ec68d/ExecutionContext.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ae7cb4ab974ef13d2138941576bb93657f6cd3d1895813b15e05bbc2959c3/OpenAIClient.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/b08e508b541e15a842d6f6d449907e11da6f536e8cfe0824d61ebd6dcb6681/AgentRunOptions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://D:/Repos/TechRepos/RiderProjects/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/Agents/ChatAgent.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Agents/ChatAgentFactory.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Commands/Sessions/SendUserMessage.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://D:/Repos/TechRepos/RiderProjects/Zilor.AICopilot/src/Zilor.AICopilot.Core.AiGateway/Aggregates/ConversationTemplate/ConversationTemplate.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Repos/TechRepos/RiderProjects/Zilor.AICopilot/src/Zilor.AICopilot.EntityFrameworkCore/Configuration/AiGateway/ConversationTemplateConfiguration.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Repos/TechRepos/RiderProjects/Zilor.AICopilot/src/Zilor.AICopilot.HttpApi/Controllers/AiGatewayController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Repos/TechRepos/RiderProjects/Zilor.AICopilot/src/Zilor.AICopilot.Infrastructure/Authentication/JwtTokenGenerator.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Repos/TechRepos/RiderProjects/Zilor.AICopilot/src/Zilor.AICopilot.Infrastructure/DependencyInjection.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 6
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 6
+}</component>
   <component name="ProjectId" id="35lsOSx1ZQCGcKF2YTSmVB6LOBZ" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -59,16 +57,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "git-widget-placeholder": "14.集成Agent框架",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Aspire Host.Zilor.AICopilot.AppHost: http.executor&quot;: &quot;Debug&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;14.集成Agent框架&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Aspire Host.Zilor.AICopilot.AppHost: http">
     <configuration name="Zilor.AICopilot.AppHost: http" type="AspireHostConfiguration" factoryName="Aspire Host" activateToolWindowBeforeRun="false">
       <option name="PROJECT_FILE_PATH" value="$PROJECT_DIR$/src/Zilor.AICopilot.AppHost/Zilor.AICopilot.AppHost.csproj" />
@@ -80,13 +79,13 @@
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/Zilor.AICopilot.AppHost" />
       <option name="TRACK_ENVS" value="1" />
       <envs>
-        <env name="ASPNETCORE_ENVIRONMENT" value="Development" />
         <env name="DOTNET_ENVIRONMENT" value="Development" />
+        <env name="ASPNETCORE_ENVIRONMENT" value="Development" />
         <env name="ASPIRE_DASHBOARD_OTLP_ENDPOINT_URL" value="http://localhost:19103" />
+        <env name="ASPNETCORE_URLS" value="http://localhost:15215" />
         <env name="ASPIRE_DASHBOARD_MCP_ENDPOINT_URL" value="http://localhost:18200" />
         <env name="ASPIRE_RESOURCE_SERVICE_ENDPOINT_URL" value="http://localhost:20126" />
         <env name="DOTNET_LAUNCH_PROFILE" value="http" />
-        <env name="ASPNETCORE_URLS" value="http://localhost:15215" />
       </envs>
       <option name="USE_PODMAN_RUNTIME" value="0" />
       <option name="TRACK_URL" value="1" />
@@ -106,13 +105,13 @@
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/Zilor.AICopilot.AppHost" />
       <option name="TRACK_ENVS" value="1" />
       <envs>
-        <env name="ASPNETCORE_ENVIRONMENT" value="Development" />
         <env name="DOTNET_ENVIRONMENT" value="Development" />
+        <env name="ASPNETCORE_ENVIRONMENT" value="Development" />
         <env name="ASPIRE_DASHBOARD_OTLP_ENDPOINT_URL" value="https://localhost:21254" />
+        <env name="ASPNETCORE_URLS" value="https://localhost:17227;http://localhost:15215" />
         <env name="ASPIRE_DASHBOARD_MCP_ENDPOINT_URL" value="https://localhost:23235" />
         <env name="ASPIRE_RESOURCE_SERVICE_ENDPOINT_URL" value="https://localhost:22269" />
         <env name="DOTNET_LAUNCH_PROFILE" value="https" />
-        <env name="ASPNETCORE_URLS" value="https://localhost:17227;http://localhost:15215" />
       </envs>
       <option name="USE_PODMAN_RUNTIME" value="0" />
       <option name="TRACK_URL" value="1" />
@@ -178,7 +177,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1763695963153</updated>
-      <workItem from="1763695964294" duration="6347000" />
+      <workItem from="1763695964294" duration="21489000" />
+      <workItem from="1763782069005" duration="18000" />
     </task>
     <task id="LOCAL-00001" summary="chore(ide): 更新IDE配置文件并清理无用设置&#10;&#10;- 移除.idea目录下的.gitignore文件中冗余的忽略规则&#10;- 删除数据源配置文件dataSources.xml&#10;- 更新vcs.xml中的Git映射路径为空字符串&#10;- 新增projectSettingsUpdater.xml以优化项目设置更新机制&#10;- 添加完整的workspace.xml运行配置，支持Aspire Host和HTTP API调试&#10;-为多个命令和查询类文件补充必要的命名空间引用">
       <option name="closed" value="true" />
@@ -212,7 +212,39 @@
       <option name="project" value="LOCAL" />
       <updated>1763705426654</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="refactor(core):重构AI网关核心模块&#10;&#10;- 将UseCases相关文件移动到独立的目录结构中&#10;- 更新命名空间引用路径，统一为UseCases模式&#10;- 调整ConversationTemplate聚合根，增加ModelId属性&#10;- 修改EF Core模型快照与配置映射关系&#10;- 更新接口契约文件位置并调整依赖引用&#10;- 修正JwtTokenGenerator相关类型的引用关系&#10;- 完善实体属性初始化以避免空引用问题&#10;- 清理无效的迁移文件及设计器代码&#10;- 新增ChatAgent及IChatAgent接口定义&#10;- 重命名并调整多个命令和查询类的命名空间&#10;- 移除项目文件中不再需要的UseCases文件夹引用">
+      <option name="closed" value="true" />
+      <created>1763706869167</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1763706869167</updated>
+    </task>
+    <task id="LOCAL-00006" summary="refactor(core): 整理代码结构并移除多余空行&#10;&#10;- 移除了 ChatAgent 类中的多余空行&#10;- 在 ConversationTemplate 实体中添加了 ModelId 属性&#10;- 更新了 ConversationTemplate 的 EF Core 配置，映射 model_id 列&#10;-从 DependencyInjection 和 JwtTokenGenerator 中移除了不必要的命名空间引用&#10;- 清理了项目文件中多余的空格和格式问题">
+      <option name="closed" value="true" />
+      <created>1763706927178</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1763706927178</updated>
+    </task>
+    <task id="LOCAL-00007" summary="feat(ai-gateway): 实现用户消息发送与流式响应功能&#10;&#10;- 新增 SendUserMessages HTTP GET 接口，用于接收并处理用户消息&#10;- 实现 Server-Sent Events (SSE) 流式响应机制&#10;- 添加 ChatAgentFactory 工厂类，用于创建基于模板的 AI 对话代理&#10;- 引入 Microsoft.Agents.AI.OpenAI 包以支持 AI 代理交互&#10;- 在 ConversationTemplate 和 LanguageModel 上添加唯一索引约束&#10;- 注册 AiGatewayService 服务及 MediatR 相关依赖&#10;- 新增 SendUserMessageCommand 命令及其处理器，用于异步流式处理消息&#10;- 调整项目结构：将 UseCases 目录更名为 Commands 和 Queries&#10;- 更新 Program.cs 中的服务注册方法名 AddServiceUseCase为 AddApplicationService&#10;- 移除旧的 ChatAgent 和 IChatAgent 类定义&#10;- 配置 Entity Framework Core 模型唯一性约束&#10;- 添加系统提示词和模型关联逻辑，增强会话上下文管理&#10;-优化依赖注入配置，确保服务正确注册与解析- 增加必要的 JSON 序列化和 HTTP 响应头设置以支持 SSE 协议&#10;- 完成 JWT 权限验证特性标注于 SendUserMessageCommand 类上&#10;-修正部分命名空间引用问题，并更新解决方案用户设置文件排除缓存路径">
+      <option name="closed" value="true" />
+      <created>1763734639621</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1763734639621</updated>
+    </task>
+    <task id="LOCAL-00008" summary="feat(ai-gateway): 实现用户消息发送与流式响应功能&#10;&#10;- 新增 SendUserMessages HTTP GET 接口，用于接收并处理用户消息&#10;- 实现 Server-Sent Events (SSE) 流式响应机制&#10;- 添加 ChatAgentFactory 工厂类，用于创建基于模板的 AI 对话代理&#10;- 引入 Microsoft.Agents.AI.OpenAI 包以支持 AI 代理交互&#10;- 在 ConversationTemplate 和 LanguageModel 上添加唯一索引约束&#10;- 注册 AiGatewayService 服务及 MediatR 相关依赖&#10;- 新增 SendUserMessageCommand 命令及其处理器，用于异步流式处理消息&#10;- 调整项目结构：将 UseCases 目录更名为 Commands 和 Queries&#10;- 更新 Program.cs 中的服务注册方法名 AddServiceUseCase为 AddApplicationService&#10;- 移除旧的 ChatAgent 和 IChatAgent 类定义&#10;- 配置 Entity Framework Core 模型唯一性约束&#10;- 添加系统提示词和模型关联逻辑，增强会话上下文管理&#10;-优化依赖注入配置，确保服务正确注册与解析- 增加必要的 JSON 序列化和 HTTP 响应头设置以支持 SSE 协议&#10;- 完成 JWT 权限验证特性标注于 SendUserMessageCommand 类上&#10;-修正部分命名空间引用问题，并更新解决方案用户设置文件排除缓存路径">
+      <option name="closed" value="true" />
+      <created>1763738333814</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1763738333814</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -225,7 +257,10 @@
     <MESSAGE value="chore(ide): 更新IDE配置文件并清理无用设置&#10;&#10;- 移除.idea目录下的.gitignore文件中冗余的忽略规则&#10;- 删除数据源配置文件dataSources.xml&#10;- 更新vcs.xml中的Git映射路径为空字符串&#10;- 新增projectSettingsUpdater.xml以优化项目设置更新机制&#10;- 添加完整的workspace.xml运行配置，支持Aspire Host和HTTP API调试&#10;-为多个命令和查询类文件补充必要的命名空间引用" />
     <MESSAGE value="style(core): 格式化代码并调整属性顺序&#10;- 删除多余的空行并统一代码缩进&#10;- 调整类成员变量声明顺序，提升可读性&#10;- 规范方法参数换行与对齐方式- 统一字段与属性的访问修饰符排列顺序&#10;- 清理无用命名空间引用，优化依赖结构&#10;- 修正部分注释位置以匹配实际逻辑- 标准化构造函数初始化列表格式&#10;- 移除冗余的 endregion 指令&#10;- 优化条件判断语句表达式书写风格&#10;- 更新实体配置中的列映射定义顺序&#10;- 完善数据传输对象(Dto)的属性布局&#10;- 整理控制器动作方法之间的间距&#10;- 对齐JWT设置记录类的属性定义&#10;-重新组织服务注册扩展方法内容&#10;- 改进异常处理器的响应构建过程&#10;- 提高查询处理程序中LINQ表达式的清晰度&#10;- 修改身份验证服务内的用户查找流程&#10;- 重构消息实体的关系映射配置细节- 精简共享内核结果类型的静态工厂方法实现&#10;- 优化会话实体的消息集合封装策略" />
     <MESSAGE value="refactor(core):重构AI网关核心模块&#10;&#10;- 移动UseCases相关文件到独立目录结构&#10;- 更新命名空间引用路径统一为UseCases模式&#10;- 调整ConversationTemplate聚合根增加ModelId属性&#10;- 修改EF Core模型快照与配置映射关系&#10;- 更新接口契约文件位置并调整依赖引用&#10;- 修正JwtTokenGenerator相关类型引用关系&#10;- 完善实体属性初始化避免空引用问题&#10;- 清理无效的迁移文件及设计器代码" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor(core):重构AI网关核心模块&#10;&#10;- 移动UseCases相关文件到独立目录结构&#10;- 更新命名空间引用路径统一为UseCases模式&#10;- 调整ConversationTemplate聚合根增加ModelId属性&#10;- 修改EF Core模型快照与配置映射关系&#10;- 更新接口契约文件位置并调整依赖引用&#10;- 修正JwtTokenGenerator相关类型引用关系&#10;- 完善实体属性初始化避免空引用问题&#10;- 清理无效的迁移文件及设计器代码" />
+    <MESSAGE value="refactor(core):重构AI网关核心模块&#10;&#10;- 将UseCases相关文件移动到独立的目录结构中&#10;- 更新命名空间引用路径，统一为UseCases模式&#10;- 调整ConversationTemplate聚合根，增加ModelId属性&#10;- 修改EF Core模型快照与配置映射关系&#10;- 更新接口契约文件位置并调整依赖引用&#10;- 修正JwtTokenGenerator相关类型的引用关系&#10;- 完善实体属性初始化以避免空引用问题&#10;- 清理无效的迁移文件及设计器代码&#10;- 新增ChatAgent及IChatAgent接口定义&#10;- 重命名并调整多个命令和查询类的命名空间&#10;- 移除项目文件中不再需要的UseCases文件夹引用" />
+    <MESSAGE value="refactor(core): 整理代码结构并移除多余空行&#10;&#10;- 移除了 ChatAgent 类中的多余空行&#10;- 在 ConversationTemplate 实体中添加了 ModelId 属性&#10;- 更新了 ConversationTemplate 的 EF Core 配置，映射 model_id 列&#10;-从 DependencyInjection 和 JwtTokenGenerator 中移除了不必要的命名空间引用&#10;- 清理了项目文件中多余的空格和格式问题" />
+    <MESSAGE value="feat(ai-gateway): 实现用户消息发送与流式响应功能&#10;&#10;- 新增 SendUserMessages HTTP GET 接口，用于接收并处理用户消息&#10;- 实现 Server-Sent Events (SSE) 流式响应机制&#10;- 添加 ChatAgentFactory 工厂类，用于创建基于模板的 AI 对话代理&#10;- 引入 Microsoft.Agents.AI.OpenAI 包以支持 AI 代理交互&#10;- 在 ConversationTemplate 和 LanguageModel 上添加唯一索引约束&#10;- 注册 AiGatewayService 服务及 MediatR 相关依赖&#10;- 新增 SendUserMessageCommand 命令及其处理器，用于异步流式处理消息&#10;- 调整项目结构：将 UseCases 目录更名为 Commands 和 Queries&#10;- 更新 Program.cs 中的服务注册方法名 AddServiceUseCase为 AddApplicationService&#10;- 移除旧的 ChatAgent 和 IChatAgent 类定义&#10;- 配置 Entity Framework Core 模型唯一性约束&#10;- 添加系统提示词和模型关联逻辑，增强会话上下文管理&#10;-优化依赖注入配置，确保服务正确注册与解析- 增加必要的 JSON 序列化和 HTTP 响应头设置以支持 SSE 协议&#10;- 完成 JWT 权限验证特性标注于 SendUserMessageCommand 类上&#10;-修正部分命名空间引用问题，并更新解决方案用户设置文件排除缓存路径" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(ai-gateway): 实现用户消息发送与流式响应功能&#10;&#10;- 新增 SendUserMessages HTTP GET 接口，用于接收并处理用户消息&#10;- 实现 Server-Sent Events (SSE) 流式响应机制&#10;- 添加 ChatAgentFactory 工厂类，用于创建基于模板的 AI 对话代理&#10;- 引入 Microsoft.Agents.AI.OpenAI 包以支持 AI 代理交互&#10;- 在 ConversationTemplate 和 LanguageModel 上添加唯一索引约束&#10;- 注册 AiGatewayService 服务及 MediatR 相关依赖&#10;- 新增 SendUserMessageCommand 命令及其处理器，用于异步流式处理消息&#10;- 调整项目结构：将 UseCases 目录更名为 Commands 和 Queries&#10;- 更新 Program.cs 中的服务注册方法名 AddServiceUseCase为 AddApplicationService&#10;- 移除旧的 ChatAgent 和 IChatAgent 类定义&#10;- 配置 Entity Framework Core 模型唯一性约束&#10;- 添加系统提示词和模型关联逻辑，增强会话上下文管理&#10;-优化依赖注入配置，确保服务正确注册与解析- 增加必要的 JSON 序列化和 HTTP 响应头设置以支持 SSE 协议&#10;- 完成 JWT 权限验证特性标注于 SendUserMessageCommand 类上&#10;-修正部分命名空间引用问题，并更新解决方案用户设置文件排除缓存路径" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
