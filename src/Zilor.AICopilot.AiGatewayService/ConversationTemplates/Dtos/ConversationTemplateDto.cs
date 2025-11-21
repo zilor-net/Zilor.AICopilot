@@ -1,4 +1,6 @@
-﻿namespace Zilor.AICopilot.AiGatewayService.ConversationTemplates.Dtos;
+﻿using System;
+
+namespace Zilor.AICopilot.AiGatewayService.ConversationTemplates.Dtos;
 
 public record ConversationTemplateDto
 {

@@ -1,4 +1,7 @@
-﻿using Zilor.AICopilot.Core.AiGateway.Aggregates.ConversationTemplate;
+﻿using System;
+using System.Threading;
+using System.Threading.Tasks;
+using Zilor.AICopilot.Core.AiGateway.Aggregates.ConversationTemplate;
 using Zilor.AICopilot.Services.Common.Attributes;
 using Zilor.AICopilot.SharedKernel.Messaging;
 using Zilor.AICopilot.SharedKernel.Repository;

@@ -1,3 +1,5 @@
-﻿namespace Zilor.AICopilot.Services.Common.Exceptions;
+﻿using System;
+
+namespace Zilor.AICopilot.Services.Common.Exceptions;
 
 public class ForbiddenException(string? message) : Exception(message);
