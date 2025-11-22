@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Agents.AI;
@@ -24,22 +25,20 @@ public class SendUserMessageCommandHandler(IRepository<Session> repo, ChatAgentF
         if (session == null) throw new Exception("未找到会话");
 
         var agent = await chatAgent.CreateAgentAsync(session.TemplateId);
+        var storeThread = new { storeState = request.SessionId };
+        var agentThread = agent.DeserializeThread(JsonSerializer.SerializeToElement(storeThread));
         
         // 返回迭代器函数
-        return await Task.FromResult(GetStreamAsync(agent, request.Content, cancellationToken));
+        return await Task.FromResult(GetStreamAsync(agent, agentThread, request.Content, cancellationToken));
     }
 
     private async IAsyncEnumerable<string> GetStreamAsync(
-        ChatClientAgent agent, string content, [EnumeratorCancellation] CancellationToken cancellationToken)
+        ChatClientAgent agent, AgentThread thread, string content, [EnumeratorCancellation] CancellationToken cancellationToken)
     {
-        var thread = agent.GetNewThread();
         // 调用Agent流式读取响应
         await foreach (var update in agent.RunStreamingAsync(content, thread, cancellationToken: cancellationToken))
         {
             yield return update.Text;
         }
-
-        var json = thread.Serialize();
-        Console.WriteLine(json);
     }
 }

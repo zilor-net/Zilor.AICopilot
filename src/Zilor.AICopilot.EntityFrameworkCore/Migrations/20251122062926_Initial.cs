@@ -61,7 +61,7 @@ namespace Zilor.AICopilot.EntityFrameworkCore.Migrations
                     model_id = table.Column<string>(type: "text", nullable: false),
                     ModelId = table.Column<Guid>(type: "uuid", nullable: false),
                     max_tokens = table.Column<int>(type: "integer", nullable: true),
-                    temperature = table.Column<double>(type: "double precision", nullable: true),
+                    temperature = table.Column<float>(type: "real", nullable: true),
                     is_enabled = table.Column<bool>(type: "boolean", nullable: false)
                 },
                 constraints: table =>
@@ -79,7 +79,7 @@ namespace Zilor.AICopilot.EntityFrameworkCore.Migrations
                     base_url = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
                     api_key = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
                     max_tokens = table.Column<int>(type: "integer", nullable: false),
-                    temperature = table.Column<double>(type: "double precision", nullable: false)
+                    temperature = table.Column<float>(type: "real", nullable: false)
                 },
                 constraints: table =>
                 {

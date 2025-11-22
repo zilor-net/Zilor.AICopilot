@@ -3,5 +3,5 @@
 public record TemplateSpecification
 {
     public int? MaxTokens { get; set; }
-    public double? Temperature { get; set; }
+    public float? Temperature { get; set; }
 }

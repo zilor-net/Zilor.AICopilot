@@ -3,12 +3,13 @@ using System.ClientModel;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Agents.AI;
+using Microsoft.Extensions.AI;
 using OpenAI;
 using Zilor.AICopilot.Services.Common.Contracts;
 
 namespace Zilor.AICopilot.AiGatewayService.Agents;
 
-public class ChatAgentFactory(IDataQueryService data)
+public class ChatAgentFactory(IDataQueryService data, IServiceProvider serviceProvider)
 {
     public async Task<ChatClientAgent> CreateAgentAsync(Guid templateId)
     {
@@ -22,12 +23,14 @@ public class ChatAgentFactory(IDataQueryService data)
                 {
                     model.BaseUrl,
                     model.ApiKey,
-                    model.Name
+                    model.Name,
+                    model.Parameters.Temperature
                 },
                 Template = new
                 {
                     template.Name,
-                    template.SystemPrompt
+                    template.SystemPrompt,
+                    template.Specification.Temperature
                 }
             };
 
@@ -41,7 +44,20 @@ public class ChatAgentFactory(IDataQueryService data)
                     Endpoint = new Uri(result.Model.BaseUrl)
                 })
             .GetChatClient(result.Model.Name)
-            .CreateAIAgent(name: result.Template.Name, instructions: result.Template.SystemPrompt);
+            .CreateAIAgent(new ChatClientAgentOptions
+            {
+                Name = result.Template.Name,
+                Instructions = result.Template.SystemPrompt,
+                ChatOptions = new ChatOptions
+                {
+                    Temperature = result.Template.Temperature ?? result.Model.Temperature
+                },
+                ChatMessageStoreFactory = context =>
+                {
+                    Console.WriteLine(context.SerializedState);
+                    return new SessionChatMessageStore(serviceProvider, context.SerializedState);
+                }
+            });
 
         return agent;
     }

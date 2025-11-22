@@ -18,7 +18,7 @@ public record CreateConversationTemplateCommand(
     string SystemPrompt,
     Guid ModelId,
     int? MaxTokens,
-    double? Temperature) : ICommand<Result<CreatedConversationTemplateDto>>;
+    float? Temperature) : ICommand<Result<CreatedConversationTemplateDto>>;
 
 public class CreateConversationTemplateCommandHandler(IRepository<ConversationTemplate> repo)
     : ICommandHandler<CreateConversationTemplateCommand, Result<CreatedConversationTemplateDto>>

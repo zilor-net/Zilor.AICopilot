@@ -421,8 +421,8 @@ namespace Zilor.AICopilot.EntityFrameworkCore.Migrations
                                 .HasColumnType("integer")
                                 .HasColumnName("max_tokens");
 
-                            b1.Property<double?>("Temperature")
-                                .HasColumnType("double precision")
+                            b1.Property<float?>("Temperature")
+                                .HasColumnType("real")
                                 .HasColumnName("temperature");
 
                             b1.HasKey("ConversationTemplateId");
@@ -448,8 +448,8 @@ namespace Zilor.AICopilot.EntityFrameworkCore.Migrations
                                 .HasColumnType("integer")
                                 .HasColumnName("max_tokens");
 
-                            b1.Property<double>("Temperature")
-                                .HasColumnType("double precision")
+                            b1.Property<float>("Temperature")
+                                .HasColumnType("real")
                                 .HasColumnName("temperature");
 
                             b1.HasKey("LanguageModelId");
