@@ -52,6 +52,55 @@ namespace Zilor.AICopilot.EntityFrameworkCore.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "conversation_templates",
+                columns: table => new
+                {
+                    id = table.Column<Guid>(type: "uuid", nullable: false),
+                    name = table.Column<string>(type: "character varying(200)", maxLength: 200, nullable: false),
+                    description = table.Column<string>(type: "character varying(1000)", maxLength: 1000, nullable: false),
+                    model_id = table.Column<string>(type: "text", nullable: false),
+                    ModelId = table.Column<Guid>(type: "uuid", nullable: false),
+                    max_tokens = table.Column<int>(type: "integer", nullable: true),
+                    temperature = table.Column<double>(type: "double precision", nullable: true),
+                    is_enabled = table.Column<bool>(type: "boolean", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_conversation_templates", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "language_models",
+                columns: table => new
+                {
+                    id = table.Column<Guid>(type: "uuid", nullable: false),
+                    provider = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
+                    name = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
+                    base_url = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
+                    api_key = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
+                    max_tokens = table.Column<int>(type: "integer", nullable: false),
+                    temperature = table.Column<double>(type: "double precision", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_language_models", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "sessions",
+                columns: table => new
+                {
+                    id = table.Column<Guid>(type: "uuid", nullable: false),
+                    title = table.Column<string>(type: "character varying(20)", maxLength: 20, nullable: false),
+                    user_id = table.Column<Guid>(type: "uuid", nullable: false),
+                    template_id = table.Column<Guid>(type: "uuid", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_sessions", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
@@ -157,6 +206,28 @@ namespace Zilor.AICopilot.EntityFrameworkCore.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "messages",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    session_id = table.Column<Guid>(type: "uuid", nullable: false),
+                    content = table.Column<string>(type: "text", nullable: false),
+                    created_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    type = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_messages", x => x.id);
+                    table.ForeignKey(
+                        name: "fk_messages_sessions_session_id",
+                        column: x => x.session_id,
+                        principalTable: "sessions",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -193,6 +264,28 @@ namespace Zilor.AICopilot.EntityFrameworkCore.Migrations
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_conversation_templates_name",
+                table: "conversation_templates",
+                column: "name",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_language_models_provider_name",
+                table: "language_models",
+                columns: new[] { "provider", "name" },
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_messages_session_id",
+                table: "messages",
+                column: "session_id");
+
+            migrationBuilder.CreateIndex(
+                name: "ix_sessions_user_id",
+                table: "sessions",
+                column: "user_id");
         }
 
         /// <inheritdoc />
@@ -214,10 +307,22 @@ namespace Zilor.AICopilot.EntityFrameworkCore.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "conversation_templates");
+
+            migrationBuilder.DropTable(
+                name: "language_models");
+
+            migrationBuilder.DropTable(
+                name: "messages");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "sessions");
         }
     }
 }

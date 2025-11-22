@@ -251,6 +251,9 @@ namespace Zilor.AICopilot.EntityFrameworkCore.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("Name")
+                        .IsUnique();
+
                     b.ToTable("conversation_templates", (string)null);
                 });
 
@@ -285,6 +288,9 @@ namespace Zilor.AICopilot.EntityFrameworkCore.Migrations
                         .HasColumnName("provider");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Provider", "Name")
+                        .IsUnique();
 
                     b.ToTable("language_models", (string)null);
                 });

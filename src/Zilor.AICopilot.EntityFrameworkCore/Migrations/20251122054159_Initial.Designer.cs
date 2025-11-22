@@ -12,8 +12,8 @@ using Zilor.AICopilot.EntityFrameworkCore;
 namespace Zilor.AICopilot.EntityFrameworkCore.Migrations
 {
     [DbContext(typeof(AiCopilotDbContext))]
-    [Migration("20251121060529_AddAiGateway")]
-    partial class AddAiGateway
+    [Migration("20251122054159_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -254,6 +254,9 @@ namespace Zilor.AICopilot.EntityFrameworkCore.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("Name")
+                        .IsUnique();
+
                     b.ToTable("conversation_templates", (string)null);
                 });
 
@@ -288,6 +291,9 @@ namespace Zilor.AICopilot.EntityFrameworkCore.Migrations
                         .HasColumnName("provider");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Provider", "Name")
+                        .IsUnique();
 
                     b.ToTable("language_models", (string)null);
                 });

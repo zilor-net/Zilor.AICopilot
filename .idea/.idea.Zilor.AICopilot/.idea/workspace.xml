@@ -9,7 +9,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f4f71ff8-869c-4e55-85b9-f9116211e89c" name="更改" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Zilor.AICopilot.AiGatewayService.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Zilor.AICopilot.AiGatewayService.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Commands/Sessions/SendUserMessage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Commands/Sessions/SendUserMessage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/DependencyInjection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/DependencyInjection.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.EntityFrameworkCore/Migrations/20251113050807_Initial.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.EntityFrameworkCore/Migrations/20251113050807_Initial.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.EntityFrameworkCore/Migrations/20251121060529_AddAiGateway.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.EntityFrameworkCore/Migrations/20251121060529_AddAiGateway.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.EntityFrameworkCore/Migrations/20251122052626_AddUnique.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.EntityFrameworkCore/Migrations/20251122052626_AddUnique.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.EntityFrameworkCore/Migrations/AiCopilotDbContextModelSnapshot.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.HttpApi/Controllers/AiGatewayController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.HttpApi/Controllers/AiGatewayController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.HttpApi/appsettings.Development.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.HttpApi/appsettings.Development.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,14 +42,10 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/69bc68e9420a6e628e801fd8651369ad2af3593c76dcc11a4270ec68d/ExecutionContext.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ae7cb4ab974ef13d2138941576bb93657f6cd3d1895813b15e05bbc2959c3/OpenAIClient.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/b08e508b541e15a842d6f6d449907e11da6f536e8cfe0824d61ebd6dcb6681/AgentRunOptions.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://D:/Repos/TechRepos/RiderProjects/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/Agents/ChatAgent.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Agents/ChatAgentFactory.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Commands/Sessions/SendUserMessage.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://D:/Repos/TechRepos/RiderProjects/Zilor.AICopilot/src/Zilor.AICopilot.Core.AiGateway/Aggregates/ConversationTemplate/ConversationTemplate.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Repos/TechRepos/RiderProjects/Zilor.AICopilot/src/Zilor.AICopilot.EntityFrameworkCore/Configuration/AiGateway/ConversationTemplateConfiguration.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Repos/TechRepos/RiderProjects/Zilor.AICopilot/src/Zilor.AICopilot.HttpApi/Controllers/AiGatewayController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Repos/TechRepos/RiderProjects/Zilor.AICopilot/src/Zilor.AICopilot.Infrastructure/Authentication/JwtTokenGenerator.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Repos/TechRepos/RiderProjects/Zilor.AICopilot/src/Zilor.AICopilot.Infrastructure/DependencyInjection.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Repos/MyRepos/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/Commands/Sessions/SendUserMessageCommand.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Repos/MyRepos/Zilor.AICopilot/src/Zilor.AICopilot.EntityFrameworkCore/Configuration/AiGateway/ConversationTemplateConfiguration.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="KubernetesApiPersistence">{}</component>
   <component name="KubernetesApiProvider">{
@@ -260,7 +267,15 @@
       <option name="project" value="LOCAL" />
       <updated>1763789335907</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="feat(ai-gateway): 实现用户消息发送与流式响应功能&#10;&#10;- 新增 SendUserMessages HTTP GET 接口，用于接收并处理用户消息&#10;- 实现 Server-Sent Events (SSE) 流式响应机制- 添加 ChatAgentFactory 工厂类，用于创建基于模板的 AI 对话代理&#10;- 引入 Microsoft.Agents.AI.OpenAI 包以支持 AI 代理交互- 在 ConversationTemplate 和 LanguageModel 上添加唯一索引约束&#10;- 注册 AiGatewayService 服务及 MediatR 相关依赖&#10;- 新增 SendUserMessageCommand 命令及其处理器，用于异步流式处理消息&#10;- 调整项目结构：将 UseCases 目录更名为 Commands 和 Queries- 更新 Program.cs 中的服务注册方法名 AddServiceUseCase为 AddApplicationService- 移除旧的 ChatAgent 和 IChatAgent 类定义&#10;- 配置 Entity Framework Core 模型唯一性约束&#10;- 添加系统提示词和模型关联逻辑，增强会话上下文管理&#10;-优化依赖注入配置，确保服务正确注册与解析&#10;- 增加必要的 JSON 序列化和 HTTP 响应头设置以支持 SSE 协议&#10;- 完成 JWT 权限验证特性标注于 SendUserMessageCommand 类上&#10;-修正部分命名空间引用问题，并更新解决方案用户设置文件排除缓存路径">
+      <option name="closed" value="true" />
+      <created>1763789870709</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1763789870709</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -276,7 +291,8 @@
     <MESSAGE value="refactor(core):重构AI网关核心模块&#10;&#10;- 将UseCases相关文件移动到独立的目录结构中&#10;- 更新命名空间引用路径，统一为UseCases模式&#10;- 调整ConversationTemplate聚合根，增加ModelId属性&#10;- 修改EF Core模型快照与配置映射关系&#10;- 更新接口契约文件位置并调整依赖引用&#10;- 修正JwtTokenGenerator相关类型的引用关系&#10;- 完善实体属性初始化以避免空引用问题&#10;- 清理无效的迁移文件及设计器代码&#10;- 新增ChatAgent及IChatAgent接口定义&#10;- 重命名并调整多个命令和查询类的命名空间&#10;- 移除项目文件中不再需要的UseCases文件夹引用" />
     <MESSAGE value="refactor(core): 整理代码结构并移除多余空行&#10;&#10;- 移除了 ChatAgent 类中的多余空行&#10;- 在 ConversationTemplate 实体中添加了 ModelId 属性&#10;- 更新了 ConversationTemplate 的 EF Core 配置，映射 model_id 列&#10;-从 DependencyInjection 和 JwtTokenGenerator 中移除了不必要的命名空间引用&#10;- 清理了项目文件中多余的空格和格式问题" />
     <MESSAGE value="feat(ai-gateway): 实现用户消息发送与流式响应功能&#10;&#10;- 新增 SendUserMessages HTTP GET 接口，用于接收并处理用户消息&#10;- 实现 Server-Sent Events (SSE) 流式响应机制&#10;- 添加 ChatAgentFactory 工厂类，用于创建基于模板的 AI 对话代理&#10;- 引入 Microsoft.Agents.AI.OpenAI 包以支持 AI 代理交互&#10;- 在 ConversationTemplate 和 LanguageModel 上添加唯一索引约束&#10;- 注册 AiGatewayService 服务及 MediatR 相关依赖&#10;- 新增 SendUserMessageCommand 命令及其处理器，用于异步流式处理消息&#10;- 调整项目结构：将 UseCases 目录更名为 Commands 和 Queries&#10;- 更新 Program.cs 中的服务注册方法名 AddServiceUseCase为 AddApplicationService&#10;- 移除旧的 ChatAgent 和 IChatAgent 类定义&#10;- 配置 Entity Framework Core 模型唯一性约束&#10;- 添加系统提示词和模型关联逻辑，增强会话上下文管理&#10;-优化依赖注入配置，确保服务正确注册与解析- 增加必要的 JSON 序列化和 HTTP 响应头设置以支持 SSE 协议&#10;- 完成 JWT 权限验证特性标注于 SendUserMessageCommand 类上&#10;-修正部分命名空间引用问题，并更新解决方案用户设置文件排除缓存路径" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(ai-gateway): 实现用户消息发送与流式响应功能&#10;&#10;- 新增 SendUserMessages HTTP GET 接口，用于接收并处理用户消息&#10;- 实现 Server-Sent Events (SSE) 流式响应机制&#10;- 添加 ChatAgentFactory 工厂类，用于创建基于模板的 AI 对话代理&#10;- 引入 Microsoft.Agents.AI.OpenAI 包以支持 AI 代理交互&#10;- 在 ConversationTemplate 和 LanguageModel 上添加唯一索引约束&#10;- 注册 AiGatewayService 服务及 MediatR 相关依赖&#10;- 新增 SendUserMessageCommand 命令及其处理器，用于异步流式处理消息&#10;- 调整项目结构：将 UseCases 目录更名为 Commands 和 Queries&#10;- 更新 Program.cs 中的服务注册方法名 AddServiceUseCase为 AddApplicationService&#10;- 移除旧的 ChatAgent 和 IChatAgent 类定义&#10;- 配置 Entity Framework Core 模型唯一性约束&#10;- 添加系统提示词和模型关联逻辑，增强会话上下文管理&#10;-优化依赖注入配置，确保服务正确注册与解析- 增加必要的 JSON 序列化和 HTTP 响应头设置以支持 SSE 协议&#10;- 完成 JWT 权限验证特性标注于 SendUserMessageCommand 类上&#10;-修正部分命名空间引用问题，并更新解决方案用户设置文件排除缓存路径" />
+    <MESSAGE value="feat(ai-gateway): 实现用户消息发送与流式响应功能&#10;&#10;- 新增 SendUserMessages HTTP GET 接口，用于接收并处理用户消息&#10;- 实现 Server-Sent Events (SSE) 流式响应机制- 添加 ChatAgentFactory 工厂类，用于创建基于模板的 AI 对话代理&#10;- 引入 Microsoft.Agents.AI.OpenAI 包以支持 AI 代理交互- 在 ConversationTemplate 和 LanguageModel 上添加唯一索引约束&#10;- 注册 AiGatewayService 服务及 MediatR 相关依赖&#10;- 新增 SendUserMessageCommand 命令及其处理器，用于异步流式处理消息&#10;- 调整项目结构：将 UseCases 目录更名为 Commands 和 Queries- 更新 Program.cs 中的服务注册方法名 AddServiceUseCase为 AddApplicationService- 移除旧的 ChatAgent 和 IChatAgent 类定义&#10;- 配置 Entity Framework Core 模型唯一性约束&#10;- 添加系统提示词和模型关联逻辑，增强会话上下文管理&#10;-优化依赖注入配置，确保服务正确注册与解析&#10;- 增加必要的 JSON 序列化和 HTTP 响应头设置以支持 SSE 协议&#10;- 完成 JWT 权限验证特性标注于 SendUserMessageCommand 类上&#10;-修正部分命名空间引用问题，并更新解决方案用户设置文件排除缓存路径" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(ai-gateway): 实现用户消息发送与流式响应功能&#10;&#10;- 新增 SendUserMessages HTTP GET 接口，用于接收并处理用户消息&#10;- 实现 Server-Sent Events (SSE) 流式响应机制- 添加 ChatAgentFactory 工厂类，用于创建基于模板的 AI 对话代理&#10;- 引入 Microsoft.Agents.AI.OpenAI 包以支持 AI 代理交互- 在 ConversationTemplate 和 LanguageModel 上添加唯一索引约束&#10;- 注册 AiGatewayService 服务及 MediatR 相关依赖&#10;- 新增 SendUserMessageCommand 命令及其处理器，用于异步流式处理消息&#10;- 调整项目结构：将 UseCases 目录更名为 Commands 和 Queries- 更新 Program.cs 中的服务注册方法名 AddServiceUseCase为 AddApplicationService- 移除旧的 ChatAgent 和 IChatAgent 类定义&#10;- 配置 Entity Framework Core 模型唯一性约束&#10;- 添加系统提示词和模型关联逻辑，增强会话上下文管理&#10;-优化依赖注入配置，确保服务正确注册与解析&#10;- 增加必要的 JSON 序列化和 HTTP 响应头设置以支持 SSE 协议&#10;- 完成 JWT 权限验证特性标注于 SendUserMessageCommand 类上&#10;-修正部分命名空间引用问题，并更新解决方案用户设置文件排除缓存路径" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

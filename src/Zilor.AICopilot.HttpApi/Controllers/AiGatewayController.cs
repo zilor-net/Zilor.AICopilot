@@ -85,7 +85,7 @@ public class AiGatewayController : ApiControllerBase
         return ReturnResult(result);
     }
     
-    [HttpGet("session/SendUserMessages")]
+    [HttpPost("session/SendUserMessages")]
     public async Task SendUserMessages(SendUserMessageCommand command)
     {
         var stream = await Sender.Send(command);

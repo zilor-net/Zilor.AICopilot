@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Zilor.AICopilot.AiGatewayService.Agents;
 
 namespace Zilor.AICopilot.AiGatewayService;
 
@@ -12,5 +13,7 @@ public static class DependencyInjection
         {
             cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
         });
+        
+        builder.Services.AddScoped<ChatAgentFactory>();
     }
 }

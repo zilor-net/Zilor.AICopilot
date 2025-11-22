@@ -32,10 +32,14 @@ public class SendUserMessageCommandHandler(IRepository<Session> repo, ChatAgentF
     private async IAsyncEnumerable<string> GetStreamAsync(
         ChatClientAgent agent, string content, [EnumeratorCancellation] CancellationToken cancellationToken)
     {
+        var thread = agent.GetNewThread();
         // 调用Agent流式读取响应
-        await foreach (var update in agent.RunStreamingAsync(content, cancellationToken: cancellationToken))
+        await foreach (var update in agent.RunStreamingAsync(content, thread, cancellationToken: cancellationToken))
         {
             yield return update.Text;
         }
+
+        var json = thread.Serialize();
+        Console.WriteLine(json);
     }
 }
