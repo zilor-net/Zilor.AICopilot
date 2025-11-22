@@ -31,14 +31,35 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/69bc68e9420a6e628e801fd8651369ad2af3593c76dcc11a4270ec68d/ExecutionContext.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ae7cb4ab974ef13d2138941576bb93657f6cd3d1895813b15e05bbc2959c3/OpenAIClient.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/b08e508b541e15a842d6f6d449907e11da6f536e8cfe0824d61ebd6dcb6681/AgentRunOptions.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://D:/Repos/TechRepos/RiderProjects/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/Agents/ChatAgent.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Agents/ChatAgentFactory.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Commands/Sessions/SendUserMessage.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://D:/Repos/TechRepos/RiderProjects/Zilor.AICopilot/src/Zilor.AICopilot.Core.AiGateway/Aggregates/ConversationTemplate/ConversationTemplate.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Repos/TechRepos/RiderProjects/Zilor.AICopilot/src/Zilor.AICopilot.EntityFrameworkCore/Configuration/AiGateway/ConversationTemplateConfiguration.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Repos/TechRepos/RiderProjects/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/DependencyInjection.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Repos/TechRepos/RiderProjects/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/bin/Debug/net10.0/Zilor.AICopilot.AiGatewayService.deps.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://D:/Repos/TechRepos/RiderProjects/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/bin/Debug/net10.0/Zilor.AICopilot.AiGatewayService.deps.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://D:/Repos/TechRepos/RiderProjects/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/bin/Debug/net10.0/Zilor.AICopilot.AiGatewayService.deps.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://D:/Repos/TechRepos/RiderProjects/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/bin/Debug/net10.0/Zilor.AICopilot.AiGatewayService.deps.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://D:/Repos/TechRepos/RiderProjects/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/bin/Debug/net10.0/Zilor.AICopilot.AiGatewayService.deps.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://D:/Repos/TechRepos/RiderProjects/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/bin/Debug/net10.0/Zilor.AICopilot.AiGatewayService.deps.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://D:/Repos/TechRepos/RiderProjects/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/bin/Debug/net10.0/Zilor.AICopilot.AiGatewayService.deps.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://D:/Repos/TechRepos/RiderProjects/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/bin/Debug/net10.0/Zilor.AICopilot.AiGatewayService.deps.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://D:/Repos/TechRepos/RiderProjects/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/bin/Debug/net10.0/Zilor.AICopilot.AiGatewayService.deps.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://D:/Repos/TechRepos/RiderProjects/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/bin/Debug/net10.0/Zilor.AICopilot.AiGatewayService.deps.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://D:/Repos/TechRepos/RiderProjects/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/bin/Debug/net10.0/Zilor.AICopilot.AiGatewayService.deps.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://D:/Repos/TechRepos/RiderProjects/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/bin/Debug/net10.0/Zilor.AICopilot.AiGatewayService.deps.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://D:/Repos/TechRepos/RiderProjects/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/bin/Debug/net10.0/Zilor.AICopilot.AiGatewayService.deps.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://D:/Repos/TechRepos/RiderProjects/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/bin/Debug/net10.0/Zilor.AICopilot.AiGatewayService.deps.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://D:/Repos/TechRepos/RiderProjects/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/bin/Debug/net10.0/Zilor.AICopilot.AiGatewayService.deps.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://D:/Repos/TechRepos/RiderProjects/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/bin/Debug/net10.0/Zilor.AICopilot.AiGatewayService.deps.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://D:/Repos/TechRepos/RiderProjects/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/bin/Debug/net10.0/Zilor.AICopilot.AiGatewayService.deps.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://D:/Repos/TechRepos/RiderProjects/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/bin/Debug/net10.0/Zilor.AICopilot.AiGatewayService.deps.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://D:/Repos/TechRepos/RiderProjects/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/bin/Debug/net10.0/Zilor.AICopilot.AiGatewayService.deps.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://D:/Repos/TechRepos/RiderProjects/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/bin/Debug/net10.0/Zilor.AICopilot.AiGatewayService.deps.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://D:/Repos/TechRepos/RiderProjects/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/bin/Debug/net10.0/Zilor.AICopilot.AiGatewayService.deps.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock://D:/Repos/TechRepos/RiderProjects/Zilor.AICopilot/src/Zilor.AICopilot.HttpApi/Controllers/AiGatewayController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Repos/TechRepos/RiderProjects/Zilor.AICopilot/src/Zilor.AICopilot.Infrastructure/Authentication/JwtTokenGenerator.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Repos/TechRepos/RiderProjects/Zilor.AICopilot/src/Zilor.AICopilot.Infrastructure/DependencyInjection.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://Zilor.AICopilot.AiGatewayService.deps.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://Zilor.AICopilot.AiGatewayService.deps.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://Zilor.AICopilot.AiGatewayService.deps.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://Zilor.AICopilot.AiGatewayService.deps.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://Zilor.AICopilot.AiGatewayService.deps.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://Zilor.AICopilot.AiGatewayService.deps.json" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="KubernetesApiPersistence">{}</component>
   <component name="KubernetesApiProvider">{
