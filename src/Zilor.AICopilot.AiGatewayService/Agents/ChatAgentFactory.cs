@@ -1,6 +1,8 @@
 ﻿using System;
 using System.ClientModel;
+using System.ClientModel.Primitives;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.Agents.AI;
 using Microsoft.Extensions.AI;
@@ -9,7 +11,10 @@ using Zilor.AICopilot.Services.Common.Contracts;
 
 namespace Zilor.AICopilot.AiGatewayService.Agents;
 
-public class ChatAgentFactory(IDataQueryService data, IServiceProvider serviceProvider)
+public class ChatAgentFactory(
+    IDataQueryService data, 
+    IServiceProvider serviceProvider,
+    IHttpClientFactory httpClientFactory)
 {
     public async Task<ChatClientAgent> CreateAgentAsync(Guid templateId)
     {
@@ -37,11 +42,14 @@ public class ChatAgentFactory(IDataQueryService data, IServiceProvider servicePr
         var result = await data.FirstOrDefaultAsync(queryable);
         if (result == null) throw new Exception("未找对话模板或模型");
         
+        var httpClient = httpClientFactory.CreateClient("OpenAI");
+        
         var agent = new OpenAIClient(
                 new ApiKeyCredential(result.Model.ApiKey), 
                 new OpenAIClientOptions
                 {
-                    Endpoint = new Uri(result.Model.BaseUrl)
+                    Endpoint = new Uri(result.Model.BaseUrl),
+                    Transport = new HttpClientPipelineTransport(httpClient)
                 })
             .GetChatClient(result.Model.Name)
             .CreateAIAgent(new ChatClientAgentOptions

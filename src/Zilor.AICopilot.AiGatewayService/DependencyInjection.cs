@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Zilor.AICopilot.AiGatewayService.Agents;
@@ -15,5 +16,10 @@ public static class DependencyInjection
         });
         
         builder.Services.AddScoped<ChatAgentFactory>();
+        
+        builder.Services.AddHttpClient("OpenAI", client =>
+        {
+            client.Timeout = TimeSpan.FromSeconds(30);
+        });
     }
 }
