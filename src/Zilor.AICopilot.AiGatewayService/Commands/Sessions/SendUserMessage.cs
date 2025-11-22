@@ -40,7 +40,5 @@ public class SendUserMessageCommandHandler(IRepository<Session> repo, ChatAgentF
         {
             yield return update.Text;
         }
-
-        
     }
 }

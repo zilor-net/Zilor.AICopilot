@@ -52,11 +52,7 @@ public class ChatAgentFactory(IDataQueryService data, IServiceProvider servicePr
                 {
                     Temperature = result.Template.Temperature ?? result.Model.Temperature
                 },
-                ChatMessageStoreFactory = context =>
-                {
-                    Console.WriteLine(context.SerializedState);
-                    return new SessionChatMessageStore(serviceProvider, context.SerializedState);
-                }
+                ChatMessageStoreFactory = context => new SessionChatMessageStore(serviceProvider, context.SerializedState)
             });
 
         return agent;

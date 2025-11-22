@@ -36,15 +36,17 @@ public class SessionChatMessageStore : ChatMessageStore
         // 从数据库查询历史消息
         var queryable = queryService.Messages
             .Where(m => m.SessionId == ThreadDbKey)
-            .OrderBy(m => m.CreatedAt)
+            .OrderByDescending(m => m.CreatedAt)
             .Take(50);
         
         var dbMessages = await queryService.ToListAsync(queryable); 
         
+        var orderedMessages = dbMessages.OrderBy(m => m.CreatedAt);
+        
         // 将实体转换为 Agent 框架的 ChatMessage
         var chatMessages = new List<ChatMessage>();
         
-        foreach (var msg in dbMessages)
+        foreach (var msg in orderedMessages)
         {
             var role = msg.Type switch
             {

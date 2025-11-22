@@ -9,8 +9,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f4f71ff8-869c-4e55-85b9-f9116211e89c" name="更改" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/dataSources.local.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Agents/ChatAgentFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Agents/ChatAgentFactory.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Agents/SessionChatMessageStore.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Agents/SessionChatMessageStore.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Commands/Sessions/SendUserMessage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Commands/Sessions/SendUserMessage.cs" afterDir="false" />
     </list>
@@ -289,7 +289,15 @@
       <option name="project" value="LOCAL" />
       <updated>1763799850449</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="feat(ai): 更新聊天代理工厂以支持模型温度参数&#10;&#10;- 在 ChatAgentFactory 构造函数中注入 IServiceProvider&#10;- 修改模型初始化逻辑以传递 Temperature 参数&#10;- 更新模板系统提示词属性引用&#10;- 调整命名空间引用以支持新的 AI 扩展功能&#10;- 优化 SessionChatMessageStore 中的状态反序列化逻辑&#10;- 清理 SendUserMessage.cs 中的多余空行以提高可读性">
+      <option name="closed" value="true" />
+      <created>1763802380607</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1763802380607</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -308,7 +316,8 @@
     <MESSAGE value="feat(ai-gateway): 实现用户消息发送与流式响应功能&#10;&#10;- 新增 SendUserMessages HTTP GET 接口，用于接收并处理用户消息&#10;- 实现 Server-Sent Events (SSE) 流式响应机制- 添加 ChatAgentFactory 工厂类，用于创建基于模板的 AI 对话代理&#10;- 引入 Microsoft.Agents.AI.OpenAI 包以支持 AI 代理交互- 在 ConversationTemplate 和 LanguageModel 上添加唯一索引约束&#10;- 注册 AiGatewayService 服务及 MediatR 相关依赖&#10;- 新增 SendUserMessageCommand 命令及其处理器，用于异步流式处理消息&#10;- 调整项目结构：将 UseCases 目录更名为 Commands 和 Queries- 更新 Program.cs 中的服务注册方法名 AddServiceUseCase为 AddApplicationService- 移除旧的 ChatAgent 和 IChatAgent 类定义&#10;- 配置 Entity Framework Core 模型唯一性约束&#10;- 添加系统提示词和模型关联逻辑，增强会话上下文管理&#10;-优化依赖注入配置，确保服务正确注册与解析&#10;- 增加必要的 JSON 序列化和 HTTP 响应头设置以支持 SSE 协议&#10;- 完成 JWT 权限验证特性标注于 SendUserMessageCommand 类上&#10;-修正部分命名空间引用问题，并更新解决方案用户设置文件排除缓存路径" />
     <MESSAGE value="feat(migrations): 初始化数据库迁移并添加AI网关相关表结构&#10;&#10;- 删除初始迁移文件及其设计器代码&#10;- 删除AI网关相关的迁移文件及设计器代码&#10;- 删除唯一索引迁移文件及设计器代码&#10;- 清理所有与迁移相关的旧代码文件" />
     <MESSAGE value="feat(ai): 更新聊天代理工厂以支持模型温度参数&#10;&#10;- 在 ChatAgentFactory 构造函数中注入 IServiceProvider&#10;- 修改模型初始化逻辑以传递 Temperature 参数&#10;- 更新模板系统提示词属性引用&#10;- 调整命名空间引用以支持新的 AI 扩展功能" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(ai): 更新聊天代理工厂以支持模型温度参数&#10;&#10;- 在 ChatAgentFactory 构造函数中注入 IServiceProvider&#10;- 修改模型初始化逻辑以传递 Temperature 参数&#10;- 更新模板系统提示词属性引用&#10;- 调整命名空间引用以支持新的 AI 扩展功能" />
+    <MESSAGE value="feat(ai): 更新聊天代理工厂以支持模型温度参数&#10;&#10;- 在 ChatAgentFactory 构造函数中注入 IServiceProvider&#10;- 修改模型初始化逻辑以传递 Temperature 参数&#10;- 更新模板系统提示词属性引用&#10;- 调整命名空间引用以支持新的 AI 扩展功能&#10;- 优化 SessionChatMessageStore 中的状态反序列化逻辑&#10;- 清理 SendUserMessage.cs 中的多余空行以提高可读性" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(ai): 更新聊天代理工厂以支持模型温度参数&#10;&#10;- 在 ChatAgentFactory 构造函数中注入 IServiceProvider&#10;- 修改模型初始化逻辑以传递 Temperature 参数&#10;- 更新模板系统提示词属性引用&#10;- 调整命名空间引用以支持新的 AI 扩展功能&#10;- 优化 SessionChatMessageStore 中的状态反序列化逻辑&#10;- 清理 SendUserMessage.cs 中的多余空行以提高可读性" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
