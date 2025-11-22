@@ -23,7 +23,7 @@ public class SendUserMessageCommandHandler(IRepository<Session> repo, ChatAgentF
     {
         var session = await repo.GetByIdAsync(request.SessionId, cancellationToken);
         if (session == null) throw new Exception("未找到会话");
-
+        
         var agent = await chatAgent.CreateAgentAsync(session.TemplateId);
         var storeThread = new { storeState = request.SessionId };
         var agentThread = agent.DeserializeThread(JsonSerializer.SerializeToElement(storeThread));
@@ -40,5 +40,7 @@ public class SendUserMessageCommandHandler(IRepository<Session> repo, ChatAgentF
         {
             yield return update.Text;
         }
+
+        
     }
 }

@@ -17,12 +17,12 @@ public class SessionChatMessageStore : ChatMessageStore
 {
     private readonly IServiceProvider _serviceProvider;
 
-    public SessionChatMessageStore(IServiceProvider serviceProvider, JsonElement serializedStoreState)
+    public SessionChatMessageStore(IServiceProvider serviceProvider, JsonElement storeState)
     {
         _serviceProvider = serviceProvider;
-        if (serializedStoreState.ValueKind is JsonValueKind.String)
+        if (storeState.ValueKind is JsonValueKind.String)
         {
-            ThreadDbKey = serializedStoreState.Deserialize<Guid>();
+            ThreadDbKey = storeState.Deserialize<Guid>();
         }
     }
 
