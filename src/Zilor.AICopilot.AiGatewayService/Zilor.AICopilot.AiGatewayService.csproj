@@ -8,6 +8,7 @@
 
     <ItemGroup>
         <ProjectReference Include="..\Zilor.AICopilot.Core.AiGateway\Zilor.AICopilot.Core.AiGateway.csproj"/>
+        <ProjectReference Include="..\Zilor.AICopilot.IdentityService\Zilor.AICopilot.IdentityService.csproj" />
         <ProjectReference Include="..\Zilor.AICopilot.Services.Common\Zilor.AICopilot.Services.Common.csproj"/>
     </ItemGroup>
 
@@ -15,6 +16,7 @@
       <PackageReference Include="Microsoft.Agents.AI.OpenAI" Version="1.0.0-preview.251114.1" />
       <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="10.0.0" />
       <PackageReference Include="Microsoft.Extensions.Http" Version="10.0.0" />
+      <PackageReference Include="OpenTelemetry" Version="1.14.0" />
     </ItemGroup>
 
 </Project>
