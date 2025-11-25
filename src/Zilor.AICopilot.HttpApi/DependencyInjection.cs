@@ -3,6 +3,9 @@ using System.Text;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using OpenTelemetry;
+using OpenTelemetry.Resources;
+using OpenTelemetry.Trace;
 using Zilor.AICopilot.AiGatewayService;
 using Zilor.AICopilot.HttpApi.Infrastructure;
 using Zilor.AICopilot.Infrastructure.Authentication;
@@ -13,6 +16,11 @@ namespace Zilor.AICopilot.HttpApi;
 
 public static class DependencyInjection
 {
+    public static void ConfigAgentOpenTelemetry()
+    {
+
+    }
+    
     extension(IHostApplicationBuilder builder)
     {
         public void AddApplicationService()

@@ -43,16 +43,19 @@ public class ChatAgentFactory(
         if (result == null) throw new Exception("未找对话模板或模型");
         
         var httpClient = httpClientFactory.CreateClient("OpenAI");
-        
+
         var agent = new OpenAIClient(
-                new ApiKeyCredential(result.Model.ApiKey), 
+                new ApiKeyCredential(result.Model.ApiKey),
                 new OpenAIClientOptions
                 {
                     Endpoint = new Uri(result.Model.BaseUrl),
                     Transport = new HttpClientPipelineTransport(httpClient)
                 })
             .GetChatClient(result.Model.Name)
-            .CreateAIAgent(new ChatClientAgentOptions
+            .AsIChatClient()
+            .AsBuilder()
+            .UseOpenTelemetry(sourceName: nameof(AiGatewayService), configure: cfg => cfg.EnableSensitiveData = true)
+            .BuildAIAgent(new ChatClientAgentOptions
             {
                 Name = result.Template.Name,
                 Instructions = result.Template.SystemPrompt,
@@ -62,7 +65,7 @@ public class ChatAgentFactory(
                 },
                 ChatMessageStoreFactory = context => new SessionChatMessageStore(serviceProvider, context.SerializedState)
             });
-
+        
         return agent;
     }
 }

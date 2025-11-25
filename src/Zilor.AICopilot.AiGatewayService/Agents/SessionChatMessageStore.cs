@@ -15,6 +15,8 @@ namespace Zilor.AICopilot.AiGatewayService.Agents;
 
 public class SessionChatMessageStore : ChatMessageStore
 {
+    private Guid? _threadDbKey;
+    
     private readonly IServiceProvider _serviceProvider;
 
     public SessionChatMessageStore(IServiceProvider serviceProvider, JsonElement storeState)
@@ -22,12 +24,11 @@ public class SessionChatMessageStore : ChatMessageStore
         _serviceProvider = serviceProvider;
         if (storeState.ValueKind is JsonValueKind.String)
         {
-            ThreadDbKey = storeState.Deserialize<Guid>();
+            _threadDbKey = storeState.Deserialize<Guid>();
         }
     }
-
-    private Guid? ThreadDbKey { get; set; }
     
+
     public override async Task<IEnumerable<ChatMessage>> GetMessagesAsync(CancellationToken cancellationToken = new())
     {
         using var scope = _serviceProvider.CreateScope();
@@ -35,7 +36,7 @@ public class SessionChatMessageStore : ChatMessageStore
 
         // 从数据库查询历史消息
         var queryable = queryService.Messages
-            .Where(m => m.SessionId == ThreadDbKey)
+            .Where(m => m.SessionId == _threadDbKey)
             .OrderByDescending(m => m.CreatedAt)
             .Take(50);
         
@@ -63,12 +64,12 @@ public class SessionChatMessageStore : ChatMessageStore
 
     public override async Task AddMessagesAsync(IEnumerable<ChatMessage> messages, CancellationToken cancellationToken = new())
     {
-        ThreadDbKey ??= Guid.NewGuid();
+        _threadDbKey ??= Guid.NewGuid();
         using var scope = _serviceProvider.CreateScope();
         var repo = scope.ServiceProvider.GetRequiredService<IRepository<Session>>();
 
         // 加载聚合根
-        var session = await repo.GetByIdAsync(ThreadDbKey, cancellationToken);
+        var session = await repo.GetByIdAsync(_threadDbKey, cancellationToken);
         if (session == null) return;
 
         var hasNewMessage = false;
@@ -101,6 +102,6 @@ public class SessionChatMessageStore : ChatMessageStore
 
     public override JsonElement Serialize(JsonSerializerOptions? jsonSerializerOptions = null)
     {
-        return JsonSerializer.SerializeToElement(ThreadDbKey);
+        return JsonSerializer.SerializeToElement(_threadDbKey);
     }
 }
