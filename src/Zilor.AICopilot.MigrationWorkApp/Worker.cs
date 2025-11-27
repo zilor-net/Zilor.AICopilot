@@ -41,7 +41,8 @@ public class Worker(
     }
 
     private static async Task SeedDataAsync(
-        RoleManager<IdentityRole> roleManager, UserManager<IdentityUser> userManager,
+        RoleManager<IdentityRole> roleManager, 
+        UserManager<IdentityUser> userManager,
         CancellationToken cancellationToken)
     {
         // 创建默认角色

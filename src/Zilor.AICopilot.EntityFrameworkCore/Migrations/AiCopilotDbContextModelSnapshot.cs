@@ -236,7 +236,8 @@ namespace Zilor.AICopilot.EntityFrameworkCore.Migrations
                         .HasColumnName("is_enabled");
 
                     b.Property<Guid>("ModelId")
-                        .HasColumnType("uuid");
+                        .HasColumnType("uuid")
+                        .HasColumnName("model_id");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -247,7 +248,7 @@ namespace Zilor.AICopilot.EntityFrameworkCore.Migrations
                     b.Property<string>("SystemPrompt")
                         .IsRequired()
                         .HasColumnType("text")
-                        .HasColumnName("model_id");
+                        .HasColumnName("system_prompt");
 
                     b.HasKey("Id");
 

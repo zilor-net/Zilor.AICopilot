@@ -12,7 +12,7 @@ public class AgentPluginLoader
     private readonly Dictionary<string, AITool[]> _aiTools = new();
     
     // 构造函数注入所有的注册器
-    public AgentPluginLoader(IEnumerable<AgentPluginRegistrar> registrars)
+    public AgentPluginLoader(IEnumerable<IAgentPluginRegistrar> registrars)
     {
         // 1. 汇总所有需要扫描的程序集，去重
         var assemblies = registrars
@@ -68,5 +68,10 @@ public class AgentPluginLoader
     {
         _plugins.TryGetValue(name, out var plugin);
         return plugin;
+    }
+
+    public IAgentPlugin[] GetAllPlugin()
+    {
+        return _plugins.Values.ToArray();
     }
 }

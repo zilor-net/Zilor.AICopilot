@@ -1,4 +1,5 @@
 ﻿using System.Security.Claims;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Zilor.AICopilot.HttpApi.Infrastructure;
@@ -14,7 +15,7 @@ public class IdentityController : ApiControllerBase
     public async Task<IActionResult> Register(UserRegisterRequest request)
     {
         var result = await Sender.Send(new CreateUserCommand(request.Username, request.Password));
-
+        
         return ReturnResult(result);
     }
 

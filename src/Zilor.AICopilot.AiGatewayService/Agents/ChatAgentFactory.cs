@@ -2,70 +2,81 @@
 using System.ClientModel;
 using System.ClientModel.Primitives;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.Agents.AI;
 using Microsoft.Extensions.AI;
+using Microsoft.Extensions.DependencyInjection;
 using OpenAI;
+using Zilor.AICopilot.Core.AiGateway.Aggregates.ConversationTemplate;
+using Zilor.AICopilot.Core.AiGateway.Aggregates.LanguageModel;
 using Zilor.AICopilot.Services.Common.Contracts;
 
 namespace Zilor.AICopilot.AiGatewayService.Agents;
 
-public class ChatAgentFactory(
-    IDataQueryService data, 
-    IServiceProvider serviceProvider,
-    IHttpClientFactory httpClientFactory)
+public class ChatAgentFactory(IServiceProvider serviceProvider)
 {
-    public async Task<ChatClientAgent> CreateAgentAsync(Guid templateId)
+    private async Task<(LanguageModel, ConversationTemplate)> GetModelAndTemplateAsync(
+        Expression<Func<ConversationTemplate, bool>> predicate)
     {
-        var queryable =
-            from template in data.ConversationTemplates
+        using var scope = serviceProvider.CreateScope();
+        var data = scope.ServiceProvider.GetRequiredService<IDataQueryService>();
+        var query =
+            from template in data.ConversationTemplates.Where(predicate)
             join model in data.LanguageModels on template.ModelId equals model.Id
-            where template.Id == templateId
-            select new
-            {
-                Model = new
-                {
-                    model.BaseUrl,
-                    model.ApiKey,
-                    model.Name,
-                    model.Parameters.Temperature
-                },
-                Template = new
-                {
-                    template.Name,
-                    template.SystemPrompt,
-                    template.Specification.Temperature
-                }
-            };
+            select new { model, template };
 
-        var result = await data.FirstOrDefaultAsync(queryable);
+        var result = await data.FirstOrDefaultAsync(query);
         if (result == null) throw new Exception("未找对话模板或模型");
-        
+        return (result.model, result.template);
+    }
+    
+    public ChatClientAgent CreateAgentAsync(LanguageModel model, ConversationTemplate template)
+    {
+        using var scope = serviceProvider.CreateScope();
+        var httpClientFactory = scope.ServiceProvider.GetRequiredService<IHttpClientFactory>();
         var httpClient = httpClientFactory.CreateClient("OpenAI");
 
-        var agent = new OpenAIClient(
-                new ApiKeyCredential(result.Model.ApiKey),
+        var chatClientBuilder = new OpenAIClient(
+                new ApiKeyCredential(model.ApiKey ?? string.Empty),
                 new OpenAIClientOptions
                 {
-                    Endpoint = new Uri(result.Model.BaseUrl),
+                    Endpoint = new Uri(model.BaseUrl),
                     Transport = new HttpClientPipelineTransport(httpClient)
                 })
-            .GetChatClient(result.Model.Name)
+            .GetChatClient(model.Name)
             .AsIChatClient()
             .AsBuilder()
-            .UseOpenTelemetry(sourceName: nameof(AiGatewayService), configure: cfg => cfg.EnableSensitiveData = true)
-            .BuildAIAgent(new ChatClientAgentOptions
+            .UseOpenTelemetry(sourceName: nameof(AiGatewayService), configure: cfg => cfg.EnableSensitiveData = true);
+
+        var chatOptions = new ChatOptions
+        {
+            Temperature = template.Specification.Temperature ?? model.Parameters.Temperature
+        };
+        
+        var agent = chatClientBuilder.BuildAIAgent(new ChatClientAgentOptions
             {
-                Name = result.Template.Name,
-                Instructions = result.Template.SystemPrompt,
-                ChatOptions = new ChatOptions
-                {
-                    Temperature = result.Template.Temperature ?? result.Model.Temperature
-                },
+                Name = template.Name,
+                Instructions = template.SystemPrompt,
+                ChatOptions = chatOptions,
                 ChatMessageStoreFactory = context => new SessionChatMessageStore(serviceProvider, context.SerializedState)
             });
         
         return agent;
+    }
+
+    public async Task<ChatClientAgent> CreateAgentAsync(Guid templateId)
+    {
+        var (model, template) = await GetModelAndTemplateAsync(t => t.Id == templateId);
+        return CreateAgentAsync(model, template);
+    }
+    
+    public async Task<ChatClientAgent> CreateAgentAsync(string templateName, 
+        Action<ConversationTemplate>? configureTemplate = null)
+    {
+        var (model, template) = await GetModelAndTemplateAsync(t => t.Name == templateName);
+        configureTemplate?.Invoke(template);
+        return CreateAgentAsync(model, template);
     }
 }

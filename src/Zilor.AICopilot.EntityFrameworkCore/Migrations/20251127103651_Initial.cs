@@ -58,8 +58,8 @@ namespace Zilor.AICopilot.EntityFrameworkCore.Migrations
                     id = table.Column<Guid>(type: "uuid", nullable: false),
                     name = table.Column<string>(type: "character varying(200)", maxLength: 200, nullable: false),
                     description = table.Column<string>(type: "character varying(1000)", maxLength: 1000, nullable: false),
-                    model_id = table.Column<string>(type: "text", nullable: false),
-                    ModelId = table.Column<Guid>(type: "uuid", nullable: false),
+                    system_prompt = table.Column<string>(type: "text", nullable: false),
+                    model_id = table.Column<Guid>(type: "uuid", nullable: false),
                     max_tokens = table.Column<int>(type: "integer", nullable: true),
                     temperature = table.Column<float>(type: "real", nullable: true),
                     is_enabled = table.Column<bool>(type: "boolean", nullable: false)

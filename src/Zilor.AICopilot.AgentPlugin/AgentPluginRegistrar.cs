@@ -4,6 +4,8 @@ namespace Zilor.AICopilot.AgentPlugin;
 
 public interface IAgentPluginRegistrar
 {
+    List<Assembly> Assemblies { get; }
+    
     // 注册包含插件的程序集
     void RegisterPluginFromAssembly(Assembly assembly);
 }

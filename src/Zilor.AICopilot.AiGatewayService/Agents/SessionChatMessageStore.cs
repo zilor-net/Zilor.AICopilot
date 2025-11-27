@@ -13,9 +13,11 @@ using Zilor.AICopilot.SharedKernel.Repository;
 
 namespace Zilor.AICopilot.AiGatewayService.Agents;
 
+public record SessionSoreState(Guid SessionId, int MessageCount = 20);
+
 public class SessionChatMessageStore : ChatMessageStore
 {
-    private Guid? _threadDbKey;
+    private readonly SessionSoreState? _sessionSoreState;
     
     private readonly IServiceProvider _serviceProvider;
 
@@ -24,21 +26,21 @@ public class SessionChatMessageStore : ChatMessageStore
         _serviceProvider = serviceProvider;
         if (storeState.ValueKind is JsonValueKind.String)
         {
-            _threadDbKey = storeState.Deserialize<Guid>();
+            _sessionSoreState = storeState.Deserialize<SessionSoreState>()!;
         }
     }
-    
 
     public override async Task<IEnumerable<ChatMessage>> GetMessagesAsync(CancellationToken cancellationToken = new())
     {
+        if (_sessionSoreState == null) return [];
         using var scope = _serviceProvider.CreateScope();
         var queryService = scope.ServiceProvider.GetRequiredService<IDataQueryService>();
 
         // 从数据库查询历史消息
         var queryable = queryService.Messages
-            .Where(m => m.SessionId == _threadDbKey)
+            .Where(m => m.SessionId == _sessionSoreState.SessionId)
             .OrderByDescending(m => m.CreatedAt)
-            .Take(50);
+            .Take(_sessionSoreState.MessageCount);
         
         var dbMessages = await queryService.ToListAsync(queryable); 
         
@@ -64,12 +66,13 @@ public class SessionChatMessageStore : ChatMessageStore
 
     public override async Task AddMessagesAsync(IEnumerable<ChatMessage> messages, CancellationToken cancellationToken = new())
     {
-        _threadDbKey ??= Guid.NewGuid();
+        if (_sessionSoreState == null) return;
+        
         using var scope = _serviceProvider.CreateScope();
         var repo = scope.ServiceProvider.GetRequiredService<IRepository<Session>>();
 
         // 加载聚合根
-        var session = await repo.GetByIdAsync(_threadDbKey, cancellationToken);
+        var session = await repo.GetByIdAsync(_sessionSoreState.SessionId, cancellationToken);
         if (session == null) return;
 
         var hasNewMessage = false;
@@ -102,6 +105,6 @@ public class SessionChatMessageStore : ChatMessageStore
 
     public override JsonElement Serialize(JsonSerializerOptions? jsonSerializerOptions = null)
     {
-        return JsonSerializer.SerializeToElement(_threadDbKey);
+        return JsonSerializer.SerializeToElement(_sessionSoreState);
     }
 }

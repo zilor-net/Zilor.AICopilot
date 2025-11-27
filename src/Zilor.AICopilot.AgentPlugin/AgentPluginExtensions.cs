@@ -17,7 +17,7 @@ public static class AgentPluginExtensions
 
         // 3. 将注册器注册为单例。注意这里没有使用 TryAdd，
         // 因为我们允许用户多次调用 AddAgentPlugin 来注册不同来源的插件。
-        services.AddSingleton(registrar);
+        services.AddSingleton<IAgentPluginRegistrar>(registrar);
 
         // 4. 注册加载器。加载器只应有一个，它会收集容器中所有的 Registrar。
         services.TryAddSingleton<AgentPluginLoader>();

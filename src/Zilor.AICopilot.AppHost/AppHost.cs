@@ -4,7 +4,7 @@ var builder = DistributedApplication.CreateBuilder(args);
 
 var postgresdb = builder.AddPostgres("postgres")
     .WithDataVolume("postgres-aicopilot")
-    .WithPgWeb(pgWeb => pgWeb.WithHostPort(5050))
+    .WithPgAdmin(pgAdmin => pgAdmin.WithHostPort(5050))
     .AddDatabase("ai-copilot");
 
 var migration = builder.AddProject<Zilor_AICopilot_MigrationWorkApp>("aicopilot-migration")

@@ -8,10 +8,10 @@ namespace Zilor.AICopilot.HttpApi.Infrastructure;
 [ApiController]
 public abstract class ApiControllerBase : ControllerBase
 {
-    public ISender Sender => HttpContext.RequestServices.GetRequiredService<ISender>();
+    protected ISender Sender => HttpContext.RequestServices.GetRequiredService<ISender>();
 
     [NonAction]
-    public IActionResult ReturnResult(IResult result)
+    protected IActionResult ReturnResult(IResult result)
     {
         switch (result.Status)
         {

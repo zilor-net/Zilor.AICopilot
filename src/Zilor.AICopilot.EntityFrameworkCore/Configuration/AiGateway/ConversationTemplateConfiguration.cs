@@ -33,7 +33,7 @@ public class ConversationTemplateConfiguration : IEntityTypeConfiguration<Conver
             .IsRequired()
             .HasColumnName("system_prompt");
 
-        builder.Property(ct => ct.SystemPrompt)
+        builder.Property(ct => ct.ModelId)
             .IsRequired()
             .HasColumnName("model_id");
 

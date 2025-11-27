@@ -12,7 +12,7 @@ using Zilor.AICopilot.EntityFrameworkCore;
 namespace Zilor.AICopilot.EntityFrameworkCore.Migrations
 {
     [DbContext(typeof(AiCopilotDbContext))]
-    [Migration("20251122062926_Initial")]
+    [Migration("20251127103651_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -239,7 +239,8 @@ namespace Zilor.AICopilot.EntityFrameworkCore.Migrations
                         .HasColumnName("is_enabled");
 
                     b.Property<Guid>("ModelId")
-                        .HasColumnType("uuid");
+                        .HasColumnType("uuid")
+                        .HasColumnName("model_id");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -250,7 +251,7 @@ namespace Zilor.AICopilot.EntityFrameworkCore.Migrations
                     b.Property<string>("SystemPrompt")
                         .IsRequired()
                         .HasColumnType("text")
-                        .HasColumnName("model_id");
+                        .HasColumnName("system_prompt");
 
                     b.HasKey("Id");
 
