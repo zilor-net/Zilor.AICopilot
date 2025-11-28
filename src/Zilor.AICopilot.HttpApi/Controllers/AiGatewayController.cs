@@ -1,5 +1,6 @@
 ﻿using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
+using Zilor.AICopilot.AiGatewayService.Agents;
 using Zilor.AICopilot.AiGatewayService.Commands.ConversationTemplates;
 using Zilor.AICopilot.AiGatewayService.Commands.LanguageModels;
 using Zilor.AICopilot.AiGatewayService.Commands.Sessions;
@@ -106,6 +107,16 @@ public class AiGatewayController : ApiControllerBase
 
             await Response.WriteAsync($"data: {json}\n\n");
             await Response.Body.FlushAsync();
+        }
+    }
+
+    [HttpPost("/chat")]
+    public async IAsyncEnumerable<object> Chat(ChatStreamRequest request)
+    {
+        var stream = Sender.CreateStream(request);
+        await foreach (var content in stream)
+        {
+            yield return new { content };
         }
     }
 }

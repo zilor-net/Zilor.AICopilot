@@ -8,15 +8,14 @@ using Zilor.AICopilot.AiGatewayService.Commands.Sessions;
 
 namespace Zilor.AICopilot.AiGatewayService.Workflows;
 
-public class IntentSelectionAgentExecutor(IntentSelectionAgentBuilder agentBuilder) :
-    ReflectingExecutor<IntentSelectionAgentExecutor>("IntentSelectionAgentExecutor"),
+public class IntentRoutingAgentExecutor(IntentRoutingAgentBuilder agentBuilder) :
+    ReflectingExecutor<IntentRoutingAgentExecutor>("IntentSelectionAgentExecutor"),
     IMessageHandler<SendUserMessageCommand, List<IntentResult>>
 {
     public async ValueTask<List<IntentResult>> HandleAsync(SendUserMessageCommand message, IWorkflowContext context,
         CancellationToken cancellationToken = new())
     {
-        
-        var agent = await agentBuilder.BuildAsync("IntentSelection");
+        var agent = await agentBuilder.BuildAsync();
         var response = await agent.RunAsync<List<IntentResult>>(
             message.Content,
             useJsonSchemaResponseFormat: true,

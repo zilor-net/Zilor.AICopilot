@@ -5,10 +5,10 @@ namespace Zilor.AICopilot.AiGatewayService.Agents;
 /// <summary>
 /// 意图识别的标准输出结果
 /// </summary>
-public class IntentResult
+public record IntentResult
 {
     /// <summary>
-    /// 识别出的意图标识符 (例如: "System.Time", "General.Chat")
+    /// 识别出的意图标识符 (例如: "General.Chat")
     /// </summary>
     [JsonPropertyName("intent")]
     public string Intent { get; set; } = string.Empty;

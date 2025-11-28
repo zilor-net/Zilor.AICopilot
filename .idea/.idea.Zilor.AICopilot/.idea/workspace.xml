@@ -9,16 +9,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f4f71ff8-869c-4e55-85b9-f9116211e89c" name="更改" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Agents/ChatStreamRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.MigrationWorkApp/SeedData/AiGatewayData.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zilor.AICopilot.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/Zilor.AICopilot.sln.DotSettings.user" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.AgentPlugin/AgentPluginExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AgentPlugin/AgentPluginExtensions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.AgentPlugin/AgentPluginLoader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AgentPlugin/AgentPluginLoader.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.AgentPlugin/AgentPluginRegistrar.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AgentPlugin/AgentPluginRegistrar.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.AppHost/Zilor.AICopilot.AppHost.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AppHost/Zilor.AICopilot.AppHost.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.EntityFrameworkCore/Zilor.AICopilot.EntityFrameworkCore.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.EntityFrameworkCore/Zilor.AICopilot.EntityFrameworkCore.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Agents/IntentResult.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Agents/IntentResult.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Commands/Sessions/SendUserMessage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Commands/Sessions/SendUserMessage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/DependencyInjection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/DependencyInjection.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Workflows/IntentSelectionAgentBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Agents/IntentRoutingAgentBuilder.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Workflows/IntentSelectionAgentExecutor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Workflows/IntentRoutingAgentExecutor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.AppHost/AppHost.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AppHost/AppHost.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.Core.AiGateway/Aggregates/LanguageModel/LanguageModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.Core.AiGateway/Aggregates/LanguageModel/LanguageModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.HttpApi/Controllers/AiGatewayController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.HttpApi/Controllers/AiGatewayController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.HttpApi/Zilor.AICopilot.HttpApi.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.HttpApi/Zilor.AICopilot.HttpApi.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.IdentityService/Zilor.AICopilot.IdentityService.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.IdentityService/Zilor.AICopilot.IdentityService.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.ServiceDefaults/Zilor.AICopilot.ServiceDefaults.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.ServiceDefaults/Zilor.AICopilot.ServiceDefaults.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.MigrationWorkApp/Worker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.MigrationWorkApp/Worker.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,12 +76,14 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/dda7b8ef227bef5b52c48844fc2da2cedfcc8fcf14357f1d5d1c162f3bdf15/ChatRole.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/faff2344bc72dc7a226866f16ccddde74b724dab27df848264b627085/ChatClientAgent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Agents/ChatAgentFactory.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Agents/ChatStreamRequest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Agents/IntentResult.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Agents/IntentRoutingAgentBuilder.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Agents/SessionChatMessageStore.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Commands/Sessions/SendUserMessage.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Workflows/IntentSelectionAgentBuilder.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Workflows/IntentSelectionAgentExecutor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Workflows/IntentRoutingAgentExecutor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.IdentityService/Plugins/IdentityServiceTools.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.MigrationWorkApp/SeedData/AiGatewayData.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="KubernetesApiPersistence">{}</component>
   <component name="KubernetesApiProvider">{
@@ -99,7 +104,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Aspire Host.Zilor.AICopilot.AppHost: http.executor": "Debug",
+    "Aspire Host.Zilor.AICopilot.AppHost: http.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
@@ -386,7 +391,15 @@
       <option name="project" value="LOCAL" />
       <updated>1764209480973</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="feat(agent): 添加获取所有插件的方法&#10;&#10;- 在 AgentPluginLoader 中新增 GetAllPlugin 方法&#10;- 返回所有已加载的插件实例数组&#10;&#10;fix(api): 修改 Sender 属性访问级别&#10;&#10;- 将 ApiControllerBase 中的 Sender 属性从 public 改为 protected&#10;&#10;- 限制 Sender 属性仅在派生类中可访问chore(migration): 移除初始迁移文件&#10;&#10;- 删除 Initial 迁移文件及其设计器文件&#10;- 删除 AiCopilotDbContextModelSnapshot 文件&#10;- 清理数据库初始化相关代码文件">
+      <option name="closed" value="true" />
+      <created>1764294883951</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1764294883951</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -408,7 +421,8 @@
     <MESSAGE value="feat(ai): 更新聊天代理工厂以支持模型温度参数&#10;&#10;- 在 ChatAgentFactory 构造函数中注入 IServiceProvider&#10;- 修改模型初始化逻辑以传递 Temperature 参数&#10;- 更新模板系统提示词属性引用&#10;- 调整命名空间引用以支持新的 AI 扩展功能&#10;- 优化 SessionChatMessageStore 中的状态反序列化逻辑&#10;- 清理 SendUserMessage.cs 中的多余空行以提高可读性" />
     <MESSAGE value="feat(ai):优化聊天代理工厂和会话消息存储&#10;&#10;- 移除 ChatAgentFactory 中多余的控制台输出语句&#10;- 简化 SessionChatMessageStore 的消息排序逻辑，确保按时间正序返回&#10;- 清理 SendUserMessage.cs 文件中的多余空行&#10;- 更新数据库查询逻辑以获取最近50条消息并正确排序&#10;- 优化消息实体到 ChatMessage 的转换过程" />
     <MESSAGE value="feat(ai): 实现Agent工具调用与插件系统集成&#10;&#10;- 集成OpenTelemetry以增强AI服务可观测性&#10;- 实现插件加载机制，支持从程序集动态注册插件&#10;- 添加TimePlugin提供系统时间查询功能&#10;- 在SendUserMessage命令中启用工具调用支持&#10;- 重构ChatAgentFactory以适配新的Agent构建流程&#10;- 完善SessionChatMessageStore线程安全处理逻辑&#10;- 引入IdentityServiceTools支持用户创建操作&#10;- 更新依赖项以支持AI代理及插件相关功能&#10;- 配置OpenTelemetry追踪提供者以收集Agent运行数据" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(ai): 实现Agent工具调用与插件系统集成&#10;&#10;- 集成OpenTelemetry以增强AI服务可观测性&#10;- 实现插件加载机制，支持从程序集动态注册插件&#10;- 添加TimePlugin提供系统时间查询功能&#10;- 在SendUserMessage命令中启用工具调用支持&#10;- 重构ChatAgentFactory以适配新的Agent构建流程&#10;- 完善SessionChatMessageStore线程安全处理逻辑&#10;- 引入IdentityServiceTools支持用户创建操作&#10;- 更新依赖项以支持AI代理及插件相关功能&#10;- 配置OpenTelemetry追踪提供者以收集Agent运行数据" />
+    <MESSAGE value="feat(agent): 添加获取所有插件的方法&#10;&#10;- 在 AgentPluginLoader 中新增 GetAllPlugin 方法&#10;- 返回所有已加载的插件实例数组&#10;&#10;fix(api): 修改 Sender 属性访问级别&#10;&#10;- 将 ApiControllerBase 中的 Sender 属性从 public 改为 protected&#10;&#10;- 限制 Sender 属性仅在派生类中可访问chore(migration): 移除初始迁移文件&#10;&#10;- 删除 Initial 迁移文件及其设计器文件&#10;- 删除 AiCopilotDbContextModelSnapshot 文件&#10;- 清理数据库初始化相关代码文件" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(agent): 添加获取所有插件的方法&#10;&#10;- 在 AgentPluginLoader 中新增 GetAllPlugin 方法&#10;- 返回所有已加载的插件实例数组&#10;&#10;fix(api): 修改 Sender 属性访问级别&#10;&#10;- 将 ApiControllerBase 中的 Sender 属性从 public 改为 protected&#10;&#10;- 限制 Sender 属性仅在派生类中可访问chore(migration): 移除初始迁移文件&#10;&#10;- 删除 Initial 迁移文件及其设计器文件&#10;- 删除 AiCopilotDbContextModelSnapshot 文件&#10;- 清理数据库初始化相关代码文件" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -430,13 +444,26 @@
           <line>50</line>
           <properties documentPath="D:\Repos\MyRepos\Zilor.AICopilot\src\Zilor.AICopilot.AiGatewayService\Commands\Sessions\SendUserMessage.cs" containingFunctionPresentation="方法 'Handle'">
             <startOffsets>
-              <option value="2128" />
+              <option value="2113" />
             </startOffsets>
             <endOffsets>
-              <option value="2216" />
+              <option value="2114" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/src/Zilor.AICopilot.MigrationWorkApp/Worker.cs</url>
+          <line>30</line>
+          <properties documentPath="D:\Repos\MyRepos\Zilor.AICopilot\src\Zilor.AICopilot.MigrationWorkApp\Worker.cs" containingFunctionPresentation="方法 'ExecuteAsync'">
+            <startOffsets>
+              <option value="1304" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1305" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -2,18 +2,19 @@
 using System.Threading.Tasks;
 using Microsoft.Agents.AI;
 using Zilor.AICopilot.AgentPlugin;
-using Zilor.AICopilot.AiGatewayService.Agents;
 
-namespace Zilor.AICopilot.AiGatewayService.Workflows;
+namespace Zilor.AICopilot.AiGatewayService.Agents;
 
-public class IntentSelectionAgentBuilder
+public class IntentRoutingAgentBuilder
 {
+    private const string AgentName = "IntentRoutingAgent";
+    
     private readonly ChatAgentFactory _agentFactory;
 
     // 动态构建“意图列表”字符串
     private readonly StringBuilder _intentListBuilder = new();
     
-    public IntentSelectionAgentBuilder(ChatAgentFactory agentFactory, AgentPluginLoader pluginLoader)
+    public IntentRoutingAgentBuilder(ChatAgentFactory agentFactory, AgentPluginLoader pluginLoader)
     {
         _agentFactory = agentFactory;
         // 添加系统内置意图
@@ -29,9 +30,9 @@ public class IntentSelectionAgentBuilder
         }
     }
     
-    public async Task<ChatClientAgent> BuildAsync(string templateName)
+    public async Task<ChatClientAgent> BuildAsync()
     {
-        var agent = await _agentFactory.CreateAgentAsync(templateName,
+        var agent = await _agentFactory.CreateAgentAsync(AgentName,
             template =>
             {
                 // 渲染 System Prompt

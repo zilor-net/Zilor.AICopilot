@@ -27,14 +27,12 @@ public static class DependencyInjection
             client.Timeout = TimeSpan.FromSeconds(30);
         });
 
-        builder.Services.AddSingleton<TimeAgentPlugin>();
-
         builder.Services.AddAgentPlugin(registrar =>
         {
             registrar.RegisterPluginFromAssembly(Assembly.GetExecutingAssembly());
         });
 
-        builder.Services.AddSingleton<IntentSelectionAgentBuilder>();
+        builder.Services.AddSingleton<IntentRoutingAgentBuilder>();
         // builder.Services.AddTransient<IntentSelectionAgentExecutor>();
         //
         // builder.AddWorkflow("my-workflow", (sp, _) =>
