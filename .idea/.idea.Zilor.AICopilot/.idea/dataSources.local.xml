@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal" created-in="RD-253.28294.88">
-    <data-source name="postgres" uuid="16d2c321-a280-4f5f-8a91-a3265651a39e">
+    <data-source name="postgres" uuid="08d69511-8531-4f85-ac3f-abec9298a57d">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="POSTGRES" />
+      <secret-storage>master_key</secret-storage>
+      <schema-mapping />
+    </data-source>
+    <data-source name="postgres" uuid="d9910940-d2f1-4317-8241-d7855dfa260e">
       <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="POSTGRES" />
       <secret-storage>master_key</secret-storage>
       <schema-mapping />
