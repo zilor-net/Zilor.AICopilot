@@ -42,7 +42,7 @@ public static class AiGatewayData
             Id = Guids[1]
         };
 
-        return new List<LanguageModel> { item1 };
+        return new List<LanguageModel> { item1, item2 };
     }
     
     public static IEnumerable<ConversationTemplate> ConversationTemplates()

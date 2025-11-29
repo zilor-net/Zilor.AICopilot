@@ -9,19 +9,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f4f71ff8-869c-4e55-85b9-f9116211e89c" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Agents/ChatStreamRequest.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.MigrationWorkApp/SeedData/AiGatewayData.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Agents/IntentResult.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Agents/IntentResult.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Commands/Sessions/SendUserMessage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Commands/Sessions/SendUserMessage.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/DependencyInjection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/DependencyInjection.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Workflows/IntentSelectionAgentBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Agents/IntentRoutingAgentBuilder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Workflows/IntentSelectionAgentExecutor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Workflows/IntentRoutingAgentExecutor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.AppHost/AppHost.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AppHost/AppHost.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.Core.AiGateway/Aggregates/LanguageModel/LanguageModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.Core.AiGateway/Aggregates/LanguageModel/LanguageModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.HttpApi/Controllers/AiGatewayController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.HttpApi/Controllers/AiGatewayController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.HttpApi/Zilor.AICopilot.HttpApi.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.HttpApi/Zilor.AICopilot.HttpApi.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.MigrationWorkApp/Worker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.MigrationWorkApp/Worker.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Zilor.AICopilot.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/Zilor.AICopilot.sln.DotSettings.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Workflows/IntentRoutingExecutor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Workflows/IntentRoutingExecutor.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +21,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="18.Agent工具调用" />
+        <entry key="$PROJECT_DIR$" value="19.意图识别Agent" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -49,16 +39,23 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/49eda1fe540c4102a1197125bc8a65d629a20/6b/fd86118f/AgentRunOptions.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/64ffd70a777d43ef857c77e7f414117179c20/52/36ae6c29/AIFunctionFactory.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/64ffd70a777d43ef857c77e7f414117179c20/fb/265e8f34/AIFunction.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6d7771833c774ed1a51c9826a96bd8b779620/c5/d825389a/ChatOptions.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f8223262ead5481cb80512514534e962a3620/b5/7a86166c/ReflectingExecutor`1.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/103815eff8476d6060a951b3320b67db27a4cc05a3c34d4d5136388f0471275/AsyncIteratorMethodBuilder.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/1b2bfa11dec29e6e894153b59f9d9b0477995544d30abaf45eca7cfc0173454/AIFunctionFactoryOptions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/223f3993d7b717137d1eac7a1da6b5a458d1d124b0f8a62a3450f9bd6c89af/CallSiteValidator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2565b9d99fdde488bc7801b84387b2cc864959cfb63212e1ff576fc9c6bb7e/CancellationToken.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2f2b1d92f1ffcf2dabd664473f8c9dafa6039595ac228ce4b75a0f1619c5991/AsyncTaskMethodBuilderT.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/4a2c60b1644986c5d463495c41eea48d95b9759d6476441623453ca85c7cee/AIFunction.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/4c6c2a667db08c86952c7425fde6bf1c119a8abe1495e51d345c34e572f9cec/ChatClientAgentThread.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/4c7b8b38f96c26743d5bfc4735637bf473d95d99aba8dad387f3413865d2329/ReflectingExecutor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/4d431e535966d3e8d58aed86698f4938fdfbde11da876f5c3a222aa8c29b1/Task.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/4e9ef0a537841c87f6986f6c83e14c57654a22687f86332b13e6ffc3f5234/StreamingRun.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/4f492bc5291cedaa529ca3acc6b6107ea419d9eaeef6695302c333b9d6c016/AIAgent.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/4f5bc742679910ac83f9fba5fb41b714ffbeea482dd886b7d4ee4abb259213/ExecutorCompletedEvent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/54c7741090b55397982f8feb2ecfd06a855dae959188722c9bfb01b31c2d7/ManualResetValueTaskSourceCore.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/56e0d73ad22f58549189c1279f44b5c2259ae41e84cc7ad23c7d9a1ba4f52d/ChatMessageStore.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/57eeaef20b98437245dacd25ea360f88c7c52d752b9af35578b2976c422e/OpenAIClientOptions.cs" root0="SKIP_HIGHLIGHTING" />
@@ -66,22 +63,55 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/590834952a4359e10f17412c2ec057d91cfcb09b132aed32742b1da1935d/FunctionCallContent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/63aedf9297916c4282f98a1f51c7726f381fee9a8e28a5587ec1e66eec35bfd/ClientPipeline.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/69bc68e9420a6e628e801fd8651369ad2af3593c76dcc11a4270ec68d/ExecutionContext.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/70a692c9a4c0cf15a994afdc65e1d56487e97cca8aa5142fa337e7c82925e9/ValueTaskTypeErasure.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/70b2aa47c4a7dc448c5fe6f8c5def6fba27bb6a96650bf60fa8cc424b721/AIFunctionFactory.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/74734d82527c19054e99e36971b91bbe6509149d6f8d8d28e3ce61bddf56d3e/IMessageHandler.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/75a0de2ec7cb5efe9e04d6c27f921e6c7e5726d6208edfb6d81e5350df4a7e/RuntimeHandles.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/82229b6833efb47f92b7f3249eecaae20e83dea1e6c3de5a0c4e0bb5af75ae/ValueTask.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/8292cc85b5cd628b92c7a2eb35999f97ba5f9949a2d5e2e4ae4387f532448d0/ParameterInfo.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ae7cb4ab974ef13d2138941576bb93657f6cd3d1895813b15e05bbc2959c3/OpenAIClient.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/b08e508b541e15a842d6f6d449907e11da6f536e8cfe0824d61ebd6dcb6681/AgentRunOptions.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/b58cb97e8eda8c4af01dc4e3fbc215f4b5251fc49494b2ae84b411c396c0/HostApplicationBuilderWorkflowExtensions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d28f68744e0ddb602b2fc767e8a063f36c58755c1768d01caae6c8717d4b/WorkflowBuilder.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d35e8ffa74bffee59a567e0cb4d3e157b7663ec3f557cf93b849d3d5332c6/AITool.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/dda7b8ef227bef5b52c48844fc2da2cedfcc8fcf14357f1d5d1c162f3bdf15/ChatRole.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/faff2344bc72dc7a226866f16ccddde74b724dab27df848264b627085/ChatClientAgent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Agents/ChatAgentFactory.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://D:/Repos/MyRepos/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/Agents/ChatStreamRequest.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Agents/ChatStreamRequest.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://D:/Repos/MyRepos/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/Agents/ChatStreamRequest.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Repos/MyRepos/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/Agents/ChatStreamRequest.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Repos/MyRepos/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/Agents/ChatStreamRequest.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Repos/MyRepos/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/Agents/ChatStreamRequest.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Repos/MyRepos/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/Agents/ChatStreamRequest.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Repos/MyRepos/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/Agents/ChatStreamRequest.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Repos/MyRepos/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/Agents/ChatStreamRequest.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Repos/MyRepos/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/Agents/ChatStreamRequest.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Repos/MyRepos/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/Agents/ChatStreamRequest.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Repos/MyRepos/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/Agents/ChatStreamRequest.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Repos/MyRepos/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/Agents/ChatStreamRequest.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Repos/MyRepos/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/Agents/ChatStreamRequest.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Repos/MyRepos/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/Agents/ChatStreamRequest.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Repos/MyRepos/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/Agents/ChatStreamRequest.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Repos/MyRepos/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/Agents/ChatStreamRequest.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Repos/MyRepos/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/Agents/ChatStreamRequest.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Repos/MyRepos/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/Agents/ChatStreamRequest.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Repos/MyRepos/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/Agents/ChatStreamRequest.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Repos/MyRepos/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/Agents/ChatStreamRequest.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Repos/MyRepos/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/Agents/ChatStreamRequest.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Repos/MyRepos/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/Agents/ChatStreamRequest.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Repos/MyRepos/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/Agents/ChatStreamRequest.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Repos/MyRepos/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/Agents/ChatStreamRequest.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Repos/MyRepos/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/Agents/ChatStreamRequest.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Agents/IntentResult.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Agents/IntentRoutingAgentBuilder.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Agents/SessionChatMessageStore.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Commands/Sessions/SendUserMessage.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Workflows/IntentRoutingAgentExecutor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Queries/Sessions/GetListChatMessages.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Workflows/FinalProcessExecutor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Workflows/IntentRoutingExecutor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Workflows/IntentWorkflow.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Workflows/ToolsPackExecutor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://D:/Repos/MyRepos/Zilor.AICopilot/src/Zilor.AICopilot.HttpApi/Controllers/AiGatewayController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.IdentityService/Plugins/IdentityServiceTools.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.MigrationWorkApp/SeedData/AiGatewayData.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -104,12 +134,12 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Aspire Host.Zilor.AICopilot.AppHost: http.executor": "Run",
+    "Aspire Host.Zilor.AICopilot.AppHost: http.executor": "Debug",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "git-widget-placeholder": "19.意图识别Agent",
+    "git-widget-placeholder": "20.意图分类工作流",
     "nodejs_package_manager_path": "npm",
     "service.view.auto.scroll.to.source": "true",
     "vue.rearranger.settings.migration": "true"
@@ -230,6 +260,7 @@
       <workItem from="1764036035537" duration="22439000" />
       <workItem from="1764123405958" duration="6330000" />
       <workItem from="1764209423746" duration="21887000" />
+      <workItem from="1764385322455" duration="7284000" />
     </task>
     <task id="LOCAL-00001" summary="chore(ide): 更新IDE配置文件并清理无用设置&#10;&#10;- 移除.idea目录下的.gitignore文件中冗余的忽略规则&#10;- 删除数据源配置文件dataSources.xml&#10;- 更新vcs.xml中的Git映射路径为空字符串&#10;- 新增projectSettingsUpdater.xml以优化项目设置更新机制&#10;- 添加完整的workspace.xml运行配置，支持Aspire Host和HTTP API调试&#10;-为多个命令和查询类文件补充必要的命名空间引用">
       <option name="closed" value="true" />
@@ -399,7 +430,23 @@
       <option name="project" value="LOCAL" />
       <updated>1764294883951</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="feat(ai): 实现聊天流式响应与意图路由代理&#10;- 新增 ChatStreamRequest 处理流式聊天请求&#10;- 实现 IntentRoutingAgentBuilder 构建意图路由代理&#10;- 添加 AiGatewayData 初始化默认模型与对话模板&#10;- 调整 LanguageModel 构造函数参数顺序- 更新数据库迁移逻辑以支持新增聚合根&#10;- 修改 SendUserMessageCommand 使用新的意图路由机制&#10;- 替换 PgAdmin 为 PgWeb 并调整端口配置">
+      <option name="closed" value="true" />
+      <created>1764320735247</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1764320735247</updated>
+    </task>
+    <task id="LOCAL-00023" summary="feat(ai-gateway): 实现基于工作流的聊天流处理机制&#10;&#10;- 引入 ServerSentEvents 支持，优化聊天接口返回格式&#10;- 新增 IntentWorkflow 工作流配置，包含意图路由、工具打包和最终处理三个阶段&#10;-重构 ChatStreamRequest 处理逻辑，支持异步流式响应输出&#10;- 移除旧版 SendUserMessageCommand 相关实现，统一使用新的工作流模式- 增加历史消息查询功能 GetListChatMessages，用于上下文构建&#10;- 调整依赖注入结构，注册新增的工作流执行器组件&#10;- 更新种子数据 AiGatewayData，扩展初始语言模型配置&#10;-优化 SessionChatMessageStore 实现，通过 IMediator 查询历史记录&#10;- 完善异常处理机制，在工作流节点中捕获并传递错误事件- 删除冗余引用和未使用的插件加载逻辑，精简项目结构">
+      <option name="closed" value="true" />
+      <created>1764391277139</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1764391277139</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -407,6 +454,17 @@
   </component>
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="chore(ide): 更新IDE配置文件并清理无用设置&#10;&#10;- 移除.idea目录下的.gitignore文件中冗余的忽略规则&#10;- 删除数据源配置文件dataSources.xml&#10;- 更新vcs.xml中的Git映射路径为空字符串&#10;- 新增projectSettingsUpdater.xml以优化项目设置更新机制&#10;- 添加完整的workspace.xml运行配置，支持Aspire Host和HTTP API调试&#10;-为多个命令和查询类文件补充必要的命名空间引用" />
@@ -422,7 +480,9 @@
     <MESSAGE value="feat(ai):优化聊天代理工厂和会话消息存储&#10;&#10;- 移除 ChatAgentFactory 中多余的控制台输出语句&#10;- 简化 SessionChatMessageStore 的消息排序逻辑，确保按时间正序返回&#10;- 清理 SendUserMessage.cs 文件中的多余空行&#10;- 更新数据库查询逻辑以获取最近50条消息并正确排序&#10;- 优化消息实体到 ChatMessage 的转换过程" />
     <MESSAGE value="feat(ai): 实现Agent工具调用与插件系统集成&#10;&#10;- 集成OpenTelemetry以增强AI服务可观测性&#10;- 实现插件加载机制，支持从程序集动态注册插件&#10;- 添加TimePlugin提供系统时间查询功能&#10;- 在SendUserMessage命令中启用工具调用支持&#10;- 重构ChatAgentFactory以适配新的Agent构建流程&#10;- 完善SessionChatMessageStore线程安全处理逻辑&#10;- 引入IdentityServiceTools支持用户创建操作&#10;- 更新依赖项以支持AI代理及插件相关功能&#10;- 配置OpenTelemetry追踪提供者以收集Agent运行数据" />
     <MESSAGE value="feat(agent): 添加获取所有插件的方法&#10;&#10;- 在 AgentPluginLoader 中新增 GetAllPlugin 方法&#10;- 返回所有已加载的插件实例数组&#10;&#10;fix(api): 修改 Sender 属性访问级别&#10;&#10;- 将 ApiControllerBase 中的 Sender 属性从 public 改为 protected&#10;&#10;- 限制 Sender 属性仅在派生类中可访问chore(migration): 移除初始迁移文件&#10;&#10;- 删除 Initial 迁移文件及其设计器文件&#10;- 删除 AiCopilotDbContextModelSnapshot 文件&#10;- 清理数据库初始化相关代码文件" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(agent): 添加获取所有插件的方法&#10;&#10;- 在 AgentPluginLoader 中新增 GetAllPlugin 方法&#10;- 返回所有已加载的插件实例数组&#10;&#10;fix(api): 修改 Sender 属性访问级别&#10;&#10;- 将 ApiControllerBase 中的 Sender 属性从 public 改为 protected&#10;&#10;- 限制 Sender 属性仅在派生类中可访问chore(migration): 移除初始迁移文件&#10;&#10;- 删除 Initial 迁移文件及其设计器文件&#10;- 删除 AiCopilotDbContextModelSnapshot 文件&#10;- 清理数据库初始化相关代码文件" />
+    <MESSAGE value="feat(ai): 实现聊天流式响应与意图路由代理&#10;- 新增 ChatStreamRequest 处理流式聊天请求&#10;- 实现 IntentRoutingAgentBuilder 构建意图路由代理&#10;- 添加 AiGatewayData 初始化默认模型与对话模板&#10;- 调整 LanguageModel 构造函数参数顺序- 更新数据库迁移逻辑以支持新增聚合根&#10;- 修改 SendUserMessageCommand 使用新的意图路由机制&#10;- 替换 PgAdmin 为 PgWeb 并调整端口配置" />
+    <MESSAGE value="feat(ai-gateway): 实现基于工作流的聊天流处理机制&#10;&#10;- 引入 ServerSentEvents 支持，优化聊天接口返回格式&#10;- 新增 IntentWorkflow 工作流配置，包含意图路由、工具打包和最终处理三个阶段&#10;-重构 ChatStreamRequest 处理逻辑，支持异步流式响应输出&#10;- 移除旧版 SendUserMessageCommand 相关实现，统一使用新的工作流模式- 增加历史消息查询功能 GetListChatMessages，用于上下文构建&#10;- 调整依赖注入结构，注册新增的工作流执行器组件&#10;- 更新种子数据 AiGatewayData，扩展初始语言模型配置&#10;-优化 SessionChatMessageStore 实现，通过 IMediator 查询历史记录&#10;- 完善异常处理机制，在工作流节点中捕获并传递错误事件- 删除冗余引用和未使用的插件加载逻辑，精简项目结构" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(ai-gateway): 实现基于工作流的聊天流处理机制&#10;&#10;- 引入 ServerSentEvents 支持，优化聊天接口返回格式&#10;- 新增 IntentWorkflow 工作流配置，包含意图路由、工具打包和最终处理三个阶段&#10;-重构 ChatStreamRequest 处理逻辑，支持异步流式响应输出&#10;- 移除旧版 SendUserMessageCommand 相关实现，统一使用新的工作流模式- 增加历史消息查询功能 GetListChatMessages，用于上下文构建&#10;- 调整依赖注入结构，注册新增的工作流执行器组件&#10;- 更新种子数据 AiGatewayData，扩展初始语言模型配置&#10;-优化 SessionChatMessageStore 实现，通过 IMediator 查询历史记录&#10;- 完善异常处理机制，在工作流节点中捕获并传递错误事件- 删除冗余引用和未使用的插件加载逻辑，精简项目结构" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -439,32 +499,6 @@
           <properties exception="System.Threading.ThreadAbortException" breakIfHandledByOtherCode="false" displayValue="System.Threading.ThreadAbortException" />
           <option name="timeStamp" value="3" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Commands/Sessions/SendUserMessage.cs</url>
-          <line>50</line>
-          <properties documentPath="D:\Repos\MyRepos\Zilor.AICopilot\src\Zilor.AICopilot.AiGatewayService\Commands\Sessions\SendUserMessage.cs" containingFunctionPresentation="方法 'Handle'">
-            <startOffsets>
-              <option value="2113" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2114" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/src/Zilor.AICopilot.MigrationWorkApp/Worker.cs</url>
-          <line>30</line>
-          <properties documentPath="D:\Repos\MyRepos\Zilor.AICopilot\src\Zilor.AICopilot.MigrationWorkApp\Worker.cs" containingFunctionPresentation="方法 'ExecuteAsync'">
-            <startOffsets>
-              <option value="1304" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1305" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <pin-to-top-manager>
