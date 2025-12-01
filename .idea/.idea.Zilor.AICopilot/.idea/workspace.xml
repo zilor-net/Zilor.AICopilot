@@ -9,11 +9,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f4f71ff8-869c-4e55-85b9-f9116211e89c" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.Core.Rag/Aggregates/EmbeddingModel/EmbeddingModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.EntityFrameworkCore/Configuration/Rag/DocumentChunkConfiguration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.EntityFrameworkCore/Configuration/Rag/DocumentConfiguration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.EntityFrameworkCore/Configuration/Rag/EmbeddingModelConfiguration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.EntityFrameworkCore/Configuration/Rag/KnowledgeBaseConfiguration.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zilor.AICopilot.sln" beforeDir="false" afterPath="$PROJECT_DIR$/Zilor.AICopilot.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.Core.Rag/Aggregates/KnowledgeBase/Document.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.Core.Rag/Aggregates/KnowledgeBase/Document.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.Core.Rag/Aggregates/KnowledgeBase/DocumentChunk.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.Core.Rag/Aggregates/KnowledgeBase/DocumentChunk.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.Core.Rag/Aggregates/KnowledgeBase/KnowledgeBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.Core.Rag/Aggregates/KnowledgeBase/KnowledgeBase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.EntityFrameworkCore/AiCopilotDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.EntityFrameworkCore/AiCopilotDbContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.EntityFrameworkCore/Migrations/AiCopilotDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.EntityFrameworkCore/Migrations/AiCopilotDbContextModelSnapshot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.EntityFrameworkCore/Zilor.AICopilot.EntityFrameworkCore.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.EntityFrameworkCore/Zilor.AICopilot.EntityFrameworkCore.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,7 +29,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="19.意图识别Agent" />
+        <entry key="$PROJECT_DIR$" value="20.意图分类工作流" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -89,6 +95,13 @@
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Workflows/IntentWorkflow.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Workflows/ToolsPackExecutor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.Core.Rag/Aggregates/EmbeddingModel/EmbeddingModel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.Core.Rag/Aggregates/KnowledgeBase/Document.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.Core.Rag/Aggregates/KnowledgeBase/DocumentChunk.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.Core.Rag/Aggregates/KnowledgeBase/KnowledgeBase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.EntityFrameworkCore/Configuration/Rag/DocumentChunkConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.EntityFrameworkCore/Configuration/Rag/DocumentConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.EntityFrameworkCore/Configuration/Rag/EmbeddingModelConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.EntityFrameworkCore/Configuration/Rag/KnowledgeBaseConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.IdentityService/Plugins/IdentityServiceTools.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.MigrationWorkApp/SeedData/AiGatewayData.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -109,19 +122,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Aspire Host.Zilor.AICopilot.AppHost: http.executor&quot;: &quot;Debug&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;20.意图分类工作流&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;service.view.auto.scroll.to.source&quot;: &quot;true&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Aspire Host.Zilor.AICopilot.AppHost: http.executor": "Debug",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "git-widget-placeholder": "21.RAG领域建模",
+    "nodejs_package_manager_path": "npm",
+    "service.view.auto.scroll.to.source": "true",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Aspire Host.Zilor.AICopilot.AppHost: http">
     <configuration name="Zilor.AICopilot.AppHost: http" type="AspireHostConfiguration" factoryName="Aspire Host" activateToolWindowBeforeRun="false">
       <option name="PROJECT_FILE_PATH" value="$PROJECT_DIR$/src/Zilor.AICopilot.AppHost/Zilor.AICopilot.AppHost.csproj" />
@@ -239,7 +252,7 @@
       <workItem from="1764209423746" duration="21887000" />
       <workItem from="1764385322455" duration="7322000" />
       <workItem from="1764417286382" duration="1856000" />
-      <workItem from="1764579739648" duration="426000" />
+      <workItem from="1764579739648" duration="2369000" />
     </task>
     <task id="LOCAL-00001" summary="chore(ide): 更新IDE配置文件并清理无用设置&#10;&#10;- 移除.idea目录下的.gitignore文件中冗余的忽略规则&#10;- 删除数据源配置文件dataSources.xml&#10;- 更新vcs.xml中的Git映射路径为空字符串&#10;- 新增projectSettingsUpdater.xml以优化项目设置更新机制&#10;- 添加完整的workspace.xml运行配置，支持Aspire Host和HTTP API调试&#10;-为多个命令和查询类文件补充必要的命名空间引用">
       <option name="closed" value="true" />
@@ -433,7 +446,15 @@
       <option name="project" value="LOCAL" />
       <updated>1764393247679</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="feat(rag): 添加RAG核心领域模型&#10;&#10;- 新增KnowledgeBase聚合根，包含文档集合导航属性&#10;- 新增Document实体，定义文档元数据及处理状态&#10;- 新增DocumentChunk实体，表示文档切片及其向量标识&#10;- 新增EmbeddingModel聚合根，管理嵌入模型配置信息&#10;- 创建Zilor.AICopilot.Core.Rag项目并集成到解决方案&#10;- 更新IDEA配置文件，移除无效数据源配置项">
+      <option name="closed" value="true" />
+      <created>1764580476755</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1764580476755</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -469,7 +490,8 @@
     <MESSAGE value="feat(agent): 添加获取所有插件的方法&#10;&#10;- 在 AgentPluginLoader 中新增 GetAllPlugin 方法&#10;- 返回所有已加载的插件实例数组&#10;&#10;fix(api): 修改 Sender 属性访问级别&#10;&#10;- 将 ApiControllerBase 中的 Sender 属性从 public 改为 protected&#10;&#10;- 限制 Sender 属性仅在派生类中可访问chore(migration): 移除初始迁移文件&#10;&#10;- 删除 Initial 迁移文件及其设计器文件&#10;- 删除 AiCopilotDbContextModelSnapshot 文件&#10;- 清理数据库初始化相关代码文件" />
     <MESSAGE value="feat(ai): 实现聊天流式响应与意图路由代理&#10;- 新增 ChatStreamRequest 处理流式聊天请求&#10;- 实现 IntentRoutingAgentBuilder 构建意图路由代理&#10;- 添加 AiGatewayData 初始化默认模型与对话模板&#10;- 调整 LanguageModel 构造函数参数顺序- 更新数据库迁移逻辑以支持新增聚合根&#10;- 修改 SendUserMessageCommand 使用新的意图路由机制&#10;- 替换 PgAdmin 为 PgWeb 并调整端口配置" />
     <MESSAGE value="feat(ai-gateway): 实现基于工作流的聊天流处理机制&#10;&#10;- 引入 ServerSentEvents 支持，优化聊天接口返回格式&#10;- 新增 IntentWorkflow 工作流配置，包含意图路由、工具打包和最终处理三个阶段&#10;-重构 ChatStreamRequest 处理逻辑，支持异步流式响应输出&#10;- 移除旧版 SendUserMessageCommand 相关实现，统一使用新的工作流模式- 增加历史消息查询功能 GetListChatMessages，用于上下文构建&#10;- 调整依赖注入结构，注册新增的工作流执行器组件&#10;- 更新种子数据 AiGatewayData，扩展初始语言模型配置&#10;-优化 SessionChatMessageStore 实现，通过 IMediator 查询历史记录&#10;- 完善异常处理机制，在工作流节点中捕获并传递错误事件- 删除冗余引用和未使用的插件加载逻辑，精简项目结构" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(ai-gateway): 实现基于工作流的聊天流处理机制&#10;&#10;- 引入 ServerSentEvents 支持，优化聊天接口返回格式&#10;- 新增 IntentWorkflow 工作流配置，包含意图路由、工具打包和最终处理三个阶段&#10;-重构 ChatStreamRequest 处理逻辑，支持异步流式响应输出&#10;- 移除旧版 SendUserMessageCommand 相关实现，统一使用新的工作流模式- 增加历史消息查询功能 GetListChatMessages，用于上下文构建&#10;- 调整依赖注入结构，注册新增的工作流执行器组件&#10;- 更新种子数据 AiGatewayData，扩展初始语言模型配置&#10;-优化 SessionChatMessageStore 实现，通过 IMediator 查询历史记录&#10;- 完善异常处理机制，在工作流节点中捕获并传递错误事件- 删除冗余引用和未使用的插件加载逻辑，精简项目结构" />
+    <MESSAGE value="feat(rag): 添加RAG核心领域模型&#10;&#10;- 新增KnowledgeBase聚合根，包含文档集合导航属性&#10;- 新增Document实体，定义文档元数据及处理状态&#10;- 新增DocumentChunk实体，表示文档切片及其向量标识&#10;- 新增EmbeddingModel聚合根，管理嵌入模型配置信息&#10;- 创建Zilor.AICopilot.Core.Rag项目并集成到解决方案&#10;- 更新IDEA配置文件，移除无效数据源配置项" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(rag): 添加RAG核心领域模型&#10;&#10;- 新增KnowledgeBase聚合根，包含文档集合导航属性&#10;- 新增Document实体，定义文档元数据及处理状态&#10;- 新增DocumentChunk实体，表示文档切片及其向量标识&#10;- 新增EmbeddingModel聚合根，管理嵌入模型配置信息&#10;- 创建Zilor.AICopilot.Core.Rag项目并集成到解决方案&#10;- 更新IDEA配置文件，移除无效数据源配置项" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

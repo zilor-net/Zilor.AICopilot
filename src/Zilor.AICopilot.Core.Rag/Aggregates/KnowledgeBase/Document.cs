@@ -4,56 +4,160 @@ namespace Zilor.AICopilot.Core.Rag.Aggregates.KnowledgeBase;
 
 public class Document : IEntity<Guid>
 {
+    private readonly List<DocumentChunk> _chunks = [];
+
+    protected Document()
+    {
+    }
+
+    internal Document(Guid knowledgeBaseId, string name, string filePath, string extension, string fileHash)
+    {
+        Id = Guid.NewGuid();
+        KnowledgeBaseId = knowledgeBaseId;
+        Name = name;
+        FilePath = filePath;
+        Extension = extension;
+        FileHash = fileHash;
+        Status = DocumentStatus.Pending;
+        CreatedAt = DateTime.UtcNow;
+    }
+
     public Guid Id { get; set; }
     
-    public Guid KnowledgeBaseId { get; set; }
+    public Guid KnowledgeBaseId { get; private set; }
     
     /// <summary>
     /// 原始文件名
     /// </summary>
-    public string Name { get; set; } = string.Empty;
+    public string Name { get; private set; } = string.Empty;
     
     /// <summary>
-    /// 文件存储路径 (如 Blob Storage 地址 或 本地路径)
+    /// 文件存储路径
     /// </summary>
-    public string FilePath { get; set; } = string.Empty;
+    public string FilePath { get; private set; } = string.Empty;
     
     /// <summary>
-    /// 文件类型扩展名 (.pdf, .md, .txt)
+    /// 文件扩展名
     /// </summary>
-    public string Extension { get; set; } = string.Empty;
+    public string Extension { get; private set; } = string.Empty;
     
     /// <summary>
-    /// 文件内容哈希值 (MD5/SHA256)。用于检测文件变动，实现增量更新或幂等性。
+    /// 文件哈希值
     /// </summary>
-    public string FileHash { get; set; } = string.Empty;
+    public string FileHash { get; private set; } = string.Empty;
     
     /// <summary>
     /// 文档处理状态
     /// </summary>
-    public DocumentStatus Status { get; set; } = DocumentStatus.Pending;
+    public DocumentStatus Status { get; private set; }
     
     /// <summary>
     /// 切片数量
     /// </summary>
-    public int ChunkCount { get; set; }
+    public int ChunkCount { get; private set; }
     
     /// <summary>
-    /// 处理过程中的错误信息
+    /// 错误信息
     /// </summary>
-    public string? ErrorMessage { get; set; }
+    public string? ErrorMessage { get; private set; }
     
+    public DateTime CreatedAt { get; private set; }
+    public DateTime? ProcessedAt { get; private set; }
+
     // 导航属性
-    public virtual KnowledgeBase KnowledgeBase { get; set; } = null!;
-    public virtual ICollection<DocumentChunk> Chunks { get; set; } = new List<DocumentChunk>();
+    public KnowledgeBase KnowledgeBase { get; private set; } = null!;
+    public IReadOnlyCollection<DocumentChunk> Chunks => _chunks.AsReadOnly();
+
+    #region 领域行为方法
+
+    /// <summary>
+    /// 开始解析文档
+    /// </summary>
+    public void StartParsing()
+    {
+        if (Status != DocumentStatus.Pending && Status != DocumentStatus.Failed)
+            throw new InvalidOperationException($"当前状态 {Status} 不允许开始解析");
+            
+        Status = DocumentStatus.Parsing;
+        ErrorMessage = null;
+    }
+
+    /// <summary>
+    /// 完成解析，准备切片
+    /// </summary>
+    public void CompleteParsing()
+    {
+        if (Status != DocumentStatus.Parsing) return;
+        Status = DocumentStatus.Splitting;
+    }
+
+    /// <summary>
+    /// 添加文档切片
+    /// </summary>
+    public void AddChunk(int index, string content)
+    {
+        // 允许在 Splitting 或 Embedding 阶段添加/重新生成切片
+        if (Status != DocumentStatus.Splitting && Status != DocumentStatus.Embedding)
+             throw new InvalidOperationException($"当前状态 {Status} 不允许添加切片");
+
+        var chunk = new DocumentChunk(Id, index, content);
+        _chunks.Add(chunk);
+        ChunkCount = _chunks.Count;
+    }
+    
+    /// <summary>
+    /// 清空所有切片（例如重新处理时）
+    /// </summary>
+    public void ClearChunks()
+    {
+        _chunks.Clear();
+        ChunkCount = 0;
+    }
+
+    /// <summary>
+    /// 开始向量化
+    /// </summary>
+    public void StartEmbedding()
+    {
+        Status = DocumentStatus.Embedding;
+    }
+
+    /// <summary>
+    /// 标记切片已向量化完成（更新向量ID）
+    /// </summary>
+    public void MarkChunkAsEmbedded(Guid chunkId, string vectorId)
+    {
+        var chunk = _chunks.FirstOrDefault(c => c.Id == chunkId);
+        chunk?.SetVectorId(vectorId);
+    }
+
+    /// <summary>
+    /// 文档处理全部完成
+    /// </summary>
+    public void MarkAsIndexed()
+    {
+        Status = DocumentStatus.Indexed;
+        ProcessedAt = DateTime.UtcNow;
+    }
+
+    /// <summary>
+    /// 标记处理失败
+    /// </summary>
+    public void MarkAsFailed(string errorMessage)
+    {
+        Status = DocumentStatus.Failed;
+        ErrorMessage = errorMessage;
+    }
+
+    #endregion
 }
 
 public enum DocumentStatus
 {
     Pending = 0,      // 等待处理
-    Parsing = 1,      // 正在解析/读取
-    Splitting = 2,    // 正在切片
-    Embedding = 3,    // 正在向量化
-    Indexed = 4,      // 索引完成
+    Parsing = 1,      // 正在读取/解析内容
+    Splitting = 2,    // 正在进行文本切片
+    Embedding = 3,    // 正在调用模型生成向量
+    Indexed = 4,      // 索引完成，可用于检索
     Failed = 5        // 处理失败
 }

@@ -4,31 +4,48 @@ namespace Zilor.AICopilot.Core.Rag.Aggregates.KnowledgeBase;
 
 public class DocumentChunk : IEntity<Guid>
 {
+    protected DocumentChunk()
+    {
+    }
+
+    internal DocumentChunk(Guid documentId, int index, string content)
+    {
+        Id = Guid.NewGuid();
+        DocumentId = documentId;
+        Index = index;
+        Content = content;
+        CreatedAt = DateTime.UtcNow;
+    }
+
     public Guid Id { get; set; }
     
-    public Guid DocumentId { get; set; }
+    public Guid DocumentId { get; private set; }
     
     /// <summary>
-    /// 切片在文档中的序号 (0, 1, 2...)，用于排序或重组上下文
+    /// 切片序号
     /// </summary>
-    public int Index { get; set; }
+    public int Index { get; private set; }
     
     /// <summary>
-    /// 切片的文本内容
+    /// 文本内容
     /// </summary>
-    public string Content { get; set; } = string.Empty;
+    public string Content { get; private set; } = string.Empty;
     
     /// <summary>
-    /// 外部向量数据库中的 ID (用于关联删除或更新)
+    /// 向量数据库中的ID
     /// </summary>
-    public string VectorId { get; set; } = string.Empty;
+    public string? VectorId { get; private set; }
     
-    // 注意：通常不建议在关系型数据库直接存储 float[] 向量数据，除非使用 pgvector 扩展。
-    // 这里我们向量数据主要存储在专用的 Vector DB 中。
-    
-    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    public DateTime CreatedAt { get; private set; }
 
     // 导航属性
-    public virtual Document Document { get; set; } = null!;
-    
+    public Document Document { get; private set; } = null!;
+
+    /// <summary>
+    /// 设置向量ID (当向量化完成后调用)
+    /// </summary>
+    public void SetVectorId(string vectorId)
+    {
+        VectorId = vectorId;
+    }
 }

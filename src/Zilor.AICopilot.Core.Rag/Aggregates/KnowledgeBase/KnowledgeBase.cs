@@ -1,10 +1,11 @@
-﻿using System.Reflection.Metadata;
-using Zilor.AICopilot.SharedKernel.Domain;
+﻿using Zilor.AICopilot.SharedKernel.Domain;
 
 namespace Zilor.AICopilot.Core.Rag.Aggregates.KnowledgeBase;
 
 public class KnowledgeBase : IAggregateRoot
 {
+    private readonly List<Document> _documents = [];
+
     protected KnowledgeBase()
     {
     }
@@ -18,14 +19,43 @@ public class KnowledgeBase : IAggregateRoot
     }
     
     public Guid Id { get; set; }
-    public string Name { get; set; } = string.Empty;
-    public string Description { get; set; } = string.Empty;
+    public string Name { get; private set; } = string.Empty;
+    public string Description { get; private set; } = string.Empty;
     
     /// <summary>
-    /// 嵌入模型ID。一个知识库内的所有文档必须使用相同的嵌入模型，否则向量空间不兼容。
+    /// 嵌入模型ID。一个知识库内的所有文档必须使用相同的嵌入模型。
     /// </summary>
-    public Guid EmbeddingModelId { get; set; }
+    public Guid EmbeddingModelId { get; private set; }
     
-    // 导航属性
-    public virtual ICollection<Document> Documents { get; set; } = new List<Document>();
+    // 导航属性：对外只暴露只读集合
+    public IReadOnlyCollection<Document> Documents => _documents.AsReadOnly();
+
+    /// <summary>
+    /// 添加新文档到知识库
+    /// </summary>
+    public Document AddDocument(string name, string filePath, string extension, string fileHash)
+    {
+        // 这里可以添加业务校验，例如检查文件名是否重复
+        var document = new Document(Id, name, filePath, extension, fileHash);
+        _documents.Add(document);
+        return document;
+    }
+
+    /// <summary>
+    /// 移除文档
+    /// </summary>
+    public void RemoveDocument(Guid documentId)
+    {
+        var doc = _documents.FirstOrDefault(d => d.Id == documentId);
+        if (doc != null)
+        {
+            _documents.Remove(doc);
+        }
+    }
+
+    public void UpdateInfo(string name, string description)
+    {
+        Name = name;
+        Description = description;
+    }
 }
