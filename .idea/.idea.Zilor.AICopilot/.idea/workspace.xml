@@ -9,9 +9,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f4f71ff8-869c-4e55-85b9-f9116211e89c" name="更改" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.Core.Rag/Aggregates/EmbeddingModel/EmbeddingModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zilor.AICopilot.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/Zilor.AICopilot.sln.DotSettings.user" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Workflows/IntentRoutingExecutor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Workflows/IntentRoutingExecutor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Zilor.AICopilot.sln" beforeDir="false" afterPath="$PROJECT_DIR$/Zilor.AICopilot.sln" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,32 +79,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/dda7b8ef227bef5b52c48844fc2da2cedfcc8fcf14357f1d5d1c162f3bdf15/ChatRole.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/faff2344bc72dc7a226866f16ccddde74b724dab27df848264b627085/ChatClientAgent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Agents/ChatAgentFactory.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://D:/Repos/MyRepos/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/Agents/ChatStreamRequest.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Agents/ChatStreamRequest.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://D:/Repos/MyRepos/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/Agents/ChatStreamRequest.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Repos/MyRepos/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/Agents/ChatStreamRequest.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Repos/MyRepos/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/Agents/ChatStreamRequest.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Repos/MyRepos/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/Agents/ChatStreamRequest.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Repos/MyRepos/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/Agents/ChatStreamRequest.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Repos/MyRepos/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/Agents/ChatStreamRequest.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Repos/MyRepos/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/Agents/ChatStreamRequest.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Repos/MyRepos/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/Agents/ChatStreamRequest.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Repos/MyRepos/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/Agents/ChatStreamRequest.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Repos/MyRepos/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/Agents/ChatStreamRequest.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Repos/MyRepos/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/Agents/ChatStreamRequest.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Repos/MyRepos/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/Agents/ChatStreamRequest.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Repos/MyRepos/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/Agents/ChatStreamRequest.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Repos/MyRepos/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/Agents/ChatStreamRequest.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Repos/MyRepos/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/Agents/ChatStreamRequest.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Repos/MyRepos/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/Agents/ChatStreamRequest.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Repos/MyRepos/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/Agents/ChatStreamRequest.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Repos/MyRepos/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/Agents/ChatStreamRequest.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Repos/MyRepos/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/Agents/ChatStreamRequest.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Repos/MyRepos/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/Agents/ChatStreamRequest.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Repos/MyRepos/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/Agents/ChatStreamRequest.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Repos/MyRepos/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/Agents/ChatStreamRequest.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Repos/MyRepos/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/Agents/ChatStreamRequest.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Repos/MyRepos/Zilor.AICopilot/src/Zilor.AICopilot.AiGatewayService/Agents/ChatStreamRequest.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Agents/IntentResult.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Agents/IntentRoutingAgentBuilder.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Agents/SessionChatMessageStore.cs" root0="FORCE_HIGHLIGHTING" />
@@ -111,7 +88,7 @@
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Workflows/IntentRoutingExecutor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Workflows/IntentWorkflow.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Workflows/ToolsPackExecutor.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://D:/Repos/MyRepos/Zilor.AICopilot/src/Zilor.AICopilot.HttpApi/Controllers/AiGatewayController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.Core.Rag/Aggregates/EmbeddingModel/EmbeddingModel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.IdentityService/Plugins/IdentityServiceTools.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.MigrationWorkApp/SeedData/AiGatewayData.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -132,19 +109,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Aspire Host.Zilor.AICopilot.AppHost: http.executor": "Debug",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "git-widget-placeholder": "20.意图分类工作流",
-    "nodejs_package_manager_path": "npm",
-    "service.view.auto.scroll.to.source": "true",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Aspire Host.Zilor.AICopilot.AppHost: http.executor&quot;: &quot;Debug&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;20.意图分类工作流&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;service.view.auto.scroll.to.source&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Aspire Host.Zilor.AICopilot.AppHost: http">
     <configuration name="Zilor.AICopilot.AppHost: http" type="AspireHostConfiguration" factoryName="Aspire Host" activateToolWindowBeforeRun="false">
       <option name="PROJECT_FILE_PATH" value="$PROJECT_DIR$/src/Zilor.AICopilot.AppHost/Zilor.AICopilot.AppHost.csproj" />
@@ -260,7 +237,9 @@
       <workItem from="1764036035537" duration="22439000" />
       <workItem from="1764123405958" duration="6330000" />
       <workItem from="1764209423746" duration="21887000" />
-      <workItem from="1764385322455" duration="7284000" />
+      <workItem from="1764385322455" duration="7322000" />
+      <workItem from="1764417286382" duration="1856000" />
+      <workItem from="1764579739648" duration="426000" />
     </task>
     <task id="LOCAL-00001" summary="chore(ide): 更新IDE配置文件并清理无用设置&#10;&#10;- 移除.idea目录下的.gitignore文件中冗余的忽略规则&#10;- 删除数据源配置文件dataSources.xml&#10;- 更新vcs.xml中的Git映射路径为空字符串&#10;- 新增projectSettingsUpdater.xml以优化项目设置更新机制&#10;- 添加完整的workspace.xml运行配置，支持Aspire Host和HTTP API调试&#10;-为多个命令和查询类文件补充必要的命名空间引用">
       <option name="closed" value="true" />
@@ -446,7 +425,15 @@
       <option name="project" value="LOCAL" />
       <updated>1764391277139</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="feat(ai-gateway): 实现基于工作流的聊天流处理机制&#10;&#10;- 引入 ServerSentEvents 支持，优化聊天接口返回格式&#10;- 新增 IntentWorkflow 工作流配置，包含意图路由、工具打包和最终处理三个阶段&#10;-重构 ChatStreamRequest 处理逻辑，支持异步流式响应输出&#10;- 移除旧版 SendUserMessageCommand 相关实现，统一使用新的工作流模式- 增加历史消息查询功能 GetListChatMessages，用于上下文构建&#10;- 调整依赖注入结构，注册新增的工作流执行器组件&#10;- 更新种子数据 AiGatewayData，扩展初始语言模型配置&#10;-优化 SessionChatMessageStore 实现，通过 IMediator 查询历史记录&#10;- 完善异常处理机制，在工作流节点中捕获并传递错误事件- 删除冗余引用和未使用的插件加载逻辑，精简项目结构">
+      <option name="closed" value="true" />
+      <created>1764393247679</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1764393247679</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
