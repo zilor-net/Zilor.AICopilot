@@ -243,7 +243,8 @@ namespace Zilor.AICopilot.EntityFrameworkCore.Migrations
                 name: "documents",
                 columns: table => new
                 {
-                    id = table.Column<Guid>(type: "uuid", nullable: false),
+                    id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     knowledge_base_id = table.Column<Guid>(type: "uuid", nullable: false),
                     name = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: false),
                     file_path = table.Column<string>(type: "character varying(500)", maxLength: 500, nullable: false),
@@ -292,8 +293,9 @@ namespace Zilor.AICopilot.EntityFrameworkCore.Migrations
                 name: "document_chunks",
                 columns: table => new
                 {
-                    id = table.Column<Guid>(type: "uuid", nullable: false),
-                    document_id = table.Column<Guid>(type: "uuid", nullable: false),
+                    id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    document_id = table.Column<int>(type: "integer", nullable: false),
                     index = table.Column<int>(type: "integer", nullable: false),
                     content = table.Column<string>(type: "text", nullable: false),
                     vector_id = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),

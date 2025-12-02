@@ -2,24 +2,23 @@
 
 namespace Zilor.AICopilot.Core.Rag.Aggregates.KnowledgeBase;
 
-public class DocumentChunk : IEntity<Guid>
+public class DocumentChunk : IEntity<int>
 {
     protected DocumentChunk()
     {
     }
 
-    internal DocumentChunk(Guid documentId, int index, string content)
+    internal DocumentChunk(int documentId, int index, string content)
     {
-        Id = Guid.NewGuid();
         DocumentId = documentId;
         Index = index;
         Content = content;
         CreatedAt = DateTime.UtcNow;
     }
 
-    public Guid Id { get; set; }
+    public int Id { get; set; }
     
-    public Guid DocumentId { get; private set; }
+    public int DocumentId { get; private set; }
     
     /// <summary>
     /// 切片序号

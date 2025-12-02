@@ -12,7 +12,7 @@ using Zilor.AICopilot.SharedKernel.Result;
 
 namespace Zilor.AICopilot.RagService.Commands.Documents;
 
-public record UploadDocumentDto(Guid Id, string Status);
+public record UploadDocumentDto(int Id, string Status);
 
 public record FileUploadStream(string FileName, Stream Stream);
 
@@ -23,7 +23,6 @@ public record UploadDocumentCommand(
 
 public class UploadDocumentCommandHandler(
     IRepository<KnowledgeBase> kbRepo,
-    IDataQueryService queryService,
     IFileStorageService fileStorage,
     IPublishEndpoint publishEndpoint) 
     : ICommandHandler<UploadDocumentCommand, Result<UploadDocumentDto>>
@@ -34,7 +33,10 @@ public class UploadDocumentCommandHandler(
     {
         // 1. 获取知识库聚合根（并急切加载 Documents 集合）
         // 使用我们刚扩展的 GetAsync 方法，通过 includes 参数加载子实体
-        var kb = await kbRepo.GetByIdAsync(request.KnowledgeBaseId, cancellationToken);
+        var kb = await kbRepo.GetAsync(
+            kb => kb.Id == request.KnowledgeBaseId, 
+            includes: [k => k.Documents], 
+            cancellationToken);
 
         if (kb == null) return Result.NotFound("知识库不存在");
         
@@ -54,9 +56,7 @@ public class UploadDocumentCommandHandler(
         
         // 3. 检查文件是否已存在 (基于 Hash 实现幂等性)
         // 因为 Documents 已经加载到内存中，我们可以直接使用 LINQ 查询
-        var queryable =
-            queryService.Documents.Where(d => d.KnowledgeBaseId == request.KnowledgeBaseId && d.FileHash == fileHash);
-        var existingDoc = await queryService.FirstOrDefaultAsync(queryable);
+        var existingDoc = kb.Documents.FirstOrDefault(d => d.FileHash == fileHash);
         if (existingDoc != null)
         {
             // 如果文件已存在，直接返回成功，并返回现有的文档 ID

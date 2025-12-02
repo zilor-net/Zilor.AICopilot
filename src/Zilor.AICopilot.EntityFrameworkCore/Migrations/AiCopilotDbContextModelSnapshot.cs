@@ -418,10 +418,12 @@ namespace Zilor.AICopilot.EntityFrameworkCore.Migrations
 
             modelBuilder.Entity("Zilor.AICopilot.Core.Rag.Aggregates.KnowledgeBase.Document", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
+                        .HasColumnType("integer")
                         .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<int>("ChunkCount")
                         .HasColumnType("integer")
@@ -482,10 +484,12 @@ namespace Zilor.AICopilot.EntityFrameworkCore.Migrations
 
             modelBuilder.Entity("Zilor.AICopilot.Core.Rag.Aggregates.KnowledgeBase.DocumentChunk", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
+                        .HasColumnType("integer")
                         .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Content")
                         .IsRequired()
@@ -496,8 +500,8 @@ namespace Zilor.AICopilot.EntityFrameworkCore.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("created_at");
 
-                    b.Property<Guid>("DocumentId")
-                        .HasColumnType("uuid")
+                    b.Property<int>("DocumentId")
+                        .HasColumnType("integer")
                         .HasColumnName("document_id");
 
                     b.Property<int>("Index")

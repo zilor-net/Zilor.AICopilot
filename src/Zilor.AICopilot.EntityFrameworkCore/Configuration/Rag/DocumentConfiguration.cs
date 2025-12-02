@@ -11,7 +11,8 @@ public class DocumentConfiguration : IEntityTypeConfiguration<Document>
         builder.ToTable("documents");
 
         builder.HasKey(d => d.Id);
-        builder.Property(d => d.Id).HasColumnName("id");
+        builder.Property(d => d.Id).HasColumnName("id")
+            .ValueGeneratedOnAdd();
 
         builder.Property(d => d.KnowledgeBaseId)
             .IsRequired()
@@ -58,11 +59,11 @@ public class DocumentConfiguration : IEntityTypeConfiguration<Document>
         builder.Property(d => d.ProcessedAt)
             .HasColumnName("processed_at"); // 允许为空
         
-        // 配置一对多关系
-        builder.HasOne(d => d.KnowledgeBase)
-            .WithMany(kb  => kb.Documents) 
-            .HasForeignKey(d => d.KnowledgeBaseId)
+        // 配置导航属性 Chunks
+        builder.HasMany(d => d.Chunks)
+            .WithOne(c => c.Document)
+            .HasForeignKey(c => c.DocumentId)
             .IsRequired()
-            .OnDelete(DeleteBehavior.Cascade);
+            .OnDelete(DeleteBehavior.Cascade); // 删除文档时级联删除切片
     }
 }

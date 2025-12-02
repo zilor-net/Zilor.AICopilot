@@ -43,7 +43,7 @@ public class KnowledgeBase : IAggregateRoot
     /// <summary>
     /// 移除文档
     /// </summary>
-    public void RemoveDocument(Guid documentId)
+    public void RemoveDocument(int documentId)
     {
         var doc = _documents.FirstOrDefault(d => d.Id == documentId);
         if (doc != null)

@@ -2,7 +2,7 @@
 
 namespace Zilor.AICopilot.Core.Rag.Aggregates.KnowledgeBase;
 
-public class Document : IEntity<Guid>
+public class Document : IEntity<int>
 {
     private readonly List<DocumentChunk> _chunks = [];
 
@@ -12,7 +12,6 @@ public class Document : IEntity<Guid>
 
     internal Document(Guid knowledgeBaseId, string name, string filePath, string extension, string fileHash)
     {
-        Id = Guid.NewGuid();
         KnowledgeBaseId = knowledgeBaseId;
         Name = name;
         FilePath = filePath;
@@ -22,7 +21,7 @@ public class Document : IEntity<Guid>
         CreatedAt = DateTime.UtcNow;
     }
 
-    public Guid Id { get; set; }
+    public int Id { get; set; }
     
     public Guid KnowledgeBaseId { get; private set; }
     
@@ -125,7 +124,7 @@ public class Document : IEntity<Guid>
     /// <summary>
     /// 标记切片已向量化完成（更新向量ID）
     /// </summary>
-    public void MarkChunkAsEmbedded(Guid chunkId, string vectorId)
+    public void MarkChunkAsEmbedded(int chunkId, string vectorId)
     {
         var chunk = _chunks.FirstOrDefault(c => c.Id == chunkId);
         chunk?.SetVectorId(vectorId);
