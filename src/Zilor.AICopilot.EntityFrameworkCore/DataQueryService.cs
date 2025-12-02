@@ -2,6 +2,8 @@
 using Zilor.AICopilot.Core.AiGateway.Aggregates.ConversationTemplate;
 using Zilor.AICopilot.Core.AiGateway.Aggregates.LanguageModel;
 using Zilor.AICopilot.Core.AiGateway.Aggregates.Sessions;
+using Zilor.AICopilot.Core.Rag.Aggregates.EmbeddingModel;
+using Zilor.AICopilot.Core.Rag.Aggregates.KnowledgeBase;
 using Zilor.AICopilot.Services.Common.Contracts;
 
 namespace Zilor.AICopilot.EntityFrameworkCore;
@@ -12,6 +14,11 @@ public class DataQueryService(AiCopilotDbContext dbContext) : IDataQueryService
     public IQueryable<LanguageModel> LanguageModels => dbContext.LanguageModels.AsNoTracking();
     public IQueryable<Session> Sessions => dbContext.Sessions.AsNoTracking();
     public IQueryable<Message> Messages => dbContext.Messages.AsNoTracking();
+    
+    public IQueryable<EmbeddingModel> EmbeddingModels => dbContext.EmbeddingModels.AsNoTracking();
+    public IQueryable<KnowledgeBase> KnowledgeBases => dbContext.KnowledgeBases.AsNoTracking();
+    public IQueryable<Document> Documents => dbContext.Documents.AsNoTracking();
+    public IQueryable<DocumentChunk> DocumentChunks => dbContext.DocumentChunks.AsNoTracking();
 
     public async Task<T?> FirstOrDefaultAsync<T>(IQueryable<T> queryable) where T : class
     {

@@ -10,6 +10,8 @@
 
         <ProjectReference Include="..\Zilor.AICopilot.Core.AiGateway\Zilor.AICopilot.Core.AiGateway.csproj"/>
 
+        <ProjectReference Include="..\Zilor.AICopilot.Core.Rag\Zilor.AICopilot.Core.Rag.csproj" />
+
         <ProjectReference Include="..\Zilor.AICopilot.SharedKernel\Zilor.AICopilot.SharedKernel.csproj"/>
     </ItemGroup>
 </Project>

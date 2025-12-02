@@ -25,6 +25,15 @@ public class EmbeddingModelConfiguration : IEntityTypeConfiguration<EmbeddingMod
             .IsRequired()
             .HasMaxLength(50)
             .HasColumnName("provider");
+        
+        builder.Property(e => e.BaseUrl)
+            .IsRequired()
+            .HasMaxLength(500)
+            .HasColumnName("base_url");
+        
+        builder.Property(e => e.ApiKey)
+            .HasMaxLength(256)
+            .HasColumnName("api_key");
 
         builder.Property(e => e.ModelName)
             .IsRequired()

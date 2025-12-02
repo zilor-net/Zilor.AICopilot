@@ -38,5 +38,12 @@ public class DocumentChunkConfiguration : IEntityTypeConfiguration<DocumentChunk
         // 索引配置：通常会根据文档ID查询切片，并按顺序排序
         builder.HasIndex(c => new { c.DocumentId, c.Index })
             .IsUnique(); // 保证同一文档内切片序号不重复
+        
+        // 配置一对多关系
+        builder.HasOne(d => d.Document)
+            .WithMany(d  => d.Chunks) 
+            .HasForeignKey(d => d.DocumentId)
+            .IsRequired()
+            .OnDelete(DeleteBehavior.Cascade);
     }
 }

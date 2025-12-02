@@ -35,7 +35,6 @@ public class KnowledgeBase : IAggregateRoot
     /// </summary>
     public Document AddDocument(string name, string filePath, string extension, string fileHash)
     {
-        // 这里可以添加业务校验，例如检查文件名是否重复
         var document = new Document(Id, name, filePath, extension, fileHash);
         _documents.Add(document);
         return document;

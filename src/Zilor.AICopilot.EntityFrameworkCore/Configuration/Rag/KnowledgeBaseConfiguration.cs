@@ -25,12 +25,5 @@ public class KnowledgeBaseConfiguration : IEntityTypeConfiguration<KnowledgeBase
         builder.Property(kb => kb.EmbeddingModelId)
             .IsRequired()
             .HasColumnName("embedding_model_id");
-
-        // 配置导航属性 Documents
-        builder.HasMany(kb => kb.Documents)
-            .WithOne(d => d.KnowledgeBase)
-            .HasForeignKey(d => d.KnowledgeBaseId)
-            .IsRequired()
-            .OnDelete(DeleteBehavior.Cascade); // 删除知识库时级联删除文档
     }
 }

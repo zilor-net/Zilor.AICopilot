@@ -1,5 +1,6 @@
 ﻿using System.Net.ServerSentEvents;
 using System.Text.Json;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Zilor.AICopilot.AiGatewayService.Agents;
 using Zilor.AICopilot.AiGatewayService.Commands.ConversationTemplates;
@@ -13,6 +14,7 @@ using Zilor.AICopilot.HttpApi.Infrastructure;
 namespace Zilor.AICopilot.HttpApi.Controllers;
 
 [Route("/api/aigateway")]
+[Authorize] // 默认开启认证
 public class AiGatewayController : ApiControllerBase
 {
     [HttpPost("language-model")]

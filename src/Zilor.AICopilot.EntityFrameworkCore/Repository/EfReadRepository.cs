@@ -30,4 +30,40 @@ public class EfReadRepository<T>(AiCopilotDbContext dbContext) : IReadRepository
     {
         return await dbContext.Set<T>().Where(expression).CountAsync(cancellationToken);
     }
+    
+    public async Task<T?> GetAsync(
+        Expression<Func<T, bool>> expression, 
+        Expression<Func<T, object>>[]? includes = null, 
+        CancellationToken cancellationToken = default)
+    {
+        var query = dbContext.Set<T>().AsQueryable();
+
+        if (includes != null)
+        {
+            foreach (var include in includes)
+            {
+                query = query.Include(include);
+            }
+        }
+
+        return await query.FirstOrDefaultAsync(expression, cancellationToken);
+    }
+
+    public async Task<List<T>> GetListAsync(
+        Expression<Func<T, bool>> expression, 
+        Expression<Func<T, object>>[]? includes = null, 
+        CancellationToken cancellationToken = default)
+    {
+        var query = dbContext.Set<T>().AsQueryable();
+
+        if (includes != null)
+        {
+            foreach (var include in includes)
+            {
+                query = query.Include(include);
+            }
+        }
+
+        return await query.Where(expression).ToListAsync(cancellationToken);
+    }
 }

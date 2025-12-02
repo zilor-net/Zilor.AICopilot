@@ -11,6 +11,7 @@ public class EmbeddingModel : IAggregateRoot
     public EmbeddingModel(
         string name,
         string provider,
+        string baseUrl,
         string modelName,
         int dimensions,
         int maxTokens)
@@ -18,6 +19,7 @@ public class EmbeddingModel : IAggregateRoot
         Id = Guid.NewGuid();
         Name = name;
         Provider = provider;
+        BaseUrl = baseUrl;
         ModelName = modelName;
         Dimensions = dimensions;
         MaxTokens = maxTokens;
@@ -35,6 +37,16 @@ public class EmbeddingModel : IAggregateRoot
     /// 模型提供商标识 (如: "OpenAI", "AzureOpenAI", "Ollama")
     /// </summary>
     public string Provider { get; set; } = string.Empty;
+    
+    /// <summary>
+    /// 模型提供者的 API BaseUrl
+    /// </summary>
+    public string BaseUrl { get; set; } = string.Empty;
+    
+    /// <summary>
+    /// 模型提供商的 API Key（没有保持为空）
+    /// </summary>
+    public string? ApiKey { get; set; }
 
     /// <summary>
     /// 实际的模型标识符 (如: "text-embedding-3-small")

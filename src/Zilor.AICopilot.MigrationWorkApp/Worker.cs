@@ -74,7 +74,7 @@ public class Worker(
                 Console.WriteLine("创建管理员失败：" + string.Join(",", result.Errors.Select(e => e.Description)));
         }
 
-        // 创建默认模型
+        // 创建默认语言模型
         if (!await dbContext.LanguageModels.AnyAsync(cancellationToken: cancellationToken))
         {
             await dbContext.LanguageModels.AddRangeAsync(AiGatewayData.LanguageModels(), cancellationToken);
@@ -84,6 +84,18 @@ public class Worker(
         if (!await dbContext.ConversationTemplates.AnyAsync(cancellationToken: cancellationToken))
         {
             await dbContext.ConversationTemplates.AddRangeAsync(AiGatewayData.ConversationTemplates(), cancellationToken);
+        }
+        
+        // 创建默认嵌入模型
+        if (!await dbContext.EmbeddingModels.AnyAsync(cancellationToken: cancellationToken))
+        {
+            await dbContext.EmbeddingModels.AddRangeAsync(RagData.EmbeddingModels(), cancellationToken);
+        }
+        
+        // 创建默认知识库
+        if (!await dbContext.KnowledgeBases.AnyAsync(cancellationToken: cancellationToken))
+        {
+            await dbContext.KnowledgeBases.AddRangeAsync(RagData.KnowledgeBases(), cancellationToken);
         }
         
         await dbContext.SaveChangesAsync(cancellationToken);

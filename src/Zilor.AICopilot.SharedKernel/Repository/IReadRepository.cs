@@ -25,7 +25,7 @@ public interface IReadRepository<T> where T : class, IAggregateRoot
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
     Task<T?> GetByIdAsync<TKey>(TKey id, CancellationToken cancellationToken = default);
-
+    
     /// <summary>
     ///     查询实体集合
     /// </summary>
@@ -41,4 +41,28 @@ public interface IReadRepository<T> where T : class, IAggregateRoot
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
     Task<int> GetCountAsync(Expression<Func<T, bool>> expression, CancellationToken cancellationToken = default);
+    
+    /// <summary>
+    /// 根据条件获取单条实体，并包含指定的导航属性
+    /// </summary>
+    /// <param name="expression">查询条件</param>
+    /// <param name="includes">需要加载的导航属性表达式数组</param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
+    Task<T?> GetAsync(
+        Expression<Func<T, bool>> expression, 
+        Expression<Func<T, object>>[]? includes = null,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// 根据条件获取实体列表，并包含指定的导航属性
+    /// </summary>
+    /// <param name="expression">查询条件</param>
+    /// <param name="includes">需要加载的导航属性表达式数组</param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
+    Task<List<T>> GetListAsync(
+        Expression<Func<T, bool>> expression, 
+        Expression<Func<T, object>>[]? includes = null, 
+        CancellationToken cancellationToken = default);
 }
