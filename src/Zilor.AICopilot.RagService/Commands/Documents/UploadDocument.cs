@@ -1,7 +1,5 @@
-﻿// 引入 Linq
-using System.Security.Cryptography;
+﻿using System.Security.Cryptography;
 using MassTransit;
-using Microsoft.EntityFrameworkCore;
 using Zilor.AICopilot.Core.Rag.Aggregates.KnowledgeBase;
 using Zilor.AICopilot.Services.Common.Attributes;
 using Zilor.AICopilot.Services.Common.Contracts;

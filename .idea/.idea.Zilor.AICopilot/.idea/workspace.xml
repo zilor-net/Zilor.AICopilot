@@ -9,20 +9,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f4f71ff8-869c-4e55-85b9-f9116211e89c" name="更改" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.Core.Rag/Aggregates/KnowledgeBase/Document.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.Core.Rag/Aggregates/KnowledgeBase/Document.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.Core.Rag/Aggregates/KnowledgeBase/DocumentChunk.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.Core.Rag/Aggregates/KnowledgeBase/DocumentChunk.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.Core.Rag/Aggregates/KnowledgeBase/KnowledgeBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.Core.Rag/Aggregates/KnowledgeBase/KnowledgeBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.EntityFrameworkCore/Configuration/Rag/DocumentChunkConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.EntityFrameworkCore/Configuration/Rag/DocumentChunkConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.EntityFrameworkCore/Configuration/Rag/DocumentConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.EntityFrameworkCore/Configuration/Rag/DocumentConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.EntityFrameworkCore/Configuration/Rag/KnowledgeBaseConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.EntityFrameworkCore/Configuration/Rag/KnowledgeBaseConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.EntityFrameworkCore/Migrations/20251202064058_Initial.Designer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.EntityFrameworkCore/Migrations/20251202064058_Initial.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.EntityFrameworkCore/Migrations/AiCopilotDbContextModelSnapshot.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.RagService/Commands/Documents/UploadDocument.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.RagService/Commands/Documents/UploadDocument.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.Services.Common/Events/DocumentUploadedEvent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.Services.Common/Events/DocumentUploadedEvent.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -266,7 +254,7 @@
       <workItem from="1764385322455" duration="7322000" />
       <workItem from="1764417286382" duration="1856000" />
       <workItem from="1764579739648" duration="2660000" />
-      <workItem from="1764640405965" duration="17964000" />
+      <workItem from="1764640405965" duration="19512000" />
     </task>
     <task id="LOCAL-00001" summary="chore(ide): 更新IDE配置文件并清理无用设置&#10;&#10;- 移除.idea目录下的.gitignore文件中冗余的忽略规则&#10;- 删除数据源配置文件dataSources.xml&#10;- 更新vcs.xml中的Git映射路径为空字符串&#10;- 新增projectSettingsUpdater.xml以优化项目设置更新机制&#10;- 添加完整的workspace.xml运行配置，支持Aspire Host和HTTP API调试&#10;-为多个命令和查询类文件补充必要的命名空间引用">
       <option name="closed" value="true" />
@@ -492,7 +480,15 @@
       <option name="project" value="LOCAL" />
       <updated>1764667805867</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="refactor(rag): 将文档和文档切片的主键类型从Guid改为int&#10;&#10;- 修改Document类的主键Id类型为int- 修改DocumentChunk类的主键Id类型为int- 更新DocumentChunk构造函数中的documentId参数类型为int&#10;- 调整MarkChunkAsEmbedded方法的chunkId参数类型为int- 移除Document类中Id的初始化逻辑">
+      <option name="closed" value="true" />
+      <created>1764671875170</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1764671875170</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -531,7 +527,8 @@
     <MESSAGE value="feat(rag): 添加RAG核心领域模型&#10;&#10;- 新增KnowledgeBase聚合根，包含文档集合导航属性&#10;- 新增Document实体，定义文档元数据及处理状态&#10;- 新增DocumentChunk实体，表示文档切片及其向量标识&#10;- 新增EmbeddingModel聚合根，管理嵌入模型配置信息&#10;- 创建Zilor.AICopilot.Core.Rag项目并集成到解决方案&#10;- 更新IDEA配置文件，移除无效数据源配置项" />
     <MESSAGE value="feat(rag): 添加RAG模块的核心领域模型和数据库配置&#10;&#10;- 新增 EmbeddingModel 聚合根，用于管理嵌入模型配置&#10;- 新增 KnowledgeBase 聚合根，包含文档集合导航属性- 新增 Document 实体，定义文档元数据及处理状态&#10;- 新增 DocumentChunk 实体，表示文档切片及其向量标识-为以上实体添加 Entity Framework Core 配置类&#10;- 更新 AiCopilotDbContext，加入新的 DbSet 和模型绑定&#10;- 添加新的数据库迁移文件以创建相关表结构&#10;- 升级 PostgreSQL EF Core 提供程序版本至 10.0.0&#10;- 在项目间建立对 Zilor.AICopilot.Core.Rag 的引用关系" />
     <MESSAGE value="feat(migration): 删除初始迁移和RAG模块迁移文件&#10;&#10;- 删除了初始数据库迁移文件及其设计器文件&#10;- 删除了RAG模块相关的数据库迁移文件及其设计器文件&#10;- 清理了与旧数据结构相关的所有表定义和索引配置&#10;- 移除了对Asp Net Core Identity相关实体的迁移支持&#10;- 移除了对话模板、语言模型、会话消息等核心业务表的迁移历史&#10;- 清除了嵌入模型、知识库、文档及分块等相关RAG功能表的迁移记录" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(migration): 删除初始迁移和RAG模块迁移文件&#10;&#10;- 删除了初始数据库迁移文件及其设计器文件&#10;- 删除了RAG模块相关的数据库迁移文件及其设计器文件&#10;- 清理了与旧数据结构相关的所有表定义和索引配置&#10;- 移除了对Asp Net Core Identity相关实体的迁移支持&#10;- 移除了对话模板、语言模型、会话消息等核心业务表的迁移历史&#10;- 清除了嵌入模型、知识库、文档及分块等相关RAG功能表的迁移记录" />
+    <MESSAGE value="refactor(rag): 将文档和文档切片的主键类型从Guid改为int&#10;&#10;- 修改Document类的主键Id类型为int- 修改DocumentChunk类的主键Id类型为int- 更新DocumentChunk构造函数中的documentId参数类型为int&#10;- 调整MarkChunkAsEmbedded方法的chunkId参数类型为int- 移除Document类中Id的初始化逻辑" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor(rag): 将文档和文档切片的主键类型从Guid改为int&#10;&#10;- 修改Document类的主键Id类型为int- 修改DocumentChunk类的主键Id类型为int- 更新DocumentChunk构造函数中的documentId参数类型为int&#10;- 调整MarkChunkAsEmbedded方法的chunkId参数类型为int- 移除Document类中Id的初始化逻辑" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
