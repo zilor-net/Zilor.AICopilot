@@ -7,7 +7,7 @@ using Zilor.AICopilot.RagService.Commands.KnowledgeBases;
 namespace Zilor.AICopilot.HttpApi.Controllers;
 
 [Route("/api/rag")]
-[Authorize] // 默认开启认证
+[Authorize]
 public class RagController : ApiControllerBase
 {
     /// <summary>
@@ -23,9 +23,6 @@ public class RagController : ApiControllerBase
     /// <summary>
     /// 上传文档
     /// </summary>
-    /// <remarks>
-    /// 支持 multipart/form-data 格式上传。
-    /// </remarks>
     [HttpPost("document")]
     [DisableRequestSizeLimit] // 允许上传大文件
     public async Task<IActionResult> UploadDocument(

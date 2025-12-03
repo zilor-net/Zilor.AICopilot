@@ -9,8 +9,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f4f71ff8-869c-4e55-85b9-f9116211e89c" name="更改" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.RagService/Commands/Documents/UploadDocument.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.RagService/Commands/Documents/UploadDocument.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.HttpApi/Controllers/RagController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.HttpApi/Controllers/RagController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,19 +125,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Aspire Host.Zilor.AICopilot.AppHost: http.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "git-widget-placeholder": "22.构建RAG数据接入层",
-    "nodejs_package_manager_path": "npm",
-    "service.view.auto.scroll.to.source": "true",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Aspire Host.Zilor.AICopilot.AppHost: http.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;22.构建RAG数据接入层&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;service.view.auto.scroll.to.source&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Aspire Host.Zilor.AICopilot.AppHost: http">
     <configuration name="Zilor.AICopilot.AppHost: http" type="AspireHostConfiguration" factoryName="Aspire Host" activateToolWindowBeforeRun="false">
       <option name="PROJECT_FILE_PATH" value="$PROJECT_DIR$/src/Zilor.AICopilot.AppHost/Zilor.AICopilot.AppHost.csproj" />
@@ -254,7 +256,7 @@
       <workItem from="1764385322455" duration="7322000" />
       <workItem from="1764417286382" duration="1856000" />
       <workItem from="1764579739648" duration="2660000" />
-      <workItem from="1764640405965" duration="19512000" />
+      <workItem from="1764640405965" duration="20812000" />
     </task>
     <task id="LOCAL-00001" summary="chore(ide): 更新IDE配置文件并清理无用设置&#10;&#10;- 移除.idea目录下的.gitignore文件中冗余的忽略规则&#10;- 删除数据源配置文件dataSources.xml&#10;- 更新vcs.xml中的Git映射路径为空字符串&#10;- 新增projectSettingsUpdater.xml以优化项目设置更新机制&#10;- 添加完整的workspace.xml运行配置，支持Aspire Host和HTTP API调试&#10;-为多个命令和查询类文件补充必要的命名空间引用">
       <option name="closed" value="true" />
@@ -488,7 +490,15 @@
       <option name="project" value="LOCAL" />
       <updated>1764671875170</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="refactor(rag): 将文档和文档切片的主键类型从Guid改为int- 修改Document类的主键Id类型为int&#10;- 修改DocumentChunk类的主键Id类型为int&#10;- 更新DocumentChunk构造函数中的documentId参数类型为int&#10;- 调整MarkChunkAsEmbedded方法的chunkId参数类型为int&#10;- 移除Document类中Id的初始化逻辑&#10;- 移除了EntityFrameworkCore相关的using引用&#10;- 清理了无用的变更记录和IDE配置项">
+      <option name="closed" value="true" />
+      <created>1764673589895</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1764673589895</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -528,7 +538,8 @@
     <MESSAGE value="feat(rag): 添加RAG模块的核心领域模型和数据库配置&#10;&#10;- 新增 EmbeddingModel 聚合根，用于管理嵌入模型配置&#10;- 新增 KnowledgeBase 聚合根，包含文档集合导航属性- 新增 Document 实体，定义文档元数据及处理状态&#10;- 新增 DocumentChunk 实体，表示文档切片及其向量标识-为以上实体添加 Entity Framework Core 配置类&#10;- 更新 AiCopilotDbContext，加入新的 DbSet 和模型绑定&#10;- 添加新的数据库迁移文件以创建相关表结构&#10;- 升级 PostgreSQL EF Core 提供程序版本至 10.0.0&#10;- 在项目间建立对 Zilor.AICopilot.Core.Rag 的引用关系" />
     <MESSAGE value="feat(migration): 删除初始迁移和RAG模块迁移文件&#10;&#10;- 删除了初始数据库迁移文件及其设计器文件&#10;- 删除了RAG模块相关的数据库迁移文件及其设计器文件&#10;- 清理了与旧数据结构相关的所有表定义和索引配置&#10;- 移除了对Asp Net Core Identity相关实体的迁移支持&#10;- 移除了对话模板、语言模型、会话消息等核心业务表的迁移历史&#10;- 清除了嵌入模型、知识库、文档及分块等相关RAG功能表的迁移记录" />
     <MESSAGE value="refactor(rag): 将文档和文档切片的主键类型从Guid改为int&#10;&#10;- 修改Document类的主键Id类型为int- 修改DocumentChunk类的主键Id类型为int- 更新DocumentChunk构造函数中的documentId参数类型为int&#10;- 调整MarkChunkAsEmbedded方法的chunkId参数类型为int- 移除Document类中Id的初始化逻辑" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor(rag): 将文档和文档切片的主键类型从Guid改为int&#10;&#10;- 修改Document类的主键Id类型为int- 修改DocumentChunk类的主键Id类型为int- 更新DocumentChunk构造函数中的documentId参数类型为int&#10;- 调整MarkChunkAsEmbedded方法的chunkId参数类型为int- 移除Document类中Id的初始化逻辑" />
+    <MESSAGE value="refactor(rag): 将文档和文档切片的主键类型从Guid改为int- 修改Document类的主键Id类型为int&#10;- 修改DocumentChunk类的主键Id类型为int&#10;- 更新DocumentChunk构造函数中的documentId参数类型为int&#10;- 调整MarkChunkAsEmbedded方法的chunkId参数类型为int&#10;- 移除Document类中Id的初始化逻辑&#10;- 移除了EntityFrameworkCore相关的using引用&#10;- 清理了无用的变更记录和IDE配置项" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor(rag): 将文档和文档切片的主键类型从Guid改为int- 修改Document类的主键Id类型为int&#10;- 修改DocumentChunk类的主键Id类型为int&#10;- 更新DocumentChunk构造函数中的documentId参数类型为int&#10;- 调整MarkChunkAsEmbedded方法的chunkId参数类型为int&#10;- 移除Document类中Id的初始化逻辑&#10;- 移除了EntityFrameworkCore相关的using引用&#10;- 清理了无用的变更记录和IDE配置项" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
