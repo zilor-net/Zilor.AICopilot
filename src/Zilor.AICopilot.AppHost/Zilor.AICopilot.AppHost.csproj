@@ -13,6 +13,8 @@
         <ProjectReference Include="..\Zilor.AICopilot.HttpApi\Zilor.AICopilot.HttpApi.csproj"/>
 
         <ProjectReference Include="..\Zilor.AICopilot.MigrationWorkApp\Zilor.AICopilot.MigrationWorkApp.csproj"/>
+
+        <ProjectReference Include="..\Zilor.AICopilot.RagWorker\Zilor.AICopilot.RagWorker.csproj" />
     </ItemGroup>
 
     <ItemGroup>

@@ -6,13 +6,24 @@
     <projectFile profileName="http">src/Zilor.AICopilot.HttpApi/Zilor.AICopilot.HttpApi.csproj</projectFile>
     <projectFile profileName="https">src/Zilor.AICopilot.HttpApi/Zilor.AICopilot.HttpApi.csproj</projectFile>
     <projectFile profileName="Zilor.AICopilot.MigrationService">src/Zilor.AICopilot.MigrationWorkApp/Zilor.AICopilot.MigrationWorkApp.csproj</projectFile>
+    <projectFile profileName="Zilor.AICopilot.RagWorker">src/Zilor.AICopilot.RagWorker/Zilor.AICopilot.RagWorker.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f4f71ff8-869c-4e55-85b9-f9116211e89c" name="更改" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Consumers/DocumentUploadedConsumer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Services/Parsers/DocumentParserFactory.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Services/Parsers/IDocumentParser.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Services/Parsers/PdfDocumentParser.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Services/Parsers/TextDocumentParser.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Services/RagService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.HttpApi/Controllers/RagController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.HttpApi/Controllers/RagController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Zilor.AICopilot.sln" beforeDir="false" afterPath="$PROJECT_DIR$/Zilor.AICopilot.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Zilor.AICopilot.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/Zilor.AICopilot.sln.DotSettings.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.AppHost/AppHost.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AppHost/AppHost.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.AppHost/Zilor.AICopilot.AppHost.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AppHost/Zilor.AICopilot.AppHost.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.EventBus/DependencyInjection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.EventBus/DependencyInjection.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.Infrastructure/Storage/LocalFileStorageService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.Infrastructure/Storage/LocalFileStorageService.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,6 +88,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d28f68744e0ddb602b2fc767e8a063f36c58755c1768d01caae6c8717d4b/WorkflowBuilder.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d35e8ffa74bffee59a567e0cb4d3e157b7663ec3f557cf93b849d3d5332c6/AITool.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/dda7b8ef227bef5b52c48844fc2da2cedfcc8fcf14357f1d5d1c162f3bdf15/ChatRole.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/f8d9ab13e4cd85f83bb523338a787ad6613e1c982a05474deebe58a969980/Document.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/faff2344bc72dc7a226866f16ccddde74b724dab27df848264b627085/ChatClientAgent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Agents/ChatAgentFactory.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Agents/ChatStreamRequest.cs" root0="FORCE_HIGHLIGHTING" />
@@ -97,6 +109,7 @@
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.EntityFrameworkCore/Configuration/Rag/EmbeddingModelConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.EntityFrameworkCore/Configuration/Rag/KnowledgeBaseConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.EventBus/DependencyInjection.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://D:/Repos/MyRepos/Zilor.AICopilot/src/Zilor.AICopilot.HttpApi/Controllers/RagController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.HttpApi/Controllers/RagController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.IdentityService/Plugins/IdentityServiceTools.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.Infrastructure/Storage/LocalFileStorageService.cs" root0="FORCE_HIGHLIGHTING" />
@@ -105,6 +118,12 @@
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.RagService/Commands/Documents/UploadDocument.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.RagService/Commands/KnowledgeBases/CreateKnowledgeBase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.RagService/DependencyInjection.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Consumers/DocumentUploadedConsumer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Services/Parsers/DocumentParserFactory.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Services/Parsers/IDocumentParser.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Services/Parsers/PdfDocumentParser.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Services/Parsers/TextDocumentParser.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Services/RagService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.Services.Common/Contracts/IFileStorageService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.Services.Common/Events/DocumentUploadedEvent.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -239,6 +258,22 @@
         <option name="Build" />
       </method>
     </configuration>
+    <configuration name="Zilor.AICopilot.RagWorker" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
+      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Zilor.AICopilot.RagWorker.csproj" />
+      <option name="LAUNCH_PROFILE_TFM" value="net10.0" />
+      <option name="LAUNCH_PROFILE_NAME" value="Zilor.AICopilot.RagWorker" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="GENERATE_APPLICATIONHOST_CONFIG" value="1" />
+      <option name="SHOW_IIS_EXPRESS_OUTPUT" value="0" />
+      <option name="SEND_DEBUG_REQUEST" value="1" />
+      <option name="ADDITIONAL_IIS_EXPRESS_ARGUMENTS" value="" />
+      <option name="AUTO_ATTACH_CHILDREN" value="0" />
+      <option name="MIXED_MODE_DEBUG" value="0" />
+      <method v="2">
+        <option name="Build" />
+      </method>
+    </configuration>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="默认任务">
@@ -257,6 +292,7 @@
       <workItem from="1764417286382" duration="1856000" />
       <workItem from="1764579739648" duration="2660000" />
       <workItem from="1764640405965" duration="20812000" />
+      <workItem from="1764725903193" duration="7249000" />
     </task>
     <task id="LOCAL-00001" summary="chore(ide): 更新IDE配置文件并清理无用设置&#10;&#10;- 移除.idea目录下的.gitignore文件中冗余的忽略规则&#10;- 删除数据源配置文件dataSources.xml&#10;- 更新vcs.xml中的Git映射路径为空字符串&#10;- 新增projectSettingsUpdater.xml以优化项目设置更新机制&#10;- 添加完整的workspace.xml运行配置，支持Aspire Host和HTTP API调试&#10;-为多个命令和查询类文件补充必要的命名空间引用">
       <option name="closed" value="true" />
@@ -498,7 +534,15 @@
       <option name="project" value="LOCAL" />
       <updated>1764673589895</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="refactor(rag): 将文档和文档切片的主键类型从Guid改为int&#10;&#10;- 修改Document类的主键Id类型为int&#10;- 修改DocumentChunk类的主键Id类型为int&#10;- 更新DocumentChunk构造函数中的documentId参数类型为int&#10;- 调整MarkChunkAsEmbedded方法的chunkId参数类型为int&#10;- 移除Document类中Id的初始化逻辑&#10;- 移除了EntityFrameworkCore相关的using引用&#10;- 清理了无用的变更记录和IDE配置项">
+      <option name="closed" value="true" />
+      <created>1764725927303</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1764725927303</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -539,7 +583,8 @@
     <MESSAGE value="feat(migration): 删除初始迁移和RAG模块迁移文件&#10;&#10;- 删除了初始数据库迁移文件及其设计器文件&#10;- 删除了RAG模块相关的数据库迁移文件及其设计器文件&#10;- 清理了与旧数据结构相关的所有表定义和索引配置&#10;- 移除了对Asp Net Core Identity相关实体的迁移支持&#10;- 移除了对话模板、语言模型、会话消息等核心业务表的迁移历史&#10;- 清除了嵌入模型、知识库、文档及分块等相关RAG功能表的迁移记录" />
     <MESSAGE value="refactor(rag): 将文档和文档切片的主键类型从Guid改为int&#10;&#10;- 修改Document类的主键Id类型为int- 修改DocumentChunk类的主键Id类型为int- 更新DocumentChunk构造函数中的documentId参数类型为int&#10;- 调整MarkChunkAsEmbedded方法的chunkId参数类型为int- 移除Document类中Id的初始化逻辑" />
     <MESSAGE value="refactor(rag): 将文档和文档切片的主键类型从Guid改为int- 修改Document类的主键Id类型为int&#10;- 修改DocumentChunk类的主键Id类型为int&#10;- 更新DocumentChunk构造函数中的documentId参数类型为int&#10;- 调整MarkChunkAsEmbedded方法的chunkId参数类型为int&#10;- 移除Document类中Id的初始化逻辑&#10;- 移除了EntityFrameworkCore相关的using引用&#10;- 清理了无用的变更记录和IDE配置项" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor(rag): 将文档和文档切片的主键类型从Guid改为int- 修改Document类的主键Id类型为int&#10;- 修改DocumentChunk类的主键Id类型为int&#10;- 更新DocumentChunk构造函数中的documentId参数类型为int&#10;- 调整MarkChunkAsEmbedded方法的chunkId参数类型为int&#10;- 移除Document类中Id的初始化逻辑&#10;- 移除了EntityFrameworkCore相关的using引用&#10;- 清理了无用的变更记录和IDE配置项" />
+    <MESSAGE value="refactor(rag): 将文档和文档切片的主键类型从Guid改为int&#10;&#10;- 修改Document类的主键Id类型为int&#10;- 修改DocumentChunk类的主键Id类型为int&#10;- 更新DocumentChunk构造函数中的documentId参数类型为int&#10;- 调整MarkChunkAsEmbedded方法的chunkId参数类型为int&#10;- 移除Document类中Id的初始化逻辑&#10;- 移除了EntityFrameworkCore相关的using引用&#10;- 清理了无用的变更记录和IDE配置项" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor(rag): 将文档和文档切片的主键类型从Guid改为int&#10;&#10;- 修改Document类的主键Id类型为int&#10;- 修改DocumentChunk类的主键Id类型为int&#10;- 更新DocumentChunk构造函数中的documentId参数类型为int&#10;- 调整MarkChunkAsEmbedded方法的chunkId参数类型为int&#10;- 移除Document类中Id的初始化逻辑&#10;- 移除了EntityFrameworkCore相关的using引用&#10;- 清理了无用的变更记录和IDE配置项" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

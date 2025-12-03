@@ -1,4 +1,5 @@
-﻿using MassTransit;
+﻿using System.Reflection;
+using MassTransit;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 
@@ -6,10 +7,15 @@ namespace Zilor.AICopilot.EventBus;
 
 public static class DependencyInjection
 {
-    public static void AddEventBus(this IHostApplicationBuilder builder) 
+    public static void AddEventBus(this IHostApplicationBuilder builder, params Assembly[] assemblies) 
     {
         builder.Services.AddMassTransit(x =>
         {
+            if (assemblies.Length > 0)
+            {
+                x.AddConsumers(assemblies);
+            }
+            
             x.SetKebabCaseEndpointNameFormatter();
 
             // 默认配置 RabbitMQ

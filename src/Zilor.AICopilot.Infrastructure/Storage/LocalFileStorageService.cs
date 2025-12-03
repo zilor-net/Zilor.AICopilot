@@ -1,10 +1,10 @@
-﻿using Microsoft.AspNetCore.Hosting;
-using Zilor.AICopilot.Services.Common.Contracts;
+﻿using Zilor.AICopilot.Services.Common.Contracts;
 
 namespace Zilor.AICopilot.Infrastructure.Storage;
 
-public class LocalFileStorageService(IWebHostEnvironment environment) : IFileStorageService
+public class LocalFileStorageService : IFileStorageService
 {
+    private const string RootPath = "D:\\";
     private const string UploadRoot = "uploads";
 
     public async Task<string> SaveAsync(Stream stream, string fileName, CancellationToken cancellationToken = default)
@@ -15,8 +15,7 @@ public class LocalFileStorageService(IWebHostEnvironment environment) : IFileSto
         var relativePath = Path.Combine(UploadRoot, datePath);
         
         // 获取程序根目录
-        var rootPath = environment.ContentRootPath;
-        var fullDirectory = Path.Combine(rootPath, relativePath);
+        var fullDirectory = Path.Combine(RootPath, relativePath);
 
         if (!Directory.Exists(fullDirectory))
         {
@@ -36,8 +35,7 @@ public class LocalFileStorageService(IWebHostEnvironment environment) : IFileSto
 
     public Task<Stream?> GetAsync(string path, CancellationToken cancellationToken = default)
     {
-        var rootPath = environment.WebRootPath;
-        var fullPath = Path.Combine(rootPath, path);
+        var fullPath = Path.Combine(RootPath, path);
 
         if (!File.Exists(fullPath)) return Task.FromResult<Stream?>(null);
 
@@ -47,8 +45,7 @@ public class LocalFileStorageService(IWebHostEnvironment environment) : IFileSto
 
     public Task DeleteAsync(string path, CancellationToken cancellationToken = default)
     {
-        var rootPath = environment.WebRootPath;
-        var fullPath = Path.Combine(rootPath, path);
+        var fullPath = Path.Combine(RootPath, path);
 
         if (File.Exists(fullPath))
         {
