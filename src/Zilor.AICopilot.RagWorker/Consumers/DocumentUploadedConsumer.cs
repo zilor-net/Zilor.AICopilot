@@ -62,9 +62,6 @@ public class DocumentUploadedConsumer(
                 errorDoc.MarkAsFailed(ex.Message);
                 await dbContext.SaveChangesAsync();
             }
-            
-            // 根据业务需求，决定是否抛出异常以触发 RabbitMQ 的重试机制
-            // 这里我们选择吞掉异常，因为已经记录了 Failed 状态，避免死信队列堆积
         }
     }
 }

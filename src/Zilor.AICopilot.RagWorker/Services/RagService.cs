@@ -1,6 +1,9 @@
 ﻿
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.AI;
 using Zilor.AICopilot.Core.Rag.Aggregates.KnowledgeBase;
 using Zilor.AICopilot.EntityFrameworkCore;
+using Zilor.AICopilot.RagWorker.Services.Embeddings;
 using Zilor.AICopilot.RagWorker.Services.Parsers;
 using Zilor.AICopilot.Services.Common.Contracts;
 
@@ -10,6 +13,7 @@ public class RagService(
     IFileStorageService fileStorage,
     DocumentParserFactory parserFactory,
     TextSplitterService textSplitter,
+    EmbeddingGeneratorFactory embeddingFactory,
     AiCopilotDbContext dbContext,
     ILogger<RagService> logger)
 {
@@ -70,7 +74,59 @@ public class RagService(
         await dbContext.SaveChangesAsync(cancellationToken);
 
         // --- Step 4: 嵌入  ---
-        // TODO: 嵌入
+        // 1. 获取嵌入模型配置
+        var embeddingModelConfig = await dbContext.EmbeddingModels.AsNoTracking()
+            .FirstOrDefaultAsync(em => em.Id == document.KnowledgeBase.EmbeddingModelId, cancellationToken: cancellationToken);
+
+        if (embeddingModelConfig == null)
+        {
+            throw new InvalidOperationException($"未找到 ID 为 {document.KnowledgeBase.EmbeddingModelId} 的嵌入模型配置");
+        }
+
+        // 2. 创建嵌入生成器
+        using var generator = embeddingFactory.CreateGenerator(embeddingModelConfig);
+
+        // 3. 准备分批
+        // [配置建议] 
+        // - 本地模型 (Ollama/LM Studio): 建议 20 ~ 50 (取决于显卡显存)
+        // - 云端模型 (OpenAI/Azure): 建议 50 ~ 100
+        const int batchSize = 20; 
+
+        // 用于收集所有生成的向量结果
+        var allEmbeddings = new List<Embedding<float>>();
+
+        // 将段落切分为多个批次
+        var batches = paragraphs.Chunk(batchSize).ToArray();
+        var totalBatches = batches.Length;
+
+        logger.LogInformation("共 {Total} 个段落，将分为 {Batches} 个批次处理 (BatchSize={Size})", 
+            paragraphs.Count, totalBatches, batchSize);
+
+        // 4. 循环处理每一批
+        for (var i = 0; i < totalBatches; i++)
+        {
+            var currentBatch = batches[i];
+    
+            // 记录进度
+            logger.LogInformation("正在处理第 {Current}/{Total} 批...", i + 1, totalBatches);
+
+            try 
+            {
+                // 调用模型生成当前批次的向量
+                var batchResult = await generator.GenerateAsync(currentBatch, cancellationToken: cancellationToken);
+        
+                // 将结果添加到总列表中
+                allEmbeddings.AddRange(batchResult);
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "第 {Current} 批次向量化失败", i + 1);
+                throw; // 依然抛出异常，触发整体重试
+            }
+        }
+        
+        // 5. 结果汇总
+        logger.LogInformation("向量化完成，共生成 {Count} 个向量，维度: {Dim}", allEmbeddings.Count, allEmbeddings.First().Vector.Length);
 
         // --- Step 5: 存储  ---
         // TODO: 存储

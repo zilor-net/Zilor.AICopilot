@@ -10,16 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f4f71ff8-869c-4e55-85b9-f9116211e89c" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.RagService/Commands/Documents/DeleteDocument.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Services/TextSplitterService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Services/TokenCounter/ITokenCounter.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Services/TokenCounter/SharpTokenCounter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.AppHost/AppHost.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AppHost/AppHost.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Services/RagService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Services/RagService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Zilor.AICopilot.RagWorker.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Zilor.AICopilot.RagWorker.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Consumers/DocumentUploadedConsumer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Consumers/DocumentUploadedConsumer.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,7 +21,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="23.实现文档加载" />
+        <entry key="$PROJECT_DIR$" value="24.实现文本分割" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -50,10 +42,13 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/49eda1fe540c4102a1197125bc8a65d629a20/6b/fd86118f/AgentRunOptions.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/64ffd70a777d43ef857c77e7f414117179c20/52/36ae6c29/AIFunctionFactory.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/64ffd70a777d43ef857c77e7f414117179c20/fb/265e8f34/AIFunction.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/64ffd70a777d43ef857c77e7f414117179c20/ff/be0ad7fa/IEmbeddingGenerator`2.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6d7771833c774ed1a51c9826a96bd8b779620/c5/d825389a/ChatOptions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/9da59180a5724e5a8c9803b1b52205304259d0/79/fd53b25d/OpenAIClientOptions.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f8223262ead5481cb80512514534e962a3620/b5/7a86166c/ReflectingExecutor`1.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/103815eff8476d6060a951b3320b67db27a4cc05a3c34d4d5136388f0471275/AsyncIteratorMethodBuilder.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/1b2bfa11dec29e6e894153b59f9d9b0477995544d30abaf45eca7cfc0173454/AIFunctionFactoryOptions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/1d5a23c82d06ccf8bd3efe8b2dbab08dd44f33c955bb014b8becbc065179/ResilienceHttpClientBuilderExtensions.StandardResilience.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/223f3993d7b717137d1eac7a1da6b5a458d1d124b0f8a62a3450f9bd6c89af/CallSiteValidator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2565b9d99fdde488bc7801b84387b2cc864959cfb63212e1ff576fc9c6bb7e/CancellationToken.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2f2b1d92f1ffcf2dabd664473f8c9dafa6039595ac228ce4b75a0f1619c5991/AsyncTaskMethodBuilderT.cs" root0="FORCE_HIGHLIGHTING" />
@@ -115,6 +110,7 @@
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.RagService/Commands/KnowledgeBases/CreateKnowledgeBase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.RagService/DependencyInjection.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Consumers/DocumentUploadedConsumer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Services/Embeddings/EmbeddingGeneratorFactory.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Services/Parsers/DocumentParserFactory.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Services/Parsers/IDocumentParser.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Services/Parsers/PdfDocumentParser.cs" root0="FORCE_HIGHLIGHTING" />
@@ -150,9 +146,8 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "git-widget-placeholder": "24.实现文本分割",
+    "git-widget-placeholder": "25.实现文本嵌入",
     "nodejs_package_manager_path": "npm",
-    "service.view.auto.scroll.to.source": "true",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -292,7 +287,7 @@
       <workItem from="1764579739648" duration="2660000" />
       <workItem from="1764640405965" duration="20812000" />
       <workItem from="1764725903193" duration="8391000" />
-      <workItem from="1764813316613" duration="6698000" />
+      <workItem from="1764813316613" duration="19467000" />
     </task>
     <task id="LOCAL-00001" summary="chore(ide): 更新IDE配置文件并清理无用设置&#10;&#10;- 移除.idea目录下的.gitignore文件中冗余的忽略规则&#10;- 删除数据源配置文件dataSources.xml&#10;- 更新vcs.xml中的Git映射路径为空字符串&#10;- 新增projectSettingsUpdater.xml以优化项目设置更新机制&#10;- 添加完整的workspace.xml运行配置，支持Aspire Host和HTTP API调试&#10;-为多个命令和查询类文件补充必要的命名空间引用">
       <option name="closed" value="true" />
@@ -550,7 +545,23 @@
       <option name="project" value="LOCAL" />
       <updated>1764744117315</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="feat(rag): 实现文本分割与Token计算功能&#10;&#10;- 添加文本分割服务TextSplitterService，基于Semantic Kernel实现语义段落分割&#10;- 引入SharpToken库实现Token计数器SharpTokenCounter&#10;- 定义ITokenCounter接口抽象Token计算逻辑&#10;- 在RagService中集成文本分割逻辑，支持文档切片处理&#10;- 注册相关服务到DI容器，包括Token计数器和文本分割服务&#10;- 添加DeleteDocument命令处理程序，支持删除知识库文档&#10;- 修复AppHost中项目引用命名空间问题&#10;- 更新项目依赖包，引入Semantic Kernel和SharpToken库">
+      <option name="closed" value="true" />
+      <created>1764826749630</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1764826749630</updated>
+    </task>
+    <task id="LOCAL-00034" summary="feat(rag): 实现文本嵌入生成功能&#10;&#10;- 新增 EmbeddingGeneratorFactory 工厂类，用于创建嵌入生成器&#10;- 配置专用的 EmbeddingClient HttpClient 并设置超时时间- 在 RagService 中集成嵌入生成逻辑，支持批量处理段落&#10;- 调整 HTTP 客户端韧性配置，延长请求超时时间以适应 AI 接口&#10;- 更新种子数据中的嵌入模型配置信息- 注册相关服务到依赖注入容器&#10;- 引入 Microsoft.Extensions.AI.OpenAI 包支持嵌入功能">
+      <option name="closed" value="true" />
+      <created>1764836990847</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1764836990847</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -593,7 +604,9 @@
     <MESSAGE value="refactor(rag): 将文档和文档切片的主键类型从Guid改为int- 修改Document类的主键Id类型为int&#10;- 修改DocumentChunk类的主键Id类型为int&#10;- 更新DocumentChunk构造函数中的documentId参数类型为int&#10;- 调整MarkChunkAsEmbedded方法的chunkId参数类型为int&#10;- 移除Document类中Id的初始化逻辑&#10;- 移除了EntityFrameworkCore相关的using引用&#10;- 清理了无用的变更记录和IDE配置项" />
     <MESSAGE value="refactor(rag): 将文档和文档切片的主键类型从Guid改为int&#10;&#10;- 修改Document类的主键Id类型为int&#10;- 修改DocumentChunk类的主键Id类型为int&#10;- 更新DocumentChunk构造函数中的documentId参数类型为int&#10;- 调整MarkChunkAsEmbedded方法的chunkId参数类型为int&#10;- 移除Document类中Id的初始化逻辑&#10;- 移除了EntityFrameworkCore相关的using引用&#10;- 清理了无用的变更记录和IDE配置项" />
     <MESSAGE value="feat(rag): 添加RAG Worker服务以处理文档上传事件&#10;&#10;- 新增RAG Worker项目，用于消费文档上传事件并进行处理&#10;- 实现文档解析器工厂和接口，支持多种文件格式解析&#10;- 添加PDF和文本文件解析器，使用PdfPig库处理PDF文件&#10;- 创建RAG服务，负责文档加载、解析和后续处理流程&#10;- 配置事件总线自动扫描Consumer，注册相关服务依赖- 修改本地文件存储服务，将文件存储路径改为固定目录&#10;- 在AppHost中添加RAG Worker项目引用和容器配置- 更新解决方案文件，包含新项目的配置信息" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(rag): 添加RAG Worker服务以处理文档上传事件&#10;&#10;- 新增RAG Worker项目，用于消费文档上传事件并进行处理&#10;- 实现文档解析器工厂和接口，支持多种文件格式解析&#10;- 添加PDF和文本文件解析器，使用PdfPig库处理PDF文件&#10;- 创建RAG服务，负责文档加载、解析和后续处理流程&#10;- 配置事件总线自动扫描Consumer，注册相关服务依赖- 修改本地文件存储服务，将文件存储路径改为固定目录&#10;- 在AppHost中添加RAG Worker项目引用和容器配置- 更新解决方案文件，包含新项目的配置信息" />
+    <MESSAGE value="feat(rag): 实现文本分割与Token计算功能&#10;&#10;- 添加文本分割服务TextSplitterService，基于Semantic Kernel实现语义段落分割&#10;- 引入SharpToken库实现Token计数器SharpTokenCounter&#10;- 定义ITokenCounter接口抽象Token计算逻辑&#10;- 在RagService中集成文本分割逻辑，支持文档切片处理&#10;- 注册相关服务到DI容器，包括Token计数器和文本分割服务&#10;- 添加DeleteDocument命令处理程序，支持删除知识库文档&#10;- 修复AppHost中项目引用命名空间问题&#10;- 更新项目依赖包，引入Semantic Kernel和SharpToken库" />
+    <MESSAGE value="feat(rag): 实现文本嵌入生成功能&#10;&#10;- 新增 EmbeddingGeneratorFactory 工厂类，用于创建嵌入生成器&#10;- 配置专用的 EmbeddingClient HttpClient 并设置超时时间- 在 RagService 中集成嵌入生成逻辑，支持批量处理段落&#10;- 调整 HTTP 客户端韧性配置，延长请求超时时间以适应 AI 接口&#10;- 更新种子数据中的嵌入模型配置信息- 注册相关服务到依赖注入容器&#10;- 引入 Microsoft.Extensions.AI.OpenAI 包支持嵌入功能" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(rag): 实现文本嵌入生成功能&#10;&#10;- 新增 EmbeddingGeneratorFactory 工厂类，用于创建嵌入生成器&#10;- 配置专用的 EmbeddingClient HttpClient 并设置超时时间- 在 RagService 中集成嵌入生成逻辑，支持批量处理段落&#10;- 调整 HTTP 客户端韧性配置，延长请求超时时间以适应 AI 接口&#10;- 更新种子数据中的嵌入模型配置信息- 注册相关服务到依赖注入容器&#10;- 引入 Microsoft.Extensions.AI.OpenAI 包支持嵌入功能" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
