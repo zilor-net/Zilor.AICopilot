@@ -1,7 +1,9 @@
+using Microsoft.Extensions.Http.Resilience;
 using Zilor.AICopilot.EntityFrameworkCore;
 using Zilor.AICopilot.EventBus;
 using Zilor.AICopilot.Infrastructure.Storage;
 using Zilor.AICopilot.RagWorker.Services;
+using Zilor.AICopilot.RagWorker.Services.Embeddings;
 using Zilor.AICopilot.RagWorker.Services.Parsers;
 using Zilor.AICopilot.RagWorker.Services.TokenCounter;
 using Zilor.AICopilot.Services.Common.Contracts;
@@ -22,6 +24,12 @@ builder.Services.AddSingleton<IFileStorageService, LocalFileStorageService>();
 // 将自动扫描当前程序集下的 Consumer
 builder.AddEventBus(typeof(Program).Assembly);
 
+// 注册嵌入服务专用的 HttpClient
+builder.Services.AddHttpClient("EmbeddingClient", client =>
+{
+    client.Timeout = TimeSpan.FromMinutes(20);
+});
+
 // 注册解析器
 builder.Services.AddSingleton<IDocumentParser, PdfDocumentParser>();
 builder.Services.AddSingleton<IDocumentParser, TextDocumentParser>();
@@ -34,6 +42,9 @@ builder.Services.AddSingleton<ITokenCounter, SharpTokenCounter>();
 
 // 注册文本分割服务
 builder.Services.AddSingleton<TextSplitterService>();
+
+// 注册嵌入生成器工厂
+builder.Services.AddSingleton<EmbeddingGeneratorFactory>();
 
 // 注册RAG服务
 builder.Services.AddScoped<RagService>();
