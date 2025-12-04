@@ -3,6 +3,7 @@ using Zilor.AICopilot.EventBus;
 using Zilor.AICopilot.Infrastructure.Storage;
 using Zilor.AICopilot.RagWorker.Services;
 using Zilor.AICopilot.RagWorker.Services.Parsers;
+using Zilor.AICopilot.RagWorker.Services.TokenCounter;
 using Zilor.AICopilot.Services.Common.Contracts;
 
 var builder = Host.CreateApplicationBuilder(args);
@@ -10,7 +11,7 @@ var builder = Host.CreateApplicationBuilder(args);
 builder.AddServiceDefaults();
 
 // 2. 注册数据库上下文 (PostgreSQL)
-// 这里的 "postgresdb" 连接字符串名称需与 AppHost 中定义的一致
+// 这里的连接字符串名称需与 AppHost 中定义的一致
 builder.AddNpgsqlDbContext<AiCopilotDbContext>("ai-copilot");
 
 // 3. 注册文件存储服务
@@ -19,7 +20,7 @@ builder.Services.AddSingleton<IFileStorageService, LocalFileStorageService>();
 
 // 4. 注册事件总线 (RabbitMQ)
 // 将自动扫描当前程序集下的 Consumer
-builder.AddEventBus(typeof(Program).Assembly); 
+builder.AddEventBus(typeof(Program).Assembly);
 
 // 注册解析器
 builder.Services.AddSingleton<IDocumentParser, PdfDocumentParser>();
@@ -28,8 +29,15 @@ builder.Services.AddSingleton<IDocumentParser, TextDocumentParser>();
 // 注册工厂
 builder.Services.AddSingleton<DocumentParserFactory>();
 
+// 注册Token计数器
+builder.Services.AddSingleton<ITokenCounter, SharpTokenCounter>();
+
+// 注册文本分割服务
+builder.Services.AddSingleton<TextSplitterService>();
+
 // 注册RAG服务
 builder.Services.AddScoped<RagService>();
+
 
 var host = builder.Build();
 host.Run();

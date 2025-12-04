@@ -24,7 +24,7 @@ builder.AddProject<Zilor_AICopilot_HttpApi>("aicopilot-httpapi")
     .WithReference(migration)
     .WaitForCompletion(migration);
 
-builder.AddProject<Projects.Zilor_AICopilot_RagWorker>("rag-worker")
+builder.AddProject<Zilor_AICopilot_RagWorker>("rag-worker")
     .WithReference(postgresdb) // 注入数据库连接
     .WithReference(rabbitmq)   // 注入 RabbitMQ 连接
     .WaitFor(postgresdb)       // 等待数据库启动
