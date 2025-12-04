@@ -1,4 +1,6 @@
 using Microsoft.Extensions.Http.Resilience;
+using Microsoft.Extensions.VectorData;
+using Microsoft.SemanticKernel.Connectors.Qdrant;
 using Zilor.AICopilot.EntityFrameworkCore;
 using Zilor.AICopilot.EventBus;
 using Zilor.AICopilot.Infrastructure.Storage;
@@ -6,6 +8,7 @@ using Zilor.AICopilot.RagWorker.Services;
 using Zilor.AICopilot.RagWorker.Services.Embeddings;
 using Zilor.AICopilot.RagWorker.Services.Parsers;
 using Zilor.AICopilot.RagWorker.Services.TokenCounter;
+using Zilor.AICopilot.RagWorker.Services.VectorStorage;
 using Zilor.AICopilot.Services.Common.Contracts;
 
 var builder = Host.CreateApplicationBuilder(args);
@@ -23,6 +26,11 @@ builder.Services.AddSingleton<IFileStorageService, LocalFileStorageService>();
 // 4. 注册事件总线 (RabbitMQ)
 // 将自动扫描当前程序集下的 Consumer
 builder.AddEventBus(typeof(Program).Assembly);
+
+// 注册 Qdrant 客户端
+builder.AddQdrantClient("qdrant");
+// 注册 Semantic Kernel 的 Qdrant 向量存储抽象
+builder.Services.AddQdrantVectorStore();
 
 // 注册嵌入服务专用的 HttpClient
 builder.Services.AddHttpClient("EmbeddingClient", client =>
@@ -45,6 +53,8 @@ builder.Services.AddSingleton<TextSplitterService>();
 
 // 注册嵌入生成器工厂
 builder.Services.AddSingleton<EmbeddingGeneratorFactory>();
+
+builder.Services.AddScoped<IVectorStorageService, QdrantVectorStorageService>();
 
 // 注册RAG服务
 builder.Services.AddScoped<RagService>();

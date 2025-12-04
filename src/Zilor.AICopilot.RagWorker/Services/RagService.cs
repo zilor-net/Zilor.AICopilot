@@ -5,6 +5,7 @@ using Zilor.AICopilot.Core.Rag.Aggregates.KnowledgeBase;
 using Zilor.AICopilot.EntityFrameworkCore;
 using Zilor.AICopilot.RagWorker.Services.Embeddings;
 using Zilor.AICopilot.RagWorker.Services.Parsers;
+using Zilor.AICopilot.RagWorker.Services.VectorStorage;
 using Zilor.AICopilot.Services.Common.Contracts;
 
 namespace Zilor.AICopilot.RagWorker.Services;
@@ -14,6 +15,7 @@ public class RagService(
     DocumentParserFactory parserFactory,
     TextSplitterService textSplitter,
     EmbeddingGeneratorFactory embeddingFactory,
+    IVectorStorageService vectorStorage,
     AiCopilotDbContext dbContext,
     ILogger<RagService> logger)
 {
@@ -129,10 +131,10 @@ public class RagService(
         logger.LogInformation("向量化完成，共生成 {Count} 个向量，维度: {Dim}", allEmbeddings.Count, allEmbeddings.First().Vector.Length);
 
         // --- Step 5: 存储  ---
-        // TODO: 存储
+        await vectorStorage.SaveAsync(document, paragraphs, allEmbeddings, cancellationToken);
         
         // 标记完成，流程还未全部实现，先不做标记
-        // document.MarkAsIndexed();
-        // await dbContext.SaveChangesAsync(cancellationToken);
+        document.MarkAsIndexed();
+        await dbContext.SaveChangesAsync(cancellationToken);
     }
 }

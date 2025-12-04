@@ -10,8 +10,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f4f71ff8-869c-4e55-85b9-f9116211e89c" name="更改" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Models/VectorDocumentRecord.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Services/VectorStorage/IVectorStorageService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Services/VectorStorage/QdrantVectorStorageService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Consumers/DocumentUploadedConsumer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Consumers/DocumentUploadedConsumer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Zilor.AICopilot.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/Zilor.AICopilot.sln.DotSettings.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.AppHost/AppHost.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AppHost/AppHost.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.AppHost/Zilor.AICopilot.AppHost.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AppHost/Zilor.AICopilot.AppHost.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.RagService/Zilor.AICopilot.RagService.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.RagService/Zilor.AICopilot.RagService.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Services/RagService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Services/RagService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Zilor.AICopilot.RagWorker.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Zilor.AICopilot.RagWorker.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.SharedKernel/Zilor.AICopilot.SharedKernel.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.SharedKernel/Zilor.AICopilot.SharedKernel.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,7 +33,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="24.实现文本分割" />
+        <entry key="$PROJECT_DIR$" value="25.实现文本嵌入" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -53,6 +65,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2565b9d99fdde488bc7801b84387b2cc864959cfb63212e1ff576fc9c6bb7e/CancellationToken.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2f2b1d92f1ffcf2dabd664473f8c9dafa6039595ac228ce4b75a0f1619c5991/AsyncTaskMethodBuilderT.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3cca26e6dd627c1a7919bec86cb05b6d975a30287456f7daa8773a92451a/List.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3dfd12f7994763b567f16ef79cf1d45387d1c9074abd3f0175e68b8964b87/QdrantServiceCollectionExtensions.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/4a2c60b1644986c5d463495c41eea48d95b9759d6476441623453ca85c7cee/AIFunction.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/4c6c2a667db08c86952c7425fde6bf1c119a8abe1495e51d345c34e572f9cec/ChatClientAgentThread.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/4c7b8b38f96c26743d5bfc4735637bf473d95d99aba8dad387f3413865d2329/ReflectingExecutor.cs" root0="FORCE_HIGHLIGHTING" />
@@ -75,10 +88,12 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/8292cc85b5cd628b92c7a2eb35999f97ba5f9949a2d5e2e4ae4387f532448d0/ParameterInfo.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ae7cb4ab974ef13d2138941576bb93657f6cd3d1895813b15e05bbc2959c3/OpenAIClient.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/b08e508b541e15a842d6f6d449907e11da6f536e8cfe0824d61ebd6dcb6681/AgentRunOptions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/b0fefc2fac1a9ce789c763d75a5875a3589ba1da51de0849787922db3f7ac/AspireQdrantExtensions.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/b58cb97e8eda8c4af01dc4e3fbc215f4b5251fc49494b2ae84b411c396c0/HostApplicationBuilderWorkflowExtensions.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d28f68744e0ddb602b2fc767e8a063f36c58755c1768d01caae6c8717d4b/WorkflowBuilder.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d35e8ffa74bffee59a567e0cb4d3e157b7663ec3f557cf93b849d3d5332c6/AITool.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/dda7b8ef227bef5b52c48844fc2da2cedfcc8fcf14357f1d5d1c162f3bdf15/ChatRole.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/eaa83b8eebef3255d6cd2cc2a82bd104473676fbc2eeb7a1cdc8ced946e54db/QdrantVectorStore.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/f8d9ab13e4cd85f83bb523338a787ad6613e1c982a05474deebe58a969980/Document.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/faff2344bc72dc7a226866f16ccddde74b724dab27df848264b627085/ChatClientAgent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Agents/ChatAgentFactory.cs" root0="FORCE_HIGHLIGHTING" />
@@ -110,6 +125,7 @@
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.RagService/Commands/KnowledgeBases/CreateKnowledgeBase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.RagService/DependencyInjection.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Consumers/DocumentUploadedConsumer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Models/VectorDocumentRecord.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Services/Embeddings/EmbeddingGeneratorFactory.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Services/Parsers/DocumentParserFactory.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Services/Parsers/IDocumentParser.cs" root0="FORCE_HIGHLIGHTING" />
@@ -119,6 +135,8 @@
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Services/TextSplitterService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Services/TokenCounter/ITokenCounter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Services/TokenCounter/SharpTokenCounter.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Services/VectorStorage/IVectorStorageService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Services/VectorStorage/QdrantVectorStorageService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.Services.Common/Contracts/IFileStorageService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.Services.Common/Events/DocumentUploadedEvent.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -146,7 +164,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "git-widget-placeholder": "25.实现文本嵌入",
+    "git-widget-placeholder": "26.实现向量存储",
     "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   }
@@ -287,7 +305,7 @@
       <workItem from="1764579739648" duration="2660000" />
       <workItem from="1764640405965" duration="20812000" />
       <workItem from="1764725903193" duration="8391000" />
-      <workItem from="1764813316613" duration="19467000" />
+      <workItem from="1764813316613" duration="23821000" />
     </task>
     <task id="LOCAL-00001" summary="chore(ide): 更新IDE配置文件并清理无用设置&#10;&#10;- 移除.idea目录下的.gitignore文件中冗余的忽略规则&#10;- 删除数据源配置文件dataSources.xml&#10;- 更新vcs.xml中的Git映射路径为空字符串&#10;- 新增projectSettingsUpdater.xml以优化项目设置更新机制&#10;- 添加完整的workspace.xml运行配置，支持Aspire Host和HTTP API调试&#10;-为多个命令和查询类文件补充必要的命名空间引用">
       <option name="closed" value="true" />
@@ -561,7 +579,15 @@
       <option name="project" value="LOCAL" />
       <updated>1764836990847</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="feat(rag): 实现文本嵌入生成功能&#10;&#10;- 新增 EmbeddingGeneratorFactory 工厂类，用于创建嵌入生成器&#10;- 配置专用的 EmbeddingClient HttpClient 并设置超时时间- 在 RagService 中集成嵌入生成逻辑，支持批量处理段落&#10;- 调整 HTTP 客户端韧性配置，延长请求超时时间以适应 AI 接口&#10;- 更新种子数据中的嵌入模型配置信息- 注册相关服务到依赖注入容器&#10;- 引入 Microsoft.Extensions.AI.OpenAI 包支持嵌入功能">
+      <option name="closed" value="true" />
+      <created>1764840072139</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1764840072139</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -14,4 +14,8 @@
       <ProjectReference Include="..\Zilor.AICopilot.SharedKernel\Zilor.AICopilot.SharedKernel.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="Aspire.Qdrant.Client" Version="13.0.2" />
+    </ItemGroup>
+
 </Project>
