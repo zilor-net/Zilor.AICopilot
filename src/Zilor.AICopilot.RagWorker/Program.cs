@@ -1,6 +1,3 @@
-using Microsoft.Extensions.Http.Resilience;
-using Microsoft.Extensions.VectorData;
-using Microsoft.SemanticKernel.Connectors.Qdrant;
 using Zilor.AICopilot.EntityFrameworkCore;
 using Zilor.AICopilot.EventBus;
 using Zilor.AICopilot.Infrastructure.Storage;
@@ -8,7 +5,6 @@ using Zilor.AICopilot.RagWorker.Services;
 using Zilor.AICopilot.RagWorker.Services.Embeddings;
 using Zilor.AICopilot.RagWorker.Services.Parsers;
 using Zilor.AICopilot.RagWorker.Services.TokenCounter;
-using Zilor.AICopilot.RagWorker.Services.VectorStorage;
 using Zilor.AICopilot.Services.Common.Contracts;
 
 var builder = Host.CreateApplicationBuilder(args);
@@ -53,8 +49,6 @@ builder.Services.AddSingleton<TextSplitterService>();
 
 // 注册嵌入生成器工厂
 builder.Services.AddSingleton<EmbeddingGeneratorFactory>();
-
-builder.Services.AddScoped<IVectorStorageService, QdrantVectorStorageService>();
 
 // 注册RAG服务
 builder.Services.AddScoped<RagService>();
