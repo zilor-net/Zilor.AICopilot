@@ -4,7 +4,7 @@ using Microsoft.Extensions.AI;
 using OpenAI;
 using Zilor.AICopilot.Core.Rag.Aggregates.EmbeddingModel;
 
-namespace Zilor.AICopilot.RagWorker.Services.Embeddings;
+namespace Zilor.AICopilot.Embedding;
 
 public class EmbeddingGeneratorFactory(IHttpClientFactory httpClientFactory)
 {

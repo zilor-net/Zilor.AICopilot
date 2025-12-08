@@ -32,6 +32,11 @@ public class VectorDocumentRecord
     /// </remarks>
     [VectorStoreData(IsIndexed = true)]
     public string DocumentId { get; set; } = string.Empty;
+    
+    /// <summary>
+    /// 关联的文档名称 (元数据)
+    /// </summary>
+    public string DocumentName { get; set; } = string.Empty;
 
     /// <summary>
     /// 关联的知识库 ID (元数据)

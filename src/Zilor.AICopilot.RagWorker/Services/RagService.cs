@@ -2,9 +2,10 @@
 using Microsoft.Extensions.AI;
 using Microsoft.Extensions.VectorData;
 using Zilor.AICopilot.Core.Rag.Aggregates.KnowledgeBase;
+using Zilor.AICopilot.Embedding;
+using Zilor.AICopilot.Embedding.Models;
 using Zilor.AICopilot.EntityFrameworkCore;
 using Zilor.AICopilot.RagWorker.Models;
-using Zilor.AICopilot.RagWorker.Services.Embeddings;
 using Zilor.AICopilot.RagWorker.Services.Parsers;
 using Zilor.AICopilot.Services.Common.Contracts;
 
@@ -193,12 +194,10 @@ public class RagService(
         // 使用 "kb-" 前缀加上知识库 ID (Guid) 作为集合名，确保名称符合 Qdrant 规范且唯一
         var collectionName = $"kb-{document.KnowledgeBaseId:N}";
         logger.LogInformation("文档 {DocumentName} 将存入集合: {CollectionName}", document.Name, collectionName);
-
-        // 3. 获取集合实例
-        // var collection = vectorStoreClient.GetCollection<ulong, VectorDocumentRecord>(collectionName);
+        
         // 3. 获取动态集合
         var definition = VectorDocumentDefinition.Get(dimensions);
-        var collection = vectorStoreClient.GetDynamicCollection(collectionName, definition);
+        var collection = vectorStoreClient.GetCollection<ulong, VectorDocumentRecord>(collectionName, definition);
 
         // 4. 确保集合存在
         // 第一次向该知识库上传文档时，会自动创建集合
@@ -212,14 +211,25 @@ public class RagService(
                 // 生成一个唯一的记录键值
                 var recordKey = (ulong)document.Id.GetHashCode() << 32 | (uint)i;
 
-                await collection.UpsertAsync(new Dictionary<string, object?>
+                // await collection.UpsertAsync(new Dictionary<string, object?>
+                // {
+                //     { "Key", recordKey },
+                //     { "Text", chunks[i] },
+                //     { "DocumentId", document.Id.ToString() },
+                //     { "KnowledgeBaseId", document.KnowledgeBaseId.ToString() },
+                //     { "ChunkIndex", i },
+                //     { "Embedding", embeddings[i].Vector }
+                // }, ct);
+
+                await collection.UpsertAsync(new VectorDocumentRecord()
                 {
-                    { "Key", recordKey },
-                    { "Text", chunks[i] },
-                    { "DocumentId", document.Id.ToString() },
-                    { "KnowledgeBaseId", document.KnowledgeBaseId.ToString() },
-                    { "ChunkIndex", i },
-                    { "Embedding", embeddings[i].Vector }
+                    Key = recordKey,
+                    Text = chunks[i],
+                    DocumentId = document.Id.ToString(),
+                    DocumentName = document.Name,
+                    KnowledgeBaseId = document.KnowledgeBaseId.ToString(),
+                    ChunkIndex = i,
+                    Embedding = embeddings[i].Vector
                 }, ct);
             }
 

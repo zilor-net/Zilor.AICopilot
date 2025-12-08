@@ -9,15 +9,21 @@
     <projectFile profileName="Zilor.AICopilot.RagWorker">src/Zilor.AICopilot.RagWorker/Zilor.AICopilot.RagWorker.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f4f71ff8-869c-4e55-85b9-f9116211e89c" name="更改" comment="feat(rag):重构向量存储实现以支持动态集合定义&#10;&#10;- 移除独立的 IVectorStorageService 接口及其实现类&#10;- 在 RagService 中直接使用 VectorStore 进行向量操作&#10;- 新增 VectorDocumentDefinition 类用于动态构建集合结构- 调整文档索引流程，整合向量保存逻辑到主服务&#10;- 更新依赖注入配置，移除旧有的存储服务注册&#10;- 清理项目中不再使用的命名空间引用和文件&#10;- 优化批处理大小配置，提升嵌入生成效率">
-      <change afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Models/VectorDocumentDefinition.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/dataSources.local.xml" afterDir="false" />
+    <list default="true" id="f4f71ff8-869c-4e55-85b9-f9116211e89c" name="更改" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.Embedding/DependencyInjection.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.RagService/Queries/KnowledgeBases/SearchKnowledgeBase.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.RagService/Queries/KnowledgeBases/SearchKnowledgeBaseResult.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zilor.AICopilot.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/Zilor.AICopilot.sln.DotSettings.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Zilor.AICopilot.sln" beforeDir="false" afterPath="$PROJECT_DIR$/Zilor.AICopilot.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.HttpApi/Controllers/RagController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.HttpApi/Controllers/RagController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.RagService/DependencyInjection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.RagService/DependencyInjection.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.RagService/Zilor.AICopilot.RagService.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.RagService/Zilor.AICopilot.RagService.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Models/VectorDocumentDefinition.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.Embedding/Models/VectorDocumentDefinition.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Models/VectorDocumentRecord.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.Embedding/Models/VectorDocumentRecord.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Services/Embeddings/EmbeddingGeneratorFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.Embedding/EmbeddingGeneratorFactory.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Services/RagService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Services/RagService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Services/VectorStorage/IVectorStorageService.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Services/VectorStorage/QdrantVectorStorageService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Zilor.AICopilot.RagWorker.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Zilor.AICopilot.RagWorker.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,7 +33,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="25.实现文本嵌入" />
+        <entry key="$PROJECT_DIR$" value="26.实现向量存储" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -105,6 +111,9 @@
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.Core.Rag/Aggregates/KnowledgeBase/Document.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.Core.Rag/Aggregates/KnowledgeBase/DocumentChunk.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.Core.Rag/Aggregates/KnowledgeBase/KnowledgeBase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.Embedding/DependencyInjection.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.Embedding/EmbeddingGeneratorFactory.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.Embedding/Models/VectorDocumentDefinition.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.EntityFrameworkCore/Configuration/Rag/DocumentChunkConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.EntityFrameworkCore/Configuration/Rag/DocumentConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.EntityFrameworkCore/Configuration/Rag/EmbeddingModelConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
@@ -119,15 +128,15 @@
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.RagService/Commands/Documents/UploadDocument.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.RagService/Commands/KnowledgeBases/CreateKnowledgeBase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.RagService/DependencyInjection.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.RagService/Queries/KnowledgeBases/SearchKnowledgeBase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.RagService/Queries/KnowledgeBases/SearchKnowledgeBaseResult.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Consumers/DocumentUploadedConsumer.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Models/VectorDocumentDefinition.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Models/VectorDocumentRecord.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Services/Embeddings/EmbeddingGeneratorFactory.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Services/Parsers/DocumentParserFactory.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Services/Parsers/IDocumentParser.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Services/Parsers/PdfDocumentParser.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Services/Parsers/TextDocumentParser.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Services/RagService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://D:/Repos/MyRepos/Zilor.AICopilot/src/Zilor.AICopilot.RagWorker/Services/RagService.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Services/TextSplitterService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Services/TokenCounter/ITokenCounter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Services/TokenCounter/SharpTokenCounter.cs" root0="FORCE_HIGHLIGHTING" />
@@ -151,18 +160,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Aspire Host.Zilor.AICopilot.AppHost: http.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;26.实现向量存储&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Aspire Host.Zilor.AICopilot.AppHost: http.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "git-widget-placeholder": "27.构建向量检索服务",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Aspire Host.Zilor.AICopilot.AppHost: http">
     <configuration name="Zilor.AICopilot.AppHost: http" type="AspireHostConfiguration" factoryName="Aspire Host" activateToolWindowBeforeRun="false">
       <option name="PROJECT_FILE_PATH" value="$PROJECT_DIR$/src/Zilor.AICopilot.AppHost/Zilor.AICopilot.AppHost.csproj" />
@@ -304,6 +313,7 @@
       <workItem from="1764901598181" duration="2110000" />
       <workItem from="1764904238649" duration="150000" />
       <workItem from="1764904523406" duration="6069000" />
+      <workItem from="1765160406303" duration="5854000" />
     </task>
     <task id="LOCAL-00001" summary="chore(ide): 更新IDE配置文件并清理无用设置&#10;&#10;- 移除.idea目录下的.gitignore文件中冗余的忽略规则&#10;- 删除数据源配置文件dataSources.xml&#10;- 更新vcs.xml中的Git映射路径为空字符串&#10;- 新增projectSettingsUpdater.xml以优化项目设置更新机制&#10;- 添加完整的workspace.xml运行配置，支持Aspire Host和HTTP API调试&#10;-为多个命令和查询类文件补充必要的命名空间引用">
       <option name="closed" value="true" />
@@ -593,7 +603,15 @@
       <option name="project" value="LOCAL" />
       <updated>1764845768612</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="feat(rag):重构向量存储实现以支持动态集合定义&#10;&#10;- 移除独立的 IVectorStorageService 接口及其实现类&#10;- 在 RagService 中直接使用 VectorStore 进行向量操作&#10;- 新增 VectorDocumentDefinition 类用于动态构建集合结构&#10;- 调整文档索引流程，整合向量保存逻辑到主服务&#10;- 更新依赖注入配置，移除旧有的存储服务注册- 清理项目中不再使用的命名空间引用和文件- 优化批处理大小配置，提升嵌入生成效率">
+      <option name="closed" value="true" />
+      <created>1765162167467</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1765162167467</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -614,7 +632,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="chore(ide): 更新IDE配置文件并清理无用设置&#10;&#10;- 移除.idea目录下的.gitignore文件中冗余的忽略规则&#10;- 删除数据源配置文件dataSources.xml&#10;- 更新vcs.xml中的Git映射路径为空字符串&#10;- 新增projectSettingsUpdater.xml以优化项目设置更新机制&#10;- 添加完整的workspace.xml运行配置，支持Aspire Host和HTTP API调试&#10;-为多个命令和查询类文件补充必要的命名空间引用" />
     <MESSAGE value="style(core): 格式化代码并调整属性顺序&#10;- 删除多余的空行并统一代码缩进&#10;- 调整类成员变量声明顺序，提升可读性&#10;- 规范方法参数换行与对齐方式- 统一字段与属性的访问修饰符排列顺序&#10;- 清理无用命名空间引用，优化依赖结构&#10;- 修正部分注释位置以匹配实际逻辑- 标准化构造函数初始化列表格式&#10;- 移除冗余的 endregion 指令&#10;- 优化条件判断语句表达式书写风格&#10;- 更新实体配置中的列映射定义顺序&#10;- 完善数据传输对象(Dto)的属性布局&#10;- 整理控制器动作方法之间的间距&#10;- 对齐JWT设置记录类的属性定义&#10;-重新组织服务注册扩展方法内容&#10;- 改进异常处理器的响应构建过程&#10;- 提高查询处理程序中LINQ表达式的清晰度&#10;- 修改身份验证服务内的用户查找流程&#10;- 重构消息实体的关系映射配置细节- 精简共享内核结果类型的静态工厂方法实现&#10;- 优化会话实体的消息集合封装策略" />
     <MESSAGE value="refactor(core):重构AI网关核心模块&#10;&#10;- 移动UseCases相关文件到独立目录结构&#10;- 更新命名空间引用路径统一为UseCases模式&#10;- 调整ConversationTemplate聚合根增加ModelId属性&#10;- 修改EF Core模型快照与配置映射关系&#10;- 更新接口契约文件位置并调整依赖引用&#10;- 修正JwtTokenGenerator相关类型引用关系&#10;- 完善实体属性初始化避免空引用问题&#10;- 清理无效的迁移文件及设计器代码" />
     <MESSAGE value="refactor(core):重构AI网关核心模块&#10;&#10;- 将UseCases相关文件移动到独立的目录结构中&#10;- 更新命名空间引用路径，统一为UseCases模式&#10;- 调整ConversationTemplate聚合根，增加ModelId属性&#10;- 修改EF Core模型快照与配置映射关系&#10;- 更新接口契约文件位置并调整依赖引用&#10;- 修正JwtTokenGenerator相关类型的引用关系&#10;- 完善实体属性初始化以避免空引用问题&#10;- 清理无效的迁移文件及设计器代码&#10;- 新增ChatAgent及IChatAgent接口定义&#10;- 重命名并调整多个命令和查询类的命名空间&#10;- 移除项目文件中不再需要的UseCases文件夹引用" />
@@ -639,7 +656,8 @@
     <MESSAGE value="feat(rag): 实现文本分割与Token计算功能&#10;&#10;- 添加文本分割服务TextSplitterService，基于Semantic Kernel实现语义段落分割&#10;- 引入SharpToken库实现Token计数器SharpTokenCounter&#10;- 定义ITokenCounter接口抽象Token计算逻辑&#10;- 在RagService中集成文本分割逻辑，支持文档切片处理&#10;- 注册相关服务到DI容器，包括Token计数器和文本分割服务&#10;- 添加DeleteDocument命令处理程序，支持删除知识库文档&#10;- 修复AppHost中项目引用命名空间问题&#10;- 更新项目依赖包，引入Semantic Kernel和SharpToken库" />
     <MESSAGE value="feat(rag): 实现文本嵌入生成功能&#10;&#10;- 新增 EmbeddingGeneratorFactory 工厂类，用于创建嵌入生成器&#10;- 配置专用的 EmbeddingClient HttpClient 并设置超时时间- 在 RagService 中集成嵌入生成逻辑，支持批量处理段落&#10;- 调整 HTTP 客户端韧性配置，延长请求超时时间以适应 AI 接口&#10;- 更新种子数据中的嵌入模型配置信息- 注册相关服务到依赖注入容器&#10;- 引入 Microsoft.Extensions.AI.OpenAI 包支持嵌入功能" />
     <MESSAGE value="feat(rag): 实现向量存储功能&#10;- 集成 Qdrant 向量数据库，支持持久化存储文档向量&#10;- 新增 IVectorStorageService 接口及 QdrantVectorStorageService 实现&#10;- 定义 VectorDocumentRecord 模型映射向量数据库结构- 在 RagService 中调用向量存储服务完成索引流程&#10;- 更新 AppHost 和项目依赖以支持 Qdrant 配置&#10;- 升级 MediatR 包版本并调整相关配置&#10;- 添加 IDE 缓存排除规则优化开发环境性能" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(rag): 实现向量存储功能&#10;- 集成 Qdrant 向量数据库，支持持久化存储文档向量&#10;- 新增 IVectorStorageService 接口及 QdrantVectorStorageService 实现&#10;- 定义 VectorDocumentRecord 模型映射向量数据库结构- 在 RagService 中调用向量存储服务完成索引流程&#10;- 更新 AppHost 和项目依赖以支持 Qdrant 配置&#10;- 升级 MediatR 包版本并调整相关配置&#10;- 添加 IDE 缓存排除规则优化开发环境性能" />
+    <MESSAGE value="feat(rag):重构向量存储实现以支持动态集合定义&#10;&#10;- 移除独立的 IVectorStorageService 接口及其实现类&#10;- 在 RagService 中直接使用 VectorStore 进行向量操作&#10;- 新增 VectorDocumentDefinition 类用于动态构建集合结构&#10;- 调整文档索引流程，整合向量保存逻辑到主服务&#10;- 更新依赖注入配置，移除旧有的存储服务注册- 清理项目中不再使用的命名空间引用和文件- 优化批处理大小配置，提升嵌入生成效率" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(rag):重构向量存储实现以支持动态集合定义&#10;&#10;- 移除独立的 IVectorStorageService 接口及其实现类&#10;- 在 RagService 中直接使用 VectorStore 进行向量操作&#10;- 新增 VectorDocumentDefinition 类用于动态构建集合结构&#10;- 调整文档索引流程，整合向量保存逻辑到主服务&#10;- 更新依赖注入配置，移除旧有的存储服务注册- 清理项目中不再使用的命名空间引用和文件- 优化批处理大小配置，提升嵌入生成效率" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

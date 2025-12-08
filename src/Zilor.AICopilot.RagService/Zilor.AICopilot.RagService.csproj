@@ -8,6 +8,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Zilor.AICopilot.Core.Rag\Zilor.AICopilot.Core.Rag.csproj" />
+      <ProjectReference Include="..\Zilor.AICopilot.Embedding\Zilor.AICopilot.Embedding.csproj" />
       <ProjectReference Include="..\Zilor.AICopilot.EntityFrameworkCore\Zilor.AICopilot.EntityFrameworkCore.csproj" />
       <ProjectReference Include="..\Zilor.AICopilot.EventBus\Zilor.AICopilot.EventBus.csproj" />
       <ProjectReference Include="..\Zilor.AICopilot.Services.Common\Zilor.AICopilot.Services.Common.csproj" />

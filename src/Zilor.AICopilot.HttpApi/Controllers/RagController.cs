@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Zilor.AICopilot.HttpApi.Infrastructure;
 using Zilor.AICopilot.RagService.Commands.Documents;
 using Zilor.AICopilot.RagService.Commands.KnowledgeBases;
+using Zilor.AICopilot.RagService.Queries.KnowledgeBases;
 
 namespace Zilor.AICopilot.HttpApi.Controllers;
 
@@ -42,6 +43,13 @@ public class RagController : ApiControllerBase
             new FileUploadStream(file.FileName, stream));
 
         var result = await Sender.Send(command);
+        return ReturnResult(result);
+    }
+    
+    [HttpPost("search")]
+    public async Task<IActionResult> Search(SearchKnowledgeBaseQuery query)
+    {
+        var result = await Sender.Send(query);
         return ReturnResult(result);
     }
 }
