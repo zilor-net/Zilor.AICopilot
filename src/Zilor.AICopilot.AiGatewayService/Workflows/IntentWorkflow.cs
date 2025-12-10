@@ -11,6 +11,7 @@ public static class IntentWorkflow
     {
         builder.Services.AddTransient<IntentRoutingExecutor>();
         builder.Services.AddTransient<ToolsPackExecutor>();
+        builder.Services.AddTransient<KnowledgeRetrievalExecutor>();
         builder.Services.AddTransient<FinalProcessExecutor>();
         
         builder.AddWorkflow(nameof(IntentWorkflow), (sp, key) =>
