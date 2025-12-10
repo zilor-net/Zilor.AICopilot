@@ -28,7 +28,8 @@ public static class RagData
 
     public static IEnumerable<KnowledgeBase> KnowledgeBases()
     {
-        var item1 = new KnowledgeBase("默认知识库", "系统默认知识库", Guids[0]);
-        return [item1];
+        var item1 = new KnowledgeBase("General", "包含公司通用的规章制度、行政流程和企业文化信息。", Guids[0]);
+        var item2 = new KnowledgeBase("TechDocs", "包含技术开发规范、API文档和架构设计说明。", Guids[0]);
+        return [item1, item2];
     }
 }

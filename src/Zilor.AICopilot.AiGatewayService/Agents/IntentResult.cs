@@ -8,20 +8,32 @@ namespace Zilor.AICopilot.AiGatewayService.Agents;
 public record IntentResult
 {
     /// <summary>
-    /// 识别出的意图标识符 (例如: "General.Chat")
+    /// 意图标识符
+    /// 规范：
+    /// - 工具类：Action.{PluginName}
+    /// - 知识类：Knowledge.{KnowledgeBaseName}
     /// </summary>
     [JsonPropertyName("intent")]
     public string Intent { get; set; } = string.Empty;
 
     /// <summary>
-    /// 置信度 (0.0 - 1.0)，用于后续的逻辑判断
+    /// 置信度 (0.0 - 1.0)
+    /// 用于下游节点的“置信度门控”机制
     /// </summary>
     [JsonPropertyName("confidence")]
     public double Confidence { get; set; }
 
     /// <summary>
-    /// 可选：思维链推理过程，用于调试模型为什么这么选
+    /// 推理过程
+    /// 强制模型输出思维链，提高分类准确度
     /// </summary>
     [JsonPropertyName("reasoning")]
     public string? Reasoning { get; set; }
+    
+    /// <summary>
+    /// 检索参数 (新增)
+    /// 如果是 Knowledge 意图，模型可以在此提取查询关键词
+    /// </summary>
+    [JsonPropertyName("query")]
+    public string? Query { get; set; }
 }

@@ -8,12 +8,16 @@ using Microsoft.Agents.AI.Workflows;
 using Microsoft.Agents.AI.Workflows.Reflection;
 using Microsoft.Extensions.AI;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Zilor.AICopilot.AiGatewayService.Agents;
 using Zilor.AICopilot.AiGatewayService.Queries.Sessions;
 
 namespace Zilor.AICopilot.AiGatewayService.Workflows;
 
-public class IntentRoutingExecutor(IntentRoutingAgentBuilder agentBuilder, IServiceProvider serviceProvider) :
+public class IntentRoutingExecutor(
+    IntentRoutingAgentBuilder agentBuilder, 
+    IServiceProvider serviceProvider,
+    ILogger<IntentRoutingExecutor> logger) :
     ReflectingExecutor<IntentRoutingExecutor>("IntentRoutingExecutor"),
     IMessageHandler<ChatStreamRequest, List<IntentResult>>
 {
@@ -22,8 +26,14 @@ public class IntentRoutingExecutor(IntentRoutingAgentBuilder agentBuilder, IServ
     {
         try
         {
+            logger.LogInformation("开始意图识别流程，SessionId: {SessionId}", request.SessionId);
+            
+            // 1. 更新工作流状态
             await context.QueueStateUpdateAsync("ChatStreamRequest", request, "Chat", cancellationToken: cancellationToken);
             
+            // 2. 构建对话历史上下文
+            // 我们不仅需要当前那句话，还需要之前的对话历史来辅助判断意图
+            // 例如用户说“它多少钱？”，如果没有上文，意图无法识别。
             var scope = serviceProvider.CreateScope();
             var mediator = scope.ServiceProvider.GetRequiredService<IMediator>();
             
@@ -32,20 +42,69 @@ public class IntentRoutingExecutor(IntentRoutingAgentBuilder agentBuilder, IServ
         
             history.Add(new ChatMessage(ChatRole.User, request.Message));
         
+            // 3. 构建并运行 Agent
             var agent = await agentBuilder.BuildAsync();
             var response = await agent.RunAsync(
                 history,
                 cancellationToken: cancellationToken);
             
+            // 记录原始响应，用于调试 Prompt 效果
+            logger.LogDebug("意图识别原始响应: {ResponseText}", response.Text);
+            
+            // 将 Agent 的响应作为事件记录到工作流日志中
             await context.AddEventAsync(new AgentRunResponseEvent(Id, response), cancellationToken);
             
-            var intentResults = response.Deserialize<List<IntentResult>>(JsonSerializerOptions.Web);
+            // 4. 解析结果
+            // LLM 有时会在 JSON 外面包裹 ```json ... ```，需要清理
+            var jsonText = CleanJsonText(response.Text);
+            List<IntentResult> intentResults;
+            try
+            {
+                intentResults = response.Deserialize<List<IntentResult>>(JsonSerializerOptions.Web);
+            }
+            catch (JsonException)
+            {
+                // 容错处理：如果解析失败，回退到兜底意图
+                logger.LogWarning("意图识别 JSON 解析失败，回退到 General.Chat。原始文本: {Text}", response.Text);
+                intentResults = [ new IntentResult { Intent = "General.Chat", Confidence = 1.0, Reasoning = "JSON解析失败" } ];
+            }
+            
+            
             return intentResults;
         }
         catch (Exception e)
         {
+            logger.LogError(e, "意图识别节点发生严重错误");
             await context.AddEventAsync(new ExecutorFailedEvent(Id, e), cancellationToken);
             throw;
         }
+    }
+    
+    /// <summary>
+    /// 清理 LLM 返回的 Markdown 代码块标记，提取纯 JSON
+    /// </summary>
+    private static string CleanJsonText(string text)
+    {
+        if (string.IsNullOrWhiteSpace(text)) return "[]";
+        
+        var cleanText = text.Trim();
+        
+        // 移除 ```json 和 ``` 包裹
+        if (cleanText.StartsWith("```"))
+        {
+            var firstLineBreak = cleanText.IndexOf('\n');
+            if (firstLineBreak > 0)
+            {
+                cleanText = cleanText.Substring(firstLineBreak + 1);
+            }
+            
+            var lastBacktick = cleanText.LastIndexOf("```", StringComparison.Ordinal);
+            if (lastBacktick > 0)
+            {
+                cleanText = cleanText.Substring(0, lastBacktick);
+            }
+        }
+
+        return cleanText.Trim();
     }
 }
