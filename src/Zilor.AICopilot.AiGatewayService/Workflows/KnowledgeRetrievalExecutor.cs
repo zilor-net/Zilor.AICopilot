@@ -2,6 +2,7 @@
 using MediatR;
 using Microsoft.Agents.AI.Workflows;
 using Microsoft.Agents.AI.Workflows.Reflection;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Zilor.AICopilot.AiGatewayService.Agents;
 using Zilor.AICopilot.RagService.Queries.KnowledgeBases;
@@ -14,20 +15,20 @@ namespace Zilor.AICopilot.AiGatewayService.Workflows;
 /// 职责：解析知识意图，并行检索向量数据库，并生成带有引用源的上下文文本。
 /// </summary>
 public class KnowledgeRetrievalExecutor(
-    IMediator mediator,
-    IDataQueryService dataQuery,
+    IServiceProvider serviceProvider, 
     ILogger<KnowledgeRetrievalExecutor> logger)
     : ReflectingExecutor<KnowledgeRetrievalExecutor>("KnowledgeRetrievalExecutor"),
-      IMessageHandler<List<IntentResult>, string>
+      IMessageHandler<List<IntentResult>, BranchResult>
 {
     // 定义意图前缀常量，与 Prompt 中的定义保持一致
     private const string KnowledgeIntentPrefix = "Knowledge.";
 
-    public async ValueTask<string> HandleAsync(
+    public async ValueTask<BranchResult> HandleAsync(
         List<IntentResult> intentResults, 
         IWorkflowContext context,
         CancellationToken cancellationToken = default)
     {
+      
         // 1. 筛选知识类意图
         // 过滤掉置信度不足或非知识类的意图
         var knowledgeIntents = intentResults
@@ -38,7 +39,7 @@ public class KnowledgeRetrievalExecutor(
         if (knowledgeIntents.Count == 0)
         {
             logger.LogDebug("未检测到知识库意图，跳过检索流程。");
-            return string.Empty;
+            return BranchResult.FromKnowledge(string.Empty);
         }
 
         logger.LogInformation("开始执行知识检索，命中意图数量: {Count}", knowledgeIntents.Count);
@@ -51,6 +52,8 @@ public class KnowledgeRetrievalExecutor(
             .ToList();
 
         // 从数据库中批量查询 KnowledgeBaseId
+        using var scope = serviceProvider.CreateScope();
+        var dataQuery = scope.ServiceProvider.GetRequiredService<IDataQueryService>();
         var knowledgeBases = await dataQuery.ToListAsync(
             dataQuery.KnowledgeBases.Where(kb => kbNames.Contains(kb.Name))
         );
@@ -58,7 +61,7 @@ public class KnowledgeRetrievalExecutor(
         if (knowledgeBases.Count == 0)
         {
             logger.LogWarning("意图命中了知识库名称 {Names}，但在数据库中未找到对应配置。", string.Join(", ", kbNames));
-            return string.Empty;
+            return BranchResult.FromKnowledge(string.Empty);
         }
 
         // 3. 构建并执行并行检索任务
@@ -84,7 +87,7 @@ public class KnowledgeRetrievalExecutor(
             searchTasks.Add(ExecuteSearchAsync(kb.Id, kb.Name, intent.Query, cancellationToken));
         }
 
-        if (searchTasks.Count == 0) return string.Empty;
+        if (searchTasks.Count == 0) return BranchResult.FromKnowledge(string.Empty);
 
         // 并行等待所有检索完成
         var searchResults = await Task.WhenAll(searchTasks);
@@ -93,7 +96,7 @@ public class KnowledgeRetrievalExecutor(
         // 将所有任务返回的 Markdown 片段拼接在一起
         var combinedContext = string.Join("\n\n", searchResults.Where(s => !string.IsNullOrWhiteSpace(s)));
         
-        return combinedContext;
+        return BranchResult.FromKnowledge(combinedContext);
     }
 
     /// <summary>
@@ -109,6 +112,8 @@ public class KnowledgeRetrievalExecutor(
         {
             // 调用 RagService 的 SearchKnowledgeBaseQuery
             // TopK=3, MinScore=0.5 是经验参数，可以根据业务需求调整
+            using var scope = serviceProvider.CreateScope();
+            var mediator = scope.ServiceProvider.GetRequiredService<IMediator>();
             var query = new SearchKnowledgeBaseQuery(kbId, queryText, TopK: 3, MinScore: 0.5);
             var result = await mediator.Send(query, ct);
 

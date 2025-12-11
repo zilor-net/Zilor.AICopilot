@@ -55,8 +55,6 @@ public class IntentRoutingExecutor(
             await context.AddEventAsync(new AgentRunResponseEvent(Id, response), cancellationToken);
             
             // 4. 解析结果
-            // LLM 有时会在 JSON 外面包裹 ```json ... ```，需要清理
-            var jsonText = CleanJsonText(response.Text);
             List<IntentResult> intentResults;
             try
             {
@@ -78,33 +76,5 @@ public class IntentRoutingExecutor(
             await context.AddEventAsync(new ExecutorFailedEvent(Id, e), cancellationToken);
             throw;
         }
-    }
-    
-    /// <summary>
-    /// 清理 LLM 返回的 Markdown 代码块标记，提取纯 JSON
-    /// </summary>
-    private static string CleanJsonText(string text)
-    {
-        if (string.IsNullOrWhiteSpace(text)) return "[]";
-        
-        var cleanText = text.Trim();
-        
-        // 移除 ```json 和 ``` 包裹
-        if (cleanText.StartsWith("```"))
-        {
-            var firstLineBreak = cleanText.IndexOf('\n');
-            if (firstLineBreak > 0)
-            {
-                cleanText = cleanText.Substring(firstLineBreak + 1);
-            }
-            
-            var lastBacktick = cleanText.LastIndexOf("```", StringComparison.Ordinal);
-            if (lastBacktick > 0)
-            {
-                cleanText = cleanText.Substring(0, lastBacktick);
-            }
-        }
-
-        return cleanText.Trim();
     }
 }

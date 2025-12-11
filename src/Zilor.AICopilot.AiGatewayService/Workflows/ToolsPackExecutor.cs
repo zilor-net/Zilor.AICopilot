@@ -11,11 +11,11 @@ public class ToolsPackExecutor(
     AgentPluginLoader pluginLoader,
     ILogger<ToolsPackExecutor> logger):
     ReflectingExecutor<ToolsPackExecutor>("ToolsPackExecutor"),
-    IMessageHandler<List<IntentResult>, AITool[]>
+    IMessageHandler<List<IntentResult>, BranchResult>
 {
     private const string ActionIntentPrefix = "Action.";
     
-    public async ValueTask<AITool[]> HandleAsync(List<IntentResult> intentResults, IWorkflowContext context,
+    public async ValueTask<BranchResult> HandleAsync(List<IntentResult> intentResults, IWorkflowContext context,
         CancellationToken cancellationToken = default)
     {
         try
@@ -30,7 +30,7 @@ public class ToolsPackExecutor(
             if (actionIntents.Count == 0)
             {
                 // 在并行流中，没有工具意图直接返回空数组即可
-                return [];
+                return BranchResult.FromTools([]);
             }
 
             logger.LogInformation("命中工具意图: {Intents}", string.Join(", ", actionIntents.Select(i => i.Intent)));
@@ -48,7 +48,7 @@ public class ToolsPackExecutor(
             
             logger.LogInformation("已加载 {Count} 个工具函数。", tools.Length);
 
-            return tools;
+            return BranchResult.FromTools(tools);
         }
         catch (Exception e)
         {
@@ -56,7 +56,7 @@ public class ToolsPackExecutor(
             // 发生错误时，为了不熔断整个对话流程，可以选择降级处理：返回空工具集
             // 并通过 Context 发送一个警告事件（可选）
             await context.AddEventAsync(new ExecutorFailedEvent(Id, e), cancellationToken);
-            return [];
+            return BranchResult.FromTools([]);
         }
     }
 }
