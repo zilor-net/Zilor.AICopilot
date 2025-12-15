@@ -20,6 +20,8 @@ public class DataQueryService(AiCopilotDbContext dbContext) : IDataQueryService
     public IQueryable<Document> Documents => dbContext.Documents.AsNoTracking();
     public IQueryable<DocumentChunk> DocumentChunks => dbContext.DocumentChunks.AsNoTracking();
 
+    public IQueryable<BusinessDatabase> BusinessDatabases => dbContext.BusinessDatabases.AsNoTracking();
+
     public async Task<T?> FirstOrDefaultAsync<T>(IQueryable<T> queryable) where T : class
     {
         return await queryable.AsNoTracking().FirstOrDefaultAsync();

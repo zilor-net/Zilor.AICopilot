@@ -10,9 +10,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f4f71ff8-869c-4e55-85b9-f9116211e89c" name="更改" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.Core.DataAnalysis/Aggregates/BusinessDatabase/BusinessDatabase.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.Core.DataAnalysis/Aggregates/BusinessDatabase/DbProviderType.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.Dapper/DapperDatabaseConnector.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.Dapper/DependencyInjection.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.Dapper/Security/ISqlGuardrail.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.Dapper/Security/KeywordSqlGuardrail.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.Dapper/Zilor.AICopilot.Dapper.csproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.EntityFrameworkCore/Configuration/DataAnalysis/BusinessDatabaseConfiguration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.MigrationWorkApp/SeedData/DataAnalysisData.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.Services.Common/Contracts/IDatabaseConnector.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.Services.Common/Models/DataAnalysis/ColumnSchema.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.Services.Common/Models/DataAnalysis/TableSchema.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Workflows/FinalProcessExecutor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Workflows/FinalProcessExecutor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Workflows/KnowledgeRetrievalExecutor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Workflows/KnowledgeRetrievalExecutor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Zilor.AICopilot.sln" beforeDir="false" afterPath="$PROJECT_DIR$/Zilor.AICopilot.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.EntityFrameworkCore/AiCopilotDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.EntityFrameworkCore/AiCopilotDbContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.EntityFrameworkCore/DataQueryService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.EntityFrameworkCore/DataQueryService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.EntityFrameworkCore/Migrations/20251202095450_Initial.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.EntityFrameworkCore/Migrations/20251202095450_Initial.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.EntityFrameworkCore/Migrations/AiCopilotDbContextModelSnapshot.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.MigrationWorkApp/Worker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.MigrationWorkApp/Worker.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.Services.Common/Contracts/IDataQueryService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.Services.Common/Contracts/IDataQueryService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.Services.Common/Zilor.AICopilot.Services.Common.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.Services.Common/Zilor.AICopilot.Services.Common.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,7 +41,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="29.构建检索执行器" />
+        <entry key="$PROJECT_DIR$" value="30.编排并行工作流" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -45,6 +64,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/64ffd70a777d43ef857c77e7f414117179c20/fb/265e8f34/AIFunction.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/64ffd70a777d43ef857c77e7f414117179c20/ff/be0ad7fa/IEmbeddingGenerator`2.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6d7771833c774ed1a51c9826a96bd8b779620/c5/d825389a/ChatOptions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/733c234819214afebfe7a8805cd1195614478/11/cb9ffd10/SqlConnection.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8a5a72f095934f5bac6c96cf78c9325624220/18/29dd42bd/ChatClientAgentRunOptions.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/9da59180a5724e5a8c9803b1b52205304259d0/79/fd53b25d/OpenAIClientOptions.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f8223262ead5481cb80512514534e962a3620/b5/7a86166c/ReflectingExecutor`1.cs" root0="FORCE_HIGHLIGHTING" />
@@ -102,14 +122,22 @@
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Workflows/IntentWorkflow.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Workflows/KnowledgeRetrievalExecutor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Workflows/ToolsPackExecutor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.Core.DataAnalysis/Aggregates/BusinessDatabase/BusinessDatabase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.Core.DataAnalysis/Aggregates/BusinessDatabase/DbProviderType.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.Core.Rag/Aggregates/EmbeddingModel/EmbeddingModel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.Core.Rag/Aggregates/KnowledgeBase/Document.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.Core.Rag/Aggregates/KnowledgeBase/DocumentChunk.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.Core.Rag/Aggregates/KnowledgeBase/KnowledgeBase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.Dapper/DapperDatabaseConnector.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.Dapper/DependencyInjection.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.Dapper/Security/ISqlGuardrail.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.Dapper/Security/KeywordSqlGuardrail.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.DataAnalysisService/DependencyInjection.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.Embedding/DependencyInjection.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.Embedding/EmbeddingGeneratorFactory.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.Embedding/Models/VectorDocumentDefinition.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.Embedding/Models/VectorDocumentRecord.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.EntityFrameworkCore/Configuration/DataAnalysis/BusinessDatabaseConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.EntityFrameworkCore/Configuration/Rag/DocumentChunkConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.EntityFrameworkCore/Configuration/Rag/DocumentConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.EntityFrameworkCore/Configuration/Rag/EmbeddingModelConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
@@ -119,6 +147,7 @@
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.IdentityService/Plugins/IdentityServiceTools.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.Infrastructure/Storage/LocalFileStorageService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.MigrationWorkApp/SeedData/AiGatewayData.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.MigrationWorkApp/SeedData/DataAnalysisData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.MigrationWorkApp/SeedData/RagData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.RagService/Commands/Documents/DeleteDocument.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.RagService/Commands/Documents/UploadDocument.cs" root0="FORCE_HIGHLIGHTING" />
@@ -136,8 +165,11 @@
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Services/TextSplitterService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Services/TokenCounter/ITokenCounter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Services/TokenCounter/SharpTokenCounter.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.Services.Common/Contracts/IDatabaseConnector.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.Services.Common/Contracts/IFileStorageService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.Services.Common/Events/DocumentUploadedEvent.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.Services.Common/Models/DataAnalysis/ColumnSchema.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.Services.Common/Models/DataAnalysis/TableSchema.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="KubernetesApiPersistence">{}</component>
   <component name="KubernetesApiProvider">{
@@ -159,18 +191,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Aspire Host.Zilor.AICopilot.AppHost: http.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;30.编排并行工作流&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Aspire Host.Zilor.AICopilot.AppHost: http.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "git-widget-placeholder": "31.动态数据源管理",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Aspire Host.Zilor.AICopilot.AppHost: http">
     <configuration name="Zilor.AICopilot.AppHost: http" type="AspireHostConfiguration" factoryName="Aspire Host" activateToolWindowBeforeRun="false">
       <option name="PROJECT_FILE_PATH" value="$PROJECT_DIR$/src/Zilor.AICopilot.AppHost/Zilor.AICopilot.AppHost.csproj" />
@@ -317,7 +349,7 @@
       <workItem from="1765351923536" duration="3402000" />
       <workItem from="1765419394864" duration="13938000" />
       <workItem from="1765439857045" duration="741000" />
-      <workItem from="1765767307512" duration="303000" />
+      <workItem from="1765767307512" duration="8091000" />
     </task>
     <task id="LOCAL-00001" summary="chore(ide): 更新IDE配置文件并清理无用设置&#10;&#10;- 移除.idea目录下的.gitignore文件中冗余的忽略规则&#10;- 删除数据源配置文件dataSources.xml&#10;- 更新vcs.xml中的Git映射路径为空字符串&#10;- 新增projectSettingsUpdater.xml以优化项目设置更新机制&#10;- 添加完整的workspace.xml运行配置，支持Aspire Host和HTTP API调试&#10;-为多个命令和查询类文件补充必要的命名空间引用">
       <option name="closed" value="true" />
@@ -639,7 +671,15 @@
       <option name="project" value="LOCAL" />
       <updated>1765439909717</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="feat(ai-gateway): 优化知识检索结果格式化逻辑- 将知识库引用格式从 Markdown 引用块改为 XML 结构- 使用 &lt;document&gt; 标签包裹每个检索结果项- 将文档 ID、名称和相关度分数作为 XML 属性存储&#10;- 保留原始内容文本，避免格式化干扰&#10;- 维持不同切片间的空行分隔，增强可读性">
+      <option name="closed" value="true" />
+      <created>1765767778929</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1765767778929</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -660,7 +700,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="refactor(core): 整理代码结构并移除多余空行&#10;&#10;- 移除了 ChatAgent 类中的多余空行&#10;- 在 ConversationTemplate 实体中添加了 ModelId 属性&#10;- 更新了 ConversationTemplate 的 EF Core 配置，映射 model_id 列&#10;-从 DependencyInjection 和 JwtTokenGenerator 中移除了不必要的命名空间引用&#10;- 清理了项目文件中多余的空格和格式问题" />
     <MESSAGE value="feat(ai-gateway): 实现用户消息发送与流式响应功能&#10;&#10;- 新增 SendUserMessages HTTP GET 接口，用于接收并处理用户消息&#10;- 实现 Server-Sent Events (SSE) 流式响应机制&#10;- 添加 ChatAgentFactory 工厂类，用于创建基于模板的 AI 对话代理&#10;- 引入 Microsoft.Agents.AI.OpenAI 包以支持 AI 代理交互&#10;- 在 ConversationTemplate 和 LanguageModel 上添加唯一索引约束&#10;- 注册 AiGatewayService 服务及 MediatR 相关依赖&#10;- 新增 SendUserMessageCommand 命令及其处理器，用于异步流式处理消息&#10;- 调整项目结构：将 UseCases 目录更名为 Commands 和 Queries&#10;- 更新 Program.cs 中的服务注册方法名 AddServiceUseCase为 AddApplicationService&#10;- 移除旧的 ChatAgent 和 IChatAgent 类定义&#10;- 配置 Entity Framework Core 模型唯一性约束&#10;- 添加系统提示词和模型关联逻辑，增强会话上下文管理&#10;-优化依赖注入配置，确保服务正确注册与解析- 增加必要的 JSON 序列化和 HTTP 响应头设置以支持 SSE 协议&#10;- 完成 JWT 权限验证特性标注于 SendUserMessageCommand 类上&#10;-修正部分命名空间引用问题，并更新解决方案用户设置文件排除缓存路径" />
     <MESSAGE value="feat(ai-gateway): 实现用户消息发送与流式响应功能&#10;&#10;- 新增 SendUserMessages HTTP GET 接口，用于接收并处理用户消息&#10;- 实现 Server-Sent Events (SSE) 流式响应机制- 添加 ChatAgentFactory 工厂类，用于创建基于模板的 AI 对话代理&#10;- 引入 Microsoft.Agents.AI.OpenAI 包以支持 AI 代理交互- 在 ConversationTemplate 和 LanguageModel 上添加唯一索引约束&#10;- 注册 AiGatewayService 服务及 MediatR 相关依赖&#10;- 新增 SendUserMessageCommand 命令及其处理器，用于异步流式处理消息&#10;- 调整项目结构：将 UseCases 目录更名为 Commands 和 Queries- 更新 Program.cs 中的服务注册方法名 AddServiceUseCase为 AddApplicationService- 移除旧的 ChatAgent 和 IChatAgent 类定义&#10;- 配置 Entity Framework Core 模型唯一性约束&#10;- 添加系统提示词和模型关联逻辑，增强会话上下文管理&#10;-优化依赖注入配置，确保服务正确注册与解析&#10;- 增加必要的 JSON 序列化和 HTTP 响应头设置以支持 SSE 协议&#10;- 完成 JWT 权限验证特性标注于 SendUserMessageCommand 类上&#10;-修正部分命名空间引用问题，并更新解决方案用户设置文件排除缓存路径" />
     <MESSAGE value="feat(migrations): 初始化数据库迁移并添加AI网关相关表结构&#10;&#10;- 删除初始迁移文件及其设计器代码&#10;- 删除AI网关相关的迁移文件及设计器代码&#10;- 删除唯一索引迁移文件及设计器代码&#10;- 清理所有与迁移相关的旧代码文件" />
@@ -685,7 +724,8 @@
     <MESSAGE value="feat(ai-gateway): 升级意图路由代理以支持知识库查询&#10;&#10;- 重构意图路由代理提示词，明确区分工具类(Action.*)与知识类(Knowledge.*)意图&#10;- 新增 IntentResult.Query 字段，用于提取知识库检索关键词&#10;- 修改意图路由构建器，动态注入知识库意图列表&#10;- 增强意图路由执行器的 JSON 解析容错能力及日志记录&#10;- 更新种子数据，初始化通用和技术文档两类知识库- 优化系统提示词，强化模型输出结构化 JSON 的稳定性" />
     <MESSAGE value="feat(ai-gateway): 新增知识检索执行器并完善工具执行逻辑- 新增 KnowledgeRetrievalExecutor 类，负责解析知识意图并检索向量数据库&#10;- 实现知识库意图筛选、名称解析与并行检索逻辑- 格式化检索结果为带引用源的 Markdown 文本&#10;-优化 ToolsPackExecutor 的意图识别与插件加载逻辑- 提升工具执行异常处理能力，增强流程稳定性&#10;- 注册 KnowledgeRetrievalExecutor 到工作流容器&#10;- 添加对 RagService项目的引用依赖" />
     <MESSAGE value="feat(ai-gateway): 实现并行工作流编排与上下文聚合机制&#10;&#10;- 新增 ContextAggregatorExecutor 执行器，负责汇聚并行分支结果&#10;- 创建 GenerationContext 和 BranchResult 统一上下文传输对象- 改造 FinalProcessExecutor以支持 RAG 上下文注入和动态工具挂载- 更新 KnowledgeRetrievalExecutor 和 ToolsPackExecutor 输出类型为 BranchResult&#10;- 移除 IntentRoutingExecutor 中的 JSON 清理逻辑- 调整 IntentWorkflow 配置，实现扇入扇出工作流拓扑-优化知识检索逻辑，增强服务获取方式&#10;- 注册新增执行器到依赖注入容器- 更新 IDE 配置文件和数据源设置&#10;- 升级 Git 分支标记和工作项时间记录" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(ai-gateway): 实现并行工作流编排与上下文聚合机制&#10;&#10;- 新增 ContextAggregatorExecutor 执行器，负责汇聚并行分支结果&#10;- 创建 GenerationContext 和 BranchResult 统一上下文传输对象- 改造 FinalProcessExecutor以支持 RAG 上下文注入和动态工具挂载- 更新 KnowledgeRetrievalExecutor 和 ToolsPackExecutor 输出类型为 BranchResult&#10;- 移除 IntentRoutingExecutor 中的 JSON 清理逻辑- 调整 IntentWorkflow 配置，实现扇入扇出工作流拓扑-优化知识检索逻辑，增强服务获取方式&#10;- 注册新增执行器到依赖注入容器- 更新 IDE 配置文件和数据源设置&#10;- 升级 Git 分支标记和工作项时间记录" />
+    <MESSAGE value="feat(ai-gateway): 优化知识检索结果格式化逻辑- 将知识库引用格式从 Markdown 引用块改为 XML 结构- 使用 &lt;document&gt; 标签包裹每个检索结果项- 将文档 ID、名称和相关度分数作为 XML 属性存储&#10;- 保留原始内容文本，避免格式化干扰&#10;- 维持不同切片间的空行分隔，增强可读性" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(ai-gateway): 优化知识检索结果格式化逻辑- 将知识库引用格式从 Markdown 引用块改为 XML 结构- 使用 &lt;document&gt; 标签包裹每个检索结果项- 将文档 ID、名称和相关度分数作为 XML 属性存储&#10;- 保留原始内容文本，避免格式化干扰&#10;- 维持不同切片间的空行分隔，增强可读性" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

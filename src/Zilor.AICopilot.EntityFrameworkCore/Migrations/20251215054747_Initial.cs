@@ -52,6 +52,23 @@ namespace Zilor.AICopilot.EntityFrameworkCore.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "business_databases",
+                columns: table => new
+                {
+                    id = table.Column<Guid>(type: "uuid", nullable: false),
+                    name = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
+                    description = table.Column<string>(type: "character varying(500)", maxLength: 500, nullable: false),
+                    connection_string = table.Column<string>(type: "character varying(1000)", maxLength: 1000, nullable: false),
+                    provider = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
+                    is_enabled = table.Column<bool>(type: "boolean", nullable: false),
+                    created_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_business_databases", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "conversation_templates",
                 columns: table => new
                 {
@@ -350,6 +367,12 @@ namespace Zilor.AICopilot.EntityFrameworkCore.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_business_databases_name",
+                table: "business_databases",
+                column: "name",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_conversation_templates_name",
                 table: "conversation_templates",
                 column: "name",
@@ -406,6 +429,9 @@ namespace Zilor.AICopilot.EntityFrameworkCore.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "business_databases");
 
             migrationBuilder.DropTable(
                 name: "conversation_templates");

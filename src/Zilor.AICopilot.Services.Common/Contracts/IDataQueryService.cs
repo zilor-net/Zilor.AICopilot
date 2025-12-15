@@ -26,6 +26,8 @@ public interface IDataQueryService
     public IQueryable<Document> Documents { get; }
     
     public IQueryable<DocumentChunk> DocumentChunks { get; }
+    
+    public IQueryable<BusinessDatabase> BusinessDatabases { get; }
 
     Task<T?> FirstOrDefaultAsync<T>(IQueryable<T> queryable) where T : class;
 

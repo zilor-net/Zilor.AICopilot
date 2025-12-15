@@ -98,6 +98,12 @@ public class Worker(
             await dbContext.KnowledgeBases.AddRangeAsync(RagData.KnowledgeBases(), cancellationToken);
         }
         
+        // 创建默认业务数据库
+        if (!await dbContext.BusinessDatabases.AnyAsync(cancellationToken: cancellationToken))
+        {
+            await dbContext.BusinessDatabases.AddRangeAsync(DataAnalysisData.GetDatabases(), cancellationToken);
+        }
+        
         await dbContext.SaveChangesAsync(cancellationToken);
     }
 }
