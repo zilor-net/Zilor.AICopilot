@@ -122,19 +122,20 @@ public class KnowledgeRetrievalExecutor(
                 return string.Empty;
             }
 
-            // 格式化为 Markdown 引用块
+            // 格式化为 XML 引用块
             var sb = new StringBuilder();
-            sb.AppendLine($"### 知识库引用 [{kbName}] (关键词: {queryText})");
-            
             foreach (var item in result.Value)
             {
-                // 格式：
-                // > 内容...
-                // > [来源: 文档名 (ID: 123) - 相关度: 0.85]
+                // 使用 <document> 标签包裹内容
+                // 将元数据（ID、名称、分数）作为 XML 属性
+                sb.AppendLine($"<document id=\"{item.DocumentId}\" name=\"{item.DocumentName}\" score=\"{item.Score:F2}\">");
                 
-                sb.AppendLine($"> {item.Text}");
-                sb.AppendLine($"> *[来源: {item.DocumentName} (ID: {item.DocumentId}) - 相关度: {item.Score:F2}]*");
-                sb.AppendLine(); // 空行分隔不同切片
+                // 直接填充原始内容
+                // 这样无论内容是 Markdown 表格、代码块还是标题，都被限制在 document 标签内部
+                sb.AppendLine(item.Text);
+                
+                sb.AppendLine("</document>");
+                sb.AppendLine(); 
             }
 
             return sb.ToString();
