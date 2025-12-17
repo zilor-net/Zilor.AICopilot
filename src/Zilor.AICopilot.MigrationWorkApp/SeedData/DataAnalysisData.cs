@@ -14,7 +14,7 @@ public static class DataAnalysisData
             "ERP核心数据库，包含产品信息、销售订单和客户资料。查询销售数据、库存状态时请使用此库。",
             "Host=localhost;Port=5432;Database=erp_demo;Username=postgres;Password=123456",
             DbProviderType.PostgreSql
-        );
+        );  
 
         // 模拟一个 WMS 数据库
         var wmsDb = new BusinessDatabase(
