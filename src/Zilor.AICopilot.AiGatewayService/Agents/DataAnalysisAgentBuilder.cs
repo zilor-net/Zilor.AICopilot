@@ -1,8 +1,10 @@
 ﻿using Microsoft.Agents.AI;
+using Zilor.AICopilot.AgentPlugin;
 using Zilor.AICopilot.AiGatewayService.Agents;
 using Zilor.AICopilot.DataAnalysisService;
+using Zilor.AICopilot.DataAnalysisService.Plugins;
 
-public class DataAnalysisAgentBuilder(ChatAgentFactory agentFactory)
+public class DataAnalysisAgentBuilder(ChatAgentFactory agentFactory, AgentPluginLoader pluginLoader)
 {
     private const string TemplateName = "DataAnalysisAgent";
 
@@ -27,6 +29,11 @@ public class DataAnalysisAgentBuilder(ChatAgentFactory agentFactory)
             template.SystemPrompt = template.SystemPrompt
                 .Replace("{{$DbProvider}}", providerName)
                 .Replace("{{$DialectInstructions}}", dialectInstructions);
+        }, options =>
+        {
+            // 挂载 "DataAnalysisPlugin" 中的所有工具
+            // 这样 Agent 就拥有了 GetTableNames, ExecuteSqlQuery 
+            options.Tools = pluginLoader.GetAITools(nameof(DataAnalysisPlugin));
         });
         
         return agent;

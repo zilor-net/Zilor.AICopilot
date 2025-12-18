@@ -32,7 +32,8 @@ public class ChatAgentFactory(IServiceProvider serviceProvider)
         return (result.model, result.template);
     }
     
-    public ChatClientAgent CreateAgentAsync(LanguageModel model, ConversationTemplate template)
+    public ChatClientAgent CreateAgentAsync(LanguageModel model, ConversationTemplate template,
+        Action<ChatOptions>? configureOptions = null)
     {
         using var scope = serviceProvider.CreateScope();
         var httpClientFactory = scope.ServiceProvider.GetRequiredService<IHttpClientFactory>();
@@ -55,6 +56,9 @@ public class ChatAgentFactory(IServiceProvider serviceProvider)
             Temperature = template.Specification.Temperature ?? model.Parameters.Temperature
         };
         
+        // 执行外部传入的配置逻辑（例如挂载工具）
+        configureOptions?.Invoke(chatOptions); 
+        
         var agent = chatClientBuilder.BuildAIAgent(new ChatClientAgentOptions
             {
                 Name = template.Name,
@@ -66,17 +70,18 @@ public class ChatAgentFactory(IServiceProvider serviceProvider)
         return agent;
     }
 
-    public async Task<ChatClientAgent> CreateAgentAsync(Guid templateId)
+    public async Task<ChatClientAgent> CreateAgentAsync(Guid templateId, Action<ChatOptions>? configureOptions = null)
     {
         var (model, template) = await GetModelAndTemplateAsync(t => t.Id == templateId);
-        return CreateAgentAsync(model, template);
+        return CreateAgentAsync(model, template, configureOptions);
     }
     
     public async Task<ChatClientAgent> CreateAgentAsync(string templateName, 
-        Action<ConversationTemplate>? configureTemplate = null)
+        Action<ConversationTemplate>? configureTemplate = null,
+        Action<ChatOptions>? configureOptions = null)
     {
         var (model, template) = await GetModelAndTemplateAsync(t => t.Name == templateName);
         configureTemplate?.Invoke(template);
-        return CreateAgentAsync(model, template);
+        return CreateAgentAsync(model, template, configureOptions);
     }
 }
