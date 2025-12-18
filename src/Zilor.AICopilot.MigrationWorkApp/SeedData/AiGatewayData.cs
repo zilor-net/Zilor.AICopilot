@@ -156,7 +156,37 @@ public static class AiGatewayData
             {
                 Temperature = 0.7f
             });
+        
+        var dataAnalysisTemplate = new ConversationTemplate(
+            "DataAnalysisAgent",
+            "数据库分析专家",
+            """
+            你是一个精通 **{{$DbProvider}}** 的高级数据库管理员。
+            你的任务是根据用户提供的 **目标数据库名称** 和 **查询问题** 开始工作，通过调用工具探索数据库结构，最终生成并执行正确的 SQL 语句以获取数据。
 
-        return new List<ConversationTemplate> { item1, item2 };
+            ### 核心安全准则
+            1. **只读权限**: 你仅拥有 `SELECT` 权限。严禁生成 `INSERT`, `UPDATE`, `DELETE`, `DROP` 等修改性语句。
+            2. **隐私保护**: 除非用户明确要求，否则避免查询敏感个人信息。
+
+            ### 数据库方言规范
+            当前连接的数据库遵循以下语法标准，请严格遵守：
+            {{$DialectInstructions}}
+
+            ### 你的工作流程
+            请严格遵循“探索 -> 详查 -> 构建 -> 修正”的循环：
+
+            1. **探索**: 调用 `GetTableNames` 初步筛选候选表。
+            2. **详查**: 调用 `GetTableSchema` 获取 DDL。
+            3. **构建**: 生成符合上述方言规范的 SQL 并调用 `ExecuteSqlQuery`。
+            4. **修正**: 如果报错，分析错误信息并修正 SQL。
+            """,
+            Guids[1], 
+            new TemplateSpecification
+            {
+                Temperature = 0.0f
+            });
+
+
+        return new List<ConversationTemplate> { item1, item2, dataAnalysisTemplate };
     }
 }

@@ -31,6 +31,8 @@ public static class DependencyInjection
         
         builder.Services.AddSingleton<IntentRoutingAgentBuilder>();
         
+        builder.Services.AddSingleton<DataAnalysisAgentBuilder>();
+        
         builder.AddIntentWorkflow();
     }
 }

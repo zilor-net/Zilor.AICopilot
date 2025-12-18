@@ -1,6 +1,4 @@
-﻿using System;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 using Microsoft.Agents.AI;
 using Microsoft.Extensions.DependencyInjection;
 using Zilor.AICopilot.AgentPlugin;
