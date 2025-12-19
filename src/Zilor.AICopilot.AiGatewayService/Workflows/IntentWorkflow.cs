@@ -12,6 +12,7 @@ public static class IntentWorkflow
         builder.Services.AddTransient<IntentRoutingExecutor>();
         builder.Services.AddTransient<ToolsPackExecutor>();
         builder.Services.AddTransient<KnowledgeRetrievalExecutor>();
+        builder.Services.AddTransient<DataAnalysisExecutor>();
         builder.Services.AddTransient<ContextAggregatorExecutor>();
         builder.Services.AddTransient<FinalProcessExecutor>();
         
@@ -20,6 +21,7 @@ public static class IntentWorkflow
             var intentRouting = sp.GetRequiredService<IntentRoutingExecutor>();
             var toolsPack = sp.GetRequiredService<ToolsPackExecutor>();
             var knowledgeRetrieval = sp.GetRequiredService<KnowledgeRetrievalExecutor>();
+            var dataAnalysis = sp.GetRequiredService<DataAnalysisExecutor>();
             var aggregator = sp.GetRequiredService<ContextAggregatorExecutor>();
             var finalProcess = sp.GetRequiredService<FinalProcessExecutor>();
             
@@ -27,10 +29,10 @@ public static class IntentWorkflow
             workflowBuilder.WithName(key)
                 // 1. 扇出 (Fan-out): 意图识别 -> [工具打包, 知识检索]
                 // IntentRoutingExecutor 输出的 List<IntentResult> 会被广播给 targets 列表中的每一个节点
-                .AddFanOutEdge(intentRouting, [toolsPack, knowledgeRetrieval])
+                .AddFanOutEdge(intentRouting, [toolsPack, knowledgeRetrieval, dataAnalysis])
                 // 2. 扇入 (Fan-in): [工具打包, 知识检索] -> 聚合器
                 // 聚合器接收来自 sources 列表的所有输出
-                .AddFanInEdge([toolsPack, knowledgeRetrieval], aggregator)
+                .AddFanInEdge([toolsPack, knowledgeRetrieval, dataAnalysis], aggregator)
                 // 3. 线性连接: 聚合器 -> 最终处理
                 .AddEdge(aggregator, finalProcess);
             

@@ -2,9 +2,14 @@ using Projects;
 
 var builder = DistributedApplication.CreateBuilder(args);
 
-var postgresdb = builder.AddPostgres("postgres")
+var password = builder.AddParameter("pg-password", secret: true);
+
+var postgresdb = builder.AddPostgres("postgres", password: password)
+    .WithHostPort(5432)
     .WithDataVolume("postgres-aicopilot")
     .WithPgWeb(pgAdmin => pgAdmin.WithHostPort(5050))
+    // 挂载初始化脚本：容器启动时会自动执行该目录下的 .sql 文件创建 erp_demo
+    .WithBindMount("./sql", "/docker-entrypoint-initdb.d")
     .AddDatabase("ai-copilot");
 
 var rabbitmq = builder.AddRabbitMQ("eventbus")

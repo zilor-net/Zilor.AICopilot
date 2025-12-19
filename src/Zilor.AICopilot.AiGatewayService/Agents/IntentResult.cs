@@ -31,7 +31,7 @@ public record IntentResult
     public string? Reasoning { get; set; }
     
     /// <summary>
-    /// 检索参数 (新增)
+    /// 检索参数
     /// 如果是 Knowledge 意图，模型可以在此提取查询关键词
     /// </summary>
     [JsonPropertyName("query")]

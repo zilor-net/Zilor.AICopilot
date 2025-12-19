@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text.Json;
-using System.Threading;
+﻿using System.Text.Json.Serialization;
 using MediatR;
 using Microsoft.Agents.AI.Workflows;
 using Microsoft.Extensions.AI;
@@ -10,18 +6,30 @@ using Microsoft.Extensions.DependencyInjection;
 using Zilor.AICopilot.AiGatewayService.Workflows;
 using Zilor.AICopilot.Services.Common.Attributes;
 using Zilor.AICopilot.Services.Common.Contracts;
+using Zilor.AICopilot.Services.Common.Helper;
 
 namespace Zilor.AICopilot.AiGatewayService.Agents;
 
+[JsonConverter(typeof(JsonStringEnumConverter))]
+public enum ChunkType
+{
+    Error,
+    Text,
+    FunctionCall,
+    FunctionResult
+}
+
+public record ChatChunk(string Source, ChunkType Type, string Content);
+
 [AuthorizeRequirement("AiGateway.Chat")]
-public record ChatStreamRequest(Guid SessionId, string Message) : IStreamRequest<object>;
+public record ChatStreamRequest(Guid SessionId, string Message) : IStreamRequest<ChatChunk>;
 
 public class ChatStreamHandler(
     IDataQueryService queryService, 
     [FromKeyedServices(nameof(IntentWorkflow))]Workflow workflow) 
-    : IStreamRequestHandler<ChatStreamRequest, object>
+    : IStreamRequestHandler<ChatStreamRequest, ChatChunk>
 {
-    public async IAsyncEnumerable<object> Handle(ChatStreamRequest request, CancellationToken cancellationToken)
+    public async IAsyncEnumerable<ChatChunk> Handle(ChatStreamRequest request, CancellationToken cancellationToken)
     {
         if (!queryService.Sessions.Any(session => session.Id == request.SessionId))
         {
@@ -34,33 +42,56 @@ public class ChatStreamHandler(
             switch (workflowEvent)
             {
                 case ExecutorFailedEvent evt:
-                    yield return new { content = $"发生错误：{evt.Data.Message}" };
+                    yield return new ChatChunk(evt.ExecutorId, ChunkType.Error, evt.Data.Message);
                     break;
                 case AgentRunResponseEvent evt:
-                    yield return new
+                    var evtText = evt.Response.Text;
+                    if (evt.ExecutorId == nameof(IntentRoutingExecutor))
                     {
-                        content =
-                            $"\n\n\n```json\n //意图分类\n {evt.Response.Text}\n```\n\n"
-                    };
+                        evtText = $"""
+                                   
+                                   ```json
+                                   // 意图识别
+                                   {evt.Response.Text}
+                                   ```
+                                   
+                                   """;
+                    }
+                    yield return new ChatChunk(evt.ExecutorId, ChunkType.Text, evtText);
                     break;
                 case AgentRunUpdateEvent evt:
-                    foreach (var content in evt.Update.Contents)
+                    foreach (var evtContent in evt.Update.Contents)
                     {
-                        switch (content)
+                        switch (evtContent)
                         {
-                            case TextContent callContent:
-                                yield return new { content = callContent.Text };
+                            case TextContent content:
+                                yield return new ChatChunk(evt.ExecutorId, ChunkType.Text, content.Text);
                                 break;
-                            case FunctionCallContent callContent:
-                                yield return new
+                            case FunctionCallContent content:
+                                var fun = new
                                 {
-                                    content =
-                                        $"\n\n```\n正在执行工具：{callContent.Name} \n请求参数：{JsonSerializer.Serialize(callContent.Arguments)}"
+                                    content.Name, content.Arguments
                                 };
+                                yield return new ChatChunk(evt.ExecutorId, ChunkType.FunctionCall,
+                                    $"""
+                                    
+                                     ```json
+                                     // 函数调用
+                                    {fun.ToJson()}
+                                    ```
+                                    
+                                    """);
                                 break;
-                            case FunctionResultContent callContent:
-                                yield return new
-                                    { content = $"\n\n执行结果：{JsonSerializer.Serialize(callContent.Result)}\n```\n\n" };
+                            case FunctionResultContent content:
+                                yield return new ChatChunk(evt.ExecutorId, ChunkType.FunctionResult, 
+                                    $"""
+                         
+                                      ```json
+                                      // 调用结果
+                                     {content.Result}
+                                     ```
+                                     
+                                     """);
                                 break;
                         }
                     }

@@ -8,6 +8,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Zilor.AICopilot.AgentPlugin\Zilor.AICopilot.AgentPlugin.csproj" />
+      <ProjectReference Include="..\Zilor.AICopilot.Dapper\Zilor.AICopilot.Dapper.csproj" />
       <ProjectReference Include="..\Zilor.AICopilot.Services.Common\Zilor.AICopilot.Services.Common.csproj" />
     </ItemGroup>
 

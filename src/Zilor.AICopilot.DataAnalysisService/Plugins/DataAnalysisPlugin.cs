@@ -1,10 +1,11 @@
 ﻿using System.ComponentModel;
 using System.Text;
-using System.Text.Json;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Zilor.AICopilot.AgentPlugin;
 using Zilor.AICopilot.Core.DataAnalysis.Aggregates.BusinessDatabase;
 using Zilor.AICopilot.Services.Common.Contracts;
+using Zilor.AICopilot.Services.Common.Helper;
 
 namespace Zilor.AICopilot.DataAnalysisService.Plugins;
 
@@ -18,16 +19,18 @@ public record ColumnMetadata
 }
 
 public class DataAnalysisPlugin(
-    IDataQueryService dataQuery,
+    IServiceProvider serviceProvider,
     IDatabaseConnector dbConnector,
     ILogger<DataAnalysisPlugin> logger) : AgentPluginBase
 {
     public override string Description => "提供数据库结构查询和SQL执行能力，用于回答涉及业务数据的统计分析问题。";
-
+    
     // 辅助方法：根据名称获取数据库配置
     // 这个方法不暴露给 AI，仅供内部使用
     private async Task<BusinessDatabase> GetDatabaseAsync(string databaseName, CancellationToken ct)
     {
+        using var scope = serviceProvider.CreateScope();
+        var dataQuery = scope.ServiceProvider.GetRequiredService<IDataQueryService>();
         var queryable = dataQuery.BusinessDatabases.Where(d => d.Name == databaseName);
         var db = await dataQuery.FirstOrDefaultAsync(queryable);
 
@@ -80,8 +83,7 @@ public class DataAnalysisPlugin(
             var result = await dbConnector.ExecuteQueryAsync(db, sql);
 
             // 序列化结果
-            // 使用 WriteIndented = false 压缩 JSON，节省 Token
-            return JsonSerializer.Serialize(result, new JsonSerializerOptions { WriteIndented = false });
+            return result.ToJson();
         }
         catch (Exception ex)
         {
@@ -179,7 +181,7 @@ public class DataAnalysisPlugin(
             default:
                 return [];
         }
-
+        
         var result = await dbConnector.ExecuteQueryAsync(db, sql, new { TableName = tableName });
 
         // Dapper 返回的是 dynamic，需要手动映射到强类型
@@ -189,10 +191,10 @@ public class DataAnalysisPlugin(
             var dict = (IDictionary<string, object>)row;
             columns.Add(new ColumnMetadata
             {
-                ColumnName = dict["ColumnName"].ToString() ?? "",
-                DataType = dict["DataType"].ToString() ?? "",
+                ColumnName = dict["ColumnName"] as string ?? "",
+                DataType = dict["DataType"] as string ?? "",
                 IsPrimaryKey = Convert.ToInt32(dict["IsPrimaryKey"]) == 1,
-                Description = dict["Description"].ToString()
+                Description = dict["Description"] as string ?? ""
             });
         }
 
@@ -230,18 +232,17 @@ public class DataAnalysisPlugin(
             {
                 // 仅取前 50 行
                 var truncatedList = dataList.Take(maxRowsReturn).ToList();
-                var json = JsonSerializer.Serialize(truncatedList, new JsonSerializerOptions { WriteIndented = false });
 
-                return $"查询成功。结果集过大 (共 {rowCount} 行)，已截断为前 {maxRowsReturn} 行以适应上下文。\nJSON结果: {json}";
+                return $"查询成功。结果集过大 (共 {rowCount} 行)，已截断为前 {maxRowsReturn} 行以适应上下文。\nJSON结果: {truncatedList.ToJson()}";
             }
 
             // 正常返回
-            return JsonSerializer.Serialize(dataList, new JsonSerializerOptions { WriteIndented = false });
+            return dataList.ToJson();
         }
         catch (InvalidOperationException ex) // 捕获安全拦截异常
         {
             logger.LogWarning("SQL 执行被拦截: {Message}", ex.Message);
-            return $"安全警告: 您的查询被系统拒绝。原因: {ex.Message}";
+            return $"安全警告: 查询被系统拒绝。原因: {ex.Message}";
         }
         catch (Exception ex)
         {

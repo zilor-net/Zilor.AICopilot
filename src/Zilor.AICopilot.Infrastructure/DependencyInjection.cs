@@ -15,5 +15,5 @@ public static class DependencyInjection
         builder.AddEfCore();
         builder.Services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
         builder.Services.AddSingleton<IFileStorageService, LocalFileStorageService>();
-    }
+    }   
 }

@@ -44,20 +44,8 @@ public class AgentPluginLoader
 
         foreach (var type in pluginTypes)
         {
-            // 创建实例
-            // 如果容器中没注册，则尝试使用 ActivatorUtilities 创建（支持依赖注入）
-            // 如果还不行，回退到 Activator.CreateInstance
-            
-            IAgentPlugin plugin;
-            try 
-            {
-                plugin = (IAgentPlugin)ActivatorUtilities.CreateInstance(_serviceProvider, type);
-            }
-            catch
-            {
-                // 只有当没有依赖项的简单插件才走这里
-                plugin = (IAgentPlugin)Activator.CreateInstance(type)!;
-            }
+            // 通过依赖注入容器创建实例
+            var plugin = (IAgentPlugin)ActivatorUtilities.CreateInstance(_serviceProvider, type);
             
             // 存入缓存
             _plugins[plugin.Name] = plugin;

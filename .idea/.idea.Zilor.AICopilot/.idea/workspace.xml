@@ -10,9 +10,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f4f71ff8-869c-4e55-85b9-f9116211e89c" name="更改" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Workflows/DataAnalysisExecutor.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.Services.Common/Helper/JsonHelper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Agents/ChatAgentFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Agents/ChatAgentFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Agents/DataAnalysisAgentBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Agents/DataAnalysisAgentBuilder.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Zilor.AICopilot.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/Zilor.AICopilot.sln.DotSettings.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.AgentPlugin/AgentPluginLoader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AgentPlugin/AgentPluginLoader.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Agents/ChatStreamRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Agents/ChatStreamRequest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Agents/IntentResult.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Agents/IntentResult.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Workflows/GenerationContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Workflows/GenerationContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Workflows/IntentWorkflow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Workflows/IntentWorkflow.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.AppHost/AppHost.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AppHost/AppHost.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.AppHost/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AppHost/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.Dapper/DependencyInjection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.Dapper/DependencyInjection.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.DataAnalysisService/DependencyInjection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.DataAnalysisService/DependencyInjection.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.DataAnalysisService/Plugins/DataAnalysisPlugin.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.DataAnalysisService/Plugins/DataAnalysisPlugin.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.DataAnalysisService/Zilor.AICopilot.DataAnalysisService.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.DataAnalysisService/Zilor.AICopilot.DataAnalysisService.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.HttpApi/DependencyInjection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.HttpApi/DependencyInjection.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.Infrastructure/DependencyInjection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.Infrastructure/DependencyInjection.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,7 +38,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="32.升级意图识别" />
+        <entry key="$PROJECT_DIR$" value="33.构建DBA专家Agent" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -79,6 +95,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/75a0de2ec7cb5efe9e04d6c27f921e6c7e5726d6208edfb6d81e5350df4a7e/RuntimeHandles.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/82229b6833efb47f92b7f3249eecaae20e83dea1e6c3de5a0c4e0bb5af75ae/ValueTask.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/8292cc85b5cd628b92c7a2eb35999f97ba5f9949a2d5e2e4ae4387f532448d0/ParameterInfo.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/877ce68844fd46defa2a47e65d8896c0358a3d6805137a3822e5c3f62af25fa/AgentRunResponseEvent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/a943b174d10fce93f21b7afdf0121fd2fcddf0d89ae8ddfafcb36ad3947b77/IWorkflowContext.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ae7cb4ab974ef13d2138941576bb93657f6cd3d1895813b15e05bbc2959c3/OpenAIClient.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/b08e508b541e15a842d6f6d449907e11da6f536e8cfe0824d61ebd6dcb6681/AgentRunOptions.cs" root0="FORCE_HIGHLIGHTING" />
@@ -153,6 +170,7 @@
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.Services.Common/Contracts/IDatabaseConnector.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.Services.Common/Contracts/IFileStorageService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.Services.Common/Events/DocumentUploadedEvent.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.Services.Common/Helpler/JsonHelper.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="KubernetesApiPersistence">{}</component>
   <component name="KubernetesApiProvider">{
@@ -176,12 +194,12 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Aspire Host.Zilor.AICopilot.AppHost: http.executor": "Run",
+    "Aspire Host.Zilor.AICopilot.AppHost: http.executor": "Debug",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "git-widget-placeholder": "33.构建DBA专家Agent",
+    "git-widget-placeholder": "34.构建数据分析执行器",
     "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   }
@@ -336,7 +354,8 @@
       <workItem from="1765862343425" duration="3465000" />
       <workItem from="1765951621086" duration="7689000" />
       <workItem from="1765970919078" duration="43000" />
-      <workItem from="1766027421836" duration="7832000" />
+      <workItem from="1766027421836" duration="8914000" />
+      <workItem from="1766111424490" duration="21939000" />
     </task>
     <task id="LOCAL-00001" summary="chore(ide): 更新IDE配置文件并清理无用设置&#10;&#10;- 移除.idea目录下的.gitignore文件中冗余的忽略规则&#10;- 删除数据源配置文件dataSources.xml&#10;- 更新vcs.xml中的Git映射路径为空字符串&#10;- 新增projectSettingsUpdater.xml以优化项目设置更新机制&#10;- 添加完整的workspace.xml运行配置，支持Aspire Host和HTTP API调试&#10;-为多个命令和查询类文件补充必要的命名空间引用">
       <option name="closed" value="true" />
@@ -706,7 +725,15 @@
       <option name="project" value="LOCAL" />
       <updated>1766038427231</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="feat(ai-gateway): 支持通过外部配置自定义聊天选项- 在 CreateAgentAsync 方法中添加 configureOptions 参数- 允许调用方在创建代理时传入自定义 ChatOptions 配置&#10;- 更新 DataAnalysisAgentBuilder以挂载插件工具&#10;-优化 Agent 构建流程，支持更灵活的扩展机制&#10;- 调整方法签名以兼容新增的配置委托参数&#10;- 增强代码可维护性和扩展性，便于后续功能迭代">
+      <option name="closed" value="true" />
+      <created>1766041530227</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1766041530227</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -727,7 +754,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="feat(ai): 更新聊天代理工厂以支持模型温度参数&#10;&#10;- 在 ChatAgentFactory 构造函数中注入 IServiceProvider&#10;- 修改模型初始化逻辑以传递 Temperature 参数&#10;- 更新模板系统提示词属性引用&#10;- 调整命名空间引用以支持新的 AI 扩展功能&#10;- 优化 SessionChatMessageStore 中的状态反序列化逻辑&#10;- 清理 SendUserMessage.cs 中的多余空行以提高可读性" />
     <MESSAGE value="feat(ai):优化聊天代理工厂和会话消息存储&#10;&#10;- 移除 ChatAgentFactory 中多余的控制台输出语句&#10;- 简化 SessionChatMessageStore 的消息排序逻辑，确保按时间正序返回&#10;- 清理 SendUserMessage.cs 文件中的多余空行&#10;- 更新数据库查询逻辑以获取最近50条消息并正确排序&#10;- 优化消息实体到 ChatMessage 的转换过程" />
     <MESSAGE value="feat(ai): 实现Agent工具调用与插件系统集成&#10;&#10;- 集成OpenTelemetry以增强AI服务可观测性&#10;- 实现插件加载机制，支持从程序集动态注册插件&#10;- 添加TimePlugin提供系统时间查询功能&#10;- 在SendUserMessage命令中启用工具调用支持&#10;- 重构ChatAgentFactory以适配新的Agent构建流程&#10;- 完善SessionChatMessageStore线程安全处理逻辑&#10;- 引入IdentityServiceTools支持用户创建操作&#10;- 更新依赖项以支持AI代理及插件相关功能&#10;- 配置OpenTelemetry追踪提供者以收集Agent运行数据" />
     <MESSAGE value="feat(agent): 添加获取所有插件的方法&#10;&#10;- 在 AgentPluginLoader 中新增 GetAllPlugin 方法&#10;- 返回所有已加载的插件实例数组&#10;&#10;fix(api): 修改 Sender 属性访问级别&#10;&#10;- 将 ApiControllerBase 中的 Sender 属性从 public 改为 protected&#10;&#10;- 限制 Sender 属性仅在派生类中可访问chore(migration): 移除初始迁移文件&#10;&#10;- 删除 Initial 迁移文件及其设计器文件&#10;- 删除 AiCopilotDbContextModelSnapshot 文件&#10;- 清理数据库初始化相关代码文件" />
@@ -752,7 +778,8 @@
     <MESSAGE value="feat(agent-plugin): 支持依赖注入方式创建插件实例&#10;&#10;- 在 AgentPluginLoader 中引入 IServiceProvider 依赖&#10;- 修改插件实例创建逻辑，优先使用 ActivatorUtilities 支持构造函数注入&#10;- 回退机制保留原有 Activator.CreateInstance 方式&#10;- 更新构造函数签名以注入服务提供者&#10;&#10;feat(data-analysis): 新增数据分析插件支持数据库查询&#10;&#10;- 添加 DataAnalysisPlugin 类实现 AgentPluginBase&#10;- 支持获取数据库表名、结构定义和执行 SQL 查询&#10;- 实现 PostgreSQL 元数据查询和安全限制&#10;- 提供 JSON 格式结果返回便于 AI 处理&#10;- 集成日志记录与异常处理机制" />
     <MESSAGE value="feat(ai-gateway): 升级意图路由代理为三元识别模型&#10;&#10;- 将意图识别从双重模式扩展为三元模式（Action/Knowledge/Analysis）&#10;- 明确区分知识库查询与数据分析查询的判断标准&#10;-优化意图匹配逻辑，支持复合意图的组合返回- 更新系统提示词模板，细化各类意图的处理说明- 增强 JSON 输出格式规范，提升 AI 理解与解析准确性- 调整数据分析示例，强化 Text-to-SQL 场景支持- 保持模型温度参数为 0，确保路由决策一致性" />
     <MESSAGE value="feat(ai-gateway): 新增数据分析代理构建器及方言支持&#10;&#10;- 添加 DataAnalysisAgentBuilder 类，用于构建针对特定数据库的 AI Agent&#10;- 注入 DataAnalysisAgentBuilder 至依赖服务集合&#10;- 在 AiGatewayData 种子数据中新增数据分析师对话模板&#10;- 创建 SqlDialectFactory 提供多数据库方言提示词策略&#10;- 支持 PostgreSQL、SQL Server 和 MySQL 的语法差异化处理&#10;- 更新项目引用以包含 DataAnalysisService 模块" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(ai-gateway): 新增数据分析代理构建器及方言支持&#10;&#10;- 添加 DataAnalysisAgentBuilder 类，用于构建针对特定数据库的 AI Agent&#10;- 注入 DataAnalysisAgentBuilder 至依赖服务集合&#10;- 在 AiGatewayData 种子数据中新增数据分析师对话模板&#10;- 创建 SqlDialectFactory 提供多数据库方言提示词策略&#10;- 支持 PostgreSQL、SQL Server 和 MySQL 的语法差异化处理&#10;- 更新项目引用以包含 DataAnalysisService 模块" />
+    <MESSAGE value="feat(ai-gateway): 支持通过外部配置自定义聊天选项- 在 CreateAgentAsync 方法中添加 configureOptions 参数- 允许调用方在创建代理时传入自定义 ChatOptions 配置&#10;- 更新 DataAnalysisAgentBuilder以挂载插件工具&#10;-优化 Agent 构建流程，支持更灵活的扩展机制&#10;- 调整方法签名以兼容新增的配置委托参数&#10;- 增强代码可维护性和扩展性，便于后续功能迭代" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(ai-gateway): 支持通过外部配置自定义聊天选项- 在 CreateAgentAsync 方法中添加 configureOptions 参数- 允许调用方在创建代理时传入自定义 ChatOptions 配置&#10;- 更新 DataAnalysisAgentBuilder以挂载插件工具&#10;-优化 Agent 构建流程，支持更灵活的扩展机制&#10;- 调整方法签名以兼容新增的配置委托参数&#10;- 增强代码可维护性和扩展性，便于后续功能迭代" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
