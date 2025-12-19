@@ -35,7 +35,7 @@ public class DataAnalysisAgentBuilder(ChatAgentFactory agentFactory, AgentPlugin
             // 挂载 "DataAnalysisPlugin" 中的所有工具
             // 这样 Agent 就拥有了 GetTableNames, ExecuteSqlQuery 
             options.Tools = pluginLoader.GetAITools(nameof(DataAnalysisPlugin));
-        });
+        }, false);
         
         return agent;
     }
