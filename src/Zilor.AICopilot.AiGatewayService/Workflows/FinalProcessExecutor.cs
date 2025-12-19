@@ -1,4 +1,5 @@
-﻿using System.Text.Json;
+﻿using System.Text;
+using System.Text.Json;
 using Microsoft.Agents.AI;
 using Microsoft.Agents.AI.Workflows;
 using Microsoft.Agents.AI.Workflows.Reflection;
@@ -48,36 +49,60 @@ public class FinalProcessExecutor(
             var inputMessages = new List<ChatMessage>();
             string finalUserPrompt;
 
-            // RAG 上下文注入策略：User Context Injection
-            if (!string.IsNullOrWhiteSpace(genContext.KnowledgeContext))
+            // [修改] RAG/数据增强 上下文注入策略
+            // 检查是否存在 知识库上下文 或 数据分析上下文
+            bool hasKnowledge = !string.IsNullOrWhiteSpace(genContext.KnowledgeContext);
+            bool hasDataAnalysis = !string.IsNullOrWhiteSpace(genContext.DataAnalysisContext);
+            bool hasContext = hasKnowledge || hasDataAnalysis;
+            
+            if (hasContext)
             {
+                // 构建混合上下文内容
+                var contextBuilder = new StringBuilder();
+
+                if (hasDataAnalysis)
+                {
+                    
+                    contextBuilder.AppendLine("<!--- 数据分析/SQL查询结果 -->");
+                    contextBuilder.AppendLine(genContext.DataAnalysisContext);
+                    contextBuilder.AppendLine();
+                }
+
+                if (hasKnowledge)
+                {
+                    contextBuilder.AppendLine("<!--- 知识库检索参考信息 -->");
+                    contextBuilder.AppendLine(genContext.KnowledgeContext);
+                    contextBuilder.AppendLine();
+                }
+
                 // 使用 XML 标签 <context> 是一种最佳实践
-                // 它能帮助模型明确区分“指令(Instruction)”和“数据(Data)”
                 finalUserPrompt = $"""
-                                   请基于以下检索到的参考信息回答我的问题：
+                                   请基于以下参考信息（包含数据库查询结果或检索文档）回答我的问题：
 
                                    <context>
-                                   {genContext.KnowledgeContext}
+                                   {contextBuilder}
                                    </context>
 
                                    回答要求：
                                    1. 引用参考信息时，请标注来源 ID（例如 [^1]）。
-                                   2. 在回答结尾，请务必生成一个“参考资料”列表，列出所有被引用的文档来源（去重），格式为：
-                                   - [ID]: 文档名称
-                                   3. 如果参考信息不足以回答问题，请直接说明，严禁编造。
-                                   4. 保持回答专业、简洁。
+                                   2. 针对数据分析结果，请结合用户问题进行自然语言解释，不要直接展示原始数据结构，除非用户要求。
+                                   3. 在回答结尾，如果引用了知识库文档，请生成“参考资料”列表。
+                                   4. 如果参考信息不足以回答问题，请直接说明，严禁编造。
+                                   5. 保持回答专业、简洁。
 
                                    用户问题：
                                    {request.Message}
                                    """;
                 
-                logger.LogDebug("RAG 模式激活：已注入 {Length} 字符的上下文。", genContext.KnowledgeContext.Length);
+                logger.LogDebug("增强模式激活：注入知识({KSize})，注入数据({DSize})。", 
+                    genContext.KnowledgeContext?.Length ?? 0, 
+                    genContext.DataAnalysisContext?.Length ?? 0);
             }
             else
             {
                 // 无上下文模式：直接透传用户问题
                 finalUserPrompt = request.Message;
-                logger.LogDebug("RAG 模式未激活：仅使用用户原始输入。");
+                logger.LogDebug("增强模式未激活：仅使用用户原始输入。");
             }
             
             // 将组合后的提示作为单条 User 消息添加
@@ -94,10 +119,11 @@ public class FinalProcessExecutor(
                 }
             };
 
-            if (!string.IsNullOrWhiteSpace(genContext.KnowledgeContext))
+            // 如果有注入任何上下文（知识或数据），都降低温度以保证事实性
+            if (hasContext)
             {
                 runOptions.ChatOptions.Temperature = 0.3f;
-            } 
+            }
 
             // 5. 恢复会话状态 (Thread)
             // 从持久化存储中恢复之前的对话历史

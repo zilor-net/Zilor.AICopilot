@@ -204,7 +204,7 @@ public class DataAnalysisPlugin(
     [Description("在指定数据库上执行查询 SQL 语句，并返回 JSON 格式的结果。")]
     public async Task<string> ExecuteSqlQueryAsync(
         [Description("目标数据库的名称")] string databaseName,
-        [Description("要执行的 SQL 查询语句 (仅限 SELECT)")] string sqlQuery)
+        [Description("要执行的 SQL 查询语句 (仅限 SELECT，不需要人类可读，去除换行符)")] string sqlQuery)
     {
         // 1. 基础校验
         if (string.IsNullOrWhiteSpace(sqlQuery)) return "错误：SQL 语句不能为空。";

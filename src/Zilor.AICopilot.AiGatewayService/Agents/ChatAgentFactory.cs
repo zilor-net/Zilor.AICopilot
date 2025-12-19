@@ -32,8 +32,10 @@ public class ChatAgentFactory(IServiceProvider serviceProvider)
         return (result.model, result.template);
     }
     
-    public ChatClientAgent CreateAgentAsync(LanguageModel model, ConversationTemplate template,
-        Action<ChatOptions>? configureOptions = null)
+    public ChatClientAgent CreateAgentAsync(LanguageModel model, 
+        ConversationTemplate template,
+        Action<ChatOptions>? configureOptions = null,
+        bool isSaveChatMessage = true)
     {
         using var scope = serviceProvider.CreateScope();
         var httpClientFactory = scope.ServiceProvider.GetRequiredService<IHttpClientFactory>();
@@ -57,31 +59,43 @@ public class ChatAgentFactory(IServiceProvider serviceProvider)
         };
         
         // 执行外部传入的配置逻辑（例如挂载工具）
-        configureOptions?.Invoke(chatOptions); 
+        configureOptions?.Invoke(chatOptions);
+
+        var agentOptions = new ChatClientAgentOptions
+        {
+            Name = template.Name,
+            Instructions = template.SystemPrompt,
+            ChatOptions = chatOptions
+        };
         
-        var agent = chatClientBuilder.BuildAIAgent(new ChatClientAgentOptions
-            {
-                Name = template.Name,
-                Instructions = template.SystemPrompt,
-                ChatOptions = chatOptions,
-                ChatMessageStoreFactory = context => new SessionChatMessageStore(serviceProvider, context.SerializedState)
-            });
+        // 动态创建会话存储
+        if (isSaveChatMessage)
+        {
+            agentOptions.ChatMessageStoreFactory = context =>
+                new SessionChatMessageStore(serviceProvider, context.SerializedState);
+        }
+        
+        var agent = chatClientBuilder.BuildAIAgent(agentOptions);
         
         return agent;
     }
 
-    public async Task<ChatClientAgent> CreateAgentAsync(Guid templateId, Action<ChatOptions>? configureOptions = null)
+    public async Task<ChatClientAgent> CreateAgentAsync(
+        Guid templateId, 
+        Action<ChatOptions>? configureOptions = null, 
+        bool isSaveChatMessage = true)
     {
         var (model, template) = await GetModelAndTemplateAsync(t => t.Id == templateId);
-        return CreateAgentAsync(model, template, configureOptions);
+        return CreateAgentAsync(model, template, configureOptions, isSaveChatMessage);
     }
     
     public async Task<ChatClientAgent> CreateAgentAsync(string templateName, 
         Action<ConversationTemplate>? configureTemplate = null,
-        Action<ChatOptions>? configureOptions = null)
+        Action<ChatOptions>? configureOptions = null,
+        bool isSaveChatMessage = true)
     {
         var (model, template) = await GetModelAndTemplateAsync(t => t.Name == templateName);
         configureTemplate?.Invoke(template);
-        return CreateAgentAsync(model, template, configureOptions);
+        return CreateAgentAsync(model, template, configureOptions, isSaveChatMessage);
     }
 }

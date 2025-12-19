@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using Microsoft.Agents.AI;
 using Microsoft.Agents.AI.Workflows;
 using Microsoft.Agents.AI.Workflows.Reflection;
 using Microsoft.Extensions.AI;
@@ -84,12 +85,12 @@ public class DataAnalysisExecutor(
             // 2. 构建 DBA Agent
             // 这里会动态注入 PG 或 SQLServer 的方言提示词
             var agent = await agentBuilder.BuildAsync(db);
+            // 创建临时会话线程
+            var thread = agent.GetNewThread();
             
             // 4. 执行 ReAct 循环
             // Agent 会自动进行: 思考 -> GetTableNames -> 思考 -> GetTableSchema -> 思考 -> ExecuteSQL -> 总结
-            var output = new StringBuilder();
-            
-            await foreach (var update in agent.RunStreamingAsync(intent.Query!, cancellationToken: ct))
+            await foreach (var update in agent.RunStreamingAsync(intent.Query!, thread, cancellationToken: ct))
             {
                 // 遍历当前更新中的所有内容项
                 foreach (var content in update.Contents)
@@ -108,17 +109,19 @@ public class DataAnalysisExecutor(
 
                         // 3. 捕获普通文本回复
                         case TextContent text:
-                            output.AppendLine(text.Text);
                             await context.AddEventAsync(new AgentRunUpdateEvent(Id, update), ct);
                             break;
                     }
                 }
             }
-
+            
             // 记录日志以便调试
             logger.LogInformation("数据库 {DbName} 查询完成。", dbName);
-
-            return output.ToString();
+            
+            // 获取最后一条 Agent 回复消息（最终数据）
+            var messages = thread.GetService<IList<ChatMessage>>()!;
+            var output = messages.LastOrDefault(message => message.Role == ChatRole.Assistant);
+            return output != null ? output.Text : "[系统错误]: 无法获取查询结果。";
         }
         catch (Exception ex)
         {

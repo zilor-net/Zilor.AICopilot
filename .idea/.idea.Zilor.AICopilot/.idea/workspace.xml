@@ -13,13 +13,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Agents/ChatStreamRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Agents/ChatStreamRequest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Agents/DataAnalysisAgentBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Agents/DataAnalysisAgentBuilder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Workflows/ContextAggregatorExecutor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Workflows/ContextAggregatorExecutor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Workflows/DataAnalysisExecutor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Workflows/DataAnalysisExecutor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Workflows/FinalProcessExecutor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Workflows/FinalProcessExecutor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.HttpApi/Controllers/AiGatewayController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.HttpApi/Controllers/AiGatewayController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.MigrationWorkApp/SeedData/AiGatewayData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.MigrationWorkApp/SeedData/AiGatewayData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.AppHost/sql/erp-init.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AppHost/sql/erp-init.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.DataAnalysisService/Plugins/DataAnalysisPlugin.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.DataAnalysisService/Plugins/DataAnalysisPlugin.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.MigrationWorkApp/SeedData/DataAnalysisData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.MigrationWorkApp/SeedData/DataAnalysisData.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -140,6 +135,7 @@
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.HttpApi/Controllers/RagController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.IdentityService/Plugins/IdentityServiceTools.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.Infrastructure/Storage/LocalFileStorageService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://D:/Repos/MyRepos/Zilor.AICopilot/src/Zilor.AICopilot.MigrationWorkApp/SeedData/AiGatewayData.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.MigrationWorkApp/SeedData/AiGatewayData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.MigrationWorkApp/SeedData/DataAnalysisData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.MigrationWorkApp/SeedData/RagData.cs" root0="FORCE_HIGHLIGHTING" />
@@ -162,7 +158,7 @@
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.Services.Common/Contracts/IDatabaseConnector.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.Services.Common/Contracts/IFileStorageService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.Services.Common/Events/DocumentUploadedEvent.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.Services.Common/Helpler/JsonHelper.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.Services.Common/Helper/JsonHelper.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="KubernetesApiPersistence">{}</component>
   <component name="KubernetesApiProvider">{
@@ -184,18 +180,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Aspire Host.Zilor.AICopilot.AppHost: http.executor": "Debug",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "git-widget-placeholder": "34.构建数据分析执行器",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Aspire Host.Zilor.AICopilot.AppHost: http.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;34.构建数据分析执行器&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Aspire Host.Zilor.AICopilot.AppHost: http">
     <configuration name="Zilor.AICopilot.AppHost: http" type="AspireHostConfiguration" factoryName="Aspire Host" activateToolWindowBeforeRun="false">
       <option name="PROJECT_FILE_PATH" value="$PROJECT_DIR$/src/Zilor.AICopilot.AppHost/Zilor.AICopilot.AppHost.csproj" />
@@ -347,15 +343,10 @@
       <workItem from="1765951621086" duration="7689000" />
       <workItem from="1765970919078" duration="43000" />
       <workItem from="1766027421836" duration="8914000" />
-      <workItem from="1766111424490" duration="27235000" />
-    </task>
-    <task id="LOCAL-00001" summary="chore(ide): 更新IDE配置文件并清理无用设置&#10;&#10;- 移除.idea目录下的.gitignore文件中冗余的忽略规则&#10;- 删除数据源配置文件dataSources.xml&#10;- 更新vcs.xml中的Git映射路径为空字符串&#10;- 新增projectSettingsUpdater.xml以优化项目设置更新机制&#10;- 添加完整的workspace.xml运行配置，支持Aspire Host和HTTP API调试&#10;-为多个命令和查询类文件补充必要的命名空间引用">
-      <option name="closed" value="true" />
-      <created>1763696042825</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1763696042825</updated>
+      <workItem from="1766111424490" duration="31489000" />
+      <workItem from="1766195997783" duration="394000" />
+      <workItem from="1766196431021" duration="19000" />
+      <workItem from="1766196565494" duration="7874000" />
     </task>
     <task id="LOCAL-00002" summary="style(core): 格式化代码并调整属性顺序&#10;- 删除多余的空行并统一代码缩进&#10;- 调整类成员变量声明顺序，提升可读性&#10;- 规范方法参数换行与对齐方式- 统一字段与属性的访问修饰符排列顺序&#10;- 清理无用命名空间引用，优化依赖结构&#10;- 修正部分注释位置以匹配实际逻辑- 标准化构造函数初始化列表格式&#10;- 移除冗余的 endregion 指令&#10;- 优化条件判断语句表达式书写风格&#10;- 更新实体配置中的列映射定义顺序&#10;- 完善数据传输对象(Dto)的属性布局&#10;- 整理控制器动作方法之间的间距&#10;- 对齐JWT设置记录类的属性定义&#10;-重新组织服务注册扩展方法内容&#10;- 改进异常处理器的响应构建过程&#10;- 提高查询处理程序中LINQ表达式的清晰度&#10;- 修改身份验证服务内的用户查找流程&#10;- 重构消息实体的关系映射配置细节- 精简共享内核结果类型的静态工厂方法实现&#10;- 优化会话实体的消息集合封装策略">
       <option name="closed" value="true" />
@@ -733,7 +724,23 @@
       <option name="project" value="LOCAL" />
       <updated>1766135379272</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="feat(ai-gateway): 完善数据分析代理与执行器功能&#10;&#10;- 调整数据分析师提示词模板，明确 XML 输出格式与字段注释要求&#10;- 增加对数据库字段注释的获取与展示支持&#10;-严格限制 AI仅做数据查询，禁止趋势分析与数据解读&#10;- 更新上下文聚合执行器，支持三路分支（Tools/Knowledge/DataAnalysis）&#10;-优化 DataAnalysisExecutor 查询结果拼接逻辑&#10;- 移除无用的命名空间引用与冗余数据源配置&#10;- 补充 ERP 数据库初始化脚本及完整表结构与注释- 统一 Agent 流式响应中函数调用与结果的格式化输出">
+      <option name="closed" value="true" />
+      <created>1766140573495</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1766140573495</updated>
+    </task>
+    <task id="LOCAL-00050" summary="feat(ai-gateway):优化数据分析代理与执行器功能&#10;&#10;- 调整数据分析师提示词模板，明确 XML 输出格式与字段注释要求- 增加对数据库字段注释的获取与展示支持&#10;- 严格限制 AI仅做数据查询，禁止趋势分析与数据解读&#10;- 更新上下文聚合执行器，支持三路分支（Tools/Knowledge/DataAnalysis）&#10;-优化 DataAnalysisExecutor 查询结果拼接逻辑&#10;- 移除无用的命名空间引用与冗余数据源配置&#10;- 补充 ERP 数据库初始化脚本及完整表结构与注释- 统一 Agent 流式响应中函数调用与结果的格式化输出">
+      <option name="closed" value="true" />
+      <created>1766145281981</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1766145281981</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -754,8 +761,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="feat(ai): 实现Agent工具调用与插件系统集成&#10;&#10;- 集成OpenTelemetry以增强AI服务可观测性&#10;- 实现插件加载机制，支持从程序集动态注册插件&#10;- 添加TimePlugin提供系统时间查询功能&#10;- 在SendUserMessage命令中启用工具调用支持&#10;- 重构ChatAgentFactory以适配新的Agent构建流程&#10;- 完善SessionChatMessageStore线程安全处理逻辑&#10;- 引入IdentityServiceTools支持用户创建操作&#10;- 更新依赖项以支持AI代理及插件相关功能&#10;- 配置OpenTelemetry追踪提供者以收集Agent运行数据" />
-    <MESSAGE value="feat(agent): 添加获取所有插件的方法&#10;&#10;- 在 AgentPluginLoader 中新增 GetAllPlugin 方法&#10;- 返回所有已加载的插件实例数组&#10;&#10;fix(api): 修改 Sender 属性访问级别&#10;&#10;- 将 ApiControllerBase 中的 Sender 属性从 public 改为 protected&#10;&#10;- 限制 Sender 属性仅在派生类中可访问chore(migration): 移除初始迁移文件&#10;&#10;- 删除 Initial 迁移文件及其设计器文件&#10;- 删除 AiCopilotDbContextModelSnapshot 文件&#10;- 清理数据库初始化相关代码文件" />
     <MESSAGE value="feat(ai): 实现聊天流式响应与意图路由代理&#10;- 新增 ChatStreamRequest 处理流式聊天请求&#10;- 实现 IntentRoutingAgentBuilder 构建意图路由代理&#10;- 添加 AiGatewayData 初始化默认模型与对话模板&#10;- 调整 LanguageModel 构造函数参数顺序- 更新数据库迁移逻辑以支持新增聚合根&#10;- 修改 SendUserMessageCommand 使用新的意图路由机制&#10;- 替换 PgAdmin 为 PgWeb 并调整端口配置" />
     <MESSAGE value="feat(ai-gateway): 实现基于工作流的聊天流处理机制&#10;&#10;- 引入 ServerSentEvents 支持，优化聊天接口返回格式&#10;- 新增 IntentWorkflow 工作流配置，包含意图路由、工具打包和最终处理三个阶段&#10;-重构 ChatStreamRequest 处理逻辑，支持异步流式响应输出&#10;- 移除旧版 SendUserMessageCommand 相关实现，统一使用新的工作流模式- 增加历史消息查询功能 GetListChatMessages，用于上下文构建&#10;- 调整依赖注入结构，注册新增的工作流执行器组件&#10;- 更新种子数据 AiGatewayData，扩展初始语言模型配置&#10;-优化 SessionChatMessageStore 实现，通过 IMediator 查询历史记录&#10;- 完善异常处理机制，在工作流节点中捕获并传递错误事件- 删除冗余引用和未使用的插件加载逻辑，精简项目结构" />
     <MESSAGE value="feat(rag): 添加RAG核心领域模型&#10;&#10;- 新增KnowledgeBase聚合根，包含文档集合导航属性&#10;- 新增Document实体，定义文档元数据及处理状态&#10;- 新增DocumentChunk实体，表示文档切片及其向量标识&#10;- 新增EmbeddingModel聚合根，管理嵌入模型配置信息&#10;- 创建Zilor.AICopilot.Core.Rag项目并集成到解决方案&#10;- 更新IDEA配置文件，移除无效数据源配置项" />
@@ -779,7 +784,9 @@
     <MESSAGE value="feat(ai-gateway): 新增数据分析代理构建器及方言支持&#10;&#10;- 添加 DataAnalysisAgentBuilder 类，用于构建针对特定数据库的 AI Agent&#10;- 注入 DataAnalysisAgentBuilder 至依赖服务集合&#10;- 在 AiGatewayData 种子数据中新增数据分析师对话模板&#10;- 创建 SqlDialectFactory 提供多数据库方言提示词策略&#10;- 支持 PostgreSQL、SQL Server 和 MySQL 的语法差异化处理&#10;- 更新项目引用以包含 DataAnalysisService 模块" />
     <MESSAGE value="feat(ai-gateway): 支持通过外部配置自定义聊天选项- 在 CreateAgentAsync 方法中添加 configureOptions 参数- 允许调用方在创建代理时传入自定义 ChatOptions 配置&#10;- 更新 DataAnalysisAgentBuilder以挂载插件工具&#10;-优化 Agent 构建流程，支持更灵活的扩展机制&#10;- 调整方法签名以兼容新增的配置委托参数&#10;- 增强代码可维护性和扩展性，便于后续功能迭代" />
     <MESSAGE value="feat(ai-gateway): 构建数据分析执行器并优化插件系统&#10;- 新增 DataAnalysisExecutor 类，负责处理 Analysis.* 意图并执行 Text-to-SQL 任务&#10;- 支持多数据库并行查询与结果聚合&#10;-优化 AgentPluginLoader 插件加载逻辑，统一使用依赖注入创建实例&#10;- 在 ChatStreamRequest 中引入 ChatChunk 类型，细化流式响应结构&#10;- 扩展 GenerationContext 支持数据分析分支类型与上下文聚合&#10;- 更新 IntentWorkflow 加入数据分析执行器的扇出与扇入处理&#10;- 为 DataAnalysisPlugin 添加服务作用域管理与 JSON 序列化辅助方法&#10;- 配置 PostgreSQL 数据源并挂载初始化脚本&#10;- 调整 Dapper 依赖注入生命周期为 Singleton&#10;- 引入 JsonHelper 简化对象到 JSON 字符串的转换" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(ai-gateway): 构建数据分析执行器并优化插件系统&#10;- 新增 DataAnalysisExecutor 类，负责处理 Analysis.* 意图并执行 Text-to-SQL 任务&#10;- 支持多数据库并行查询与结果聚合&#10;-优化 AgentPluginLoader 插件加载逻辑，统一使用依赖注入创建实例&#10;- 在 ChatStreamRequest 中引入 ChatChunk 类型，细化流式响应结构&#10;- 扩展 GenerationContext 支持数据分析分支类型与上下文聚合&#10;- 更新 IntentWorkflow 加入数据分析执行器的扇出与扇入处理&#10;- 为 DataAnalysisPlugin 添加服务作用域管理与 JSON 序列化辅助方法&#10;- 配置 PostgreSQL 数据源并挂载初始化脚本&#10;- 调整 Dapper 依赖注入生命周期为 Singleton&#10;- 引入 JsonHelper 简化对象到 JSON 字符串的转换" />
+    <MESSAGE value="feat(ai-gateway): 完善数据分析代理与执行器功能&#10;&#10;- 调整数据分析师提示词模板，明确 XML 输出格式与字段注释要求&#10;- 增加对数据库字段注释的获取与展示支持&#10;-严格限制 AI仅做数据查询，禁止趋势分析与数据解读&#10;- 更新上下文聚合执行器，支持三路分支（Tools/Knowledge/DataAnalysis）&#10;-优化 DataAnalysisExecutor 查询结果拼接逻辑&#10;- 移除无用的命名空间引用与冗余数据源配置&#10;- 补充 ERP 数据库初始化脚本及完整表结构与注释- 统一 Agent 流式响应中函数调用与结果的格式化输出" />
+    <MESSAGE value="feat(ai-gateway):优化数据分析代理与执行器功能&#10;&#10;- 调整数据分析师提示词模板，明确 XML 输出格式与字段注释要求- 增加对数据库字段注释的获取与展示支持&#10;- 严格限制 AI仅做数据查询，禁止趋势分析与数据解读&#10;- 更新上下文聚合执行器，支持三路分支（Tools/Knowledge/DataAnalysis）&#10;-优化 DataAnalysisExecutor 查询结果拼接逻辑&#10;- 移除无用的命名空间引用与冗余数据源配置&#10;- 补充 ERP 数据库初始化脚本及完整表结构与注释- 统一 Agent 流式响应中函数调用与结果的格式化输出" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(ai-gateway):优化数据分析代理与执行器功能&#10;&#10;- 调整数据分析师提示词模板，明确 XML 输出格式与字段注释要求- 增加对数据库字段注释的获取与展示支持&#10;- 严格限制 AI仅做数据查询，禁止趋势分析与数据解读&#10;- 更新上下文聚合执行器，支持三路分支（Tools/Knowledge/DataAnalysis）&#10;-优化 DataAnalysisExecutor 查询结果拼接逻辑&#10;- 移除无用的命名空间引用与冗余数据源配置&#10;- 补充 ERP 数据库初始化脚本及完整表结构与注释- 统一 Agent 流式响应中函数调用与结果的格式化输出" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
