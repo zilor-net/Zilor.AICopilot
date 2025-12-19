@@ -28,6 +28,7 @@ public class DataAnalysisAgentBuilder(ChatAgentFactory agentFactory, AgentPlugin
             // 此时 Agent 尚不知道具体的查询任务是什么。
             template.SystemPrompt = template.SystemPrompt
                 .Replace("{{$DbProvider}}", providerName)
+                .Replace("{{$DatabaseName}}", database.Name)
                 .Replace("{{$DialectInstructions}}", dialectInstructions);
         }, options =>
         {

@@ -8,7 +8,7 @@ namespace Zilor.AICopilot.AiGatewayService.Workflows;
 /// <summary>
 /// 上下文聚合执行器
 /// 职责：作为 Fan-in 节点，接收来自所有并行分支的 BranchResult。
-/// 只有当接收到的结果数量达到预期（2个）时，才进行合并并触发下游。
+/// 只有当接收到的结果数量达到预期（3个）时，才进行合并并触发下游。
 /// </summary>
 public class ContextAggregatorExecutor(ILogger<ContextAggregatorExecutor> logger) 
     : ReflectingExecutor<ContextAggregatorExecutor>("ContextAggregatorExecutor"), 
@@ -17,8 +17,8 @@ public class ContextAggregatorExecutor(ILogger<ContextAggregatorExecutor> logger
     // 内部状态：用于跨方法调用累积结果
     private readonly List<BranchResult> _accumulatedResults = [];
     
-    // 硬编码预期分支数：Tools + Knowledge = 2
-    private const int ExpectedBranchCount = 2;
+    // 硬编码预期分支数：Tools + Knowledge + DataAnalysis = 3
+    private const int ExpectedBranchCount = 3;
 
     public async ValueTask HandleAsync(
         BranchResult branchResult, 
@@ -51,6 +51,9 @@ public class ContextAggregatorExecutor(ILogger<ContextAggregatorExecutor> logger
                         break;
                     case BranchType.Knowledge when !string.IsNullOrWhiteSpace(result.Knowledge):
                         genContext.KnowledgeContext = result.Knowledge;
+                        break;
+                    case BranchType.DataAnalysis when !string.IsNullOrWhiteSpace(result.DataAnalysis):
+                        genContext.DataAnalysisContext = result.DataAnalysis;
                         break;
                 }
             }

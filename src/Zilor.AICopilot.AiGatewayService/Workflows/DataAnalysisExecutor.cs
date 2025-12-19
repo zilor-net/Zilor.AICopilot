@@ -42,23 +42,19 @@ public class DataAnalysisExecutor(
         }
 
         logger.LogInformation("启动数据分析流程，命中目标数据库数量: {Count}", analysisIntents.Count);
-
-        // 2. 准备并行执行环境
-        // 我们需要在一个新的 Scope 中获取数据库服务，避免 DbContext 并发问题
+        
+        
         using var scope = serviceProvider.CreateScope();
         var dataQuery = scope.ServiceProvider.GetRequiredService<IDataQueryService>();
+        
+        // 2. 遍历处理每一个意图
+        var output = new StringBuilder();
+        foreach (var intent in analysisIntents)
+        {
+            output.AppendLine(await ProcessSingleIntentAsync(intent, dataQuery, context, cancellationToken));
+        }
 
-        // 3. 并行执行多库查询
-        var tasks = analysisIntents.Select(intent => 
-            ProcessSingleIntentAsync(intent, dataQuery, context, cancellationToken));
-
-        var results = await Task.WhenAll(tasks);
-
-        // 4. 结果聚合
-        // 将所有成功的查询结果拼接在一起
-        var combinedOutput = string.Join("\n\n---\n\n", results.Where(r => !string.IsNullOrWhiteSpace(r)));
-
-        return BranchResult.FromDataAnalysis(combinedOutput);
+        return BranchResult.FromDataAnalysis(output.ToString());
     }
     
     /// <summary>
@@ -88,22 +84,12 @@ public class DataAnalysisExecutor(
             // 2. 构建 DBA Agent
             // 这里会动态注入 PG 或 SQLServer 的方言提示词
             var agent = await agentBuilder.BuildAsync(db);
-
-            // 3. 构建 Agent 的输入消息
-            // 我们明确告知 Agent 当前的目标和任务
-            var chatHistory = new List<ChatMessage>
-            {
-                new(ChatRole.System, $"你现在的任务是针对数据库 '{db.Name}' 回答用户的问题。请直接利用工具查询数据，不要臆测。"),
-                new(ChatRole.User, intent.Query)
-            };
-
+            
             // 4. 执行 ReAct 循环
             // Agent 会自动进行: 思考 -> GetTableNames -> 思考 -> GetTableSchema -> 思考 -> ExecuteSQL -> 总结
+            var output = new StringBuilder();
             
-            var outputBuilder = new StringBuilder();
-            outputBuilder.AppendLine($"### 数据分析报告 (来源: {db.Name})");
-            
-            await foreach (var update in agent.RunStreamingAsync(chatHistory, cancellationToken: ct))
+            await foreach (var update in agent.RunStreamingAsync(intent.Query!, cancellationToken: ct))
             {
                 // 遍历当前更新中的所有内容项
                 foreach (var content in update.Contents)
@@ -122,7 +108,7 @@ public class DataAnalysisExecutor(
 
                         // 3. 捕获普通文本回复
                         case TextContent text:
-                            outputBuilder.AppendLine(text.Text);
+                            output.AppendLine(text.Text);
                             await context.AddEventAsync(new AgentRunUpdateEvent(Id, update), ct);
                             break;
                     }
@@ -132,7 +118,7 @@ public class DataAnalysisExecutor(
             // 记录日志以便调试
             logger.LogInformation("数据库 {DbName} 查询完成。", dbName);
 
-            return outputBuilder.ToString();
+            return output.ToString();
         }
         catch (Exception ex)
         {

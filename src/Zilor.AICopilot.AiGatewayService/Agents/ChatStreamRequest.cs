@@ -75,8 +75,8 @@ public class ChatStreamHandler(
                                 yield return new ChatChunk(evt.ExecutorId, ChunkType.FunctionCall,
                                     $"""
                                     
-                                     ```json
-                                     // 函数调用
+                                    ```json
+                                    // 函数调用
                                     {fun.ToJson()}
                                     ```
                                     
@@ -86,8 +86,8 @@ public class ChatStreamHandler(
                                 yield return new ChatChunk(evt.ExecutorId, ChunkType.FunctionResult, 
                                     $"""
                          
-                                      ```json
-                                      // 调用结果
+                                     ```
+                                     // 调用结果
                                      {content.Result}
                                      ```
                                      

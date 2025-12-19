@@ -48,7 +48,7 @@ public class FinalProcessExecutor(
             var inputMessages = new List<ChatMessage>();
             string finalUserPrompt;
 
-            // [核心逻辑] RAG 上下文注入策略：User Context Injection
+            // RAG 上下文注入策略：User Context Injection
             if (!string.IsNullOrWhiteSpace(genContext.KnowledgeContext))
             {
                 // 使用 XML 标签 <context> 是一种最佳实践
