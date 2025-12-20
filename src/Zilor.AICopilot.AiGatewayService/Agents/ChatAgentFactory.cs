@@ -1,10 +1,6 @@
-﻿using System;
-using System.ClientModel;
+﻿using System.ClientModel;
 using System.ClientModel.Primitives;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Net.Http;
-using System.Threading.Tasks;
 using Microsoft.Agents.AI;
 using Microsoft.Extensions.AI;
 using Microsoft.Extensions.DependencyInjection;
@@ -55,6 +51,7 @@ public class ChatAgentFactory(IServiceProvider serviceProvider)
 
         var chatOptions = new ChatOptions
         {
+            Instructions = template.SystemPrompt,
             Temperature = template.Specification.Temperature ?? model.Parameters.Temperature
         };
         
@@ -64,7 +61,6 @@ public class ChatAgentFactory(IServiceProvider serviceProvider)
         var agentOptions = new ChatClientAgentOptions
         {
             Name = template.Name,
-            Instructions = template.SystemPrompt,
             ChatOptions = chatOptions
         };
         
