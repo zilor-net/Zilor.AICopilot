@@ -10,10 +10,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f4f71ff8-869c-4e55-85b9-f9116211e89c" name="更改" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.Dapper/DapperDatabaseConnector.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.Dapper/DapperDatabaseConnector.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.Services.Common/Contracts/IDatabaseConnector.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.Services.Common/Contracts/IDatabaseConnector.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Workflows/FinalProcessExecutor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Workflows/FinalProcessExecutor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.MigrationWorkApp/SeedData/AiGatewayData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.MigrationWorkApp/SeedData/AiGatewayData.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,7 +24,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="33.构建DBA专家Agent" />
+        <entry key="$PROJECT_DIR$" value="34.构建数据分析执行器" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -178,18 +179,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Aspire Host.Zilor.AICopilot.AppHost: http.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;34.构建数据分析执行器&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Aspire Host.Zilor.AICopilot.AppHost: http.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "git-widget-placeholder": "35.数据可视化与自适应交互",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Aspire Host.Zilor.AICopilot.AppHost: http">
     <configuration name="Zilor.AICopilot.AppHost: http" type="AspireHostConfiguration" factoryName="Aspire Host" activateToolWindowBeforeRun="false">
       <option name="PROJECT_FILE_PATH" value="$PROJECT_DIR$/src/Zilor.AICopilot.AppHost/Zilor.AICopilot.AppHost.csproj" />
@@ -345,15 +346,7 @@
       <workItem from="1766195997783" duration="394000" />
       <workItem from="1766196431021" duration="19000" />
       <workItem from="1766196565494" duration="8565000" />
-      <workItem from="1766379123024" duration="2995000" />
-    </task>
-    <task id="LOCAL-00004" summary="refactor(core):重构AI网关核心模块&#10;&#10;- 移动UseCases相关文件到独立目录结构&#10;- 更新命名空间引用路径统一为UseCases模式&#10;- 调整ConversationTemplate聚合根增加ModelId属性&#10;- 修改EF Core模型快照与配置映射关系&#10;- 更新接口契约文件位置并调整依赖引用&#10;- 修正JwtTokenGenerator相关类型引用关系&#10;- 完善实体属性初始化避免空引用问题&#10;- 清理无效的迁移文件及设计器代码">
-      <option name="closed" value="true" />
-      <created>1763705426654</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1763705426654</updated>
+      <workItem from="1766379123024" duration="6217000" />
     </task>
     <task id="LOCAL-00005" summary="refactor(core):重构AI网关核心模块&#10;&#10;- 将UseCases相关文件移动到独立的目录结构中&#10;- 更新命名空间引用路径，统一为UseCases模式&#10;- 调整ConversationTemplate聚合根，增加ModelId属性&#10;- 修改EF Core模型快照与配置映射关系&#10;- 更新接口契约文件位置并调整依赖引用&#10;- 修正JwtTokenGenerator相关类型的引用关系&#10;- 完善实体属性初始化以避免空引用问题&#10;- 清理无效的迁移文件及设计器代码&#10;- 新增ChatAgent及IChatAgent接口定义&#10;- 重命名并调整多个命令和查询类的命名空间&#10;- 移除项目文件中不再需要的UseCases文件夹引用">
       <option name="closed" value="true" />
@@ -739,7 +732,15 @@
       <option name="project" value="LOCAL" />
       <updated>1766210158445</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="refactor(core): 移除数据库架构信息查询功能&#10;- 删除 DapperDatabaseConnector 中的 GetSchemaInfoAsync 方法实现&#10;- 移除 IDatabaseConnector 接口中的 GetSchemaInfoAsync 定义&#10;- 清理相关的 PostgreSQL 查询逻辑与异常处理代码&#10;- 更新依赖引用并调整相关数据源配置文件&#10;- 移除无效的数据源连接配置项&#10;- 优化命名空间引用并移除未使用的依赖项">
+      <option name="closed" value="true" />
+      <created>1766388721373</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1766388721373</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -760,7 +761,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="feat(ai-gateway): 实现基于工作流的聊天流处理机制&#10;&#10;- 引入 ServerSentEvents 支持，优化聊天接口返回格式&#10;- 新增 IntentWorkflow 工作流配置，包含意图路由、工具打包和最终处理三个阶段&#10;-重构 ChatStreamRequest 处理逻辑，支持异步流式响应输出&#10;- 移除旧版 SendUserMessageCommand 相关实现，统一使用新的工作流模式- 增加历史消息查询功能 GetListChatMessages，用于上下文构建&#10;- 调整依赖注入结构，注册新增的工作流执行器组件&#10;- 更新种子数据 AiGatewayData，扩展初始语言模型配置&#10;-优化 SessionChatMessageStore 实现，通过 IMediator 查询历史记录&#10;- 完善异常处理机制，在工作流节点中捕获并传递错误事件- 删除冗余引用和未使用的插件加载逻辑，精简项目结构" />
     <MESSAGE value="feat(rag): 添加RAG核心领域模型&#10;&#10;- 新增KnowledgeBase聚合根，包含文档集合导航属性&#10;- 新增Document实体，定义文档元数据及处理状态&#10;- 新增DocumentChunk实体，表示文档切片及其向量标识&#10;- 新增EmbeddingModel聚合根，管理嵌入模型配置信息&#10;- 创建Zilor.AICopilot.Core.Rag项目并集成到解决方案&#10;- 更新IDEA配置文件，移除无效数据源配置项" />
     <MESSAGE value="feat(rag): 添加RAG模块的核心领域模型和数据库配置&#10;&#10;- 新增 EmbeddingModel 聚合根，用于管理嵌入模型配置&#10;- 新增 KnowledgeBase 聚合根，包含文档集合导航属性- 新增 Document 实体，定义文档元数据及处理状态&#10;- 新增 DocumentChunk 实体，表示文档切片及其向量标识-为以上实体添加 Entity Framework Core 配置类&#10;- 更新 AiCopilotDbContext，加入新的 DbSet 和模型绑定&#10;- 添加新的数据库迁移文件以创建相关表结构&#10;- 升级 PostgreSQL EF Core 提供程序版本至 10.0.0&#10;- 在项目间建立对 Zilor.AICopilot.Core.Rag 的引用关系" />
     <MESSAGE value="feat(migration): 删除初始迁移和RAG模块迁移文件&#10;&#10;- 删除了初始数据库迁移文件及其设计器文件&#10;- 删除了RAG模块相关的数据库迁移文件及其设计器文件&#10;- 清理了与旧数据结构相关的所有表定义和索引配置&#10;- 移除了对Asp Net Core Identity相关实体的迁移支持&#10;- 移除了对话模板、语言模型、会话消息等核心业务表的迁移历史&#10;- 清除了嵌入模型、知识库、文档及分块等相关RAG功能表的迁移记录" />
@@ -785,7 +785,8 @@
     <MESSAGE value="feat(ai-gateway): 完善数据分析代理与执行器功能&#10;&#10;- 调整数据分析师提示词模板，明确 XML 输出格式与字段注释要求&#10;- 增加对数据库字段注释的获取与展示支持&#10;-严格限制 AI仅做数据查询，禁止趋势分析与数据解读&#10;- 更新上下文聚合执行器，支持三路分支（Tools/Knowledge/DataAnalysis）&#10;-优化 DataAnalysisExecutor 查询结果拼接逻辑&#10;- 移除无用的命名空间引用与冗余数据源配置&#10;- 补充 ERP 数据库初始化脚本及完整表结构与注释- 统一 Agent 流式响应中函数调用与结果的格式化输出" />
     <MESSAGE value="feat(ai-gateway):优化数据分析代理与执行器功能&#10;&#10;- 调整数据分析师提示词模板，明确 XML 输出格式与字段注释要求- 增加对数据库字段注释的获取与展示支持&#10;- 严格限制 AI仅做数据查询，禁止趋势分析与数据解读&#10;- 更新上下文聚合执行器，支持三路分支（Tools/Knowledge/DataAnalysis）&#10;-优化 DataAnalysisExecutor 查询结果拼接逻辑&#10;- 移除无用的命名空间引用与冗余数据源配置&#10;- 补充 ERP 数据库初始化脚本及完整表结构与注释- 统一 Agent 流式响应中函数调用与结果的格式化输出" />
     <MESSAGE value="feat(ai-gateway): 调整聊天代理工厂系统提示词配置&#10;&#10;- 将系统提示词从代理选项移动到聊天选项中&#10;- 移除了代理选项中的重复提示词配置&#10;- 优化了命名空间引用，移除未使用的依赖项&#10;- 更新了多个项目的包引用版本号&#10;- 添加了新的数据源配置到IDEA项目设置中&#10;- 排除了新反编译文件的代码检查范围" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(ai-gateway): 调整聊天代理工厂系统提示词配置&#10;&#10;- 将系统提示词从代理选项移动到聊天选项中&#10;- 移除了代理选项中的重复提示词配置&#10;- 优化了命名空间引用，移除未使用的依赖项&#10;- 更新了多个项目的包引用版本号&#10;- 添加了新的数据源配置到IDEA项目设置中&#10;- 排除了新反编译文件的代码检查范围" />
+    <MESSAGE value="refactor(core): 移除数据库架构信息查询功能&#10;- 删除 DapperDatabaseConnector 中的 GetSchemaInfoAsync 方法实现&#10;- 移除 IDatabaseConnector 接口中的 GetSchemaInfoAsync 定义&#10;- 清理相关的 PostgreSQL 查询逻辑与异常处理代码&#10;- 更新依赖引用并调整相关数据源配置文件&#10;- 移除无效的数据源连接配置项&#10;- 优化命名空间引用并移除未使用的依赖项" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor(core): 移除数据库架构信息查询功能&#10;- 删除 DapperDatabaseConnector 中的 GetSchemaInfoAsync 方法实现&#10;- 移除 IDatabaseConnector 接口中的 GetSchemaInfoAsync 定义&#10;- 清理相关的 PostgreSQL 查询逻辑与异常处理代码&#10;- 更新依赖引用并调整相关数据源配置文件&#10;- 移除无效的数据源连接配置项&#10;- 优化命名空间引用并移除未使用的依赖项" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

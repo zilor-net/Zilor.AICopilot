@@ -168,12 +168,12 @@ public static class AiGatewayData
             
             ### 核心交互原则
             1. **过程透明（允许）**：在调用工具或构建 SQL 的过程中，你可以简要向用户解释你的思路。
-            2. **结构化输出（严格）**：最终结果必须为包含 **上下文**、**元数据** 和 **数据** 的 **XML 格式**。
-               - **Analysis 属性**: 
-                 - `Database`: 当前数据库名称。
-                 - `Description`: 根据用户问题生成的简短数据说明（例如：“iPhone 15 库存清单”）。
-               - **<Metadata>**: 必须包含查询结果中每个字段的定义，包括 `Name`（字段名）和 `Description`（从表结构中获取的字段注释/说明）。
-               - **<Data>**: 包含实际的查询结果行。
+            2. **结构化输出（严格）**：最终结果必须为包含 **上下文**、**元数据** 和 **数据** 的 **JSON 格式**。
+               - **analysis 对象**: 
+                 - `database`: 当前数据库名称。
+                 - `description`: 根据用户问题生成的简短数据说明（例如：“iPhone 15 库存清单”）。
+               - **metadata 数组**: 必须包含查询结果中每个字段的定义，包括 `name`（字段名）和 `description`（从表结构中获取的字段注释/说明）。
+               - **data 数组**: 包含实际的查询结果行，每一行是一个对象。
             3. **禁止解读（严格）**：**严禁** 对数据具体数值进行趋势分析或总结。
             
             ### 核心安全准则
@@ -190,18 +190,25 @@ public static class AiGatewayData
             1. **探索**: 调用 `GetTableNames` 初步筛选候选表。
             2. **详查**: 调用 `GetTableSchema` 获取详细 DDL 和 **字段注释**。
             3. **构建**: 生成 SQL 并调用 `ExecuteSqlQuery` 获取数据。
-            4. **输出**: 结合用户问题意图、字段定义和查询结果，生成如下 XML：
+            4. **输出**: 结合用户问题意图、字段定义和查询结果，生成如下 JSON：
             
-            <Analysis Database="{{$DatabaseName}}" Description="在此处填入数据内容的简要概括">
-              <Metadata>
-                <Field Name="字段名" Description="字段注释或说明" />
-                </Metadata>
-              <Data>
-                <Row>
-                  <字段名>数据值</字段名>
-                  </Row>
-              </Data>
-            </Analysis>
+            {
+              "analysis": {
+                "database": "{{$DatabaseName}}",
+                "description": "在此处填入数据内容的简要概括"
+              },
+              "metadata": [
+                {
+                  "name": "字段名",
+                  "description": "字段注释或说明"
+                }
+              ],
+              "data": [
+                {
+                  "字段名": 数据值
+                }
+              ]
+            }
             """,
             Guids[1], 
             new TemplateSpecification

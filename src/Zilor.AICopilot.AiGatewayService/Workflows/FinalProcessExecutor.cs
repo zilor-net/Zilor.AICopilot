@@ -63,19 +63,18 @@ public class FinalProcessExecutor(
                 if (hasDataAnalysis)
                 {
                     
-                    contextBuilder.AppendLine("<!--- 数据分析/SQL查询结果 -->");
+                    contextBuilder.AppendLine("数据库查询结果：");
                     contextBuilder.AppendLine(genContext.DataAnalysisContext);
                     contextBuilder.AppendLine();
                 }
 
                 if (hasKnowledge)
                 {
-                    contextBuilder.AppendLine("<!--- 知识库检索参考信息 -->");
+                    contextBuilder.AppendLine("知识库检索参考信息：");
                     contextBuilder.AppendLine(genContext.KnowledgeContext);
                     contextBuilder.AppendLine();
                 }
-
-                // 使用 XML 标签 <context> 是一种最佳实践
+                
                 finalUserPrompt = $"""
                                    请基于以下参考信息（包含数据库查询结果或检索文档）回答我的问题：
 
@@ -85,12 +84,12 @@ public class FinalProcessExecutor(
 
                                    回答要求：
                                    1. 引用参考信息时，请标注来源 ID（例如 [^1]）。
-                                   2. 针对数据分析结果，请结合用户问题进行自然语言解释，不要直接展示原始数据结构，除非用户要求。
+                                   2. 针对数据分析结果，请结合用户问题进行自然语言解释。
                                    3. 在回答结尾，如果引用了知识库文档，请生成“参考资料”列表。
                                    4. 如果参考信息不足以回答问题，请直接说明，严禁编造。
                                    5. 保持回答专业、简洁。
 
-                                   用户问题：
+                                   我的问题：
                                    {request.Message}
                                    """;
                 
