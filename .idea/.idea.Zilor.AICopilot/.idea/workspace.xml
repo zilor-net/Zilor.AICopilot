@@ -10,22 +10,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f4f71ff8-869c-4e55-85b9-f9116211e89c" name="更改" comment="">
-      <change beforePath="$PROJECT_DIR$/Zilor.AICopilot.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/Zilor.AICopilot.sln.DotSettings.user" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.AgentPlugin/Zilor.AICopilot.AgentPlugin.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AgentPlugin/Zilor.AICopilot.AgentPlugin.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Agents/ChatAgentFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Agents/ChatAgentFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Zilor.AICopilot.AiGatewayService.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Zilor.AICopilot.AiGatewayService.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.AppHost/Zilor.AICopilot.AppHost.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AppHost/Zilor.AICopilot.AppHost.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.Dapper/Zilor.AICopilot.Dapper.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.Dapper/Zilor.AICopilot.Dapper.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.DataAnalysisService/Zilor.AICopilot.DataAnalysisService.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.DataAnalysisService/Zilor.AICopilot.DataAnalysisService.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.Embedding/Zilor.AICopilot.Embedding.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.Embedding/Zilor.AICopilot.Embedding.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.EntityFrameworkCore/Zilor.AICopilot.EntityFrameworkCore.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.EntityFrameworkCore/Zilor.AICopilot.EntityFrameworkCore.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.HttpApi/Zilor.AICopilot.HttpApi.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.HttpApi/Zilor.AICopilot.HttpApi.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.IdentityService/Zilor.AICopilot.IdentityService.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.IdentityService/Zilor.AICopilot.IdentityService.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.Infrastructure/Zilor.AICopilot.Infrastructure.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.Infrastructure/Zilor.AICopilot.Infrastructure.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.MigrationWorkApp/Zilor.AICopilot.MigrationWorkApp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.MigrationWorkApp/Zilor.AICopilot.MigrationWorkApp.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.RagService/Zilor.AICopilot.RagService.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.RagService/Zilor.AICopilot.RagService.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Zilor.AICopilot.RagWorker.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.RagWorker/Zilor.AICopilot.RagWorker.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.ServiceDefaults/Zilor.AICopilot.ServiceDefaults.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.ServiceDefaults/Zilor.AICopilot.ServiceDefaults.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.Dapper/DapperDatabaseConnector.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.Dapper/DapperDatabaseConnector.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.Services.Common/Contracts/IDatabaseConnector.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.Services.Common/Contracts/IDatabaseConnector.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,10 +134,8 @@
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.HttpApi/Controllers/RagController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.IdentityService/Plugins/IdentityServiceTools.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.Infrastructure/Storage/LocalFileStorageService.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://D:/Repos/MyRepos/Zilor.AICopilot/src/Zilor.AICopilot.MigrationWorkApp/SeedData/AiGatewayData.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.MigrationWorkApp/SeedData/AiGatewayData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.MigrationWorkApp/SeedData/DataAnalysisData.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://D:/Repos/MyRepos/Zilor.AICopilot/src/Zilor.AICopilot.MigrationWorkApp/SeedData/DataAnalysisData.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.MigrationWorkApp/SeedData/RagData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.RagService/Commands/Documents/DeleteDocument.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Zilor.AICopilot.RagService/Commands/Documents/UploadDocument.cs" root0="FORCE_HIGHLIGHTING" />
@@ -358,15 +344,8 @@
       <workItem from="1766111424490" duration="31489000" />
       <workItem from="1766195997783" duration="394000" />
       <workItem from="1766196431021" duration="19000" />
-      <workItem from="1766196565494" duration="8477000" />
-    </task>
-    <task id="LOCAL-00003" summary="refactor(core):重构AI网关核心模块&#10;&#10;- 移动UseCases相关文件到独立目录结构&#10;- 更新命名空间引用路径统一为UseCases模式&#10;- 调整ConversationTemplate聚合根增加ModelId属性&#10;- 修改EF Core模型快照与配置映射关系&#10;- 更新接口契约文件位置并调整依赖引用&#10;- 修正JwtTokenGenerator相关类型引用关系&#10;- 完善实体属性初始化避免空引用问题&#10;- 清理无效的迁移文件及设计器代码">
-      <option name="closed" value="true" />
-      <created>1763705420311</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1763705420311</updated>
+      <workItem from="1766196565494" duration="8565000" />
+      <workItem from="1766379123024" duration="2995000" />
     </task>
     <task id="LOCAL-00004" summary="refactor(core):重构AI网关核心模块&#10;&#10;- 移动UseCases相关文件到独立目录结构&#10;- 更新命名空间引用路径统一为UseCases模式&#10;- 调整ConversationTemplate聚合根增加ModelId属性&#10;- 修改EF Core模型快照与配置映射关系&#10;- 更新接口契约文件位置并调整依赖引用&#10;- 修正JwtTokenGenerator相关类型引用关系&#10;- 完善实体属性初始化避免空引用问题&#10;- 清理无效的迁移文件及设计器代码">
       <option name="closed" value="true" />
@@ -752,7 +731,15 @@
       <option name="project" value="LOCAL" />
       <updated>1766209505326</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="feat(ai-gateway): 调整聊天代理工厂系统提示词配置&#10;&#10;- 将系统提示词从代理选项移动到聊天选项中&#10;- 移除了代理选项中的重复提示词配置&#10;- 优化了命名空间引用，移除未使用的依赖项&#10;- 更新了多个项目的包引用版本号&#10;- 添加了新的数据源配置到IDEA项目设置中&#10;- 排除了新反编译文件的代码检查范围">
+      <option name="closed" value="true" />
+      <created>1766210158445</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1766210158445</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -773,7 +760,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="feat(ai): 实现聊天流式响应与意图路由代理&#10;- 新增 ChatStreamRequest 处理流式聊天请求&#10;- 实现 IntentRoutingAgentBuilder 构建意图路由代理&#10;- 添加 AiGatewayData 初始化默认模型与对话模板&#10;- 调整 LanguageModel 构造函数参数顺序- 更新数据库迁移逻辑以支持新增聚合根&#10;- 修改 SendUserMessageCommand 使用新的意图路由机制&#10;- 替换 PgAdmin 为 PgWeb 并调整端口配置" />
     <MESSAGE value="feat(ai-gateway): 实现基于工作流的聊天流处理机制&#10;&#10;- 引入 ServerSentEvents 支持，优化聊天接口返回格式&#10;- 新增 IntentWorkflow 工作流配置，包含意图路由、工具打包和最终处理三个阶段&#10;-重构 ChatStreamRequest 处理逻辑，支持异步流式响应输出&#10;- 移除旧版 SendUserMessageCommand 相关实现，统一使用新的工作流模式- 增加历史消息查询功能 GetListChatMessages，用于上下文构建&#10;- 调整依赖注入结构，注册新增的工作流执行器组件&#10;- 更新种子数据 AiGatewayData，扩展初始语言模型配置&#10;-优化 SessionChatMessageStore 实现，通过 IMediator 查询历史记录&#10;- 完善异常处理机制，在工作流节点中捕获并传递错误事件- 删除冗余引用和未使用的插件加载逻辑，精简项目结构" />
     <MESSAGE value="feat(rag): 添加RAG核心领域模型&#10;&#10;- 新增KnowledgeBase聚合根，包含文档集合导航属性&#10;- 新增Document实体，定义文档元数据及处理状态&#10;- 新增DocumentChunk实体，表示文档切片及其向量标识&#10;- 新增EmbeddingModel聚合根，管理嵌入模型配置信息&#10;- 创建Zilor.AICopilot.Core.Rag项目并集成到解决方案&#10;- 更新IDEA配置文件，移除无效数据源配置项" />
     <MESSAGE value="feat(rag): 添加RAG模块的核心领域模型和数据库配置&#10;&#10;- 新增 EmbeddingModel 聚合根，用于管理嵌入模型配置&#10;- 新增 KnowledgeBase 聚合根，包含文档集合导航属性- 新增 Document 实体，定义文档元数据及处理状态&#10;- 新增 DocumentChunk 实体，表示文档切片及其向量标识-为以上实体添加 Entity Framework Core 配置类&#10;- 更新 AiCopilotDbContext，加入新的 DbSet 和模型绑定&#10;- 添加新的数据库迁移文件以创建相关表结构&#10;- 升级 PostgreSQL EF Core 提供程序版本至 10.0.0&#10;- 在项目间建立对 Zilor.AICopilot.Core.Rag 的引用关系" />
@@ -798,7 +784,8 @@
     <MESSAGE value="feat(ai-gateway): 构建数据分析执行器并优化插件系统&#10;- 新增 DataAnalysisExecutor 类，负责处理 Analysis.* 意图并执行 Text-to-SQL 任务&#10;- 支持多数据库并行查询与结果聚合&#10;-优化 AgentPluginLoader 插件加载逻辑，统一使用依赖注入创建实例&#10;- 在 ChatStreamRequest 中引入 ChatChunk 类型，细化流式响应结构&#10;- 扩展 GenerationContext 支持数据分析分支类型与上下文聚合&#10;- 更新 IntentWorkflow 加入数据分析执行器的扇出与扇入处理&#10;- 为 DataAnalysisPlugin 添加服务作用域管理与 JSON 序列化辅助方法&#10;- 配置 PostgreSQL 数据源并挂载初始化脚本&#10;- 调整 Dapper 依赖注入生命周期为 Singleton&#10;- 引入 JsonHelper 简化对象到 JSON 字符串的转换" />
     <MESSAGE value="feat(ai-gateway): 完善数据分析代理与执行器功能&#10;&#10;- 调整数据分析师提示词模板，明确 XML 输出格式与字段注释要求&#10;- 增加对数据库字段注释的获取与展示支持&#10;-严格限制 AI仅做数据查询，禁止趋势分析与数据解读&#10;- 更新上下文聚合执行器，支持三路分支（Tools/Knowledge/DataAnalysis）&#10;-优化 DataAnalysisExecutor 查询结果拼接逻辑&#10;- 移除无用的命名空间引用与冗余数据源配置&#10;- 补充 ERP 数据库初始化脚本及完整表结构与注释- 统一 Agent 流式响应中函数调用与结果的格式化输出" />
     <MESSAGE value="feat(ai-gateway):优化数据分析代理与执行器功能&#10;&#10;- 调整数据分析师提示词模板，明确 XML 输出格式与字段注释要求- 增加对数据库字段注释的获取与展示支持&#10;- 严格限制 AI仅做数据查询，禁止趋势分析与数据解读&#10;- 更新上下文聚合执行器，支持三路分支（Tools/Knowledge/DataAnalysis）&#10;-优化 DataAnalysisExecutor 查询结果拼接逻辑&#10;- 移除无用的命名空间引用与冗余数据源配置&#10;- 补充 ERP 数据库初始化脚本及完整表结构与注释- 统一 Agent 流式响应中函数调用与结果的格式化输出" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(ai-gateway):优化数据分析代理与执行器功能&#10;&#10;- 调整数据分析师提示词模板，明确 XML 输出格式与字段注释要求- 增加对数据库字段注释的获取与展示支持&#10;- 严格限制 AI仅做数据查询，禁止趋势分析与数据解读&#10;- 更新上下文聚合执行器，支持三路分支（Tools/Knowledge/DataAnalysis）&#10;-优化 DataAnalysisExecutor 查询结果拼接逻辑&#10;- 移除无用的命名空间引用与冗余数据源配置&#10;- 补充 ERP 数据库初始化脚本及完整表结构与注释- 统一 Agent 流式响应中函数调用与结果的格式化输出" />
+    <MESSAGE value="feat(ai-gateway): 调整聊天代理工厂系统提示词配置&#10;&#10;- 将系统提示词从代理选项移动到聊天选项中&#10;- 移除了代理选项中的重复提示词配置&#10;- 优化了命名空间引用，移除未使用的依赖项&#10;- 更新了多个项目的包引用版本号&#10;- 添加了新的数据源配置到IDEA项目设置中&#10;- 排除了新反编译文件的代码检查范围" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(ai-gateway): 调整聊天代理工厂系统提示词配置&#10;&#10;- 将系统提示词从代理选项移动到聊天选项中&#10;- 移除了代理选项中的重复提示词配置&#10;- 优化了命名空间引用，移除未使用的依赖项&#10;- 更新了多个项目的包引用版本号&#10;- 添加了新的数据源配置到IDEA项目设置中&#10;- 排除了新反编译文件的代码检查范围" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

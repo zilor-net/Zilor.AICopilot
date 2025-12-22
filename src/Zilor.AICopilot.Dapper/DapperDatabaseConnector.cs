@@ -62,22 +62,4 @@ public class DapperDatabaseConnector(
             throw; // 抛出异常供上层 Agent 捕获并进行自我修正
         }
     }
-
-    public async Task<IEnumerable<dynamic>> GetSchemaInfoAsync(
-        BusinessDatabase database, 
-        CancellationToken cancellationToken = default)
-    {
-        // 获取所有用户表的元数据SQL
-        string sql = database.Provider switch
-        {
-            DbProviderType.PostgreSql => @"
-                SELECT table_name, table_schema 
-                FROM information_schema.tables 
-                WHERE table_schema = 'public' AND table_type = 'BASE TABLE';",
-                
-            _ => throw new NotSupportedException("不支持的数据库类型")
-        };
-
-        return await ExecuteQueryAsync(database, sql, cancellationToken: cancellationToken);
-    }
 }

@@ -22,11 +22,4 @@ public interface IDatabaseConnector
         string sql, 
         object? parameters = null, 
         CancellationToken cancellationToken = default);
-        
-    /// <summary>
-    /// 获取数据库架构信息（表名、列名等）
-    /// </summary>
-    Task<IEnumerable<dynamic>> GetSchemaInfoAsync(
-        BusinessDatabase database,
-        CancellationToken cancellationToken = default);
 }
