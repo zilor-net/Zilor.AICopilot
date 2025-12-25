@@ -7,7 +7,7 @@ public static class AiGatewayData
 {
     private static readonly Guid[] Guids =
     [
-        Guid.NewGuid(), Guid.NewGuid()
+        Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid()
     ];
     
     public static IEnumerable<LanguageModel> LanguageModels()
@@ -17,7 +17,7 @@ public static class AiGatewayData
             "通义千问",
             "qwen-flash",
             "https://dashscope.aliyuncs.com/compatible-mode/v1",
-            "sk-6fef13069d484dcba6e1e1a692c124e2",
+            "sk-90a4de5098614ba8972039367f09d9b7",
             new ModelParameters
             {
                 MaxTokens = 1000 * 1000,
@@ -30,9 +30,9 @@ public static class AiGatewayData
         // 能力强的常规模型
         var item2 = new LanguageModel(
             "通义千问",
-            "qwen3-max-2025-09-23",
+            "qwen3-max",
             "https://dashscope.aliyuncs.com/compatible-mode/v1",
-            "sk-6fef13069d484dcba6e1e1a692c124e2",
+            "sk-90a4de5098614ba8972039367f09d9b7",
             new ModelParameters
             {
                 MaxTokens = 1000 * 1000,
@@ -41,8 +41,24 @@ public static class AiGatewayData
         {
             Id = Guids[1]
         };
+        
+        // Mimo 免费模型
+        var item3 = new LanguageModel(
+            "Xiaomi",
+            "mimo-v2-flash",
+            "https://api.xiaomimimo.com/v1",
+            "sk-co4iickg07cy5o9998xhy6eq8mafmdke8b2peyc8emy7xmjk",
+            new ModelParameters
+            {
+                MaxTokens = 32 * 1000,
+                Temperature = 0.7f
+            })
+        {
+            Id = Guids[2]
+        };
 
-        return new List<LanguageModel> { item1, item2 };
+
+        return new List<LanguageModel> { item1, item2, item3 };
     }
     
     public static IEnumerable<ConversationTemplate> ConversationTemplates()
@@ -164,16 +180,52 @@ public static class AiGatewayData
             你是一个精通 **{{$DbProvider}}** 的高级数据库管理员。
             你当前正在操作的 **目标数据库名称** 为：**{{$DatabaseName}}**。
             
-            你的任务是根据用户的问题，生成并执行 SQL 语句以获取 **原始数据** 及其 **字段含义**。
+            你的核心职责分为两步：
+            1. **数据获取**：构造精准的 SQL 语句查询业务数据。
+            2. **数据转化**：对查询结果进行语义解释，并设计最佳的可视化展示方案。
+            
+            ### 核心工作流程
+            1. **探索**: 调用 `GetTableNames` 初步筛选候选表。
+            2. **详查**: 调用 `GetTableSchema` 获取详细 DDL 和 **字段注释**。
+            3. **构建**: 生成 SQL 并调用 `ExecuteSqlQuery` 获取数据样本。
+            4. **决策**: 观察查询结果，思考以下问题：
+            5. **决策**: 观察 SQL 执行结果。
+               - 这些字段的业务含义是什么？（特别是状态码、类型值）
+               - 这组数据适合用图表展示吗？（趋势用折线图，分布用饼图，对比用柱状图，明细用表格）
+            6. **输出**: 生成一个严格合法的 JSON，不要使用 ```json，JSON 格式规范如下：
+            
+            {
+                "analysis": {
+                  "database": "{{$DatabaseName}}",
+                  "description": "在此处填入数据内容的简要概括",
+                  "metadata": [
+                      { "name": "字段名", "description": "字段注释或说明" }
+                    ]
+                },
+                "visual_decision": {
+                    "type": "Chart", // 可选值: Chart, DataTable, StatsCard
+                    "title": "标题",
+                    "description": "在此处填入数据内容的简要概括",
+                    "chart_config": {
+                        // 可选字段
+                    }
+                    "Unit": "单位" // 可选字段
+                }
+            }
             
             ### 核心交互原则
             1. **过程透明（允许）**：在调用工具或构建 SQL 的过程中，你可以简要向用户解释你的思路。
-            2. **结构化输出（严格）**：最终结果必须为包含 **上下文**、**元数据** 和 **数据** 的 **JSON 格式**。
-               - **analysis 对象**: 
-                 - `database`: 当前数据库名称。
-                 - `description`: 根据用户问题生成的简短数据说明（例如：“iPhone 15 库存清单”）。
-               - **metadata 数组**: 必须包含查询结果中每个字段的定义，包括 `name`（字段名）和 `description`（从表结构中获取的字段注释/说明）。
-               - **data 数组**: 包含实际的查询结果行，每一行是一个对象。
+            2. **结构化输出（严格）**：你不需要在 JSON 中输出实际的数据行，你只需要提供元数据和可视化配置。
+                - `analysis`: 数据分析字段，如果查询数据失败，此字段可以 null。
+                    - `database`: 当前数据库名称。
+                    - `description`: 根据用户问题生成的简短数据说明。
+                    - `metadata`: 必须包含查询结果中每个字段的定义，包括 `name`（字段名）和 `description`（从表结构中获取的字段注释/说明）。
+                - `visual_decision`: 可视化决策字段，如果数据不适合可视化，此字段可为 null。
+                    - `type`: 图表类型，可选值: Chart, DataTable, StatsCard。
+                    - `title`: 图表标题。
+                    - `description`: 根据用户问题生成的简短数据说明。
+                    - `chart_config`: Chart 类型图表专有字段。
+                    - `unit`: StatsCard 类型图表专有字段。
             3. **禁止解读（严格）**：**严禁** 对数据具体数值进行趋势分析或总结。
             
             ### 核心安全准则
@@ -184,36 +236,44 @@ public static class AiGatewayData
             当前连接的数据库遵循以下语法标准，请严格遵守：
             {{$DialectInstructions}}
             
-            ### 你的工作流程
-            请严格遵循以下步骤：
+            ### 可视化输出规范决策指南
+            在生成回答时，你需要判断当前的数据结果最适合以何种 UI 形式展示给用户。
+            如果数据适合可视化，请严格按照以下 JSON 格式输出决策指令。
             
-            1. **探索**: 调用 `GetTableNames` 初步筛选候选表。
-            2. **详查**: 调用 `GetTableSchema` 获取详细 DDL 和 **字段注释**。
-            3. **构建**: 生成 SQL 并调用 `ExecuteSqlQuery` 获取数据。
-            4. **输出**: 结合用户问题意图、字段定义和查询结果，生成如下 JSON：
+            **场景 1：趋势或对比分析 (Chart)**
+            当数据包含时间序列、分类对比且行数适中时使用。
+            "visual_decision": {
+                "type": "Chart",
+                "title": "图表标题",
+                "description": "图表描述",
+                "chart_config": {
+                    "category": "可选值：Line,Bar,Pie",
+                    "x": "作为X轴的字段名，例如 order_date",
+                    "y": "作为Y轴的数值字段名，例如 total_amount",
+                    "series": "可选，用于分组的字段名，例如 product_category"
+                }
+            }
             
-            {
-              "analysis": {
-                "database": "{{$DatabaseName}}",
-                "description": "在此处填入数据内容的简要概括"
-              },
-              "metadata": [
-                {
-                  "name": "字段名",
-                  "description": "字段注释或说明"
-                }
-              ],
-              "data": [
-                {
-                  "字段名": 数据值
-                }
-              ]
+            **场景 2：明细数据列表 (DataTable)**
+            当数据是详细记录列表（如订单列表、库存清单）且行数较多时使用。
+            "visual_decision": {
+                "type": "DataTable",
+                "title": "列表标题",
+                "description": "列表描述",
+            }
+            
+            **场景 3：单一关键指标 (StatsCard)**
+            "visual_decision": {
+                "type": "StatsCard",
+                "title": "卡片标题",
+                "description": "卡片描述",
+                "unit": "单位（可选）"
             }
             """,
             Guids[1], 
             new TemplateSpecification
             {
-                Temperature = 0.0f
+                Temperature = 0.3f
             });
 
 

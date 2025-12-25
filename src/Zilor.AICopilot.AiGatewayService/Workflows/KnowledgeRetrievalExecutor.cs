@@ -15,7 +15,8 @@ namespace Zilor.AICopilot.AiGatewayService.Workflows;
 /// 职责：解析知识意图，并行检索向量数据库，并生成带有引用源的上下文文本。
 /// </summary>
 public class KnowledgeRetrievalExecutor(
-    IServiceProvider serviceProvider, 
+    IMediator mediator,
+    IDataQueryService dataQueryService,
     ILogger<KnowledgeRetrievalExecutor> logger)
     : ReflectingExecutor<KnowledgeRetrievalExecutor>("KnowledgeRetrievalExecutor"),
       IMessageHandler<List<IntentResult>, BranchResult>
@@ -52,10 +53,8 @@ public class KnowledgeRetrievalExecutor(
             .ToList();
 
         // 从数据库中批量查询 KnowledgeBaseId
-        using var scope = serviceProvider.CreateScope();
-        var dataQuery = scope.ServiceProvider.GetRequiredService<IDataQueryService>();
-        var knowledgeBases = await dataQuery.ToListAsync(
-            dataQuery.KnowledgeBases.Where(kb => kbNames.Contains(kb.Name))
+        var knowledgeBases = await dataQueryService.ToListAsync(
+            dataQueryService.KnowledgeBases.Where(kb => kbNames.Contains(kb.Name))
         );
 
         if (knowledgeBases.Count == 0)
@@ -112,8 +111,6 @@ public class KnowledgeRetrievalExecutor(
         {
             // 调用 RagService 的 SearchKnowledgeBaseQuery
             // TopK=3, MinScore=0.5 是经验参数，可以根据业务需求调整
-            using var scope = serviceProvider.CreateScope();
-            var mediator = scope.ServiceProvider.GetRequiredService<IMediator>();
             var query = new SearchKnowledgeBaseQuery(kbId, queryText, TopK: 3, MinScore: 0.5);
             var result = await mediator.Send(query, ct);
 

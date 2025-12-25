@@ -16,10 +16,5 @@
       <secret-storage>master_key</secret-storage>
       <schema-mapping />
     </data-source>
-    <data-source name="postgres" uuid="ac105dff-24ec-4a94-8f27-8cc528dd0be5">
-      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="POSTGRES" />
-      <secret-storage>master_key</secret-storage>
-      <schema-mapping />
-    </data-source>
   </component>
 </project>

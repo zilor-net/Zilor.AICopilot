@@ -1,5 +1,4 @@
-﻿using System.Text.Json.Serialization;
-using MediatR;
+﻿using MediatR;
 using Microsoft.Agents.AI.Workflows;
 using Microsoft.Extensions.AI;
 using Microsoft.Extensions.DependencyInjection;
@@ -9,17 +8,6 @@ using Zilor.AICopilot.Services.Common.Contracts;
 using Zilor.AICopilot.Services.Common.Helper;
 
 namespace Zilor.AICopilot.AiGatewayService.Agents;
-
-[JsonConverter(typeof(JsonStringEnumConverter))]
-public enum ChunkType
-{
-    Error,
-    Text,
-    FunctionCall,
-    FunctionResult
-}
-
-public record ChatChunk(string Source, ChunkType Type, string Content);
 
 [AuthorizeRequirement("AiGateway.Chat")]
 public record ChatStreamRequest(Guid SessionId, string Message) : IStreamRequest<ChatChunk>;
@@ -45,19 +33,23 @@ public class ChatStreamHandler(
                     yield return new ChatChunk(evt.ExecutorId, ChunkType.Error, evt.Data.Message);
                     break;
                 case AgentRunResponseEvent evt:
-                    var evtText = evt.Response.Text;
-                    if (evt.ExecutorId == nameof(IntentRoutingExecutor))
+                    var evtText = $"""
+                                  
+                                  ```json
+                                  {evt.Response.Text}
+                                  ```
+                                  
+                                  """;
+                    switch (evt.ExecutorId)
                     {
-                        evtText = $"""
-                                   
-                                   ```json
-                                   // 意图识别
-                                   {evt.Response.Text}
-                                   ```
-                                   
-                                   """;
+                        case "IntentRoutingExecutor":
+                            yield return new ChatChunk(evt.ExecutorId, ChunkType.Text, evtText);
+                            break;
+                        case "DataAnalysisExecutor":
+                            yield return new ChatChunk(evt.ExecutorId, ChunkType.Widget, evtText);
+                            break;
                     }
-                    yield return new ChatChunk(evt.ExecutorId, ChunkType.Text, evtText);
+
                     break;
                 case AgentRunUpdateEvent evt:
                     foreach (var evtContent in evt.Update.Contents)
@@ -76,7 +68,6 @@ public class ChatStreamHandler(
                                     $"""
                                     
                                     ```json
-                                    // 函数调用
                                     {fun.ToJson()}
                                     ```
                                     
@@ -87,7 +78,6 @@ public class ChatStreamHandler(
                                     $"""
                          
                                      ```
-                                     // 调用结果
                                      {content.Result}
                                      ```
                                      

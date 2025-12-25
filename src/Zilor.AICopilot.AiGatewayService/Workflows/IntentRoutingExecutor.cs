@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text.Json;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using System.Text.Json;
 using MediatR;
 using Microsoft.Agents.AI.Workflows;
 using Microsoft.Agents.AI.Workflows.Reflection;
 using Microsoft.Extensions.AI;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Zilor.AICopilot.AiGatewayService.Agents;
 using Zilor.AICopilot.AiGatewayService.Queries.Sessions;
@@ -15,8 +10,8 @@ using Zilor.AICopilot.AiGatewayService.Queries.Sessions;
 namespace Zilor.AICopilot.AiGatewayService.Workflows;
 
 public class IntentRoutingExecutor(
+    IMediator mediator,
     IntentRoutingAgentBuilder agentBuilder, 
-    IServiceProvider serviceProvider,
     ILogger<IntentRoutingExecutor> logger) :
     ReflectingExecutor<IntentRoutingExecutor>("IntentRoutingExecutor"),
     IMessageHandler<ChatStreamRequest, List<IntentResult>>
@@ -34,9 +29,6 @@ public class IntentRoutingExecutor(
             // 2. 构建对话历史上下文
             // 我们不仅需要当前那句话，还需要之前的对话历史来辅助判断意图
             // 例如用户说“它多少钱？”，如果没有上文，意图无法识别。
-            var scope = serviceProvider.CreateScope();
-            var mediator = scope.ServiceProvider.GetRequiredService<IMediator>();
-            
             var result = await mediator.Send(new GetListChatMessagesQuery(request.SessionId, 4), cancellationToken);
             var history = result.Value!;
         

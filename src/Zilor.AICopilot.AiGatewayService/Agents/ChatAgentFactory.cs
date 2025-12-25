@@ -16,8 +16,7 @@ public class ChatAgentFactory(IServiceProvider serviceProvider)
     private async Task<(LanguageModel, ConversationTemplate)> GetModelAndTemplateAsync(
         Expression<Func<ConversationTemplate, bool>> predicate)
     {
-        using var scope = serviceProvider.CreateScope();
-        var data = scope.ServiceProvider.GetRequiredService<IDataQueryService>();
+        var data = serviceProvider.GetRequiredService<IDataQueryService>();
         var query =
             from template in data.ConversationTemplates.Where(predicate)
             join model in data.LanguageModels on template.ModelId equals model.Id
@@ -33,8 +32,7 @@ public class ChatAgentFactory(IServiceProvider serviceProvider)
         Action<ChatOptions>? configureOptions = null,
         bool isSaveChatMessage = true)
     {
-        using var scope = serviceProvider.CreateScope();
-        var httpClientFactory = scope.ServiceProvider.GetRequiredService<IHttpClientFactory>();
+        var httpClientFactory = serviceProvider.GetRequiredService<IHttpClientFactory>();
         var httpClient = httpClientFactory.CreateClient("OpenAI");
 
         var chatClientBuilder = new OpenAIClient(
@@ -71,7 +69,7 @@ public class ChatAgentFactory(IServiceProvider serviceProvider)
                 new SessionChatMessageStore(serviceProvider, context.SerializedState);
         }
         
-        var agent = chatClientBuilder.BuildAIAgent(agentOptions);
+        var agent = chatClientBuilder.BuildAIAgent(agentOptions, services: serviceProvider);
         
         return agent;
     }

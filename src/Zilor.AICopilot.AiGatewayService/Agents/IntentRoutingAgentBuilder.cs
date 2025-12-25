@@ -1,6 +1,5 @@
 ﻿using System.Text;
 using Microsoft.Agents.AI;
-using Microsoft.Extensions.DependencyInjection;
 using Zilor.AICopilot.AgentPlugin;
 using Zilor.AICopilot.Services.Common.Contracts;
 
@@ -10,7 +9,7 @@ public class IntentRoutingAgentBuilder
     private const string AgentName = "IntentRoutingAgent";
     
     private readonly ChatAgentFactory _agentFactory;
-    private readonly IServiceProvider _serviceProvider;
+    private readonly IDataQueryService _dataQueryService;
 
     // 缓存静态的工具意图列表，避免重复反射扫描
     private readonly string _toolIntentListString;
@@ -18,10 +17,10 @@ public class IntentRoutingAgentBuilder
     public IntentRoutingAgentBuilder(
         ChatAgentFactory agentFactory, 
         AgentPluginLoader pluginLoader, 
-        IServiceProvider serviceProvider)
+        IDataQueryService dataQueryService)
     {
         _agentFactory = agentFactory;
-        _serviceProvider = serviceProvider;
+        _dataQueryService = dataQueryService;
 
         // 预构建工具意图列表（这些是代码硬编码的，运行时不会变，可以缓存）
         var sb = new StringBuilder();
@@ -39,12 +38,12 @@ public class IntentRoutingAgentBuilder
     /// <summary>
     /// 获取知识库意图列表
     /// </summary>
-    private async Task<string> GetKnowledgeIntentListAsync(IDataQueryService dataQuery)
+    private async Task<string> GetKnowledgeIntentListAsync()
     {
         var sb = new StringBuilder();
         
         // 查询所有启用的知识库
-        var kbs = await dataQuery.ToListAsync(dataQuery.KnowledgeBases);
+        var kbs = await _dataQueryService.ToListAsync(_dataQueryService.KnowledgeBases);
             
         foreach (var kb in kbs)
         {
@@ -59,13 +58,13 @@ public class IntentRoutingAgentBuilder
     /// <summary>
     /// 获取数据分析意图列表
     /// </summary>
-    private async Task<string> GetDataAnalysisIntentListAsync(IDataQueryService dataQuery)
+    private async Task<string> GetDataAnalysisIntentListAsync()
     {
         var sb = new StringBuilder();
 
         // 查询所有启用的业务数据库
-        var queryable = dataQuery.BusinessDatabases.Where(b => b.IsEnabled);
-        var dbs = await dataQuery.ToListAsync(queryable);
+        var queryable = _dataQueryService.BusinessDatabases.Where(b => b.IsEnabled);
+        var dbs = await _dataQueryService.ToListAsync(queryable);
 
         foreach (var db in dbs)
         {
@@ -79,20 +78,16 @@ public class IntentRoutingAgentBuilder
     
     public async Task<ChatClientAgent> BuildAsync()
     {
-        // 创建 Scope 以访问数据库服务
-        using var scope = _serviceProvider.CreateScope();
-        var dataQuery = scope.ServiceProvider.GetRequiredService<IDataQueryService>();
-
         var intents = new StringBuilder();
         
         // 1. 添加工具意图 (Plugin)
         intents.Append(_toolIntentListString);
         
         // 2. 添加知识库意图 (RAG)
-        intents.Append(await GetKnowledgeIntentListAsync(dataQuery));
+        intents.Append(await GetKnowledgeIntentListAsync());
         
         // 3. 添加数据分析意图 (Text-to-SQL)
-        intents.Append(await GetDataAnalysisIntentListAsync(dataQuery));
+        intents.Append(await GetDataAnalysisIntentListAsync());
         
         var agent = await _agentFactory.CreateAgentAsync(AgentName,
             template =>

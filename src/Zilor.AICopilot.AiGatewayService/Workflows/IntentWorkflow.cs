@@ -18,12 +18,14 @@ public static class IntentWorkflow
         
         builder.AddWorkflow(nameof(IntentWorkflow), (sp, key) =>
         {
-            var intentRouting = sp.GetRequiredService<IntentRoutingExecutor>();
-            var toolsPack = sp.GetRequiredService<ToolsPackExecutor>();
-            var knowledgeRetrieval = sp.GetRequiredService<KnowledgeRetrievalExecutor>();
-            var dataAnalysis = sp.GetRequiredService<DataAnalysisExecutor>();
-            var aggregator = sp.GetRequiredService<ContextAggregatorExecutor>();
-            var finalProcess = sp.GetRequiredService<FinalProcessExecutor>();
+            var scopeFactory = sp.GetRequiredService<IServiceScopeFactory>();
+            var scope = scopeFactory.CreateScope();
+            var intentRouting = scope.ServiceProvider.GetRequiredService<IntentRoutingExecutor>();
+            var toolsPack = scope.ServiceProvider.GetRequiredService<ToolsPackExecutor>();
+            var knowledgeRetrieval = scope.ServiceProvider.GetRequiredService<KnowledgeRetrievalExecutor>();
+            var dataAnalysis = scope.ServiceProvider.GetRequiredService<DataAnalysisExecutor>();
+            var aggregator = scope.ServiceProvider.GetRequiredService<ContextAggregatorExecutor>();
+            var finalProcess = scope.ServiceProvider.GetRequiredService<FinalProcessExecutor>();
             
             var workflowBuilder = new WorkflowBuilder(intentRouting);
             workflowBuilder.WithName(key)

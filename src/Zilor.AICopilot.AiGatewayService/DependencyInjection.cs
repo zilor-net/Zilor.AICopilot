@@ -17,7 +17,7 @@ public static class DependencyInjection
             cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
         });
         
-        builder.Services.AddSingleton<ChatAgentFactory>();
+        builder.Services.AddScoped<ChatAgentFactory>();
         
         builder.Services.AddHttpClient("OpenAI", client =>
         {
@@ -29,9 +29,9 @@ public static class DependencyInjection
             registrar.RegisterPluginFromAssembly(Assembly.GetExecutingAssembly());
         });
         
-        builder.Services.AddSingleton<IntentRoutingAgentBuilder>();
+        builder.Services.AddScoped<IntentRoutingAgentBuilder>();
         
-        builder.Services.AddSingleton<DataAnalysisAgentBuilder>();
+        builder.Services.AddScoped<DataAnalysisAgentBuilder>();
         
         builder.AddIntentWorkflow();
     }

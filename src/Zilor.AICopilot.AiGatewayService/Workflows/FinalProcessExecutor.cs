@@ -4,7 +4,6 @@ using Microsoft.Agents.AI;
 using Microsoft.Agents.AI.Workflows;
 using Microsoft.Agents.AI.Workflows.Reflection;
 using Microsoft.Extensions.AI;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Zilor.AICopilot.AiGatewayService.Agents;
 using Zilor.AICopilot.Services.Common.Contracts;
@@ -17,7 +16,7 @@ namespace Zilor.AICopilot.AiGatewayService.Workflows;
 /// </summary>
 public class FinalProcessExecutor(
     ChatAgentFactory agentFactory, 
-    IServiceProvider serviceProvider,
+    IDataQueryService dataQuery,
     ILogger<FinalProcessExecutor> logger):
     ReflectingExecutor<FinalProcessExecutor>("FinalProcessExecutor"),
     IMessageHandler<GenerationContext> // <-- 输入类型变更为聚合上下文
@@ -34,10 +33,7 @@ public class FinalProcessExecutor(
 
             // 1. 获取会话关联的模板配置
             // 我们需要知道当前会话使用的是哪个 Agent 模板（例如"通用助手"或"HR助手"）
-            using var scope = serviceProvider.CreateScope();
-            var queryService = scope.ServiceProvider.GetRequiredService<IDataQueryService>();
-            
-            var session = await queryService .FirstOrDefaultAsync(queryService.Sessions.Where(s => s.Id == request.SessionId));
+            var session = await dataQuery.FirstOrDefaultAsync(dataQuery.Sessions.Where(s => s.Id == request.SessionId));
             
             if (session == null) throw new InvalidOperationException("会话不存在");
 
