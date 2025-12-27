@@ -23,7 +23,7 @@ var migration = builder.AddProject<Zilor_AICopilot_MigrationWorkApp>("aicopilot-
     .WithReference(postgresdb)
     .WaitFor(postgresdb);
 
-builder.AddProject<Zilor_AICopilot_HttpApi>("aicopilot-httpapi")
+var httpapi = builder.AddProject<Zilor_AICopilot_HttpApi>("aicopilot-httpapi")
     .WithUrl("swagger")
     .WaitFor(postgresdb)
     .WaitFor(rabbitmq)
@@ -41,5 +41,13 @@ builder.AddProject<Zilor_AICopilot_RagWorker>("rag-worker")
     .WaitFor(postgresdb) // 等待数据库启动
     .WaitFor(rabbitmq) // 等待 MQ 启动
     .WithReference(qdrant);
+
+builder.AddViteApp("aicopilot-webui", "../Zilor.AICopilot.Web")
+    .WithEndpoint("http", endpointAnnotation =>
+    {
+        endpointAnnotation.Port = 5173;
+    })
+    .WaitFor(httpapi)
+    .WithReference(httpapi);
 
 builder.Build().Run();

@@ -87,10 +87,17 @@ public class AiGatewayController : ApiControllerBase
         return ReturnResult(result);
     }
     
-    [HttpPost("/chat")]
+    [HttpPost("chat")]
     public IResult Chat(ChatStreamRequest request)
     {
         var stream = Sender.CreateStream(request);
         return Results.ServerSentEvents(stream);
+    }
+    
+    [HttpGet("messages")]
+    public async Task<IActionResult> GetMessages(Guid sessionId)
+    {
+        var result = await Sender.Send(new GetMessagesQuery(sessionId));
+        return ReturnResult(result);
     }
 }

@@ -24,7 +24,7 @@ public class SessionChatMessageStore : ChatMessageStore
     public SessionChatMessageStore(IServiceProvider serviceProvider, JsonElement storeState)
     {
         _serviceProvider = serviceProvider;
-        if (storeState.ValueKind is JsonValueKind.String)
+        if (storeState.ValueKind is JsonValueKind.Object)
         {
             _sessionSoreState = storeState.Deserialize<SessionSoreState>()!;
         }
@@ -43,8 +43,7 @@ public class SessionChatMessageStore : ChatMessageStore
     {
         if (_sessionSoreState == null) return;
         
-        using var scope = _serviceProvider.CreateScope();
-        var repo = scope.ServiceProvider.GetRequiredService<IRepository<Session>>();
+        var repo = _serviceProvider.GetRequiredService<IRepository<Session>>();
 
         // 加载聚合根
         var session = await repo.GetByIdAsync(_sessionSoreState.SessionId, cancellationToken);

@@ -13,7 +13,7 @@ public class Session : IAggregateRoot
     public Session(Guid userId, Guid templateId)
     {
         Id = Guid.NewGuid();
-        Title = "新会话";
+        Title = $"新会话[{DateTime.Now:MMddHHmm}]";
         UserId = userId;
         TemplateId = templateId;
     }

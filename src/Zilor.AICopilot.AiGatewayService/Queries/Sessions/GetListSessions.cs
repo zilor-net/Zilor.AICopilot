@@ -26,6 +26,7 @@ public class GetListSessionsQueryHandler(
         CancellationToken cancellationToken)
     {
         var queryable = dataQueryService.Sessions
+            .OrderByDescending(s => s.Id)
             .Select(s => new SessionDto
             {
                 Id = s.Id,

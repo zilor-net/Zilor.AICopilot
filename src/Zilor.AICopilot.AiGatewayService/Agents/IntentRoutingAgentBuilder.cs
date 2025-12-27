@@ -96,7 +96,7 @@ public class IntentRoutingAgentBuilder
                 // 确保我们在 Prompt 模板中预留了 {{$IntentList}} 占位符
                 template.SystemPrompt = template.SystemPrompt
                     .Replace("{{$IntentList}}", intents.ToString());
-            });
+            }, isSaveChatMessage: false);
         
         return agent;
     }

@@ -22,6 +22,7 @@
         <PackageReference Include="Aspire.Hosting.PostgreSQL" Version="13.1.0" />
         <PackageReference Include="Aspire.Hosting.Qdrant" Version="13.1.0" />
         <PackageReference Include="Aspire.Hosting.RabbitMQ" Version="13.1.0" />
+        <PackageReference Include="CommunityToolkit.Aspire.Hosting.NodeJS.Extensions" Version="9.9.0" />
     </ItemGroup>
 
 </Project>
