@@ -1,7 +1,10 @@
 ﻿import {defineStore} from 'pinia';
 import {computed, ref} from 'vue';
 import {chatService} from '../services/chatService';
-import {type ChatMessage, type IWidgetData, MessageRole, type Session} from '../types/protocols';
+import {
+  type ChatMessage, type IWidgetData, MessageRole, type Session, type IntentResult,
+  type StreamChunk
+} from '../types/protocols';
 
 export const useChatStore = defineStore('chat', () => {
   // ================= 状态 (State) =================
@@ -81,7 +84,9 @@ export const useChatStore = defineStore('chat', () => {
         id: dto.id.toString(),
         sessionId: sessionId,
         role: dto.type === 'User' ? MessageRole.User : MessageRole.Assistant,
-        content: dto.content,
+        finalContent: dto.content,
+        intent: undefined,
+        analysis: { content: '', widgets: [] },
         widgets: [], // 暂时为空
         isStreaming: false,
         timestamp: new Date(dto.createdAt).getTime()
@@ -114,8 +119,8 @@ export const useChatStore = defineStore('chat', () => {
       id: Date.now().toString(), // 临时ID
       sessionId,
       role: MessageRole.User,
-      content: content,
-      widgets: [],
+      finalContent: content, // 用户发的内容算作 finalContent
+      analysis: { content: '', widgets: [] },
       isStreaming: false,
       timestamp: Date.now()
     };
@@ -127,8 +132,9 @@ export const useChatStore = defineStore('chat', () => {
       id: aiMsgId,
       sessionId,
       role: MessageRole.Assistant,
-      content: '', // 初始为空，等待流式填充
-      widgets: [],
+      intent: undefined,                  // 初始无意图
+      analysis: { content: '', widgets: [] }, // 初始无分析
+      finalContent: '',                   // 初始无回复
       isStreaming: true, // 标记为正在输入
       timestamp: Date.now()
     };
@@ -139,34 +145,39 @@ export const useChatStore = defineStore('chat', () => {
     // 3. 调用 API 服务，开始接收流
     await chatService.sendMessageStream(sessionId, content, {
 
-      // 收到文本块：追加到当前 AI 消息的 content 中
-      onText: (text) => {
+      onChunkReceived: (chunk: StreamChunk) => {
         const targetMsg = findMessage(sessionId, aiMsgId);
-        if (targetMsg) {
-          targetMsg.content += text;
+        if (!targetMsg) return;
+        // 1. 意图识别 (IntentRoutingExecutor)
+        if (chunk.source === 'IntentRoutingExecutor') {
+          // 意图数据通常是 JSON，累积起来
+          targetMsg.intent = JSON.parse(chunk.content);
         }
-      },
 
-      // 收到组件块：解析 JSON 并加入 widgets 列表
-      onWidget: (widgetJson) => {
-        const targetMsg = findMessage(sessionId, aiMsgId);
-        if (targetMsg) {
-          try {
-            // 后端发来的 widgetJson 包含了 title, data, type 等信息
-            const widgetData = JSON.parse(widgetJson);
-
-            // 为组件生成唯一ID
-            const widgetItem: IWidgetData = {
-              id: `w-${Date.now()}`,
-              type: widgetData.type || widgetData.WidgetType, // 兼容大小写
-              title: widgetData.title || widgetData.Title,
-              data: widgetData
-            };
-
-            targetMsg.widgets.push(widgetItem);
-          } catch (e) {
-            console.error('Widget parsing failed', e);
+        // 2. 数据分析 (DataAnalysisExecutor)
+        else if (chunk.source === 'DataAnalysisExecutor') {
+          if (chunk.type === 'Text') {
+            targetMsg.analysis.content += chunk.content;
+          } else if (chunk.type === 'Widget') {
+            try {
+              const widgetData = JSON.parse(chunk.content);
+              targetMsg.analysis.widgets.push({
+                id: `w-${Date.now()}-${Math.random()}`,
+                type: widgetData.widget_type,
+                title: widgetData.title,
+                data: widgetData
+              });
+            } catch (e) { console.error('Widget parse error', e); }
           }
+        }
+
+        // 3. 最终回复 (FinalProcessExecutor 或其他)
+        else {
+          // 默认为最终回复
+          if (chunk.type === 'Text') {
+            targetMsg.finalContent += chunk.content;
+          }
+          // Final 阶段通常没有 Widget，如果有也可以处理
         }
       },
 
@@ -185,7 +196,7 @@ export const useChatStore = defineStore('chat', () => {
         const targetMsg = findMessage(sessionId, aiMsgId);
         if (targetMsg) {
           targetMsg.isStreaming = false;
-          targetMsg.content += `\n[系统错误: ${err.message}]`;
+          targetMsg.finalContent += `\n[系统错误: ${err.message}]`;
         }
       }
     });

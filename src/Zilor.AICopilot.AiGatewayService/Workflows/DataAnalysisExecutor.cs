@@ -6,7 +6,7 @@ using Microsoft.Agents.AI.Workflows.Reflection;
 using Microsoft.Extensions.AI;
 using Microsoft.Extensions.Logging;
 using Zilor.AICopilot.AiGatewayService.Agents;
-using Zilor.AICopilot.AiGatewayService.Models;
+using Zilor.AICopilot.DataAnalysisService.Plugins;
 using Zilor.AICopilot.DataAnalysisService.Services;
 using Zilor.AICopilot.Services.Common.Contracts;
 using Zilor.AICopilot.Services.Common.Helper;
@@ -93,19 +93,21 @@ public class DataAnalysisExecutor(
             // Agent 会自动进行: 思考 -> GetTableNames -> 思考 -> GetTableSchema -> 思考 -> ExecuteSQL -> 总结
             await foreach (var update in agent.RunStreamingAsync(intent.Query!, thread, cancellationToken: ct))
             {
+                
                 await context.AddEventAsync(new AgentRunUpdateEvent(Id, update), ct);
             }
             
             // 记录日志以便调试
             logger.LogInformation("数据库 {DbName} 查询完成。", dbName);
             
-            // 获取最后一条 Agent 回复消息（最终数据）
-            var messages = thread.GetService<IList<ChatMessage>>()!;
-            var response = messages.Last();
-            var output = JsonSerializer.Deserialize<DataAnalysisAgentOutputDto>(response.Text);
+            // // 获取最后一条 Agent 回复消息（最终数据）
+            // var messages = thread.GetService<IList<ChatMessage>>()!;
+            // var response = messages.Last();
+            // var output = JsonSerializer.Deserialize<DataAnalysisAgentOutputDto>(response.Text);
             
             // 获取可视化上下文
             var (rawData, schema) = vizContext.GetLastResult();
+            var output = vizContext.GetOutput();
             
             // =========================================================
             // 分流路径 1：旁路输出 (Side Path) -> 前端 Widget

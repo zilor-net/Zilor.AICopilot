@@ -8,10 +8,9 @@ import { token, baseUrl } from "@/appsetting";
  * 上层调用者（Store）通过这些回调接收数据
  */
 interface StreamCallbacks {
-  onText: (text: string) => void;       // 当收到文本块时
-  onWidget: (widgetJson: string) => void; // 当收到组件JSON时
+  onChunkReceived: (chunk: StreamChunk) => void;       // 当收到数据块时
   onComplete: () => void;               // 当流结束时
-  onError: (err: any) => void;          // 当发生错误时
+  onError: (err: any) => void;               // 当发生错误时
 }
 
 export const chatService = {
@@ -74,15 +73,7 @@ export const chatService = {
           try {
             // 解析后端发来的 ChatChunk JSON
             const chunk: StreamChunk = JSON.parse(msg.data);
-
-            // 根据类型分发处理
-            if (chunk.type === ChunkType.Text) {
-              callbacks.onText(chunk.content);
-            }
-            else if (chunk.type === ChunkType.Widget) {
-              // Widget 内容通常是转义过的 JSON 字符串，需要二次处理
-              callbacks.onWidget(chunk.content);
-            }
+            callbacks.onChunkReceived(chunk);
           } catch (err) {
             console.error('Failed to parse chunk:', err);
           }
@@ -93,11 +84,6 @@ export const chatService = {
           callbacks.onComplete();
         },
 
-        // 4. 处理错误
-        onerror(err) {
-          callbacks.onError(err);
-          throw err; // 抛出错误以中断重试
-        },
 
         // 保持连接，即使页面进入后台
         openWhenHidden: true

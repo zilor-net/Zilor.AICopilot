@@ -10,31 +10,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f4f71ff8-869c-4e55-85b9-f9116211e89c" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Queries/ConversationTemplates/GetConversationTemplateByNameQuery.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Queries/Sessions/GetMessages.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.Web/src/appsetting.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.Web/src/assets/main.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.Web/src/components/chat/ChatWindow.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.Web/src/components/chat/MessageItem.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.Web/src/components/chat/SessionList.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.Web/src/services/apiClient.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.Web/src/services/chatService.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.Web/src/stores/chatStore.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.Web/src/types/protocols.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.Web/src/utils/markdown.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/sqldialects.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.DataAnalysisService/Plugins/DataAnalysisOutputDto.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Agents/ChatStreamRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Agents/ChatStreamRequest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Agents/IntentRoutingAgentBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Agents/IntentRoutingAgentBuilder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Agents/SessionChatMessageStore.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Agents/SessionChatMessageStore.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Commands/Sessions/CreateSession.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Commands/Sessions/CreateSession.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Queries/Sessions/GetListSessions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Queries/Sessions/GetListSessions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.AppHost/AppHost.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AppHost/AppHost.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.AppHost/Zilor.AICopilot.AppHost.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AppHost/Zilor.AICopilot.AppHost.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.Core.AiGateway/Aggregates/Sessions/MessageType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.Core.AiGateway/Aggregates/Sessions/MessageType.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.Core.AiGateway/Aggregates/Sessions/Session.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.Core.AiGateway/Aggregates/Sessions/Session.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.HttpApi/Controllers/AiGatewayController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.HttpApi/Controllers/AiGatewayController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Workflows/DataAnalysisExecutor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Workflows/DataAnalysisExecutor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.DataAnalysisService/Plugins/DataAnalysisPlugin.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.DataAnalysisService/Plugins/DataAnalysisPlugin.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.DataAnalysisService/Services/VisualizationContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.DataAnalysisService/Services/VisualizationContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.MigrationWorkApp/SeedData/AiGatewayData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.MigrationWorkApp/SeedData/AiGatewayData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.Web/src/components/chat/MessageItem.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.Web/src/components/chat/MessageItem.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.Web/src/services/chatService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.Web/src/services/chatService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.Web/src/stores/chatStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.Web/src/stores/chatStore.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.Web/src/types/protocols.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.Web/src/types/protocols.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.Web/src/utils/markdown.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.Web/src/utils/markdown.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,7 +33,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="34.构建数据分析执行器" />
+        <entry key="$PROJECT_DIR$" value="35.数据可视化与自适应交互" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -220,7 +209,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "git-widget-placeholder": "35.数据可视化与自适应交互",
+    "git-widget-placeholder": "36.前端应用",
     "nodejs_package_manager_path": "npm",
     "ts.external.directory.path": "D:\\Repos\\MyRepos\\Zilor.AICopilot\\src\\Zilor.AICopilot.Web\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
@@ -385,15 +374,8 @@
       <workItem from="1766454060952" duration="13213000" />
       <workItem from="1766486799846" duration="2388000" />
       <workItem from="1766542144959" duration="20342000" />
-      <workItem from="1766734577912" duration="22095000" />
-    </task>
-    <task id="LOCAL-00006" summary="refactor(core): 整理代码结构并移除多余空行&#10;&#10;- 移除了 ChatAgent 类中的多余空行&#10;- 在 ConversationTemplate 实体中添加了 ModelId 属性&#10;- 更新了 ConversationTemplate 的 EF Core 配置，映射 model_id 列&#10;-从 DependencyInjection 和 JwtTokenGenerator 中移除了不必要的命名空间引用&#10;- 清理了项目文件中多余的空格和格式问题">
-      <option name="closed" value="true" />
-      <created>1763706927178</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1763706927178</updated>
+      <workItem from="1766734577912" duration="25373000" />
+      <workItem from="1766890699930" duration="10463000" />
     </task>
     <task id="LOCAL-00007" summary="feat(ai-gateway): 实现用户消息发送与流式响应功能&#10;&#10;- 新增 SendUserMessages HTTP GET 接口，用于接收并处理用户消息&#10;- 实现 Server-Sent Events (SSE) 流式响应机制&#10;- 添加 ChatAgentFactory 工厂类，用于创建基于模板的 AI 对话代理&#10;- 引入 Microsoft.Agents.AI.OpenAI 包以支持 AI 代理交互&#10;- 在 ConversationTemplate 和 LanguageModel 上添加唯一索引约束&#10;- 注册 AiGatewayService 服务及 MediatR 相关依赖&#10;- 新增 SendUserMessageCommand 命令及其处理器，用于异步流式处理消息&#10;- 调整项目结构：将 UseCases 目录更名为 Commands 和 Queries&#10;- 更新 Program.cs 中的服务注册方法名 AddServiceUseCase为 AddApplicationService&#10;- 移除旧的 ChatAgent 和 IChatAgent 类定义&#10;- 配置 Entity Framework Core 模型唯一性约束&#10;- 添加系统提示词和模型关联逻辑，增强会话上下文管理&#10;-优化依赖注入配置，确保服务正确注册与解析- 增加必要的 JSON 序列化和 HTTP 响应头设置以支持 SSE 协议&#10;- 完成 JWT 权限验证特性标注于 SendUserMessageCommand 类上&#10;-修正部分命名空间引用问题，并更新解决方案用户设置文件排除缓存路径">
       <option name="closed" value="true" />
@@ -779,7 +761,15 @@
       <option name="project" value="LOCAL" />
       <updated>1766392044270</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="feat(chat): 添加聊天功能和前端界面&#10;&#10;- 实现了聊天流式接口和消息历史查询功能&#10;- 添加了前端聊天界面包括会话列表和消息窗口&#10;- 集成了流式消息处理和Markdown渲染功能&#10;- 添加了Web端API客户端和服务层实现&#10;- 配置了应用主机集成Web UI和API服务&#10;- 添加了会话管理和消息状态存储功能&#10;- 增加了打字指示器和消息气泡界面组件&#10;- 添加了Gitignore规则和项目配置文件">
+      <option name="closed" value="true" />
+      <created>1766835970533</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1766835970533</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -800,7 +790,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="feat(rag): 添加RAG模块的核心领域模型和数据库配置&#10;&#10;- 新增 EmbeddingModel 聚合根，用于管理嵌入模型配置&#10;- 新增 KnowledgeBase 聚合根，包含文档集合导航属性- 新增 Document 实体，定义文档元数据及处理状态&#10;- 新增 DocumentChunk 实体，表示文档切片及其向量标识-为以上实体添加 Entity Framework Core 配置类&#10;- 更新 AiCopilotDbContext，加入新的 DbSet 和模型绑定&#10;- 添加新的数据库迁移文件以创建相关表结构&#10;- 升级 PostgreSQL EF Core 提供程序版本至 10.0.0&#10;- 在项目间建立对 Zilor.AICopilot.Core.Rag 的引用关系" />
     <MESSAGE value="feat(migration): 删除初始迁移和RAG模块迁移文件&#10;&#10;- 删除了初始数据库迁移文件及其设计器文件&#10;- 删除了RAG模块相关的数据库迁移文件及其设计器文件&#10;- 清理了与旧数据结构相关的所有表定义和索引配置&#10;- 移除了对Asp Net Core Identity相关实体的迁移支持&#10;- 移除了对话模板、语言模型、会话消息等核心业务表的迁移历史&#10;- 清除了嵌入模型、知识库、文档及分块等相关RAG功能表的迁移记录" />
     <MESSAGE value="refactor(rag): 将文档和文档切片的主键类型从Guid改为int&#10;&#10;- 修改Document类的主键Id类型为int- 修改DocumentChunk类的主键Id类型为int- 更新DocumentChunk构造函数中的documentId参数类型为int&#10;- 调整MarkChunkAsEmbedded方法的chunkId参数类型为int- 移除Document类中Id的初始化逻辑" />
     <MESSAGE value="refactor(rag): 将文档和文档切片的主键类型从Guid改为int- 修改Document类的主键Id类型为int&#10;- 修改DocumentChunk类的主键Id类型为int&#10;- 更新DocumentChunk构造函数中的documentId参数类型为int&#10;- 调整MarkChunkAsEmbedded方法的chunkId参数类型为int&#10;- 移除Document类中Id的初始化逻辑&#10;- 移除了EntityFrameworkCore相关的using引用&#10;- 清理了无用的变更记录和IDE配置项" />
@@ -825,7 +814,8 @@
     <MESSAGE value="feat(ai-gateway): 调整聊天代理工厂系统提示词配置&#10;&#10;- 将系统提示词从代理选项移动到聊天选项中&#10;- 移除了代理选项中的重复提示词配置&#10;- 优化了命名空间引用，移除未使用的依赖项&#10;- 更新了多个项目的包引用版本号&#10;- 添加了新的数据源配置到IDEA项目设置中&#10;- 排除了新反编译文件的代码检查范围" />
     <MESSAGE value="refactor(core): 移除数据库架构信息查询功能&#10;- 删除 DapperDatabaseConnector 中的 GetSchemaInfoAsync 方法实现&#10;- 移除 IDatabaseConnector 接口中的 GetSchemaInfoAsync 定义&#10;- 清理相关的 PostgreSQL 查询逻辑与异常处理代码&#10;- 更新依赖引用并调整相关数据源配置文件&#10;- 移除无效的数据源连接配置项&#10;- 优化命名空间引用并移除未使用的依赖项" />
     <MESSAGE value="feat(ai-gateway): 调整数据分析结果输出格式为JSON&#10;&#10;- 将数据分析师提示词中的XML输出格式改为JSON格式&#10;- 更新字段注释与元数据结构以适配JSON序列化&#10;- 修改FinalProcessExecutor中结果拼接逻辑&#10;- 移除XML标签相关注释与无效数据源配置&#10;- 补充ERP数据库初始化脚本及完整表结构与注释" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(ai-gateway): 调整数据分析结果输出格式为JSON&#10;&#10;- 将数据分析师提示词中的XML输出格式改为JSON格式&#10;- 更新字段注释与元数据结构以适配JSON序列化&#10;- 修改FinalProcessExecutor中结果拼接逻辑&#10;- 移除XML标签相关注释与无效数据源配置&#10;- 补充ERP数据库初始化脚本及完整表结构与注释" />
+    <MESSAGE value="feat(chat): 添加聊天功能和前端界面&#10;&#10;- 实现了聊天流式接口和消息历史查询功能&#10;- 添加了前端聊天界面包括会话列表和消息窗口&#10;- 集成了流式消息处理和Markdown渲染功能&#10;- 添加了Web端API客户端和服务层实现&#10;- 配置了应用主机集成Web UI和API服务&#10;- 添加了会话管理和消息状态存储功能&#10;- 增加了打字指示器和消息气泡界面组件&#10;- 添加了Gitignore规则和项目配置文件" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(chat): 添加聊天功能和前端界面&#10;&#10;- 实现了聊天流式接口和消息历史查询功能&#10;- 添加了前端聊天界面包括会话列表和消息窗口&#10;- 集成了流式消息处理和Markdown渲染功能&#10;- 添加了Web端API客户端和服务层实现&#10;- 配置了应用主机集成Web UI和API服务&#10;- 添加了会话管理和消息状态存储功能&#10;- 增加了打字指示器和消息气泡界面组件&#10;- 添加了Gitignore规则和项目配置文件" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -849,6 +839,7 @@
         <PinnedItemInfo parentTag="Type#Microsoft.Extensions.AI.AIContent" memberName="RawRepresentation" />
         <PinnedItemInfo parentTag="Type#Zilor.AICopilot.AiGatewayService.Workflows.GenerationContext" memberName="Request" />
         <PinnedItemInfo parentTag="Type#Microsoft.Agents.AI.AgentRunResponseUpdate" memberName="Contents" />
+        <PinnedItemInfo parentTag="Type#Microsoft.Agents.AI.AgentRunResponseUpdate" memberName="RawRepresentation" />
         <PinnedItemInfo parentTag="Type#Microsoft.Extensions.AI.ChatMessage" memberName="Text" />
       </pinned-members>
     </pin-to-top-manager>

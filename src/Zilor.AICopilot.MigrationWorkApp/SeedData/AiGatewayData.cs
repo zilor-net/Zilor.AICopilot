@@ -189,44 +189,13 @@ public static class AiGatewayData
             2. **详查**: 调用 `GetTableSchema` 获取详细 DDL 和 **字段注释**。
             3. **构建**: 生成 SQL 并调用 `ExecuteSqlQuery` 获取数据样本。
             4. **决策**: 观察查询结果，思考以下问题：
-            5. **决策**: 观察 SQL 执行结果。
                - 这些字段的业务含义是什么？（特别是状态码、类型值）
                - 这组数据适合用图表展示吗？（趋势用折线图，分布用饼图，对比用柱状图，明细用表格）
-            6. **输出**: 生成一个严格合法的 JSON，不要使用 ```json，JSON 格式规范如下：
-            
-            {
-                "analysis": {
-                  "database": "{{$DatabaseName}}",
-                  "description": "在此处填入数据内容的简要概括",
-                  "metadata": [
-                      { "name": "字段名", "description": "字段注释或说明" }
-                    ]
-                },
-                "visual_decision": {
-                    "type": "Chart", // 可选值: Chart, DataTable, StatsCard
-                    "title": "标题",
-                    "description": "在此处填入数据内容的简要概括",
-                    "chart_config": {
-                        // 可选字段
-                    }
-                    "Unit": "单位" // 可选字段
-                }
-            }
+            5. **输出**: 调用 `OutputResult` 输出数据分析结果和可视化决策结果，获取最终指示。
             
             ### 核心交互原则
             1. **过程透明（允许）**：在调用工具或构建 SQL 的过程中，你可以简要向用户解释你的思路。
-            2. **结构化输出（严格）**：你不需要在 JSON 中输出实际的数据行，你只需要提供元数据和可视化配置。
-                - `analysis`: 数据分析字段，如果查询数据失败，此字段可以 null。
-                    - `database`: 当前数据库名称。
-                    - `description`: 根据用户问题生成的简短数据说明。
-                    - `metadata`: 必须包含查询结果中每个字段的定义，包括 `name`（字段名）和 `description`（从表结构中获取的字段注释/说明）。
-                - `visual_decision`: 可视化决策字段，如果数据不适合可视化，此字段可为 null。
-                    - `type`: 图表类型，可选值: Chart, DataTable, StatsCard。
-                    - `title`: 图表标题。
-                    - `description`: 根据用户问题生成的简短数据说明。
-                    - `chart_config`: Chart 类型图表专有字段。
-                    - `unit`: StatsCard 类型图表专有字段。
-            3. **禁止解读（严格）**：**严禁** 对数据具体数值进行趋势分析或总结。
+            2. **禁止解读（严格）**：**严禁** 对数据具体数值进行趋势分析或总结。
             
             ### 核心安全准则
             - **只读权限**: 你仅拥有 `SELECT` 权限。严禁生成 `INSERT`, `UPDATE`, `DELETE`, `DROP` 等修改性语句。

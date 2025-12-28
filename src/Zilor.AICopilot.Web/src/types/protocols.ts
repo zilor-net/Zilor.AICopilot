@@ -15,9 +15,23 @@ export enum ChunkType {
  * 这是流式响应中每一次传输的最小单元
  */
 export interface StreamChunk {
-  executorId: string; // 执行器ID，用于追踪是谁生成的
+  source: string; // 执行器ID，用于追踪是谁生成的
   type: ChunkType;    // 数据类型
   content: string;    // 内容载体（文本或JSON字符串）
+}
+
+// 意图结果定义
+export interface IntentResult {
+  intent: string;
+  confidence: number;
+  reasoning?: string;
+  query?: string;
+}
+
+// 分析过程的数据结构
+export interface AnalysisStep {
+  content: string;        // 思考过程的文本
+  widgets: IWidgetData[]; // 思考过程中生成的图表
 }
 
 /**
@@ -56,8 +70,11 @@ export interface ChatMessage {
   id: string;
   sessionId: string;
   role: MessageRole;
-  content: string;         // 累积的文本内容
-  widgets: IWidgetData[];  // 该消息包含的可视化组件列表
+
+  intent?: IntentResult;        // 1. 意图数据
+  analysis: AnalysisStep;       // 2. 分析过程
+  finalContent: string;         // 3. 最终回复文本
+
   isStreaming: boolean;    // 是否正在接收中（用于显示光标闪烁效果）
   timestamp: number;
 }

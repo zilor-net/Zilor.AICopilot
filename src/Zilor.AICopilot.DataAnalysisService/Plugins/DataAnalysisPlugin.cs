@@ -255,4 +255,17 @@ public class DataAnalysisPlugin(
             return $"SQL 执行错误: {ex.Message}\n请检查你的 SQL 语法、表名或列名是否正确，并参考之前的 Schema 定义进行修正。";
         }
     }
+
+    [Description("输出数据分析结果和可视化决策结果")]
+    public string OutputResult(IServiceProvider sp,
+        [Description("数据分析结果，如果查询数据失败，此字段可以 null")]
+        AnalysisDto? analysis,
+        [Description("可视化决策结果，参考【可视化输出规范决策指南】，如果数据不适合可视化，此字段可为 null")]
+        VisualDecisionDto? decision)
+    {
+        // 将输出结果捕获到上下文中
+        var vizContext = sp.GetRequiredService<VisualizationContext>();
+        vizContext.CaptureOutput(analysis, decision);
+        return "已成功获取输出结果，请直接回复‘数据查询分析任务已完成。’";
+    }
 }
