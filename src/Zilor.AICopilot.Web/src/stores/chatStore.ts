@@ -1,10 +1,19 @@
 ﻿import {defineStore} from 'pinia';
 import {computed, ref} from 'vue';
-import {chatService} from '../services/chatService';
+import {chatService} from '@/services/chatService.ts';
 import {
-  type ChatMessage, type IWidgetData, MessageRole, type Session, type IntentResult,
-  type StreamChunk
-} from '../types/protocols';
+  type ChatChunk,
+  ChunkType,
+  type IntentResult,
+  MessageRole,
+  type Session, type Widget
+} from "@/types/protocols";
+import type {
+  ChatMessage,
+  FunctionCall,
+  FunctionCallChunk, IntentChunk,
+  WidgetChunk
+} from "@/types/models.ts";
 
 export const useChatStore = defineStore('chat', () => {
   // ================= 状态 (State) =================
@@ -16,13 +25,12 @@ export const useChatStore = defineStore('chat', () => {
   const currentSessionId = ref<string | null>(null);
 
   // 消息记录字典：Key是会话ID，Value是该会话的消息列表
-  // 这样设计可以在切换会话时瞬间加载，不需要重新请求
   const messagesMap = ref<Record<string, ChatMessage[]>>({});
 
-  // 正在接收消息的标志（用于 UI 显示 Loading）
+  // 正在接收消息的标志
   const isStreaming = ref(false);
 
-  // ================= 计算属性 (Getters) =================
+  // ================= 计算属性 =================
 
   /**
    * 获取当前会话的所有消息
@@ -38,7 +46,7 @@ export const useChatStore = defineStore('chat', () => {
   const currentSession = computed(() => {
     if (!currentSessionId.value) return { title: '当前没有选择会话' } as Session;
     return sessions.value
-        .find(session => session.id === currentSessionId.value) || { title: '未找到当前会话' } as Session;
+      .find(session => session.id === currentSessionId.value)
   });
 
   // ================= 动作 (Actions) =================
@@ -50,7 +58,7 @@ export const useChatStore = defineStore('chat', () => {
     try {
       sessions.value = await chatService.getSessions();
     } catch (error) {
-      console.error('Failed to load sessions', error);
+      console.error('无法加载会话', error);
     }
   }
 
@@ -59,42 +67,9 @@ export const useChatStore = defineStore('chat', () => {
    */
   async function createNewSession() {
     const newSession = await chatService.createSession();
-
-    sessions.value.unshift(newSession); // 加到列表开头
+    sessions.value.unshift(newSession);
     currentSessionId.value = newSession.id;
-    messagesMap.value[newSession.id] = []; // 初始化消息列表
-  }
-
-  /**
-   * 加载特定会话的历史消息
-   */
-  async function loadSessionMessages(sessionId: string) {
-    // 1. [新增] 缓存检查
-    // 如果内存中已经有该会话的消息，且消息数量大于0，直接返回，不再请求 API
-    if (messagesMap.value[sessionId] && messagesMap.value[sessionId].length > 0) {
-      return;
-    }
-
-    try {
-      // 2. 调用 API 获取数据
-      const history = await chatService.getHistoryMessages(sessionId);
-
-      // 3. 将 DTO 转换为前端内部模型
-      messagesMap.value[sessionId] = history.map(dto => ({
-        id: dto.id.toString(),
-        sessionId: sessionId,
-        role: dto.type === 'User' ? MessageRole.User : MessageRole.Assistant,
-        finalContent: dto.content,
-        intent: undefined,
-        analysis: { content: '', widgets: [] },
-        widgets: [], // 暂时为空
-        isStreaming: false,
-        timestamp: new Date(dto.createdAt).getTime()
-      }));
-
-    } catch (error) {
-      console.error(`Failed to load history for session ${sessionId}`, error);
-    }
+    messagesMap.value[newSession.id] = [];
   }
 
   /**
@@ -102,120 +77,162 @@ export const useChatStore = defineStore('chat', () => {
    */
   async function selectSession(id: string) {
     currentSessionId.value = id;
-    // 切换时，立即加载历史记录
-    await loadSessionMessages(id);
   }
 
   /**
    * 发送消息的核心逻辑
    */
-  async function sendMessage(content: string) {
+  async function sendMessage(input: string) {
     if (!currentSessionId.value || isStreaming.value) return;
 
     const sessionId = currentSessionId.value;
 
     // 1. 在 UI 上立即显示用户的消息
     const userMsg: ChatMessage = {
-      id: Date.now().toString(), // 临时ID
       sessionId,
       role: MessageRole.User,
-      finalContent: content, // 用户发的内容算作 finalContent
-      analysis: { content: '', widgets: [] },
+      chunks : [{
+        source: 'User',
+        type: ChunkType.Text,
+        content: input
+      }],
       isStreaming: false,
       timestamp: Date.now()
     };
     addMessage(sessionId, userMsg);
 
     // 2. 预先创建一个空的 AI 回复消息（占位符）
-    const aiMsgId = (Date.now() + 1).toString();
     const aiMsg: ChatMessage = {
-      id: aiMsgId,
       sessionId,
       role: MessageRole.Assistant,
-      intent: undefined,                  // 初始无意图
-      analysis: { content: '', widgets: [] }, // 初始无分析
-      finalContent: '',                   // 初始无回复
-      isStreaming: true, // 标记为正在输入
+      chunks: [], // 初始为空，随流动态增加
+      isStreaming: true,
       timestamp: Date.now()
     };
-    addMessage(sessionId, aiMsg);
+    const targetMsg = addMessage(sessionId, aiMsg);
 
     isStreaming.value = true;
 
     // 3. 调用 API 服务，开始接收流
-    await chatService.sendMessageStream(sessionId, content, {
-
-      onChunkReceived: (chunk: StreamChunk) => {
-        const targetMsg = findMessage(sessionId, aiMsgId);
-        if (!targetMsg) return;
-        // 1. 意图识别 (IntentRoutingExecutor)
-        if (chunk.source === 'IntentRoutingExecutor') {
-          // 意图数据通常是 JSON，累积起来
-          targetMsg.intent = JSON.parse(chunk.content);
-        }
-
-        // 2. 数据分析 (DataAnalysisExecutor)
-        else if (chunk.source === 'DataAnalysisExecutor') {
-          if (chunk.type === 'Text') {
-            targetMsg.analysis.content += chunk.content;
-          } else if (chunk.type === 'Widget') {
-            try {
-              const widgetData = JSON.parse(chunk.content);
-              targetMsg.analysis.widgets.push({
-                id: `w-${Date.now()}-${Math.random()}`,
-                type: widgetData.widget_type,
-                title: widgetData.title,
-                data: widgetData
-              });
-            } catch (e) { console.error('Widget parse error', e); }
-          }
-        }
-
-        // 3. 最终回复 (FinalProcessExecutor 或其他)
-        else {
-          // 默认为最终回复
-          if (chunk.type === 'Text') {
-            targetMsg.finalContent += chunk.content;
-          }
-          // Final 阶段通常没有 Widget，如果有也可以处理
+    await chatService.sendMessageStream(sessionId, input, {
+      onChunkReceived: (chunk: ChatChunk) => {
+        switch (chunk.type)
+        {
+          case ChunkType.Text:
+            addTextChunk(targetMsg, chunk);
+            break;
+          case ChunkType.Intent:
+            addIntentChunk(targetMsg, chunk);
+            break;
+          case ChunkType.FunctionCall:
+            addFunctionCallChunk(targetMsg, chunk);
+            break;
+          case ChunkType.FunctionResult:
+            addFunctionResultChunk(targetMsg, chunk);
+            break;
+          case ChunkType.Widget:
+            addWidgetChunk(targetMsg, chunk);
         }
       },
 
       // 完成时
       onComplete: () => {
         isStreaming.value = false;
-        const targetMsg = findMessage(sessionId, aiMsgId);
-        if (targetMsg) {
-          targetMsg.isStreaming = false;
-        }
+        targetMsg.isStreaming = false;
       },
 
       // 错误时
       onError: (err) => {
         isStreaming.value = false;
-        const targetMsg = findMessage(sessionId, aiMsgId);
-        if (targetMsg) {
-          targetMsg.isStreaming = false;
-          targetMsg.finalContent += `\n[系统错误: ${err.message}]`;
-        }
       }
     });
   }
 
-  // ================= 辅助函数 =================
+  // ================= 辅助函数 (Internal) =================
 
-  function addMessage(sid: string, msg: ChatMessage) {
+  /**
+   * 发送消息的核心逻辑
+   */
+  function addMessage(sid: string, msg: ChatMessage): ChatMessage {
     if (!messagesMap.value[sid]) {
       messagesMap.value[sid] = [];
     }
-    messagesMap.value[sid].push(msg);
+    const list = messagesMap.value[sid];
+    list.push(msg);
+    return list[list.length - 1]!;
   }
 
-  function findMessage(sid: string, msgId: string) {
-    return messagesMap.value[sid]?.find(m => m.id === msgId);
+  /**
+   * 添加文本块
+   */
+  function addTextChunk(msg: ChatMessage, chunk: ChatChunk) {
+    const preChunk = msg.chunks[msg.chunks.length - 1];
+
+    if (preChunk === undefined) {
+      msg.chunks.push(chunk);
+      return;
+    }
+
+    if (preChunk.source === chunk.source && preChunk.type === ChunkType.Text) {
+      preChunk.content += chunk.content;
+    } else {
+      msg.chunks.push(chunk);
+    }
   }
 
-  // 导出需要在组件中使用的内容
+  /**
+   * 添加意图识别块
+   */
+  function addIntentChunk(msg: ChatMessage, chunk: ChatChunk) {
+    const intents = JSON.parse(chunk.content) as IntentResult[];
+    const intentChunk = {
+      ...chunk,
+       intents
+    } as IntentChunk;
+    msg.chunks.push(intentChunk);
+  }
+
+  /**
+   * 添加函数调用块
+   */
+  function addFunctionCallChunk(msg: ChatMessage, chunk: ChatChunk) {
+    const functionCall = JSON.parse(chunk.content) as FunctionCall;
+    functionCall.status = 'calling';
+
+    const fcChunk = {
+      ...chunk,
+      functionCall
+    } as FunctionCallChunk;
+    msg.chunks.push(fcChunk);
+  }
+
+  /**
+   * 添加函数结果块
+   */
+  function addFunctionResultChunk(msg: ChatMessage, chunk: ChatChunk) {
+    const functionResult = JSON.parse(chunk.content) as FunctionCall;
+    const functionCallChunks = msg.chunks
+      .filter(c => c.type === ChunkType.FunctionCall) as FunctionCallChunk[];
+    const fcChunk = functionCallChunks.find(c => c.functionCall.id === functionResult.id);
+    if (fcChunk) {
+      fcChunk.functionCall.result = functionResult.result;
+      fcChunk.functionCall.status = 'completed';
+    }
+  }
+
+  /**
+   * 添加组件块
+   */
+  function addWidgetChunk(msg: ChatMessage, chunk: ChatChunk) {
+    const widget = JSON.parse(chunk.content) as Widget;
+    const widgetChunk = {
+      ...chunk,
+      widget
+    } as WidgetChunk
+    msg.chunks.push(widgetChunk);
+  }
+
+  // 导出
   return {
     sessions,
     currentSessionId,

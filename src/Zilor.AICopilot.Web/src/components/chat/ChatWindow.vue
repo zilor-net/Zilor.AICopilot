@@ -1,5 +1,5 @@
 ﻿<script setup lang="ts">
-import { ref, watch, nextTick, onMounted } from 'vue';
+import { ref, watch, nextTick } from 'vue';
 import { useChatStore } from '@/stores/chatStore.ts';
 import SessionList from './SessionList.vue';
 import MessageItem from './MessageItem.vue';
@@ -72,7 +72,7 @@ watch(
 
           <MessageItem
             v-for="msg in store.currentMessages"
-            :key="msg.id"
+            :key="msg.timestamp"
             :message="msg"
           />
         </div>
@@ -85,7 +85,7 @@ watch(
             type="textarea"
             :autosize="{ minRows: 1, maxRows: 4 }"
             placeholder="输入您的问题 (Enter 发送, Shift+Enter 换行)..."
-            @keydown.enter.prevent="(e) => { if(!e.shiftKey) handleSend() }"
+            @keydown.enter.prevent="(e:KeyboardEvent) => { if(!e.shiftKey) handleSend() }"
             :disabled="store.isStreaming"
           />
           <el-button

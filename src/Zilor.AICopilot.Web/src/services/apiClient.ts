@@ -16,7 +16,7 @@ export const apiClient = {
   },
 
   /**
-   * 发送 POST 请求（用于创建会话等）
+   * 发送 POST 请求
    */
   async post<T>(endpoint: string, body: any): Promise<T> {
     const response = await fetch(`${baseUrl}${endpoint}`, {
@@ -42,7 +42,7 @@ export const apiClient = {
   },
 
   /**
-   * 发送 GET 请求（用于获取列表）
+   * 发送 GET 请求
    */
   async get<T>(endpoint: string): Promise<T> {
     const response = await fetch(`${baseUrl}${endpoint}`, {

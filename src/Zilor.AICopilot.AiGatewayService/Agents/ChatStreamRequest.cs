@@ -36,13 +36,12 @@ public class ChatStreamHandler(
                     switch (evt.ExecutorId)
                     {
                         case "IntentRoutingExecutor":
-                            yield return new ChatChunk(evt.ExecutorId, ChunkType.Text, evt.Response.Text);
+                            yield return new ChatChunk(evt.ExecutorId, ChunkType.Intent, evt.Response.Text);
                             break;
                         case "DataAnalysisExecutor":
                             yield return new ChatChunk(evt.ExecutorId, ChunkType.Widget, evt.Response.Text);
                             break;
                     }
-
                     break;
                 case AgentRunUpdateEvent evt:
                     foreach (var evtContent in evt.Update.Contents)
@@ -55,13 +54,20 @@ public class ChatStreamHandler(
                             case FunctionCallContent content:
                                 var fun = new
                                 {
-                                    content.Name, content.Arguments
+                                    id = content.CallId,
+                                    name = content.Name, 
+                                    args = content.Arguments
                                 };
                                 yield return new ChatChunk(evt.ExecutorId, ChunkType.FunctionCall, fun.ToJson());
                                 break;
                             case FunctionResultContent content:
+                                var result = new
+                                {
+                                    id = content.CallId,
+                                    result = content.Result
+                                };
                                 yield return new ChatChunk(evt.ExecutorId, ChunkType.FunctionResult,
-                                    content.Result?.ToString() ?? string.Empty);
+                                    result.ToJson());
                                 break;
                         }
                     }

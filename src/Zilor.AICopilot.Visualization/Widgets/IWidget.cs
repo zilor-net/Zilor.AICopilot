@@ -33,7 +33,7 @@ public interface IWidget
 /// <summary>
 /// 可视化组件基类
 /// </summary>
-[JsonPolymorphic(TypeDiscriminatorPropertyName = "widget_type")]
+[JsonPolymorphic(TypeDiscriminatorPropertyName = "type")]
 [JsonDerivedType(typeof(StatsCardWidget), typeDiscriminator: nameof(WidgetType.StatsCard))]
 [JsonDerivedType(typeof(DataTableWidget), typeDiscriminator: nameof(WidgetType.DataTable))]
 [JsonDerivedType(typeof(ChartWidget), typeDiscriminator: nameof(WidgetType.Chart))]

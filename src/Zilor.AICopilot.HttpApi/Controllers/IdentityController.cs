@@ -34,12 +34,18 @@ public class IdentityController : ApiControllerBase
     }
 
     [Authorize]
-    [HttpPost("test")]
+    [HttpGet("test")]
     public IActionResult Test()
     {
         return Ok(new
         {
             Username = User.FindFirstValue(ClaimTypes.Name)
         });
+    }
+    
+    [HttpGet("check")]
+    public IActionResult Check()
+    {
+        return Ok("OK");
     }
 }

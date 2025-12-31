@@ -100,11 +100,6 @@ public class DataAnalysisExecutor(
             // 记录日志以便调试
             logger.LogInformation("数据库 {DbName} 查询完成。", dbName);
             
-            // // 获取最后一条 Agent 回复消息（最终数据）
-            // var messages = thread.GetService<IList<ChatMessage>>()!;
-            // var response = messages.Last();
-            // var output = JsonSerializer.Deserialize<DataAnalysisAgentOutputDto>(response.Text);
-            
             // 获取可视化上下文
             var (rawData, schema) = vizContext.GetLastResult();
             var output = vizContext.GetOutput();

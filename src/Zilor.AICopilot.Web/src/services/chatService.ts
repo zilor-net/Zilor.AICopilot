@@ -1,16 +1,16 @@
-﻿import {fetchEventSource} from '@microsoft/fetch-event-source';
+﻿import { fetchEventSource } from '@microsoft/fetch-event-source';
 import { apiClient } from './apiClient';
-import {ChunkType, type StreamChunk, type MessageDto} from '../types/protocols';
 import { token, baseUrl } from "@/appsetting";
+import type {ChatChunk} from "@/types/protocols.ts";
 
 /**
  * 定义流式回调函数的接口
  * 上层调用者（Store）通过这些回调接收数据
  */
 interface StreamCallbacks {
-  onChunkReceived: (chunk: StreamChunk) => void;       // 当收到数据块时
-  onComplete: () => void;               // 当流结束时
-  onError: (err: any) => void;               // 当发生错误时
+  onChunkReceived: (chunk: ChatChunk) => void;       // 当收到数据块时
+  onComplete: () => void;                            // 当流结束时
+  onError: (err: any) => void;                       // 当发生错误时
 }
 
 export const chatService = {
@@ -18,22 +18,14 @@ export const chatService = {
    * 获取会话列表
    */
   async getSessions() {
-    return await apiClient.get<any[]>('/session/list');
+    return await apiClient.get<any[]>('/aigateway/session/list');
   },
 
   /**
    * 创建新会话
    */
   async createSession() {
-    return await apiClient.post<any>('/session', { });
-  },
-
-  /**
-   * 获取指定会话的历史消息
-   */
-  async getHistoryMessages(sessionId: string) {
-    // 假设 apiClient.baseUrl 已经是 '/api'，这里拼接后就是 '/api/aigateway/messages'
-    return await apiClient.get<MessageDto[]>(`/messages?sessionId=${sessionId}`);
+    return await apiClient.post<any>('/aigateway/session', { });
   },
 
   /**
@@ -47,7 +39,7 @@ export const chatService = {
 
     try {
       // 使用微软的库发起 SSE 请求
-      await fetchEventSource(`${baseUrl}/chat`, {
+      await fetchEventSource(`${baseUrl}/aigateway/chat`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -64,18 +56,19 @@ export const chatService = {
           if (response.ok) {
             return; // 连接成功
           } else {
-            throw new Error(`Connection failed: ${response.status}`);
+            throw new Error(`连接失败: ${response.status}`);
           }
         },
 
-        // 2. 处理消息接收 (核心逻辑)
+        // 2. 处理消息接收
         onmessage(msg) {
           try {
             // 解析后端发来的 ChatChunk JSON
-            const chunk: StreamChunk = JSON.parse(msg.data);
+            const chunk: ChatChunk = JSON.parse(msg.data);
+            console.log(chunk);
             callbacks.onChunkReceived(chunk);
           } catch (err) {
-            console.error('Failed to parse chunk:', err);
+            console.error('无法解析区消息块:', err);
           }
         },
 
@@ -83,7 +76,6 @@ export const chatService = {
         onclose() {
           callbacks.onComplete();
         },
-
 
         // 保持连接，即使页面进入后台
         openWhenHidden: true

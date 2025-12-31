@@ -7,6 +7,7 @@ public enum ChunkType
 {
     Error,
     Text,
+    Intent,
     FunctionCall,
     FunctionResult,
     Widget
