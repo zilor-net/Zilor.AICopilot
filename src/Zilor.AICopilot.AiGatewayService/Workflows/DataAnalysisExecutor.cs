@@ -158,6 +158,7 @@ public class DataAnalysisExecutor(
                 return new StatsCardWidget
                 {
                     Title = decision.Title,
+                    Description = decision.Description,
                     Data = new StatsCardData
                     {
                         Label = decision.Title,

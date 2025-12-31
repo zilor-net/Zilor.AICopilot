@@ -74,7 +74,7 @@ export interface ChartWidget extends Widget {
       dimensions: string[];
       source: Array<Record<string, any>>;
     };
-    encoding?: {
+    encoding: {
       x: string;
       y: string[];
       seriesName?: string;

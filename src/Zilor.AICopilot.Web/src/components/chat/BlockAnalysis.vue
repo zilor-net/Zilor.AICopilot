@@ -3,7 +3,8 @@ import {DataLine, Monitor} from '@element-plus/icons-vue';
 import {renderMarkdown} from '@/utils/markdown';
 import FunctionCallItem from './FunctionCallItem.vue';
 import {type ChatChunk, ChunkType} from "@/types/protocols.ts";
-import type {FunctionCall, FunctionCallChunk, WidgetChunk} from "@/types/models.ts";
+import type {FunctionCallChunk, WidgetChunk} from "@/types/models.ts";
+import WidgetRenderer from '../widgets/WidgetRenderer.vue';
 
 defineProps<{
   chunks: ChatChunk[]
@@ -15,6 +16,7 @@ const getFunctionCall = (chunk: ChatChunk): FunctionCallChunk =>
 
 const getWidget = (chunk: ChatChunk): WidgetChunk =>
   chunk as WidgetChunk;
+
 </script>
 
 <template>
@@ -40,14 +42,7 @@ const getWidget = (chunk: ChatChunk): WidgetChunk =>
           </div>
 
           <div v-else-if="chunk.type === ChunkType.Widget" class="mb-3 widget-wrapper">
-            <div class="widget-placeholder">
-              <div class="wp-header">
-                <el-icon><Monitor /></el-icon>
-                <span>
-                  组件: {{ getWidget(chunk).widget.title || getWidget(chunk).widget.type }}
-                </span>
-              </div>
-            </div>
+            <WidgetRenderer :data="getWidget(chunk).widget" />
           </div>
         </template>
       </div>

@@ -266,6 +266,6 @@ public class DataAnalysisPlugin(
         // 将输出结果捕获到上下文中
         var vizContext = sp.GetRequiredService<VisualizationContext>();
         vizContext.CaptureOutput(analysis, decision);
-        return "已成功获取输出结果，请直接回复‘数据查询分析任务已完成。’";
+        return "已成功获取输出结果，请直接回复‘数据查询分析任务完成，结果如下：’";
     }
 }

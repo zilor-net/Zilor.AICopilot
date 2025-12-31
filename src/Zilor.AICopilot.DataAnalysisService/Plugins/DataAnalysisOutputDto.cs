@@ -62,7 +62,8 @@ public record VisualDecisionDto
     [JsonPropertyName("chart_config")]
     public ChartConfig? ChartConfig { get; set; }
     
-    [JsonPropertyName("可选字段，StatsCard 类型图表专有字段")]
+    [Description("可选字段，StatsCard 类型图表专有字段")]
+    [JsonPropertyName("unit")]
     public string? Unit { get; set; }
 }
 
