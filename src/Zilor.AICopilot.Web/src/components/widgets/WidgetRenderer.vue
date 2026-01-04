@@ -28,7 +28,7 @@ const DataTableWidget = defineAsyncComponent(() => import('./DataTableWidget.vue
       :widget="(data as any)"
     />
 
-    <StatsWidget
+    <DataTableWidget
       v-else-if="data.type === 'DataTable'"
       :widget="(data as any)"
     />

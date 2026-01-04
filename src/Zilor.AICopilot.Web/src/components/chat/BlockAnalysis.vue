@@ -75,24 +75,13 @@ const getWidget = (chunk: ChatChunk): WidgetChunk =>
 .mb-3 { margin-bottom: 12px; }
 
 /* Widget 容器样式 */
-.widget-wrapper { margin-top: 5px; }
-.widget-placeholder {
-  border: 1px solid #e4e7ed;
-  border-radius: 6px;
-  background: #fff;
-  padding: 2px;
+.widget-wrapper {
+  margin-top: 5px;
+  width: 100%;             /* 占满父容器 */
+  max-width: 100%;         /* 限制最大宽度 */
+  overflow-x: auto;        /* 关键：允许内部横向滚动 */
+  -webkit-overflow-scrolling: touch; /* 移动端顺滑滚动 */
 }
-.wp-header {
-  display: flex;
-  align-items: center;
-  padding: 6px 10px;
-  background: #fdfdfd;
-  color: #606266;
-  font-size: 12px;
-  border-bottom: 1px solid #f0f0f0;
-}
-.wp-header .el-icon { margin-right: 6px; }
-.wp-empty { padding: 20px; text-align: center; color: #999; font-size: 12px; }
 
 /* 动画 */
 .typing-dot { animation: blink 1.5s infinite; margin-left: 4px; }

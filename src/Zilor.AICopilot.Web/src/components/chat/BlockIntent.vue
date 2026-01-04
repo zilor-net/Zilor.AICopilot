@@ -67,7 +67,7 @@ const getIntentColor = (confidence: number) => {
 .intent-divider { margin: 8px 0; border-top: 1px dashed #dcdfe6; }
 .info-row { margin-bottom: 4px; display: flex; }
 .info-row .label { color: #888; width: 60px; flex-shrink: 0; }
-.icon-pulse { animation: rotating 2s linear infinite; margin-right: 4px;}
+
 @keyframes rotating { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
 /* 覆盖 Element Plus */
