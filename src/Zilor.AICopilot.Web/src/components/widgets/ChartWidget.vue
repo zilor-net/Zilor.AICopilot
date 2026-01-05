@@ -1,7 +1,7 @@
 ﻿<script setup lang="ts">
-import { ref, onMounted, onUnmounted, watch, nextTick, computed } from 'vue';
+import { ref, onMounted, onUnmounted, watch, nextTick } from 'vue';
 import * as echarts from 'echarts';
-import type {ChartWidget} from "@/types/protocols.ts";
+import type { ChartWidget } from "@/types/protocols.ts";
 
 const props = defineProps<{
   widget: ChartWidget
@@ -22,8 +22,10 @@ let resizeObserver: ResizeObserver | null = null;
  */
 const getChartOption = () => {
   const chartType = props.widget.data.category;
-  const { x, y, seriesName } = props.widget.data.encoding;
+  const { x, y } = props.widget.data.encoding;
   const title = props.widget.title;
+  const source = props.widget.data.dataset.source;
+  const dimensions = props.widget.data.dataset.dimensions;
 
   // 1. 通用基础配置
   const baseOption: any = {
@@ -33,34 +35,79 @@ const getChartOption = () => {
       textStyle: { fontSize: 14, color: '#333' }
     },
     tooltip: {
-      trigger: chartType === 'Pie' ? 'item' : 'axis', // 饼图触发方式不同
-      confine: true // 将 Tooltip 限制在图表容器内
+      trigger: chartType === 'Pie' ? 'item' : 'axis',
+      confine: true
     },
     legend: {
-      bottom: 0, // 图例放在底部
-      type: 'scroll' // 图例过多时允许滚动
+      bottom: 0,
+      type: 'scroll'
     },
     grid: {
       left: '3%',
       right: '4%',
-      bottom: '15%', // 留出空间给图例
+      bottom: '15%',
       containLabel: true
+    },
+    // 使用 dataset 管理数据，ECharts 会自动处理维度映射
+    dataset: {
+      dimensions: dimensions,
+      source: source
     }
   };
 
   // 2. 根据图表类型构建配置
-  // 后端返回的 chartType 首字母大写 (Bar, Line, Pie)，ECharts 需要小写 (bar, line, pie)
   const typeLower = chartType.toLowerCase();
 
   if (chartType === 'Pie') {
     // ---- 饼图逻辑 ----
     return {
-      ...baseOption
-    }
+      ...baseOption,
+      series: [
+        {
+          type: 'pie',
+          radius: ['40%', '70%'], // 环形图设计，更现代
+          itemStyle: {
+            borderRadius: 6,
+            borderColor: '#fff',
+            borderWidth: 2
+          },
+          label: {
+            show: true,
+            formatter: '{b}: {d}%' // 显示名称和百分比
+          },
+          // 饼图映射：value 取 y 数组的第一个字段，name 取 x 字段
+          encode: {
+            itemName: x,
+            value: y[0]
+          }
+        }
+      ]
+    };
   } else {
     // ---- 柱状图 / 折线图逻辑 ----
     return {
-      ...baseOption
+      ...baseOption,
+      xAxis: {
+        type: 'category',
+        // 自动截断过长的标签
+        axisLabel: {
+          interval: 0,
+          width: 80,
+          overflow: 'truncate'
+        }
+      },
+      yAxis: { type: 'value' },
+      // 针对 y 数组中的每个字段生成一个系列 (Series)
+      series: y.map(yKey => ({
+        type: typeLower,
+        name: yKey, // 图例名称默认使用字段名
+        smooth: typeLower === 'line', // 折线图开启平滑
+        barMaxWidth: 40, // 柱状图限制最大宽度
+        encode: {
+          x: x,
+          y: yKey
+        }
+      }))
     };
   }
 };
@@ -73,7 +120,7 @@ const getChartOption = () => {
 const initChart = () => {
   if (!chartRef.value) return;
 
-  // 初始化实例，并应用 light 主题
+  // 初始化实例
   chartInstance = echarts.init(chartRef.value, null, { renderer: 'canvas' });
 
   // 设置数据
@@ -87,7 +134,6 @@ const initChart = () => {
 
 /**
  * 处理窗口大小变化
- * 使用 ResizeObserver 比 window.onresize 更精确，能监听到 div 本身的变化
  */
 const setupResizeObserver = () => {
   if (!chartRef.value) return;
@@ -99,22 +145,19 @@ const setupResizeObserver = () => {
 };
 
 onMounted(async () => {
-  // 等待 DOM 渲染完成
   await nextTick();
   initChart();
   setupResizeObserver();
 });
 
 onUnmounted(() => {
-  // 销毁资源
   resizeObserver?.disconnect();
   chartInstance?.dispose();
 });
 
-// 监听数据变化（虽然目前是一次性渲染，但保留此逻辑支持实时更新）
 watch(() => props.widget, () => {
   if (chartInstance) {
-    chartInstance.setOption(getChartOption(), true); // true 表示不合并，完全重置
+    chartInstance.setOption(getChartOption(), true);
   }
 }, { deep: true });
 
@@ -129,16 +172,17 @@ watch(() => props.widget, () => {
 <style scoped>
 .chart-container {
   width: 100%;
-  max-width: 600px; /* 限制最大宽度，防止在大屏上太宽 */
+  max-width: 100%;
   background: #fff;
   border-radius: 8px;
   border: 1px solid #e4e7ed;
   padding: 16px;
   margin-top: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
 .echarts-dom {
   width: 100%;
-  height: 350px; /* 固定高度，确保 Canvas 有渲染空间 */
+  height: 350px;
 }
 </style>

@@ -12,6 +12,8 @@
 
         <ProjectReference Include="..\Zilor.AICopilot.Core.DataAnalysis\Zilor.AICopilot.Core.DataAnalysis.csproj" />
 
+        <ProjectReference Include="..\Zilor.AICopilot.Core.McpServer\Zilor.AICopilot.Core.McpServer.csproj" />
+
         <ProjectReference Include="..\Zilor.AICopilot.Core.Rag\Zilor.AICopilot.Core.Rag.csproj" />
 
         <ProjectReference Include="..\Zilor.AICopilot.SharedKernel\Zilor.AICopilot.SharedKernel.csproj"/>

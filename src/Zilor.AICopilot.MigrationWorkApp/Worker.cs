@@ -104,6 +104,12 @@ public class Worker(
             await dbContext.BusinessDatabases.AddRangeAsync(DataAnalysisData.GetDatabases(), cancellationToken);
         }
         
+        // 创建默认MCPServer
+        if (!await dbContext.McpServerInfos.AnyAsync(cancellationToken: cancellationToken))
+        {
+            await dbContext.McpServerInfos.AddRangeAsync(McpServerInfoData.GetMcpServerInfos(), cancellationToken);
+        }
+        
         await dbContext.SaveChangesAsync(cancellationToken);
     }
 }

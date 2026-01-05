@@ -33,8 +33,6 @@ const getFunctionCall = (chunk : ChatChunk): FunctionCallChunk =>
           :mini="true"
         />
       </div>
-
-      <span v-if="isStreaming" class="cursor-blink">|</span>
     </template>
   </div>
 </template>

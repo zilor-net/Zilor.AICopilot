@@ -4,6 +4,8 @@ using Microsoft.EntityFrameworkCore;
 using Zilor.AICopilot.Core.AiGateway.Aggregates.ConversationTemplate;
 using Zilor.AICopilot.Core.AiGateway.Aggregates.LanguageModel;
 using Zilor.AICopilot.Core.AiGateway.Aggregates.Sessions;
+using Zilor.AICopilot.Core.McpServer.Aggregates;
+using Zilor.AICopilot.Core.McpServer.Aggregates.McpServerInfo;
 using Zilor.AICopilot.Core.Rag.Aggregates.EmbeddingModel;
 using Zilor.AICopilot.Core.Rag.Aggregates.KnowledgeBase;
 
@@ -24,6 +26,8 @@ public class AiCopilotDbContext(DbContextOptions<AiCopilotDbContext> options) : 
     public DbSet<DocumentChunk> DocumentChunks => Set<DocumentChunk>();
     
     public DbSet<BusinessDatabase> BusinessDatabases => Set<BusinessDatabase>();
+    
+    public DbSet<McpServerInfo> McpServerInfos => Set<McpServerInfo>();
     
     protected override void OnModelCreating(ModelBuilder builder)
     {

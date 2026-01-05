@@ -17,7 +17,7 @@ public static class AiGatewayData
             "通义千问",
             "qwen-flash",
             "https://dashscope.aliyuncs.com/compatible-mode/v1",
-            "sk-90a4de5098614ba8972039367f09d9b7",
+            "sk-7852136cba46428ea5c6b6bdf47d8f54",
             new ModelParameters
             {
                 MaxTokens = 1000 * 1000,
@@ -32,7 +32,7 @@ public static class AiGatewayData
             "通义千问",
             "qwen3-max",
             "https://dashscope.aliyuncs.com/compatible-mode/v1",
-            "sk-90a4de5098614ba8972039367f09d9b7",
+            "sk-7852136cba46428ea5c6b6bdf47d8f54",
             new ModelParameters
             {
                 MaxTokens = 1000 * 1000,
@@ -93,7 +93,7 @@ public static class AiGatewayData
 
             4. **决策与组合**:
                - 绝大多数情况下，只需返回一个最匹配的意图。
-               - 如果用户意图复合（例如“先查库存(Analysis)，然后发邮件(Action)”），请同时返回多个意图。
+               - 如果用户意图复合，且不相同（例如“先查库存(Analysis)，然后发邮件(Action)”），请同时返回多个不同的意图。
                - 如果无法匹配任何工具、知识库或数据库，返回 `General.Chat`。
 
             ### 输出规范

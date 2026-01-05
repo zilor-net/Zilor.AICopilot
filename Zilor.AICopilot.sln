@@ -54,6 +54,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zilor.AICopilot.DataAnalysi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zilor.AICopilot.Visualization", "src\Zilor.AICopilot.Visualization\Zilor.AICopilot.Visualization.csproj", "{0F6AF851-B7CB-41B4-8E86-81B81BCD82BB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zilor.AICopilot.Core.McpServer", "src\Zilor.AICopilot.Core.McpServer\Zilor.AICopilot.Core.McpServer.csproj", "{7F5806A4-45BB-48B2-8F24-AA221D06F6D5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zilor.AICopilot.McpService", "src\Zilor.AICopilot.McpService\Zilor.AICopilot.McpService.csproj", "{39BBB3EA-B1C6-4C83-AA9D-479FBD146F1A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -86,6 +90,8 @@ Global
 		{E4BCC5C9-0A69-4F26-9C55-F998BDE47522} = {AA58CFB8-FDE3-4BAC-BA9B-D060D85348E0}
 		{F9A84CBD-AD0A-44DB-9FCD-712E177B0672} = {B1FD4B1B-84C6-48E6-9522-0E567C589A5F}
 		{0F6AF851-B7CB-41B4-8E86-81B81BCD82BB} = {515F3AD7-B6CF-4F15-B7A2-45FE78B79510}
+		{7F5806A4-45BB-48B2-8F24-AA221D06F6D5} = {50F4E192-9CFA-4E59-AF90-B3E6043B1C44}
+		{39BBB3EA-B1C6-4C83-AA9D-479FBD146F1A} = {B1FD4B1B-84C6-48E6-9522-0E567C589A5F}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{928FA5D9-DEE1-4B92-94F7-D4171D1D7C97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -172,5 +178,13 @@ Global
 		{0F6AF851-B7CB-41B4-8E86-81B81BCD82BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F6AF851-B7CB-41B4-8E86-81B81BCD82BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0F6AF851-B7CB-41B4-8E86-81B81BCD82BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F5806A4-45BB-48B2-8F24-AA221D06F6D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F5806A4-45BB-48B2-8F24-AA221D06F6D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F5806A4-45BB-48B2-8F24-AA221D06F6D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F5806A4-45BB-48B2-8F24-AA221D06F6D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39BBB3EA-B1C6-4C83-AA9D-479FBD146F1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39BBB3EA-B1C6-4C83-AA9D-479FBD146F1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39BBB3EA-B1C6-4C83-AA9D-479FBD146F1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39BBB3EA-B1C6-4C83-AA9D-479FBD146F1A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

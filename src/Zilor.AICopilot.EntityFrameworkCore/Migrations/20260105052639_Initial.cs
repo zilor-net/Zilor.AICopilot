@@ -137,6 +137,23 @@ namespace Zilor.AICopilot.EntityFrameworkCore.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "mcp_server_info",
+                columns: table => new
+                {
+                    id = table.Column<Guid>(type: "uuid", nullable: false),
+                    name = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
+                    description = table.Column<string>(type: "character varying(500)", maxLength: 500, nullable: false),
+                    transport_type = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
+                    command = table.Column<string>(type: "character varying(200)", maxLength: 200, nullable: true),
+                    arguments = table.Column<string>(type: "character varying(1000)", maxLength: 1000, nullable: false),
+                    is_enabled = table.Column<bool>(type: "boolean", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_mcp_server_info", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "sessions",
                 columns: table => new
                 {
@@ -402,6 +419,12 @@ namespace Zilor.AICopilot.EntityFrameworkCore.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_mcp_server_info_name",
+                table: "mcp_server_info",
+                column: "name",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_messages_session_id",
                 table: "messages",
                 column: "session_id");
@@ -444,6 +467,9 @@ namespace Zilor.AICopilot.EntityFrameworkCore.Migrations
 
             migrationBuilder.DropTable(
                 name: "language_models");
+
+            migrationBuilder.DropTable(
+                name: "mcp_server_info");
 
             migrationBuilder.DropTable(
                 name: "messages");

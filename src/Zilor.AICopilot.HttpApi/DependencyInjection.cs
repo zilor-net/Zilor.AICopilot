@@ -3,13 +3,11 @@ using System.Text;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
-using OpenTelemetry;
-using OpenTelemetry.Resources;
-using OpenTelemetry.Trace;
 using Zilor.AICopilot.AiGatewayService;
 using Zilor.AICopilot.DataAnalysisService;
 using Zilor.AICopilot.HttpApi.Infrastructure;
 using Zilor.AICopilot.Infrastructure.Authentication;
+using Zilor.AICopilot.McpService;
 using Zilor.AICopilot.RagService;
 using Zilor.AICopilot.Services.Common.Behaviors;
 using Zilor.AICopilot.Services.Common.Contracts;
@@ -36,6 +34,8 @@ public static class DependencyInjection
             builder.AddDataAnalysisService();
             
             builder.AddRagService();
+
+            builder.AddMcpService();
         }
 
         public void AddWebServices()

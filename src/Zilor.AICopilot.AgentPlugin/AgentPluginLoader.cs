@@ -48,9 +48,24 @@ public class AgentPluginLoader
             var plugin = (IAgentPlugin)ActivatorUtilities.CreateInstance(_serviceProvider, type);
             
             // 存入缓存
-            _plugins[plugin.Name] = plugin;
-            _aiTools[plugin.Name] = plugin.GetAITools()?.ToArray() ?? [];
+            RegisterAgentPlugin(plugin);
         }
+    }
+    
+    /// <summary>
+    /// 动态注册一个 Agent 插件。
+    /// 该方法既支持注册原生插件，也支持注册 MCP 桥接插件。
+    /// </summary>
+    /// <param name="plugin">插件实例</param>
+    public void RegisterAgentPlugin(IAgentPlugin plugin)
+    {
+        // 1. 存储插件实例
+        _plugins[plugin.Name] = plugin;
+
+        // 2. 提取并缓存工具列表
+        // 这一步是为了优化性能，避免每次 Agent 询问工具时都去遍历插件
+        var tools = plugin.GetAITools()?.ToArray() ?? [];
+        _aiTools[plugin.Name] = tools;
     }
     
     /// <summary>
