@@ -5,6 +5,7 @@ using Microsoft.Agents.AI.Workflows.Reflection;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Zilor.AICopilot.AiGatewayService.Agents;
+using Zilor.AICopilot.AiGatewayService.Models;
 using Zilor.AICopilot.RagService.Queries.KnowledgeBases;
 using Zilor.AICopilot.Services.Common.Contracts;
 

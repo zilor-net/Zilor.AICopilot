@@ -1,0 +1,272 @@
+{
+  "$schema": "https://json.schemastore.org/aspire-8.0.json",
+  "resources": {
+    "pg-password": {
+      "type": "parameter.v0",
+      "value": "{pg-password.inputs.value}",
+      "inputs": {
+        "value": {
+          "type": "string",
+          "secret": true
+        }
+      }
+    },
+    "postgres": {
+      "type": "container.v0",
+      "connectionString": "Host={postgres.bindings.tcp.host};Port={postgres.bindings.tcp.port};Username=postgres;Password={pg-password.value}",
+      "image": "docker.io/library/postgres:17.6",
+      "bindMounts": [
+        {
+          "source": "sql",
+          "target": "/docker-entrypoint-initdb.d",
+          "readOnly": false
+        }
+      ],
+      "volumes": [
+        {
+          "name": "postgres-aicopilot",
+          "target": "/var/lib/postgresql/data",
+          "readOnly": false
+        }
+      ],
+      "env": {
+        "POSTGRES_HOST_AUTH_METHOD": "scram-sha-256",
+        "POSTGRES_INITDB_ARGS": "--auth-host=scram-sha-256 --auth-local=scram-sha-256",
+        "POSTGRES_USER": "postgres",
+        "POSTGRES_PASSWORD": "{pg-password.value}"
+      },
+      "bindings": {
+        "tcp": {
+          "scheme": "tcp",
+          "protocol": "tcp",
+          "transport": "tcp",
+          "targetPort": 5432
+        }
+      }
+    },
+    "ai-copilot": {
+      "type": "value.v0",
+      "connectionString": "{postgres.connectionString};Database=ai-copilot"
+    },
+    "eventbus": {
+      "type": "container.v0",
+      "connectionString": "amqp://guest:{eventbus-password-uri-encoded.value}@{eventbus.bindings.tcp.host}:{eventbus.bindings.tcp.port}",
+      "image": "docker.io/library/rabbitmq:4.2-management",
+      "env": {
+        "RABBITMQ_DEFAULT_USER": "guest",
+        "RABBITMQ_DEFAULT_PASS": "{eventbus-password.value}"
+      },
+      "bindings": {
+        "tcp": {
+          "scheme": "tcp",
+          "protocol": "tcp",
+          "transport": "tcp",
+          "targetPort": 5672
+        },
+        "management": {
+          "scheme": "http",
+          "protocol": "tcp",
+          "transport": "http",
+          "port": 5672,
+          "targetPort": 15672
+        }
+      }
+    },
+    "qdrant": {
+      "type": "container.v0",
+      "connectionString": "Endpoint={qdrant.bindings.grpc.url};Key={qdrant-Key.value}",
+      "image": "docker.io/qdrant/qdrant:v1.15.5",
+      "volumes": [
+        {
+          "name": "qdrant-data",
+          "target": "/qdrant/storage",
+          "readOnly": false
+        }
+      ],
+      "env": {
+        "QDRANT__SERVICE__API_KEY": "{qdrant-Key.value}",
+        "QDRANT__SERVICE__ENABLE_STATIC_CONTENT": "0"
+      },
+      "bindings": {
+        "grpc": {
+          "scheme": "http",
+          "protocol": "tcp",
+          "transport": "http2",
+          "targetPort": 6334
+        },
+        "http": {
+          "scheme": "http",
+          "protocol": "tcp",
+          "transport": "http",
+          "targetPort": 6333
+        }
+      }
+    },
+    "aicopilot-migration": {
+      "type": "project.v0",
+      "path": "../Zilor.AICopilot.MigrationWorkApp/Zilor.AICopilot.MigrationWorkApp.csproj",
+      "env": {
+        "OTEL_DOTNET_EXPERIMENTAL_OTLP_EMIT_EXCEPTION_LOG_ATTRIBUTES": "true",
+        "OTEL_DOTNET_EXPERIMENTAL_OTLP_EMIT_EVENT_LOG_ATTRIBUTES": "true",
+        "OTEL_DOTNET_EXPERIMENTAL_OTLP_RETRY": "in_memory",
+        "ConnectionStrings__ai-copilot": "{ai-copilot.connectionString}",
+        "AI_COPILOT_HOST": "{postgres.bindings.tcp.host}",
+        "AI_COPILOT_PORT": "{postgres.bindings.tcp.port}",
+        "AI_COPILOT_USERNAME": "postgres",
+        "AI_COPILOT_PASSWORD": "{pg-password.value}",
+        "AI_COPILOT_URI": "postgresql://postgres:{pg-password-uri-encoded.value}@{postgres.bindings.tcp.host}:{postgres.bindings.tcp.port}/ai-copilot",
+        "AI_COPILOT_JDBCCONNECTIONSTRING": "jdbc:postgresql://{postgres.bindings.tcp.host}:{postgres.bindings.tcp.port}/ai-copilot",
+        "AI_COPILOT_DATABASENAME": "ai-copilot"
+      }
+    },
+    "aicopilot-httpapi": {
+      "type": "project.v0",
+      "path": "../Zilor.AICopilot.HttpApi/Zilor.AICopilot.HttpApi.csproj",
+      "env": {
+        "OTEL_DOTNET_EXPERIMENTAL_OTLP_EMIT_EXCEPTION_LOG_ATTRIBUTES": "true",
+        "OTEL_DOTNET_EXPERIMENTAL_OTLP_EMIT_EVENT_LOG_ATTRIBUTES": "true",
+        "OTEL_DOTNET_EXPERIMENTAL_OTLP_RETRY": "in_memory",
+        "ASPNETCORE_FORWARDEDHEADERS_ENABLED": "true",
+        "HTTP_PORTS": "{aicopilot-httpapi.bindings.http.targetPort}",
+        "ConnectionStrings__ai-copilot": "{ai-copilot.connectionString}",
+        "AI_COPILOT_HOST": "{postgres.bindings.tcp.host}",
+        "AI_COPILOT_PORT": "{postgres.bindings.tcp.port}",
+        "AI_COPILOT_USERNAME": "postgres",
+        "AI_COPILOT_PASSWORD": "{pg-password.value}",
+        "AI_COPILOT_URI": "postgresql://postgres:{pg-password-uri-encoded.value}@{postgres.bindings.tcp.host}:{postgres.bindings.tcp.port}/ai-copilot",
+        "AI_COPILOT_JDBCCONNECTIONSTRING": "jdbc:postgresql://{postgres.bindings.tcp.host}:{postgres.bindings.tcp.port}/ai-copilot",
+        "AI_COPILOT_DATABASENAME": "ai-copilot",
+        "ConnectionStrings__eventbus": "{eventbus.connectionString}",
+        "EVENTBUS_HOST": "{eventbus.bindings.tcp.host}",
+        "EVENTBUS_PORT": "{eventbus.bindings.tcp.port}",
+        "EVENTBUS_USERNAME": "guest",
+        "EVENTBUS_PASSWORD": "{eventbus-password.value}",
+        "EVENTBUS_URI": "amqp://guest:{eventbus-password-uri-encoded.value}@{eventbus.bindings.tcp.host}:{eventbus.bindings.tcp.port}",
+        "ConnectionStrings__qdrant": "Endpoint={qdrant.bindings.grpc.url};Key={qdrant-Key.value}",
+        "QDRANT_GRPCHOST": "{qdrant.bindings.grpc.host}",
+        "QDRANT_GRPCPORT": "{qdrant.bindings.grpc.port}",
+        "QDRANT_HTTPHOST": "{qdrant.bindings.http.host}",
+        "QDRANT_HTTPPORT": "{qdrant.bindings.http.port}",
+        "QDRANT_APIKEY": "{qdrant-Key.value}",
+        "QDRANT_URI": "{qdrant.bindings.grpc.url}",
+        "QDRANT_HTTPURI": "{qdrant.bindings.http.url}",
+        "ConnectionStrings__qdrant_http": "Endpoint={qdrant.bindings.http.url};Key={qdrant-Key.value}"
+      },
+      "bindings": {
+        "http": {
+          "scheme": "http",
+          "protocol": "tcp",
+          "transport": "http"
+        },
+        "https": {
+          "scheme": "https",
+          "protocol": "tcp",
+          "transport": "http"
+        }
+      }
+    },
+    "rag-worker": {
+      "type": "project.v0",
+      "path": "../Zilor.AICopilot.RagWorker/Zilor.AICopilot.RagWorker.csproj",
+      "env": {
+        "OTEL_DOTNET_EXPERIMENTAL_OTLP_EMIT_EXCEPTION_LOG_ATTRIBUTES": "true",
+        "OTEL_DOTNET_EXPERIMENTAL_OTLP_EMIT_EVENT_LOG_ATTRIBUTES": "true",
+        "OTEL_DOTNET_EXPERIMENTAL_OTLP_RETRY": "in_memory",
+        "ConnectionStrings__ai-copilot": "{ai-copilot.connectionString}",
+        "AI_COPILOT_HOST": "{postgres.bindings.tcp.host}",
+        "AI_COPILOT_PORT": "{postgres.bindings.tcp.port}",
+        "AI_COPILOT_USERNAME": "postgres",
+        "AI_COPILOT_PASSWORD": "{pg-password.value}",
+        "AI_COPILOT_URI": "postgresql://postgres:{pg-password-uri-encoded.value}@{postgres.bindings.tcp.host}:{postgres.bindings.tcp.port}/ai-copilot",
+        "AI_COPILOT_JDBCCONNECTIONSTRING": "jdbc:postgresql://{postgres.bindings.tcp.host}:{postgres.bindings.tcp.port}/ai-copilot",
+        "AI_COPILOT_DATABASENAME": "ai-copilot",
+        "ConnectionStrings__eventbus": "{eventbus.connectionString}",
+        "EVENTBUS_HOST": "{eventbus.bindings.tcp.host}",
+        "EVENTBUS_PORT": "{eventbus.bindings.tcp.port}",
+        "EVENTBUS_USERNAME": "guest",
+        "EVENTBUS_PASSWORD": "{eventbus-password.value}",
+        "EVENTBUS_URI": "amqp://guest:{eventbus-password-uri-encoded.value}@{eventbus.bindings.tcp.host}:{eventbus.bindings.tcp.port}",
+        "ConnectionStrings__qdrant": "Endpoint={qdrant.bindings.grpc.url};Key={qdrant-Key.value}",
+        "QDRANT_GRPCHOST": "{qdrant.bindings.grpc.host}",
+        "QDRANT_GRPCPORT": "{qdrant.bindings.grpc.port}",
+        "QDRANT_HTTPHOST": "{qdrant.bindings.http.host}",
+        "QDRANT_HTTPPORT": "{qdrant.bindings.http.port}",
+        "QDRANT_APIKEY": "{qdrant-Key.value}",
+        "QDRANT_URI": "{qdrant.bindings.grpc.url}",
+        "QDRANT_HTTPURI": "{qdrant.bindings.http.url}",
+        "ConnectionStrings__qdrant_http": "Endpoint={qdrant.bindings.http.url};Key={qdrant-Key.value}"
+      }
+    },
+    "aicopilot-webui": {
+      "type": "executable.v0",
+      "workingDirectory": "../Zilor.AICopilot.Web",
+      "command": "npm",
+      "args": [
+        "run",
+        "dev",
+        "--",
+        "--port",
+        "{aicopilot-webui.bindings.http.targetPort}"
+      ],
+      "env": {
+        "NODE_ENV": "development",
+        "PORT": "{aicopilot-webui.bindings.http.targetPort}",
+        "AICOPILOT_HTTPAPI_HTTP": "{aicopilot-httpapi.bindings.http.url}",
+        "services__aicopilot-httpapi__http__0": "{aicopilot-httpapi.bindings.http.url}",
+        "AICOPILOT_HTTPAPI_HTTPS": "{aicopilot-httpapi.bindings.https.url}",
+        "services__aicopilot-httpapi__https__0": "{aicopilot-httpapi.bindings.https.url}"
+      },
+      "bindings": {
+        "http": {
+          "scheme": "http",
+          "protocol": "tcp",
+          "transport": "http",
+          "port": 5173,
+          "targetPort": 8000
+        }
+      }
+    },
+    "eventbus-password": {
+      "type": "parameter.v0",
+      "value": "{eventbus-password.inputs.value}",
+      "inputs": {
+        "value": {
+          "type": "string",
+          "secret": true,
+          "default": {
+            "generate": {
+              "minLength": 22,
+              "special": false
+            }
+          }
+        }
+      }
+    },
+    "eventbus-password-uri-encoded": {
+      "type": "annotated.string",
+      "value": "{eventbus-password.value}",
+      "filter": "uri"
+    },
+    "qdrant-Key": {
+      "type": "parameter.v0",
+      "value": "{qdrant-Key.inputs.value}",
+      "inputs": {
+        "value": {
+          "type": "string",
+          "secret": true,
+          "default": {
+            "generate": {
+              "minLength": 22,
+              "special": false
+            }
+          }
+        }
+      }
+    },
+    "pg-password-uri-encoded": {
+      "type": "annotated.string",
+      "value": "{pg-password.value}",
+      "filter": "uri"
+    }
+  }
+}

@@ -25,4 +25,15 @@ public interface IAgentPlugin
     /// 这些定义将被直接传递给 LLM。
     /// </summary>
     IEnumerable<AITool>? GetAITools();
+    
+    /// <summary>
+    /// 获取该插件中被标记为“高风险”或“敏感”的工具名称列表。
+    /// 位于此列表中的工具，在被 Agent 调用时，会触发 HITL (Human-in-the-Loop) 拦截机制，
+    /// 要求用户显式批准后方可执行。
+    /// </summary>
+    /// <remarks>
+    /// 返回的字符串应严格匹配 <see cref="AITool.Name"/> 的值。
+    /// 如果插件没有任何敏感操作，应返回空集合。
+    /// </remarks>
+    IEnumerable<string>? HighRiskTools { get; }
 }

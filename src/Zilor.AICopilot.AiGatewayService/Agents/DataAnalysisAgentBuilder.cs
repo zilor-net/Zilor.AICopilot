@@ -13,7 +13,7 @@ public class DataAnalysisAgentBuilder(ChatAgentFactory agentFactory, AgentPlugin
     /// </summary>
     /// <param name="database">目标数据库实体，用于决策方言策略</param>
     /// <returns>配置好的 ChatClientAgent 实例</returns>
-    public async Task<ChatClientAgent> BuildAsync(BusinessDatabase database)
+    public async Task<AIAgent> BuildAsync(BusinessDatabase database)
     {
         // 1. 获取方言策略
         // 根据数据库类型 (PG/SQLServer)，获取对应的提示片段

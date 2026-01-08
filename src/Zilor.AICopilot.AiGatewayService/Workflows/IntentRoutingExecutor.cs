@@ -5,6 +5,7 @@ using Microsoft.Agents.AI.Workflows.Reflection;
 using Microsoft.Extensions.AI;
 using Microsoft.Extensions.Logging;
 using Zilor.AICopilot.AiGatewayService.Agents;
+using Zilor.AICopilot.AiGatewayService.Models;
 using Zilor.AICopilot.AiGatewayService.Queries.Sessions;
 
 namespace Zilor.AICopilot.AiGatewayService.Workflows;

@@ -56,13 +56,18 @@ public class McpServerBootstrap(
         }
     }
 
-    private void RegisterMcpPlugin(McpServerInfo mcpServerInfo, IEnumerable<AITool> tools)
+    private void RegisterMcpPlugin(McpServerInfo mcpServerInfo, IList<McpClientTool> mcpTools)
     {
+        var tools = mcpTools
+            .Select(mcpTool => mcpTool.WithName($"{mcpServerInfo.Name}.{mcpTool.Name}"))
+            .Cast<AITool>();
+
         var mcpPlugin = new GenericBridgePlugin
         {
             Name = mcpServerInfo.Name,
             Description = mcpServerInfo.Description,
-            AITools = tools
+            AITools = tools,
+            HighRiskTools = mcpServerInfo.SensitiveTools
         };
 
         agentPluginLoader.RegisterAgentPlugin(mcpPlugin);

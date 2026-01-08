@@ -6,7 +6,9 @@ using Microsoft.Agents.AI.Workflows.Reflection;
 using Microsoft.Extensions.AI;
 using Microsoft.Extensions.Logging;
 using Zilor.AICopilot.AiGatewayService.Agents;
+using Zilor.AICopilot.AiGatewayService.Models;
 using Zilor.AICopilot.Services.Common.Contracts;
+using Zilor.AICopilot.Services.Common.Helper;
 
 namespace Zilor.AICopilot.AiGatewayService.Workflows;
 
@@ -15,6 +17,7 @@ namespace Zilor.AICopilot.AiGatewayService.Workflows;
 /// 职责：利用聚合后的上下文构建 Agent，注入 RAG 提示词，并执行流式生成。
 /// </summary>
 public class FinalProcessExecutor(
+    ApprovalMiddleware approvalMiddleware,
     ChatAgentFactory agentFactory, 
     IDataQueryService dataQuery,
     ILogger<FinalProcessExecutor> logger):
@@ -39,7 +42,12 @@ public class FinalProcessExecutor(
 
             // 2. 创建基础 Agent 实例
             // 此时 Agent 拥有的是数据库中定义的静态 System Prompt
-            var agent = await agentFactory.CreateAgentAsync(session.TemplateId);
+            var chatClientAgent = await agentFactory.CreateAgentAsync(session.TemplateId);
+
+            // 添加审批中间件
+            var agent = chatClientAgent.AsBuilder()
+                .Use(approvalMiddleware.CheckApprovalRequirementAsync)
+                .Build();
             
             // 3. 构建消息列表
             var inputMessages = new List<ChatMessage>();
@@ -133,8 +141,14 @@ public class FinalProcessExecutor(
                                cancellationToken))
             {
                 // 将 Agent 的更新事件（文本块、工具调用状态等）转发到工作流事件流
-                // 这样前端就能通过 SSE 收到实时打字机效果
                 await context.AddEventAsync(new AgentRunUpdateEvent(Id, update), cancellationToken);
+            }
+            
+            // 7. 对话流结束，检查是否因审批中断
+            if (approvalMiddleware.RequiresApproval != null)
+            {
+                var response = new AgentRunResponse(new ChatMessage(ChatRole.Assistant, approvalMiddleware.RequiresApproval.ToJson()));
+                await context.AddEventAsync(new AgentRunResponseEvent(Id, response), cancellationToken);
             }
         }
         catch (Exception e)

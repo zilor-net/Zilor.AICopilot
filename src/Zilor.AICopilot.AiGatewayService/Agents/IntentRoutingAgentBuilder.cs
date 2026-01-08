@@ -76,7 +76,7 @@ public class IntentRoutingAgentBuilder
         return sb.ToString();
     }
     
-    public async Task<ChatClientAgent> BuildAsync()
+    public async Task<AIAgent> BuildAsync()
     {
         var intents = new StringBuilder();
         

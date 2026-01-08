@@ -2,6 +2,7 @@
 using Microsoft.Agents.AI.Workflows;
 using Microsoft.Extensions.AI;
 using Microsoft.Extensions.DependencyInjection;
+using Zilor.AICopilot.AiGatewayService.Models;
 using Zilor.AICopilot.AiGatewayService.Workflows;
 using Zilor.AICopilot.Services.Common.Attributes;
 using Zilor.AICopilot.Services.Common.Contracts;
@@ -40,6 +41,9 @@ public class ChatStreamHandler(
                             break;
                         case "DataAnalysisExecutor":
                             yield return new ChatChunk(evt.ExecutorId, ChunkType.Widget, evt.Response.Text);
+                            break;
+                        case "FinalProcessExecutor":
+                            yield return new ChatChunk(evt.ExecutorId, ChunkType.ApprovalRequest, evt.Response.Text);
                             break;
                     }
                     break;

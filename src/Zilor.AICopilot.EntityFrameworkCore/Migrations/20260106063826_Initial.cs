@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -146,7 +147,8 @@ namespace Zilor.AICopilot.EntityFrameworkCore.Migrations
                     transport_type = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
                     command = table.Column<string>(type: "character varying(200)", maxLength: 200, nullable: true),
                     arguments = table.Column<string>(type: "character varying(1000)", maxLength: 1000, nullable: false),
-                    is_enabled = table.Column<bool>(type: "boolean", nullable: false)
+                    is_enabled = table.Column<bool>(type: "boolean", nullable: false),
+                    sensitive_tools = table.Column<List<string>>(type: "text[]", nullable: true)
                 },
                 constraints: table =>
                 {

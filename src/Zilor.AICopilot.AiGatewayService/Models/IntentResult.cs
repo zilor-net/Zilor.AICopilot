@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace Zilor.AICopilot.AiGatewayService.Agents;
+namespace Zilor.AICopilot.AiGatewayService.Models;
 
 /// <summary>
 /// 意图识别的标准输出结果

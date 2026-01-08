@@ -7,9 +7,11 @@ namespace Zilor.AICopilot.AgentPlugin;
 public abstract class AgentPluginBase : IAgentPlugin
 {
     // 默认实现：直接使用类名作为插件名称
-    public virtual string Name { get; } 
-    
-    public virtual string Description { get; protected set; } = string.Empty;
+    public virtual string Name { get; }
+
+    public virtual string Description => string.Empty;
+
+    public virtual IEnumerable<string>? HighRiskTools { get; init; }
 
     protected AgentPluginBase()
     {
@@ -23,10 +25,10 @@ public abstract class AgentPluginBase : IAgentPlugin
     private IEnumerable<MethodInfo> GetToolMethods()
     {
         var type = GetType();
-        return type.GetMethods(BindingFlags.Instance | BindingFlags.Public)      
+        return type.GetMethods(BindingFlags.Instance | BindingFlags.Public)
             .Where(m => m.GetCustomAttribute<DescriptionAttribute>() != null);
     }
-    
+
     /// <summary>
     /// 利用 Microsoft.Extensions.AI 库，将 C# 方法自动转换为 AITool。
     /// </summary>
@@ -36,7 +38,7 @@ public abstract class AgentPluginBase : IAgentPlugin
         // 它会读取方法签名、参数类型和 Description 特性，生成 JSON Schema。
         // 'this' 参数确保了当工具被调用时，是在当前插件实例上执行的。
         var tools = GetToolMethods()
-            .Select(method => AIFunctionFactory.Create(method, this));
+            .Select(method => AIFunctionFactory.Create(method, this, $"{Name}.{method.Name}"));
         return tools;
     }
 }

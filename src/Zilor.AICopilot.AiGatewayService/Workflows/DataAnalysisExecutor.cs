@@ -6,12 +6,13 @@ using Microsoft.Agents.AI.Workflows.Reflection;
 using Microsoft.Extensions.AI;
 using Microsoft.Extensions.Logging;
 using Zilor.AICopilot.AiGatewayService.Agents;
-using Zilor.AICopilot.DataAnalysisService.Plugins;
+using Zilor.AICopilot.AiGatewayService.Models;
 using Zilor.AICopilot.DataAnalysisService.Services;
 using Zilor.AICopilot.Services.Common.Contracts;
 using Zilor.AICopilot.Services.Common.Helper;
 using Zilor.AICopilot.Visualization;
 using Zilor.AICopilot.Visualization.Widgets;
+using VisualDecisionDto = Zilor.AICopilot.DataAnalysisService.Plugins.VisualDecisionDto;
 
 namespace Zilor.AICopilot.AiGatewayService.Workflows;
 

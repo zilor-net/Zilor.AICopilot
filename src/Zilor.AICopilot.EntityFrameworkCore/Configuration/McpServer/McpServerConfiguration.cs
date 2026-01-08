@@ -45,5 +45,8 @@ public class McpServerConfiguration : IEntityTypeConfiguration<McpServerInfo>
         builder.Property(b => b.IsEnabled)
             .IsRequired()
             .HasColumnName("is_enabled");
+        
+        builder.Property(b=>b.SensitiveTools)
+            .HasColumnName("sensitive_tools");
     }
 }
