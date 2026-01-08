@@ -6,6 +6,7 @@ using Zilor.AICopilot.AgentPlugin;
 using Zilor.AICopilot.Core.McpServer.Aggregates.McpServerInfo;
 using Zilor.AICopilot.McpService;
 using Zilor.AICopilot.Services.Common.Contracts;
+#pragma warning disable MEAI001
 
 public class McpServerBootstrap(
     IDataQueryService dataQueryService,
@@ -59,8 +60,13 @@ public class McpServerBootstrap(
     private void RegisterMcpPlugin(McpServerInfo mcpServerInfo, IList<McpClientTool> mcpTools)
     {
         var tools = mcpTools
-            .Select(mcpTool => mcpTool.WithName($"{mcpServerInfo.Name}.{mcpTool.Name}"))
-            .Cast<AITool>();
+            .Select(AIFunction (tool) =>
+            {
+                if (mcpServerInfo.SensitiveTools == null ||
+                    mcpServerInfo.SensitiveTools.Contains(mcpServerInfo.Name)) return tool;
+                var approvalFunction = new ApprovalRequiredAIFunction(tool);
+                return approvalFunction;
+            });
 
         var mcpPlugin = new GenericBridgePlugin
         {

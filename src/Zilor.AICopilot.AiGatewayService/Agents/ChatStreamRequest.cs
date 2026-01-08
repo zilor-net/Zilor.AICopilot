@@ -7,6 +7,7 @@ using Zilor.AICopilot.AiGatewayService.Workflows;
 using Zilor.AICopilot.Services.Common.Attributes;
 using Zilor.AICopilot.Services.Common.Contracts;
 using Zilor.AICopilot.Services.Common.Helper;
+#pragma warning disable MEAI001
 
 namespace Zilor.AICopilot.AiGatewayService.Agents;
 
@@ -42,9 +43,6 @@ public class ChatStreamHandler(
                         case "DataAnalysisExecutor":
                             yield return new ChatChunk(evt.ExecutorId, ChunkType.Widget, evt.Response.Text);
                             break;
-                        case "FinalProcessExecutor":
-                            yield return new ChatChunk(evt.ExecutorId, ChunkType.ApprovalRequest, evt.Response.Text);
-                            break;
                     }
                     break;
                 case AgentRunUpdateEvent evt:
@@ -72,6 +70,16 @@ public class ChatStreamHandler(
                                 };
                                 yield return new ChatChunk(evt.ExecutorId, ChunkType.FunctionResult,
                                     result.ToJson());
+                                break;
+                            case FunctionApprovalRequestContent content:
+                                var approval = new
+                                {
+                                    id = content.FunctionCall.CallId,
+                                    name = content.FunctionCall.Name,
+                                    args = content.FunctionCall.Arguments
+                                };
+                                yield return new ChatChunk(evt.ExecutorId, ChunkType.ApprovalRequest,
+                                    approval.ToJson());
                                 break;
                         }
                     }

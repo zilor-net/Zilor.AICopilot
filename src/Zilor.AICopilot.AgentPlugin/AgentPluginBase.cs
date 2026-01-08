@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Reflection;
 using Microsoft.Extensions.AI;
+#pragma warning disable MEAI001
 
 namespace Zilor.AICopilot.AgentPlugin;
 
@@ -38,7 +39,13 @@ public abstract class AgentPluginBase : IAgentPlugin
         // 它会读取方法签名、参数类型和 Description 特性，生成 JSON Schema。
         // 'this' 参数确保了当工具被调用时，是在当前插件实例上执行的。
         var tools = GetToolMethods()
-            .Select(method => AIFunctionFactory.Create(method, this, $"{Name}.{method.Name}"));
+            .Select(method =>
+            {
+                var function = AIFunctionFactory.Create(method, this);
+                if (HighRiskTools == null || !HighRiskTools.Contains(method.Name)) return function;
+                var approvalFunction  = new ApprovalRequiredAIFunction(function);
+                return approvalFunction;
+            });
         return tools;
     }
 }

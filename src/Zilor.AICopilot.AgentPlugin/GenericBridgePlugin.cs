@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.AI;
+#pragma warning disable MEAI001
 
 namespace Zilor.AICopilot.AgentPlugin;
 
@@ -16,4 +17,6 @@ public class GenericBridgePlugin : IAgentPlugin
     {
         return AITools;
     }
+
+    
 }

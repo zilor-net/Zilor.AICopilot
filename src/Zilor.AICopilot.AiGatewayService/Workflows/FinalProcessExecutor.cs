@@ -4,11 +4,13 @@ using Microsoft.Agents.AI;
 using Microsoft.Agents.AI.Workflows;
 using Microsoft.Agents.AI.Workflows.Reflection;
 using Microsoft.Extensions.AI;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Zilor.AICopilot.AiGatewayService.Agents;
 using Zilor.AICopilot.AiGatewayService.Models;
 using Zilor.AICopilot.Services.Common.Contracts;
 using Zilor.AICopilot.Services.Common.Helper;
+#pragma warning disable MEAI001
 
 namespace Zilor.AICopilot.AiGatewayService.Workflows;
 
@@ -17,7 +19,7 @@ namespace Zilor.AICopilot.AiGatewayService.Workflows;
 /// 职责：利用聚合后的上下文构建 Agent，注入 RAG 提示词，并执行流式生成。
 /// </summary>
 public class FinalProcessExecutor(
-    ApprovalMiddleware approvalMiddleware,
+    IServiceProvider serviceProvider,
     ChatAgentFactory agentFactory, 
     IDataQueryService dataQuery,
     ILogger<FinalProcessExecutor> logger):
@@ -42,12 +44,7 @@ public class FinalProcessExecutor(
 
             // 2. 创建基础 Agent 实例
             // 此时 Agent 拥有的是数据库中定义的静态 System Prompt
-            var chatClientAgent = await agentFactory.CreateAgentAsync(session.TemplateId);
-
-            // 添加审批中间件
-            var agent = chatClientAgent.AsBuilder()
-                .Use(approvalMiddleware.CheckApprovalRequirementAsync)
-                .Build();
+            var agent = await agentFactory.CreateAgentAsync(session.TemplateId);
             
             // 3. 构建消息列表
             var inputMessages = new List<ChatMessage>();
@@ -140,16 +137,14 @@ public class FinalProcessExecutor(
                                runOptions, 
                                cancellationToken))
             {
+                if (update.Contents.Any(content => content is FunctionApprovalRequestContent))
+                {
+                    ApprovalContext.Save(request.SessionId, agent, agentThread);
+                }
                 // 将 Agent 的更新事件（文本块、工具调用状态等）转发到工作流事件流
                 await context.AddEventAsync(new AgentRunUpdateEvent(Id, update), cancellationToken);
             }
             
-            // 7. 对话流结束，检查是否因审批中断
-            if (approvalMiddleware.RequiresApproval != null)
-            {
-                var response = new AgentRunResponse(new ChatMessage(ChatRole.Assistant, approvalMiddleware.RequiresApproval.ToJson()));
-                await context.AddEventAsync(new AgentRunResponseEvent(Id, response), cancellationToken);
-            }
         }
         catch (Exception e)
         {
