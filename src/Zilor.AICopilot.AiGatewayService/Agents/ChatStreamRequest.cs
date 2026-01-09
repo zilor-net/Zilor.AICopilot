@@ -1,7 +1,7 @@
-﻿using MediatR;
+﻿using System.Runtime.CompilerServices;
+using MediatR;
 using Microsoft.Agents.AI.Workflows;
 using Microsoft.Extensions.AI;
-using Microsoft.Extensions.DependencyInjection;
 using Zilor.AICopilot.AiGatewayService.Models;
 using Zilor.AICopilot.AiGatewayService.Workflows;
 using Zilor.AICopilot.Services.Common.Attributes;
@@ -12,25 +12,65 @@ using Zilor.AICopilot.Services.Common.Helper;
 namespace Zilor.AICopilot.AiGatewayService.Agents;
 
 [AuthorizeRequirement("AiGateway.Chat")]
-public record ChatStreamRequest(Guid SessionId, string Message) : IStreamRequest<ChatChunk>;
+public record ChatStreamRequest(Guid SessionId, string Message, List<string>? CallId) : IStreamRequest<ChatChunk>;
 
 public class ChatStreamHandler(
     IDataQueryService queryService, 
-    [FromKeyedServices(nameof(IntentWorkflow))]Workflow workflow) 
+    WorkflowFactory workflowFactory) 
     : IStreamRequestHandler<ChatStreamRequest, ChatChunk>
 {
-    public async IAsyncEnumerable<ChatChunk> Handle(ChatStreamRequest request, CancellationToken ct)
+    private static readonly Dictionary<Guid, FinalAgentContext> AgentContexts = new();
+
+    public async IAsyncEnumerable<ChatChunk> Handle(ChatStreamRequest request, [EnumeratorCancellation] CancellationToken ct)
     {
         if (!queryService.Sessions.Any(session => session.Id == request.SessionId))
         {
             throw new Exception("未找到会话");
         }
         
-        await using var run = await InProcessExecution.StreamAsync(workflow, request, cancellationToken: ct);
-        await foreach (var workflowEvent in run.WatchStreamAsync(ct))
+        if (request.CallId != null && request.CallId.Count != 0)
         {
+            AgentContexts.TryGetValue(request.SessionId, out var agentContext);
+            if (agentContext == null) throw new Exception("未找到会话");
+
+            agentContext.InputText = request.Message;
+            agentContext.FunctionApprovalCallIds = request.CallId;
+            var workflow = workflowFactory.CreateFinalAgentRunWorkflow();
+            await using var workflowRun = await InProcessExecution.StreamAsync(workflow, agentContext, cancellationToken: ct);
+            await foreach (var chatChunk in RunWorkflow(workflowRun, request.SessionId, ct))
+            {
+                yield return chatChunk;
+            }
+
+            if (agentContext.FunctionApprovalRequestContents.Count == 0)
+            {
+                AgentContexts.Remove(request.SessionId);
+            }
+        }
+        else
+        {
+            var workflow = workflowFactory.CreateIntentWorkflow();
+            await using var workflowRun = await InProcessExecution.StreamAsync(workflow, request, cancellationToken: ct);
+            await foreach (var chatChunk in RunWorkflow(workflowRun, request.SessionId, ct))
+            {
+                yield return chatChunk;
+            };
+        }
+    }
+
+    private async IAsyncEnumerable<ChatChunk> RunWorkflow(StreamingRun workflowRun, Guid sessionId, CancellationToken ct)
+    {
+        await foreach (var workflowEvent in workflowRun.WatchStreamAsync(ct))
+        {
+            Console.WriteLine(workflowEvent);
             switch (workflowEvent)
             {
+                case WorkflowOutputEvent evt:
+                    if (evt.Data is FinalAgentContext agentContext && agentContext.FunctionApprovalRequestContents.Count != 0)
+                    {
+                        AgentContexts.TryAdd(sessionId, agentContext);
+                    }
+                    break;
                 case ExecutorFailedEvent evt:
                     yield return new ChatChunk(evt.ExecutorId, ChunkType.Error, evt.Data?.Message ?? string.Empty);
                     break;
@@ -74,7 +114,7 @@ public class ChatStreamHandler(
                             case FunctionApprovalRequestContent content:
                                 var approval = new
                                 {
-                                    id = content.FunctionCall.CallId,
+                                    callId = content.FunctionCall.CallId,
                                     name = content.FunctionCall.Name,
                                     args = content.FunctionCall.Arguments
                                 };

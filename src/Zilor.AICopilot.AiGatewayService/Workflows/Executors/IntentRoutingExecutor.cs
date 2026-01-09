@@ -8,16 +8,15 @@ using Zilor.AICopilot.AiGatewayService.Agents;
 using Zilor.AICopilot.AiGatewayService.Models;
 using Zilor.AICopilot.AiGatewayService.Queries.Sessions;
 
-namespace Zilor.AICopilot.AiGatewayService.Workflows;
+namespace Zilor.AICopilot.AiGatewayService.Workflows.Executors;
 
 public class IntentRoutingExecutor(
     IMediator mediator,
     IntentRoutingAgentBuilder agentBuilder, 
     ILogger<IntentRoutingExecutor> logger) :
-    ReflectingExecutor<IntentRoutingExecutor>("IntentRoutingExecutor"),
-    IMessageHandler<ChatStreamRequest, List<IntentResult>>
+    Executor<ChatStreamRequest>("IntentRoutingExecutor")
 {
-    public async ValueTask<List<IntentResult>> HandleAsync(ChatStreamRequest request, IWorkflowContext context,
+    public override async ValueTask HandleAsync(ChatStreamRequest request, IWorkflowContext context,
         CancellationToken cancellationToken = new())
     {
         try
@@ -59,9 +58,8 @@ public class IntentRoutingExecutor(
                 logger.LogWarning("意图识别 JSON 解析失败，回退到 General.Chat。原始文本: {Text}", response.Text);
                 intentResults = [ new IntentResult { Intent = "General.Chat", Confidence = 1.0, Reasoning = "JSON解析失败" } ];
             }
-            
-            
-            return intentResults;
+
+            await context.SendMessageAsync(intentResults, cancellationToken: cancellationToken);
         }
         catch (Exception e)
         {

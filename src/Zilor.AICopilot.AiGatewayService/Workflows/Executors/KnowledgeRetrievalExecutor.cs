@@ -2,14 +2,12 @@
 using MediatR;
 using Microsoft.Agents.AI.Workflows;
 using Microsoft.Agents.AI.Workflows.Reflection;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Zilor.AICopilot.AiGatewayService.Agents;
 using Zilor.AICopilot.AiGatewayService.Models;
 using Zilor.AICopilot.RagService.Queries.KnowledgeBases;
 using Zilor.AICopilot.Services.Common.Contracts;
 
-namespace Zilor.AICopilot.AiGatewayService.Workflows;
+namespace Zilor.AICopilot.AiGatewayService.Workflows.Executors;
 
 /// <summary>
 /// 知识检索执行器
@@ -18,17 +16,16 @@ namespace Zilor.AICopilot.AiGatewayService.Workflows;
 public class KnowledgeRetrievalExecutor(
     IMediator mediator,
     IDataQueryService dataQueryService,
-    ILogger<KnowledgeRetrievalExecutor> logger)
-    : ReflectingExecutor<KnowledgeRetrievalExecutor>("KnowledgeRetrievalExecutor"),
-      IMessageHandler<List<IntentResult>, BranchResult>
+    ILogger<KnowledgeRetrievalExecutor> logger) : 
+    Executor<List<IntentResult>>("KnowledgeRetrievalExecutor")
 {
     // 定义意图前缀常量，与 Prompt 中的定义保持一致
     private const string KnowledgeIntentPrefix = "Knowledge.";
 
-    public async ValueTask<BranchResult> HandleAsync(
+    public override async ValueTask HandleAsync(
         List<IntentResult> intentResults, 
         IWorkflowContext context,
-        CancellationToken cancellationToken = default)
+        CancellationToken ct = default)
     {
       
         // 1. 筛选知识类意图
@@ -41,7 +38,8 @@ public class KnowledgeRetrievalExecutor(
         if (knowledgeIntents.Count == 0)
         {
             logger.LogDebug("未检测到知识库意图，跳过检索流程。");
-            return BranchResult.FromKnowledge(string.Empty);
+            await context.SendMessageAsync(BranchResult.FromKnowledge(string.Empty), ct);
+            return;
         }
 
         logger.LogInformation("开始执行知识检索，命中意图数量: {Count}", knowledgeIntents.Count);
@@ -61,7 +59,8 @@ public class KnowledgeRetrievalExecutor(
         if (knowledgeBases.Count == 0)
         {
             logger.LogWarning("意图命中了知识库名称 {Names}，但在数据库中未找到对应配置。", string.Join(", ", kbNames));
-            return BranchResult.FromKnowledge(string.Empty);
+            await context.SendMessageAsync(BranchResult.FromKnowledge(string.Empty), ct);
+            return;
         }
 
         // 3. 构建并执行并行检索任务
@@ -84,10 +83,14 @@ public class KnowledgeRetrievalExecutor(
             }
 
             // 创建异步任务
-            searchTasks.Add(ExecuteSearchAsync(kb.Id, kb.Name, intent.Query, cancellationToken));
+            searchTasks.Add(ExecuteSearchAsync(kb.Id, kb.Name, intent.Query, ct));
         }
 
-        if (searchTasks.Count == 0) return BranchResult.FromKnowledge(string.Empty);
+        if (searchTasks.Count == 0)
+        {
+            await context.SendMessageAsync(BranchResult.FromKnowledge(string.Empty), ct);
+            return;
+        }
 
         // 并行等待所有检索完成
         var searchResults = await Task.WhenAll(searchTasks);
@@ -96,7 +99,7 @@ public class KnowledgeRetrievalExecutor(
         // 将所有任务返回的 Markdown 片段拼接在一起
         var combinedContext = string.Join("\n\n", searchResults.Where(s => !string.IsNullOrWhiteSpace(s)));
         
-        return BranchResult.FromKnowledge(combinedContext);
+        await context.SendMessageAsync(BranchResult.FromKnowledge(combinedContext), ct);
     }
 
     /// <summary>

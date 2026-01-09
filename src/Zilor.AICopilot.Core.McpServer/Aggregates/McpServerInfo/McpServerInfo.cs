@@ -17,6 +17,7 @@ namespace Zilor.AICopilot.Core.McpServer.Aggregates.McpServerInfo
             McpTransportType transportType, 
             string? command, 
             string arguments,
+            bool isEnabled,
             List<string>? sensitiveTools = null)
         {
             Id = Guid.NewGuid();
@@ -25,7 +26,7 @@ namespace Zilor.AICopilot.Core.McpServer.Aggregates.McpServerInfo
             TransportType = transportType;
             Command = command;
             Arguments = arguments;
-            IsEnabled = true;
+            IsEnabled = isEnabled;
             SensitiveTools = sensitiveTools;
         }
         

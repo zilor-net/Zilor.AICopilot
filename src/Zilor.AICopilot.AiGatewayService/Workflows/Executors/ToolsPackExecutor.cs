@@ -2,21 +2,19 @@
 using Microsoft.Agents.AI.Workflows.Reflection;
 using Microsoft.Extensions.Logging;
 using Zilor.AICopilot.AgentPlugin;
-using Zilor.AICopilot.AiGatewayService.Agents;
 using Zilor.AICopilot.AiGatewayService.Models;
 
-namespace Zilor.AICopilot.AiGatewayService.Workflows;
+namespace Zilor.AICopilot.AiGatewayService.Workflows.Executors;
 
 public class ToolsPackExecutor(
     AgentPluginLoader pluginLoader,
     ILogger<ToolsPackExecutor> logger):
-    ReflectingExecutor<ToolsPackExecutor>("ToolsPackExecutor"),
-    IMessageHandler<List<IntentResult>, BranchResult>
+    Executor<List<IntentResult>>("ToolsPackExecutor")
 {
     private const string ActionIntentPrefix = "Action.";
     
-    public async ValueTask<BranchResult> HandleAsync(List<IntentResult> intentResults, IWorkflowContext context,
-        CancellationToken cancellationToken = default)
+    public override async ValueTask HandleAsync(List<IntentResult> intentResults, IWorkflowContext context,
+        CancellationToken ct = default)
     {
         try
         {
@@ -30,7 +28,8 @@ public class ToolsPackExecutor(
             if (actionIntents.Count == 0)
             {
                 // 在并行流中，没有工具意图直接返回空数组即可
-                return BranchResult.FromTools([]);
+                await context.SendMessageAsync(BranchResult.FromTools([]), ct);
+                return;
             }
 
             logger.LogInformation("命中工具意图: {Intents}", string.Join(", ", actionIntents.Select(i => i.Intent)));
@@ -47,16 +46,16 @@ public class ToolsPackExecutor(
             var tools = pluginLoader.GetAITools(pluginNames);
             
             logger.LogInformation("已加载 {Count} 个工具函数。", tools.Length);
-
-            return BranchResult.FromTools(tools);
+            
+            await context.SendMessageAsync(BranchResult.FromTools(tools), ct);
         }
         catch (Exception e)
         {
             logger.LogError(e, "加载工具集时发生错误");
             // 发生错误时，为了不熔断整个对话流程，可以选择降级处理：返回空工具集
             // 并通过 Context 发送一个警告事件（可选）
-            await context.AddEventAsync(new ExecutorFailedEvent(Id, e), cancellationToken);
-            return BranchResult.FromTools([]);
+            await context.AddEventAsync(new ExecutorFailedEvent(Id, e), ct);
+            await context.SendMessageAsync(BranchResult.FromTools([]), ct);
         }
     }
 }

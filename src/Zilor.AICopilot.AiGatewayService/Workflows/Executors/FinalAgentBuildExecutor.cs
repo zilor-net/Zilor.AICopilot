@@ -4,32 +4,28 @@ using Microsoft.Agents.AI;
 using Microsoft.Agents.AI.Workflows;
 using Microsoft.Agents.AI.Workflows.Reflection;
 using Microsoft.Extensions.AI;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Zilor.AICopilot.AiGatewayService.Agents;
-using Zilor.AICopilot.AiGatewayService.Models;
 using Zilor.AICopilot.Services.Common.Contracts;
-using Zilor.AICopilot.Services.Common.Helper;
+
 #pragma warning disable MEAI001
 
-namespace Zilor.AICopilot.AiGatewayService.Workflows;
+namespace Zilor.AICopilot.AiGatewayService.Workflows.Executors;
 
 /// <summary>
-/// 最终处理执行器
-/// 职责：利用聚合后的上下文构建 Agent，注入 RAG 提示词，并执行流式生成。
+/// 最终 Agent 构建执行器
+/// 职责：利用聚合后的上下文构建 Agent，注入 RAG 提示词。
 /// </summary>
-public class FinalProcessExecutor(
-    IServiceProvider serviceProvider,
+public class FinalAgentBuildExecutor(
     ChatAgentFactory agentFactory, 
     IDataQueryService dataQuery,
-    ILogger<FinalProcessExecutor> logger):
-    ReflectingExecutor<FinalProcessExecutor>("FinalProcessExecutor"),
-    IMessageHandler<GenerationContext> // <-- 输入类型变更为聚合上下文
+    ILogger<FinalAgentBuildExecutor> logger):
+    Executor<GenerationContext>("FinalAgentBuildExecutor")
 {
-    public async ValueTask HandleAsync(
+    public override async ValueTask HandleAsync(
         GenerationContext genContext, 
         IWorkflowContext context,
-        CancellationToken cancellationToken = new())
+        CancellationToken ct = default)
     {
         try
         {
@@ -46,15 +42,14 @@ public class FinalProcessExecutor(
             // 此时 Agent 拥有的是数据库中定义的静态 System Prompt
             var agent = await agentFactory.CreateAgentAsync(session.TemplateId);
             
-            // 3. 构建消息列表
-            var inputMessages = new List<ChatMessage>();
+            // 3. 构建消息
             string finalUserPrompt;
 
             // [修改] RAG/数据增强 上下文注入策略
             // 检查是否存在 知识库上下文 或 数据分析上下文
-            bool hasKnowledge = !string.IsNullOrWhiteSpace(genContext.KnowledgeContext);
-            bool hasDataAnalysis = !string.IsNullOrWhiteSpace(genContext.DataAnalysisContext);
-            bool hasContext = hasKnowledge || hasDataAnalysis;
+            var hasKnowledge = !string.IsNullOrWhiteSpace(genContext.KnowledgeContext);
+            var hasDataAnalysis = !string.IsNullOrWhiteSpace(genContext.DataAnalysisContext);
+            var hasContext = hasKnowledge || hasDataAnalysis;
             
             if (hasContext)
             {
@@ -104,10 +99,6 @@ public class FinalProcessExecutor(
                 finalUserPrompt = request.Message;
                 logger.LogDebug("增强模式未激活：仅使用用户原始输入。");
             }
-            
-            // 将组合后的提示作为单条 User 消息添加
-            // 利用近因效应，让模型在读取完长文本后立刻看到问题，提升注意力。
-            inputMessages.Add(new ChatMessage(ChatRole.User, finalUserPrompt));
 
             // 4. 准备执行参数 (ChatOptions)
             // 将动态加载的工具集挂载到本次执行的选项中
@@ -127,30 +118,24 @@ public class FinalProcessExecutor(
 
             // 5. 恢复会话状态 (Thread)
             // 从持久化存储中恢复之前的对话历史
-            var storeThread = new { storeState = new SessionSoreState(request.SessionId) };
-            var agentThread = agent.DeserializeThread(JsonSerializer.SerializeToElement(storeThread));
+            // var storeThread = new { storeState = new SessionSoreState(request.SessionId) };
+            // var agentThread = agent.DeserializeThread(JsonSerializer.SerializeToElement(storeThread));
 
-            // 6. 执行流式生成
-            await foreach (var update in agent.RunStreamingAsync(
-                               inputMessages, 
-                               agentThread, 
-                               runOptions, 
-                               cancellationToken))
+            var finalAgentContext = new FinalAgentContext
             {
-                if (update.Contents.Any(content => content is FunctionApprovalRequestContent))
-                {
-                    ApprovalContext.Save(request.SessionId, agent, agentThread);
-                }
-                // 将 Agent 的更新事件（文本块、工具调用状态等）转发到工作流事件流
-                await context.AddEventAsync(new AgentRunUpdateEvent(Id, update), cancellationToken);
-            }
-            
+                Agent = agent,
+                Thread = agent.GetNewThread(),
+                InputText = finalUserPrompt,
+                RunOptions = runOptions,
+                SessionId = request.SessionId
+            };
+            await context.SendMessageAsync(finalAgentContext, ct);
         }
         catch (Exception e)
         {
-            logger.LogError(e, "最终生成阶段发生错误");
+            logger.LogError(e, "最终 Agent 构建阶段发生错误");
             // 发送失败事件，让前端能感知到错误
-            await context.AddEventAsync(new ExecutorFailedEvent(Id, e), cancellationToken);
+            await context.AddEventAsync(new ExecutorFailedEvent(Id, e), ct);
             throw;
         }
     }

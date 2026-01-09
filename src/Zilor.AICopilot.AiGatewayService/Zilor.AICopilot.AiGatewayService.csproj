@@ -17,7 +17,7 @@
 
     <ItemGroup>
       <PackageReference Include="Microsoft.Agents.AI.Hosting" Version="1.0.0-preview.251219.1" />
-      <PackageReference Include="Microsoft.Agents.AI.OpenAI" Version="1.0.0-preview.251204.1" />
+      <PackageReference Include="Microsoft.Agents.AI.OpenAI" Version="1.0.0-preview.251219.1" />
       <PackageReference Include="Microsoft.Agents.AI.Workflows" Version="1.0.0-preview.251219.1" />
       <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="10.0.1" />
       <PackageReference Include="Microsoft.Extensions.Http" Version="10.0.1" />

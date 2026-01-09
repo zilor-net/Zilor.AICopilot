@@ -20,6 +20,7 @@ public static class McpServerInfoData
             McpTransportType.Stdio,
             "npx",
             @"-y @modelcontextprotocol/server-filesystem E:\Test",
+            false,
             fileSystemRisks
         );  
         
