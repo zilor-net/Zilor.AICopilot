@@ -28,8 +28,9 @@ public class FinalAgentRunExecutor(
                     var requestContent = agentContext.FunctionApprovalRequestContents
                         .FirstOrDefault(rc => rc.FunctionCall.CallId == callId);
                     if (requestContent == null) continue;
-                    message.Add(new ChatMessage(ChatRole.User,
-                        [requestContent.CreateResponse(agentContext.InputText == "批准")]));
+                    
+                    var response = requestContent.CreateResponse(agentContext.InputText == "批准");
+                    message.Add(new ChatMessage(ChatRole.User,[response]));
                     agentContext.FunctionApprovalRequestContents.Remove(requestContent);
                 }
                 
@@ -52,12 +53,12 @@ public class FinalAgentRunExecutor(
                     {
                         agentContext.FunctionApprovalRequestContents.Add(requestContent);
                     }
-                }
+                };
                 
                 // 将 Agent 的更新事件（文本块、工具调用状态等）转发到工作流事件流
                 await context.AddEventAsync(new AgentRunUpdateEvent(Id, update), cancellationToken);
-                
             }
+            return agentContext;
         }
         catch (Exception e)
         {
@@ -66,7 +67,5 @@ public class FinalAgentRunExecutor(
             await context.AddEventAsync(new ExecutorFailedEvent(Id, e), cancellationToken);
             throw;
         }
-        
-        return agentContext;
     }
 }
