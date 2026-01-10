@@ -57,25 +57,55 @@ public class McpServerBootstrap(
         }
     }
 
+    /// <summary>
+    /// 将 MCP 服务元数据和工具列表封装为通用桥接插件，并注册到系统。
+    /// 在此过程中，根据配置动态注入审批拦截器。
+    /// </summary>
+    /// <param name="mcpServerInfo">包含敏感工具配置的数据库实体</param>
+    /// <param name="mcpTools">从 MCP Client 实时获取的原始工具列表</param>
     private void RegisterMcpPlugin(McpServerInfo mcpServerInfo, IList<McpClientTool> mcpTools)
     {
+        // 1. 动态转换与封装工具
         var tools = mcpTools
-            .Select(AIFunction (tool) =>
+            .Select<McpClientTool, AIFunction>(tool =>
             {
-                if (mcpServerInfo.SensitiveTools == null ||
-                    mcpServerInfo.SensitiveTools.Contains(mcpServerInfo.Name)) return tool;
+                // 步骤 A: 检查当前工具是否在数据库配置的敏感列表中
+                var isSensitive = mcpServerInfo.SensitiveTools != null &&
+                                   mcpServerInfo.SensitiveTools.Contains(tool.Name);
+
+                if (!isSensitive)
+                {
+                    // 如果不是敏感工具，直接返回原始的 McpClientTool
+                    // McpClientTool 本身实现了 AIFunction，可以直接使用
+                    return tool;
+                }
+
+                // 步骤 B: 注入审批拦截器
+                // 对于 MCP 工具，原理与原生插件完全一致。
+                // 我们使用 ApprovalRequiredAIFunction 将原始的 MCP 工具包裹起来。
+                // 当 Agent 调用此工具时，会先触发宿主的审批流程，
+                // 审批通过后，ApprovalRequiredAIFunction 内部会调用 tool.InvokeAsync，
+                // 进而通过 JSON-RPC 发送给远程的 Node.js 进程。
                 var approvalFunction = new ApprovalRequiredAIFunction(tool);
                 return approvalFunction;
             });
 
+        // 2. 创建通用桥接插件
+        // 将处理过的工具列表（包含普通工具和包装后的审批工具）赋值给插件
         var mcpPlugin = new GenericBridgePlugin
         {
             Name = mcpServerInfo.Name,
             Description = mcpServerInfo.Description,
-            AITools = tools,
+            // 这里传入的是已经混合了 Wrapper 的 AIFunction 集合
+            AITools = tools, 
+            
+            // 同时，我们将原始的敏感列表赋值给 HighRiskTools 属性
+            // 这样做是为了让 UI 层或元数据层能够知道哪些工具是高风险的
+            // （即使执行层的拦截已经由 AITools 内部的对象处理了）
             HighRiskTools = mcpServerInfo.SensitiveTools
         };
 
+        // 3. 注册到全局插件加载器
         agentPluginLoader.RegisterAgentPlugin(mcpPlugin);
     }
 

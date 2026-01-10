@@ -1,7 +1,6 @@
 ﻿using System.Text.Json;
 using MediatR;
 using Microsoft.Agents.AI.Workflows;
-using Microsoft.Agents.AI.Workflows.Reflection;
 using Microsoft.Extensions.AI;
 using Microsoft.Extensions.Logging;
 using Zilor.AICopilot.AiGatewayService.Agents;

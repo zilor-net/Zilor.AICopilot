@@ -11,8 +11,9 @@
   <component name="ChangeListManager">
     <list default="true" id="f4f71ff8-869c-4e55-85b9-f9116211e89c" name="更改" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Workflows/Executors/FinalAgentRunExecutor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Workflows/Executors/FinalAgentRunExecutor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Workflows/Executors/IntentRoutingExecutor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Workflows/Executors/IntentRoutingExecutor.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,6 +52,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0ea89e869d4b479881dc31e705f807baaa910/7b/5ac1d421/Enumerable.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/49eda1fe540c4102a1197125bc8a65d629a20/6b/fd86118f/AgentRunOptions.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/583648696b304a3d88c9caedde1c03b15f938/71/a48794f2/XElement.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5e2a774f9a294773a4f14d7b99c4f7f526820/e2/3f3f2a59/ChatClientAgent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5e2a774f9a294773a4f14d7b99c4f7f526820/ec/35cede23/ChatClientAgentOptions.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/64ffd70a777d43ef857c77e7f414117179c20/52/36ae6c29/AIFunctionFactory.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/64ffd70a777d43ef857c77e7f414117179c20/fb/265e8f34/AIFunction.cs" root0="FORCE_HIGHLIGHTING" />
@@ -76,6 +78,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3920dd5ca89f3db1db838eb523db3c3d24c44cbe132224221e47ec6e7fec53/Interlocked.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3cca26e6dd627c1a7919bec86cb05b6d975a30287456f7daa8773a92451a/List.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3dfd12f7994763b567f16ef79cf1d45387d1c9074abd3f0175e68b8964b87/QdrantServiceCollectionExtensions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/43cfe0315e6b5c2ad59eae3a7aa84aad62aa649428028693d15e6b1c7da6566/ApprovalRequiredAIFunction.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/45d98eee724b6a63938562a91258617f855fd1cc95e4bc30e469bda4512c7046/CancellationTokenSource.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/49a588586c27ee2ac162fc4a175b8832d61bdadd9ae2d9a99c78ee13cb91fcd5/VectorStore.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/4a2c60b1644986c5d463495c41eea48d95b9759d6476441623453ca85c7cee/AIFunction.cs" root0="FORCE_HIGHLIGHTING" />
@@ -228,26 +231,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Aspire Host.Zilor.AICopilot.AppHost: http.executor": "Debug",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "git-widget-placeholder": "39.实现人机回环",
-    "nodejs_package_manager_path": "npm",
-    "service.view.auto.scroll.to.source": "true",
-    "settings.editor.selected.configurable": "Aspire.Configurable",
-    "ts.external.directory.path": "D:\\Repos\\MyRepos\\Zilor.AICopilot\\src\\Zilor.AICopilot.Web\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Aspire Host.Zilor.AICopilot.AppHost: http.executor&quot;: &quot;Debug&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;39.实现人机回环&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;service.view.auto.scroll.to.source&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;Aspire.Configurable&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;D:\\Repos\\MyRepos\\Zilor.AICopilot\\src\\Zilor.AICopilot.Web\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "vue.recent.templates": [
-      "Vue Composition API Component"
+  &quot;keyToStringList&quot;: {
+    &quot;vue.recent.templates&quot;: [
+      &quot;Vue Composition API Component&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Aspire Host.Zilor.AICopilot.AppHost: http">
     <configuration name="Zilor.AICopilot.AppHost: http" type="AspireHostConfiguration" factoryName="Aspire Host" activateToolWindowBeforeRun="false">
       <option name="PROJECT_FILE_PATH" value="$PROJECT_DIR$/src/Zilor.AICopilot.AppHost/Zilor.AICopilot.AppHost.csproj" />
@@ -423,14 +426,9 @@
       <workItem from="1767948190899" duration="67000" />
       <workItem from="1767948288562" duration="70000" />
       <workItem from="1767948498416" duration="10230000" />
-    </task>
-    <task id="LOCAL-00014" summary="feat(ai): 更新聊天代理工厂以支持模型温度参数&#10;&#10;- 在 ChatAgentFactory 构造函数中注入 IServiceProvider&#10;- 修改模型初始化逻辑以传递 Temperature 参数&#10;- 更新模板系统提示词属性引用&#10;- 调整命名空间引用以支持新的 AI 扩展功能&#10;- 优化 SessionChatMessageStore 中的状态反序列化逻辑&#10;- 清理 SendUserMessage.cs 中的多余空行以提高可读性">
-      <option name="closed" value="true" />
-      <created>1763802380607</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1763802380607</updated>
+      <workItem from="1768032666580" duration="40000" />
+      <workItem from="1768032733166" duration="238000" />
+      <workItem from="1768044955892" duration="2724000" />
     </task>
     <task id="LOCAL-00015" summary="feat(ai):优化聊天代理工厂和会话消息存储&#10;&#10;- 移除 ChatAgentFactory 中多余的控制台输出语句&#10;- 简化 SessionChatMessageStore 的消息排序逻辑，确保按时间正序返回&#10;- 清理 SendUserMessage.cs 文件中的多余空行&#10;- 更新数据库查询逻辑以获取最近50条消息并正确排序&#10;- 优化消息实体到 ChatMessage 的转换过程">
       <option name="closed" value="true" />
@@ -816,7 +814,15 @@
       <option name="project" value="LOCAL" />
       <updated>1767954625394</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="refactor(ai-gateway): 重构AI网关的审批功能实现&#10;&#10;- 在AgentPluginBase中为高风险工具自动添加审批拦截器&#10;- 移除旧的ApprovalMiddleware中间件，改用新的审批请求响应机制&#10;- 更新ChatStreamRequest以支持审批响应的CallId列表处理&#10;- 实现审批请求的内存状态存储和恢复功能&#10;-重构FinalAgentContext以支持审批流程的状态管理&#10;- 在FinalAgentRunExecutor中实现审批请求的拦截与恢复逻辑&#10;- 为MCP服务工具动态注入审批拦截器&#10;- 更新AI网关数据种子中的行为透明度规则&#10;- 添加IDEA项目配置文件以支持审批功能开发">
+      <option name="closed" value="true" />
+      <created>1768032515689</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1768032515690</updated>
+    </task>
+    <option name="localTasksCounter" value="64" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -837,7 +843,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="feat(rag): 实现文本嵌入生成功能&#10;&#10;- 新增 EmbeddingGeneratorFactory 工厂类，用于创建嵌入生成器&#10;- 配置专用的 EmbeddingClient HttpClient 并设置超时时间- 在 RagService 中集成嵌入生成逻辑，支持批量处理段落&#10;- 调整 HTTP 客户端韧性配置，延长请求超时时间以适应 AI 接口&#10;- 更新种子数据中的嵌入模型配置信息- 注册相关服务到依赖注入容器&#10;- 引入 Microsoft.Extensions.AI.OpenAI 包支持嵌入功能" />
     <MESSAGE value="feat(rag): 实现向量存储功能&#10;- 集成 Qdrant 向量数据库，支持持久化存储文档向量&#10;- 新增 IVectorStorageService 接口及 QdrantVectorStorageService 实现&#10;- 定义 VectorDocumentRecord 模型映射向量数据库结构- 在 RagService 中调用向量存储服务完成索引流程&#10;- 更新 AppHost 和项目依赖以支持 Qdrant 配置&#10;- 升级 MediatR 包版本并调整相关配置&#10;- 添加 IDE 缓存排除规则优化开发环境性能" />
     <MESSAGE value="feat(rag):重构向量存储实现以支持动态集合定义&#10;&#10;- 移除独立的 IVectorStorageService 接口及其实现类&#10;- 在 RagService 中直接使用 VectorStore 进行向量操作&#10;- 新增 VectorDocumentDefinition 类用于动态构建集合结构&#10;- 调整文档索引流程，整合向量保存逻辑到主服务&#10;- 更新依赖注入配置，移除旧有的存储服务注册- 清理项目中不再使用的命名空间引用和文件- 优化批处理大小配置，提升嵌入生成效率" />
     <MESSAGE value="feat(ai-gateway): 升级意图路由代理以支持知识库查询&#10;&#10;- 重构意图路由代理提示词，明确区分工具类(Action.*)与知识类(Knowledge.*)意图&#10;- 新增 IntentResult.Query 字段，用于提取知识库检索关键词&#10;- 修改意图路由构建器，动态注入知识库意图列表&#10;- 增强意图路由执行器的 JSON 解析容错能力及日志记录&#10;- 更新种子数据，初始化通用和技术文档两类知识库- 优化系统提示词，强化模型输出结构化 JSON 的稳定性" />
@@ -862,7 +867,8 @@
     <MESSAGE value="chore(migrations): 删除初始数据库迁移文件&#10;&#10;- 移除了 20260105052639_Initial.cs 迁移文件&#10;- 移除了 20260105052639_Initial.Designer.cs 设计器文件&#10;- 清理了相关的数据库表结构定义&#10;- 删除了包括用户角色、业务数据库、对话模板、嵌入模型等所有初始表的创建逻辑&#10;- 移除了所有相关的索引和外键约束定义" />
     <MESSAGE value="feat(ai-gateway): 实现AI工具调用审批机制&#10;&#10;- 在AgentPluginBase中为高风险工具添加审批包装器&#10;- 创建ApprovalContext用于保存和恢复AI代理会话状态&#10;- 重构ApprovalMiddleware为独立类并注入服务依赖&#10;- 在ChatStreamRequest中处理审批请求内容并返回审批块&#10;- 修改FinalProcessExecutor通过服务提供者获取审批中间件、&#10;-为MCP插件注册添加审批功能支持&#10;- 在workspace.xml中更新变更列表和文件索引配置" />
     <MESSAGE value="refactor(workflows):重构AI网关服务工作流实现&#10;- 移除ApprovalContext类，改为使用FinalAgentContext管理会话状态&#10;- 新增BranchResult和BranchType用于统一并行分支执行结果格式&#10;- 重命名FinalProcessExecutor为FinalAgentBuildExecutor并调整职责&#10;- 新增FinalAgentRunExecutor负责Agent流式运行处理&#10;- 将工作流执行器移动到Executors子目录并更新命名空间&#10;- 使用WorkflowFactory替代静态工作流注册方式&#10;- 更新分支执行器继承自Executor基类而非ReflectingExecutor&#10;- 修改分支执行器HandleAsync方法签名以符合新基类要求&#10;- 在会话信息中新增isEnabled字段用于控制MCP服务器启用状态&#10;- 更新ChatStreamRequest处理器支持函数调用审批流程" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor(workflows):重构AI网关服务工作流实现&#10;- 移除ApprovalContext类，改为使用FinalAgentContext管理会话状态&#10;- 新增BranchResult和BranchType用于统一并行分支执行结果格式&#10;- 重命名FinalProcessExecutor为FinalAgentBuildExecutor并调整职责&#10;- 新增FinalAgentRunExecutor负责Agent流式运行处理&#10;- 将工作流执行器移动到Executors子目录并更新命名空间&#10;- 使用WorkflowFactory替代静态工作流注册方式&#10;- 更新分支执行器继承自Executor基类而非ReflectingExecutor&#10;- 修改分支执行器HandleAsync方法签名以符合新基类要求&#10;- 在会话信息中新增isEnabled字段用于控制MCP服务器启用状态&#10;- 更新ChatStreamRequest处理器支持函数调用审批流程" />
+    <MESSAGE value="refactor(ai-gateway): 重构AI网关的审批功能实现&#10;&#10;- 在AgentPluginBase中为高风险工具自动添加审批拦截器&#10;- 移除旧的ApprovalMiddleware中间件，改用新的审批请求响应机制&#10;- 更新ChatStreamRequest以支持审批响应的CallId列表处理&#10;- 实现审批请求的内存状态存储和恢复功能&#10;-重构FinalAgentContext以支持审批流程的状态管理&#10;- 在FinalAgentRunExecutor中实现审批请求的拦截与恢复逻辑&#10;- 为MCP服务工具动态注入审批拦截器&#10;- 更新AI网关数据种子中的行为透明度规则&#10;- 添加IDEA项目配置文件以支持审批功能开发" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor(ai-gateway): 重构AI网关的审批功能实现&#10;&#10;- 在AgentPluginBase中为高风险工具自动添加审批拦截器&#10;- 移除旧的ApprovalMiddleware中间件，改用新的审批请求响应机制&#10;- 更新ChatStreamRequest以支持审批响应的CallId列表处理&#10;- 实现审批请求的内存状态存储和恢复功能&#10;-重构FinalAgentContext以支持审批流程的状态管理&#10;- 在FinalAgentRunExecutor中实现审批请求的拦截与恢复逻辑&#10;- 为MCP服务工具动态注入审批拦截器&#10;- 更新AI网关数据种子中的行为透明度规则&#10;- 添加IDEA项目配置文件以支持审批功能开发" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -894,8 +900,10 @@
         <PinnedItemInfo parentTag="Type#Zilor.AICopilot.AiGatewayService.Workflows.GenerationContext" memberName="Request" />
         <PinnedItemInfo parentTag="Type#Microsoft.Agents.AI.Workflows.Checkpointed`1" memberName="Run" />
         <PinnedItemInfo parentTag="Type#Microsoft.Agents.AI.AgentRunResponseUpdate" memberName="Contents" />
+        <PinnedItemInfo parentTag="Type#Zilor.AICopilot.AiGatewayService.Workflows.FinalAgentContext" memberName="FunctionApprovalRequestContents" />
         <PinnedItemInfo parentTag="Type#Microsoft.Agents.AI.AgentRunResponseUpdate" memberName="RawRepresentation" />
         <PinnedItemInfo parentTag="Type#Microsoft.Extensions.AI.ChatMessage" memberName="Contents" />
+        <PinnedItemInfo parentTag="Type#Zilor.AICopilot.AiGatewayService.Workflows.FinalAgentContext" memberName="Thread" />
       </pinned-members>
     </pin-to-top-manager>
   </component>

@@ -6,38 +6,28 @@ namespace Zilor.AICopilot.AiGatewayService.Workflows;
 
 public class FinalAgentContext
 {
-    /// <summary>
-    /// 会话ID
-    /// </summary>
-    public required Guid SessionId { get; init; }
+    // 核心 Agent 实例
+    public required AIAgent Agent { get; init; }
     
-    /// <summary>
-    /// 最终 Agent
-    /// </summary>
-    public required ChatClientAgent Agent { get; init; }
+    // 当前对话的线程/历史记录
+    public required AgentThread Thread { get; init; }
     
-    /// <summary>
-    /// 输入消息
-    /// </summary>
+    // 用户输入的文本（或是经过 RAG 增强后的 Prompt）
     public required string InputText { get; set; }
     
-    /// <summary>
-    /// 暂存的会话线程
-    /// </summary>
-    public AgentThread? Thread { get; set; }
-    
-    /// <summary>
-    /// Agent 运行选项
-    /// </summary>
+    // 运行选项，包含了动态挂载的工具列表、温度设置等
     public required ChatClientAgentRunOptions RunOptions { get; init; }
     
-    /// <summary>
-    /// 待审批函数请求
-    /// </summary>
-    public readonly List<FunctionApprovalRequestContent> FunctionApprovalRequestContents = [];
-
-    /// <summary>
-    /// 审批函数调用ID
-    /// </summary>
-    public List<string> FunctionApprovalCallIds { get; set; } = [];
+    // 会话 ID
+    public Guid SessionId { get; init; }
+    
+    // --- 审批相关状态 ---
+    
+    // 待处理的审批请求内容集合
+    // 当 Agent 发起审批时，我们将请求对象暂存在这里
+    public List<FunctionApprovalRequestContent> FunctionApprovalRequestContents { get; } = [];
+    
+    // 用户本次批准的 CallId 列表
+    // 当用户提交批准时，前端会传回这些 ID
+    public List<string> FunctionApprovalCallIds { get; } = [];
 }

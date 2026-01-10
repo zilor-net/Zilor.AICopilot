@@ -34,7 +34,5 @@ public static class DependencyInjection
         builder.Services.AddScoped<DataAnalysisAgentBuilder>();
         
         builder.AddIntentWorkflow();
-
-        builder.Services.AddTransient<ApprovalMiddleware>();
     }
 }

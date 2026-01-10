@@ -1,8 +1,6 @@
 ﻿using System.Text;
-using System.Text.Json;
 using Microsoft.Agents.AI;
 using Microsoft.Agents.AI.Workflows;
-using Microsoft.Agents.AI.Workflows.Reflection;
 using Microsoft.Extensions.AI;
 using Microsoft.Extensions.Logging;
 using Zilor.AICopilot.AiGatewayService.Agents;
@@ -40,13 +38,10 @@ public class FinalAgentBuildExecutor(
 
             // 2. 创建基础 Agent 实例
             // 此时 Agent 拥有的是数据库中定义的静态 System Prompt
-            var agent = await agentFactory.CreateAgentAsync(session.TemplateId);
+            var agent = await agentFactory.CreateAgentAsync(session.TemplateId, isSaveChatMessage: false);
             
-            // 3. 构建消息
+            // 3. 构建 Prompt (RAG 与 数据分析上下文注入)
             string finalUserPrompt;
-
-            // [修改] RAG/数据增强 上下文注入策略
-            // 检查是否存在 知识库上下文 或 数据分析上下文
             var hasKnowledge = !string.IsNullOrWhiteSpace(genContext.KnowledgeContext);
             var hasDataAnalysis = !string.IsNullOrWhiteSpace(genContext.DataAnalysisContext);
             var hasContext = hasKnowledge || hasDataAnalysis;
@@ -115,26 +110,26 @@ public class FinalAgentBuildExecutor(
             {
                 runOptions.ChatOptions.Temperature = 0.3f;
             }
+            
 
-            // 5. 恢复会话状态 (Thread)
-            // 从持久化存储中恢复之前的对话历史
-            // var storeThread = new { storeState = new SessionSoreState(request.SessionId) };
-            // var agentThread = agent.DeserializeThread(JsonSerializer.SerializeToElement(storeThread));
-
+            // 5. 构建 FinalAgentContext 并传递给下一个节点
+            // 注意：我们这里不执行 RunStreamingAsync，而是创建好环境就交棒。
+            var agentThread = agent.GetNewThread();
             var finalAgentContext = new FinalAgentContext
             {
                 Agent = agent,
-                Thread = agent.GetNewThread(),
+                Thread = agentThread,
                 InputText = finalUserPrompt,
                 RunOptions = runOptions,
                 SessionId = request.SessionId
             };
+            
+            // 将构建好的 Context 发送给工作流的下一个节点 (即 FinalAgentRunExecutor)
             await context.SendMessageAsync(finalAgentContext, ct);
         }
         catch (Exception e)
         {
             logger.LogError(e, "最终 Agent 构建阶段发生错误");
-            // 发送失败事件，让前端能感知到错误
             await context.AddEventAsync(new ExecutorFailedEvent(Id, e), ct);
             throw;
         }
