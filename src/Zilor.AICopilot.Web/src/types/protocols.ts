@@ -57,7 +57,7 @@ export interface IntentResult {
 export interface FunctionApprovalRequest {
   callId: string;
   name: string;
-  arguments: string;
+  args: string;
 }
 
 // ---------------------- 可视化组件相关定义 ----------------------

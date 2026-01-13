@@ -10,14 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f4f71ff8-869c-4e55-85b9-f9116211e89c" name="更改" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.MigrationWorkApp/SeedData/AiGatewayData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.MigrationWorkApp/SeedData/AiGatewayData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.Web/src/components/chat/ApprovalCard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.Web/src/components/chat/ApprovalCard.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.Web/src/components/chat/BlockFinal.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.Web/src/components/chat/BlockFinal.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.Web/src/components/chat/ChatWindow.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.Web/src/components/chat/ChatWindow.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.Web/src/services/chatService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.Web/src/services/chatService.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.Web/src/stores/chatStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.Web/src/stores/chatStore.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.MigrationWorkApp/SeedData/McpServerInfoData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.MigrationWorkApp/SeedData/McpServerInfoData.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.Web/src/types/protocols.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.Web/src/types/protocols.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -243,7 +236,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "git-widget-placeholder": "41.改造聊天状态机",
+    "git-widget-placeholder": "41.改造状态管理与组件集成",
     "nodejs_package_manager_path": "npm",
     "service.view.auto.scroll.to.source": "true",
     "settings.editor.selected.configurable": "Aspire.Configurable",
@@ -434,15 +427,7 @@
       <workItem from="1768032666580" duration="40000" />
       <workItem from="1768032733166" duration="238000" />
       <workItem from="1768044955892" duration="2724000" />
-      <workItem from="1768185216257" duration="20875000" />
-    </task>
-    <task id="LOCAL-00017" summary="feat(ai): 实现Agent工具调用与插件系统集成&#10;&#10;- 集成OpenTelemetry以增强AI服务可观测性&#10;- 实现插件加载机制，支持从程序集动态注册插件&#10;- 添加TimePlugin提供系统时间查询功能&#10;- 在SendUserMessage命令中启用工具调用支持&#10;- 重构ChatAgentFactory以适配新的Agent构建流程&#10;- 完善SessionChatMessageStore线程安全处理逻辑&#10;- 引入IdentityServiceTools支持用户创建操作&#10;- 更新依赖项以支持AI代理及插件相关功能&#10;- 配置OpenTelemetry追踪提供者以收集Agent运行数据">
-      <option name="closed" value="true" />
-      <created>1764123425443</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1764123425443</updated>
+      <workItem from="1768185216257" duration="21291000" />
     </task>
     <task id="LOCAL-00018" summary="feat(ai): 实现Agent工具调用与插件系统集成&#10;&#10;- 集成OpenTelemetry以增强AI服务可观测性&#10;- 实现插件加载机制，支持从程序集动态注册插件&#10;- 添加TimePlugin提供系统时间查询功能&#10;- 在SendUserMessage命令中启用工具调用支持&#10;- 重构ChatAgentFactory以适配新的Agent构建流程&#10;- 完善SessionChatMessageStore线程安全处理逻辑&#10;- 引入IdentityServiceTools支持用户创建操作&#10;- 更新依赖项以支持AI代理及插件相关功能&#10;- 配置OpenTelemetry追踪提供者以收集Agent运行数据">
       <option name="closed" value="true" />
@@ -828,7 +813,15 @@
       <option name="project" value="LOCAL" />
       <updated>1768272542589</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="feat(chat): 实现AI工具调用审批功能&#10;&#10;- 新增 ApprovalCard 组件用于展示和处理敏感操作审批&#10;- 新增 ArgumentViewer 组件用于安全解析和展示JSON参数&#10;- 集成审批卡片到聊天界面支持用户批准/拒绝操作&#10;- 添加审批状态管理和人机协作模式锁定功能- 扩展协议类型支持审批请求数据块处理- 更新消息过滤逻辑适配新的执行器命名&#10;- 实现审批响应的流式处理和状态同步&#10;- 添加输入框禁用状态以防止重复操作- 更新项目依赖和配置文件支持审批功能">
+      <option name="closed" value="true" />
+      <created>1768302001480</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1768302001480</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -849,7 +842,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="feat(rag):重构向量存储实现以支持动态集合定义&#10;&#10;- 移除独立的 IVectorStorageService 接口及其实现类&#10;- 在 RagService 中直接使用 VectorStore 进行向量操作&#10;- 新增 VectorDocumentDefinition 类用于动态构建集合结构&#10;- 调整文档索引流程，整合向量保存逻辑到主服务&#10;- 更新依赖注入配置，移除旧有的存储服务注册- 清理项目中不再使用的命名空间引用和文件- 优化批处理大小配置，提升嵌入生成效率" />
     <MESSAGE value="feat(ai-gateway): 升级意图路由代理以支持知识库查询&#10;&#10;- 重构意图路由代理提示词，明确区分工具类(Action.*)与知识类(Knowledge.*)意图&#10;- 新增 IntentResult.Query 字段，用于提取知识库检索关键词&#10;- 修改意图路由构建器，动态注入知识库意图列表&#10;- 增强意图路由执行器的 JSON 解析容错能力及日志记录&#10;- 更新种子数据，初始化通用和技术文档两类知识库- 优化系统提示词，强化模型输出结构化 JSON 的稳定性" />
     <MESSAGE value="feat(ai-gateway): 新增知识检索执行器并完善工具执行逻辑- 新增 KnowledgeRetrievalExecutor 类，负责解析知识意图并检索向量数据库&#10;- 实现知识库意图筛选、名称解析与并行检索逻辑- 格式化检索结果为带引用源的 Markdown 文本&#10;-优化 ToolsPackExecutor 的意图识别与插件加载逻辑- 提升工具执行异常处理能力，增强流程稳定性&#10;- 注册 KnowledgeRetrievalExecutor 到工作流容器&#10;- 添加对 RagService项目的引用依赖" />
     <MESSAGE value="feat(ai-gateway): 实现并行工作流编排与上下文聚合机制&#10;&#10;- 新增 ContextAggregatorExecutor 执行器，负责汇聚并行分支结果&#10;- 创建 GenerationContext 和 BranchResult 统一上下文传输对象- 改造 FinalProcessExecutor以支持 RAG 上下文注入和动态工具挂载- 更新 KnowledgeRetrievalExecutor 和 ToolsPackExecutor 输出类型为 BranchResult&#10;- 移除 IntentRoutingExecutor 中的 JSON 清理逻辑- 调整 IntentWorkflow 配置，实现扇入扇出工作流拓扑-优化知识检索逻辑，增强服务获取方式&#10;- 注册新增执行器到依赖注入容器- 更新 IDE 配置文件和数据源设置&#10;- 升级 Git 分支标记和工作项时间记录" />
@@ -874,7 +866,8 @@
     <MESSAGE value="refactor(workflows):重构AI网关服务工作流实现&#10;- 移除ApprovalContext类，改为使用FinalAgentContext管理会话状态&#10;- 新增BranchResult和BranchType用于统一并行分支执行结果格式&#10;- 重命名FinalProcessExecutor为FinalAgentBuildExecutor并调整职责&#10;- 新增FinalAgentRunExecutor负责Agent流式运行处理&#10;- 将工作流执行器移动到Executors子目录并更新命名空间&#10;- 使用WorkflowFactory替代静态工作流注册方式&#10;- 更新分支执行器继承自Executor基类而非ReflectingExecutor&#10;- 修改分支执行器HandleAsync方法签名以符合新基类要求&#10;- 在会话信息中新增isEnabled字段用于控制MCP服务器启用状态&#10;- 更新ChatStreamRequest处理器支持函数调用审批流程" />
     <MESSAGE value="refactor(ai-gateway): 重构AI网关的审批功能实现&#10;&#10;- 在AgentPluginBase中为高风险工具自动添加审批拦截器&#10;- 移除旧的ApprovalMiddleware中间件，改用新的审批请求响应机制&#10;- 更新ChatStreamRequest以支持审批响应的CallId列表处理&#10;- 实现审批请求的内存状态存储和恢复功能&#10;-重构FinalAgentContext以支持审批流程的状态管理&#10;- 在FinalAgentRunExecutor中实现审批请求的拦截与恢复逻辑&#10;- 为MCP服务工具动态注入审批拦截器&#10;- 更新AI网关数据种子中的行为透明度规则&#10;- 添加IDEA项目配置文件以支持审批功能开发" />
     <MESSAGE value="feat(chat): 实现AI工具调用审批功能&#10;&#10;- 新增 ApprovalCard 组件用于展示和处理敏感操作审批&#10;- 新增 ArgumentViewer 组件用于安全解析和展示JSON参数&#10;- 集成审批卡片到聊天界面支持用户批准/拒绝操作&#10;- 添加审批状态管理和人机协作模式锁定功能&#10;- 扩展协议类型支持审批请求数据块处理&#10;- 更新消息过滤逻辑适配新的执行器命名" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(chat): 实现AI工具调用审批功能&#10;&#10;- 新增 ApprovalCard 组件用于展示和处理敏感操作审批&#10;- 新增 ArgumentViewer 组件用于安全解析和展示JSON参数&#10;- 集成审批卡片到聊天界面支持用户批准/拒绝操作&#10;- 添加审批状态管理和人机协作模式锁定功能&#10;- 扩展协议类型支持审批请求数据块处理&#10;- 更新消息过滤逻辑适配新的执行器命名" />
+    <MESSAGE value="feat(chat): 实现AI工具调用审批功能&#10;&#10;- 新增 ApprovalCard 组件用于展示和处理敏感操作审批&#10;- 新增 ArgumentViewer 组件用于安全解析和展示JSON参数&#10;- 集成审批卡片到聊天界面支持用户批准/拒绝操作&#10;- 添加审批状态管理和人机协作模式锁定功能- 扩展协议类型支持审批请求数据块处理- 更新消息过滤逻辑适配新的执行器命名&#10;- 实现审批响应的流式处理和状态同步&#10;- 添加输入框禁用状态以防止重复操作- 更新项目依赖和配置文件支持审批功能" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(chat): 实现AI工具调用审批功能&#10;&#10;- 新增 ApprovalCard 组件用于展示和处理敏感操作审批&#10;- 新增 ArgumentViewer 组件用于安全解析和展示JSON参数&#10;- 集成审批卡片到聊天界面支持用户批准/拒绝操作&#10;- 添加审批状态管理和人机协作模式锁定功能- 扩展协议类型支持审批请求数据块处理- 更新消息过滤逻辑适配新的执行器命名&#10;- 实现审批响应的流式处理和状态同步&#10;- 添加输入框禁用状态以防止重复操作- 更新项目依赖和配置文件支持审批功能" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -66,7 +66,7 @@ const handleReject = () => {
 
       <div class="arguments-section">
         <span class="label">参数详情:</span>
-        <ArgumentViewer :json-string="request.arguments" />
+        <ArgumentViewer :json-string="request.args" />
       </div>
     </div>
 
