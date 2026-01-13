@@ -10,10 +10,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f4f71ff8-869c-4e55-85b9-f9116211e89c" name="更改" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.Web/src/components/chat/ApprovalCard.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.Web/src/components/chat/ArgumentViewer.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Zilor.AICopilot/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Workflows/Executors/IntentRoutingExecutor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.AiGatewayService/Workflows/Executors/IntentRoutingExecutor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.Web/src/components/chat/BlockFinal.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.Web/src/components/chat/BlockFinal.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.Web/src/components/chat/MessageItem.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.Web/src/components/chat/MessageItem.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.Web/src/stores/chatStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.Web/src/stores/chatStore.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.Web/src/types/models.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.Web/src/types/models.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zilor.AICopilot.Web/src/types/protocols.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zilor.AICopilot.Web/src/types/protocols.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +35,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="38.集成MCP" />
+        <entry key="$PROJECT_DIR$" value="39.实现人机回环" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -231,26 +235,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Aspire Host.Zilor.AICopilot.AppHost: http.executor&quot;: &quot;Debug&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;39.实现人机回环&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;service.view.auto.scroll.to.source&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;Aspire.Configurable&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;D:\\Repos\\MyRepos\\Zilor.AICopilot\\src\\Zilor.AICopilot.Web\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Aspire Host.Zilor.AICopilot.AppHost: http.executor": "Debug",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "git-widget-placeholder": "40.实现人机协作前端交互",
+    "nodejs_package_manager_path": "npm",
+    "service.view.auto.scroll.to.source": "true",
+    "settings.editor.selected.configurable": "Aspire.Configurable",
+    "ts.external.directory.path": "D:\\Repos\\MyRepos\\Zilor.AICopilot\\src\\Zilor.AICopilot.Web\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;vue.recent.templates&quot;: [
-      &quot;Vue Composition API Component&quot;
+  "keyToStringList": {
+    "vue.recent.templates": [
+      "Vue Composition API Component"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Aspire Host.Zilor.AICopilot.AppHost: http">
     <configuration name="Zilor.AICopilot.AppHost: http" type="AspireHostConfiguration" factoryName="Aspire Host" activateToolWindowBeforeRun="false">
       <option name="PROJECT_FILE_PATH" value="$PROJECT_DIR$/src/Zilor.AICopilot.AppHost/Zilor.AICopilot.AppHost.csproj" />
@@ -429,14 +433,7 @@
       <workItem from="1768032666580" duration="40000" />
       <workItem from="1768032733166" duration="238000" />
       <workItem from="1768044955892" duration="2724000" />
-    </task>
-    <task id="LOCAL-00015" summary="feat(ai):优化聊天代理工厂和会话消息存储&#10;&#10;- 移除 ChatAgentFactory 中多余的控制台输出语句&#10;- 简化 SessionChatMessageStore 的消息排序逻辑，确保按时间正序返回&#10;- 清理 SendUserMessage.cs 文件中的多余空行&#10;- 更新数据库查询逻辑以获取最近50条消息并正确排序&#10;- 优化消息实体到 ChatMessage 的转换过程">
-      <option name="closed" value="true" />
-      <created>1763806692534</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1763806692534</updated>
+      <workItem from="1768185216257" duration="10371000" />
     </task>
     <task id="LOCAL-00016" summary="feat(ai): 实现Agent工具调用与插件系统集成&#10;&#10;- 集成OpenTelemetry以增强AI服务可观测性&#10;- 实现插件加载机制，支持从程序集动态注册插件&#10;- 添加TimePlugin提供系统时间查询功能&#10;- 在SendUserMessage命令中启用工具调用支持&#10;- 重构ChatAgentFactory以适配新的Agent构建流程&#10;- 完善SessionChatMessageStore线程安全处理逻辑&#10;- 引入IdentityServiceTools支持用户创建操作&#10;- 更新依赖项以支持AI代理及插件相关功能&#10;- 配置OpenTelemetry追踪提供者以收集Agent运行数据">
       <option name="closed" value="true" />
@@ -822,7 +819,15 @@
       <option name="project" value="LOCAL" />
       <updated>1768032515690</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="refactor(ai-gateway): 重构AI网关的审批功能实现&#10;&#10;- 在AgentPluginBase中为高风险工具自动添加审批拦截器&#10;- 移除旧的ApprovalMiddleware中间件，改用新的审批请求响应机制&#10;- 更新ChatStreamRequest以支持审批响应的CallId列表处理&#10;- 实现审批请求的内存状态存储和恢复功能&#10;-重构FinalAgentContext以支持审批流程的状态管理&#10;- 在FinalAgentRunExecutor中实现审批请求的拦截与恢复逻辑&#10;- 为MCP服务工具动态注入审批拦截器&#10;- 更新AI网关数据种子中的行为透明度规则&#10;- 添加IDEA项目配置文件以支持审批功能开发">
+      <option name="closed" value="true" />
+      <created>1768185222054</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1768185222054</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

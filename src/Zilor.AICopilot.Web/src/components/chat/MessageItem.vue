@@ -23,7 +23,7 @@ const dataChunks = computed(() =>
 );
 
 const finalChunks = computed(() =>
-  props.message.chunks.filter(chunk => chunk.source === 'FinalProcessExecutor' || chunk.source === 'User') || []
+  props.message.chunks.filter(chunk => chunk.source === 'FinalAgentRunExecutor' || chunk.source === 'User') || []
 );
 </script>
 

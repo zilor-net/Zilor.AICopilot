@@ -1,8 +1,9 @@
 ﻿<script setup lang="ts">
 import {renderMarkdown} from '@/utils/markdown';
 import FunctionCallItem from './FunctionCallItem.vue';
+import ApprovalCard from "./ApprovalCard.vue";
 import {type ChatChunk, ChunkType} from "@/types/protocols.ts";
-import type {FunctionCallChunk} from "@/types/models.ts";
+import type {ApprovalChunk, FunctionCallChunk} from "@/types/models.ts";
 
 const props = defineProps<{
   chunks: ChatChunk[]
@@ -12,6 +13,15 @@ const props = defineProps<{
 
 const getFunctionCall = (chunk : ChatChunk): FunctionCallChunk =>
   chunk as FunctionCallChunk;
+
+const onApprove = (callId: string, chunk: ApprovalChunk) => {
+  console.log('User approved:', callId);
+  // TODO: 调用 Store Action 发送网络请求
+};
+
+const onReject = (callId: string, chunk: ApprovalChunk) => {
+  console.log('User rejected:', callId);
+};
 
 </script>
 
@@ -33,6 +43,13 @@ const getFunctionCall = (chunk : ChatChunk): FunctionCallChunk =>
           :mini="true"
         />
       </div>
+
+      <ApprovalCard
+        v-else-if="chunk.type === ChunkType.ApprovalRequest"
+        :chunk="chunk as ApprovalChunk"
+        @approve="(id) => onApprove(id, chunk as ApprovalChunk)"
+        @reject="(id) => onReject(id, chunk as ApprovalChunk)"
+      />
     </template>
   </div>
 </template>

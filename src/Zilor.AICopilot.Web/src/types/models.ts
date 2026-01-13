@@ -1,4 +1,4 @@
-﻿import {type ChatChunk, type IntentResult, MessageRole, type Widget} from "@/types/protocols.ts";
+﻿import {type ChatChunk, type IntentResult, type FunctionApprovalRequest, MessageRole, type Widget} from "@/types/protocols.ts";
 
 // ---------------------- 前端数据结构 ----------------------
 
@@ -33,6 +33,21 @@ export interface FunctionCallChunk extends ChatChunk {
  */
 export interface WidgetChunk extends ChatChunk {
   widget: Widget;
+}
+
+/**
+ * 审批请求片段
+ * 用于在消息列表中渲染审批卡片
+ */
+export interface ApprovalChunk extends ChatChunk {
+  // 复用传输层的载体数据
+  request: FunctionApprovalRequest;
+
+  // [状态] 审批单的当前状态
+  // pending: 等待用户操作
+  // approved: 用户已批准
+  // rejected: 用户已拒绝
+  status: 'pending' | 'approved' | 'rejected';
 }
 
 /**

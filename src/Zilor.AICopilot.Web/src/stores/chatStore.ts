@@ -6,13 +6,15 @@ import {
   ChunkType,
   type IntentResult,
   MessageRole,
-  type Session, type Widget
+  type Session, type Widget,
+  type FunctionApprovalRequest
 } from "@/types/protocols";
 import type {
   ChatMessage,
   FunctionCall,
   FunctionCallChunk, IntentChunk,
-  WidgetChunk
+  WidgetChunk,
+  ApprovalChunk
 } from "@/types/models.ts";
 
 export const useChatStore = defineStore('chat', () => {
@@ -29,6 +31,9 @@ export const useChatStore = defineStore('chat', () => {
 
   // 正在接收消息的标志
   const isStreaming = ref(false);
+
+  // 是否正在等待用户审批
+  const isWaitingForApproval = ref(false);
 
   // ================= 计算属性 =================
 
@@ -77,6 +82,7 @@ export const useChatStore = defineStore('chat', () => {
    */
   async function selectSession(id: string) {
     currentSessionId.value = id;
+    isWaitingForApproval.value = false;
   }
 
   /**
@@ -132,6 +138,11 @@ export const useChatStore = defineStore('chat', () => {
             break;
           case ChunkType.Widget:
             addWidgetChunk(targetMsg, chunk);
+            break;
+          // 处理审批请求
+          case ChunkType.ApprovalRequest:
+            addApprovalRequestChunk(targetMsg, chunk);
+            break;
         }
       },
 
@@ -143,6 +154,7 @@ export const useChatStore = defineStore('chat', () => {
 
       // 错误时
       onError: (err) => {
+        console.error('API 调用错误:', err);
         isStreaming.value = false;
       }
     });
@@ -232,6 +244,30 @@ export const useChatStore = defineStore('chat', () => {
     msg.chunks.push(widgetChunk);
   }
 
+  /**
+   * 处理审批请求数据块
+   */
+  function addApprovalRequestChunk(msg: ChatMessage, chunk: ChatChunk) {
+    // 1. 反序列化后端传递的 Payload
+    // 注意：content 字段是 FunctionApprovalRequestContent 的 JSON 字符串
+    const request = JSON.parse(chunk.content) as FunctionApprovalRequest;
+
+    // 2. 构造前端使用的 ViewModel
+    const approvalChunk: ApprovalChunk = {
+      ...chunk,              // 保留 source, type 等基础元数据
+      request,
+      status: 'pending'      // 初始状态默认为“待处理”
+    };
+
+    // 3. 将块追加到当前消息的消息体中
+    msg.chunks.push(approvalChunk);
+
+    // 4. 触发全局锁定
+    // 这是一个关键的副作用：告知整个应用现在进入“人机协作模式”
+    // 输入框组件监听到此状态后，应变为禁用状态
+    isWaitingForApproval.value = true;
+  }
+
   // 导出
   return {
     sessions,
@@ -239,6 +275,7 @@ export const useChatStore = defineStore('chat', () => {
     currentSession,
     currentMessages,
     isStreaming,
+    isWaitingForApproval,
     init,
     createNewSession,
     selectSession,

@@ -26,7 +26,8 @@ export enum ChunkType {
   Intent = 'Intent',
   Widget = 'Widget',
   FunctionResult = 'FunctionResult',
-  FunctionCall = 'FunctionCall'
+  FunctionCall = 'FunctionCall',
+  ApprovalRequest = 'ApprovalRequest'
 }
 
 /**
@@ -48,6 +49,15 @@ export interface IntentResult {
   confidence: number;
   reasoning?: string;
   query?: string;
+}
+
+/**
+ * 函数审批请求
+ */
+export interface FunctionApprovalRequest {
+  callId: string;
+  functionName: string;
+  arguments: string;
 }
 
 // ---------------------- 可视化组件相关定义 ----------------------
