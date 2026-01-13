@@ -2,37 +2,54 @@
 import { computed } from 'vue';
 
 interface Props {
-  // 接收原始的 JSON 字符串
-  jsonString: string;
+  // 接收联合类型：可以是对象，也可以是字符串
+  args: string | Record<string, any>;
 }
 
 const props = defineProps<Props>();
 
-// 计算属性：将 JSON 字符串安全解析为对象数组
+// 计算属性：统一转换为 { key, value } 数组
 const parsedArgs = computed(() => {
-  try {
-    if (!props.jsonString) return [];
+  // 1. 空值处理
+  if (!props.args) return [];
 
-    const obj = JSON.parse(props.jsonString);
+  let content = props.args;
 
-    // 将对象转换为 { key, value } 的数组形式方便遍历
-    return Object.keys(obj).map(key => ({
-      key,
-      value: obj[key],
-      // 简单判断值的类型，用于后续样式区分
-      type: typeof obj[key]
-    }));
-  } catch (e) {
-    // 如果解析失败，返回原始字符串作为单一条目
-    return [{ key: 'Raw', value: props.jsonString, type: 'string' }];
+  // 2. 如果是字符串，尝试解析为对象
+  if (typeof content === 'string') {
+    try {
+      const parsed = JSON.parse(content);
+      // 只有解析结果是“非数组的对象”时，才视为字典处理
+      if (parsed && typeof parsed === 'object' && !Array.isArray(parsed)) {
+        content = parsed;
+      } else {
+        // 虽然解析成功但不是字典（如数组、数字），或者解析失败，都视为原始字符串展示
+        return [{ key: 'Raw', value: content, type: 'string' }];
+      }
+    } catch (e) {
+      // JSON 解析异常，直接展示原始字符串
+      return [{ key: 'Raw', value: content, type: 'string' }];
+    }
   }
+
+  // 3. 此时 content 应该是一个对象，进行最后的校验并遍历
+  if (content && typeof content === 'object' && !Array.isArray(content)) {
+    return Object.keys(content).map(key => ({
+      key,
+      value: (content as Record<string, any>)[key],
+      type: typeof (content as Record<string, any>)[key]
+    }));
+  }
+
+  // 4. 兜底：既不是字符串也不是合法对象，强转字符串展示
+  return [{ key: 'Raw', value: String(props.args), type: 'string' }];
 });
 
 // 辅助函数：格式化特定的值
 const formatValue = (val: any) => {
   if (val === null) return 'null';
   if (typeof val === 'boolean') return val ? 'True' : 'False';
-  if (typeof val === 'object') return JSON.stringify(val); // 对于嵌套对象，降级显示
+  if (typeof val === 'object') return JSON.stringify(val);
   return String(val);
 };
 </script>
@@ -51,7 +68,7 @@ const formatValue = (val: any) => {
       >
         <span class="arg-key">{{ item.key }}:</span>
 
-        <code v-if="item.type === 'string' && item.value.length > 50" class="arg-value long-text">
+        <code v-if="item.type === 'string' && (item.value as string).length > 50" class="arg-value long-text">
           {{ item.value }}
         </code>
 

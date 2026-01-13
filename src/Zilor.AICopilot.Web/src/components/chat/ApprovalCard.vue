@@ -24,6 +24,16 @@ const isProcessing = ref(false);
 const request = computed(() => props.chunk.request);
 const status = computed(() => props.chunk.status);
 
+// 解析参数：将 JSON 字符串解析为 Object 传递给子组件
+const parsedArgs = computed(() => {
+  try {
+    return JSON.parse(request.value.args);
+  } catch (e) {
+    console.error('参数解析失败', e);
+    return {};
+  }
+});
+
 // 判断当前是否处于可交互状态
 const isPending = computed(() => status.value === 'pending');
 
@@ -66,7 +76,7 @@ const handleReject = () => {
 
       <div class="arguments-section">
         <span class="label">参数详情:</span>
-        <ArgumentViewer :json-string="request.args" />
+        <ArgumentViewer :args="request.args" />
       </div>
     </div>
 
