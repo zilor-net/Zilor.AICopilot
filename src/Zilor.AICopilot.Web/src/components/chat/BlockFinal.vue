@@ -4,6 +4,10 @@ import FunctionCallItem from './FunctionCallItem.vue';
 import ApprovalCard from "./ApprovalCard.vue";
 import {type ChatChunk, ChunkType} from "@/types/protocols.ts";
 import type {ApprovalChunk, FunctionCallChunk} from "@/types/models.ts";
+import { useChatStore } from '@/stores/chatStore';
+
+// 连接 Store
+const store = useChatStore();
 
 const props = defineProps<{
   chunks: ChatChunk[]
@@ -14,15 +18,25 @@ const props = defineProps<{
 const getFunctionCall = (chunk : ChatChunk): FunctionCallChunk =>
   chunk as FunctionCallChunk;
 
-const onApprove = (callId: string, chunk: ApprovalChunk) => {
-  console.log('User approved:', callId);
-  // TODO: 调用 Store Action 发送网络请求
+/**
+ * 处理用户批准操作
+ * @param callId 审批单 ID
+ * @param chunk 审批数据块
+ */
+const onApprove = async (callId: string, chunk: ApprovalChunk) => {
+  chunk.status = 'approved';
+  await store.submitApproval(callId, chunk);
 };
 
-const onReject = (callId: string, chunk: ApprovalChunk) => {
-  console.log('User rejected:', callId);
+/**
+ * 处理用户拒绝操作
+ * @param callId 审批单 ID
+ * @param chunk 审批数据块
+ */
+const onReject = async (callId: string, chunk: ApprovalChunk) => {
+  chunk.status = 'rejected';
+  await store.submitApproval(callId, chunk);
 };
-
 </script>
 
 <template>

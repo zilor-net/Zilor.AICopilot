@@ -61,7 +61,7 @@ const handleReject = () => {
     <div class="card-body">
       <div class="function-info">
         <span class="label">目标工具:</span>
-        <code class="function-name">{{ request.functionName }}</code>
+        <code class="function-name">{{ request.name }}</code>
       </div>
 
       <div class="arguments-section">
@@ -91,7 +91,7 @@ const handleReject = () => {
 
       <div v-else class="result-message">
         <span v-if="status === 'approved'" class="text-success">
-          操作已授权，等待执行结果...
+          操作已授权。
         </span>
         <span v-else class="text-danger">
           操作已被用户拦截。

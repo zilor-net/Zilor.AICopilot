@@ -1,5 +1,5 @@
 ﻿<script setup lang="ts">
-import { ref, watch, nextTick } from 'vue';
+import {ref, watch, nextTick, computed} from 'vue';
 import { useChatStore } from '@/stores/chatStore.ts';
 import SessionList from './SessionList.vue';
 import MessageItem from './MessageItem.vue';
@@ -8,6 +8,19 @@ import { Promotion } from '@element-plus/icons-vue';
 const store = useChatStore();
 const inputValue = ref('');
 const scrollContainer = ref<HTMLElement | null>(null);
+
+// 计算属性：是否允许输入
+// 只有在既没有流式传输，也没有等待审批时，才允许输入
+const isInputDisabled = computed(() => {
+  return store.isStreaming || store.isWaitingForApproval
+});
+
+// 计算 Placeholder 提示文案
+const inputPlaceholder = computed(() => {
+  if (store.isWaitingForApproval) return "请先处理上方的审批请求...";
+  if (store.isStreaming) return "AI 正在思考中...";
+  return "输入您的问题 (Enter 发送, Shift+Enter 换行)..."; // 默认文案
+});
 
 // 发送消息处理
 const handleSend = async () => {
@@ -84,14 +97,14 @@ watch(
             v-model="inputValue"
             type="textarea"
             :autosize="{ minRows: 1, maxRows: 4 }"
-            placeholder="输入您的问题 (Enter 发送, Shift+Enter 换行)..."
+            :placeholder=inputPlaceholder
             @keydown.enter.prevent="(e:KeyboardEvent) => { if(!e.shiftKey) handleSend() }"
-            :disabled="store.isStreaming"
+            :disabled="isInputDisabled"
           />
           <el-button
             type="primary"
             class="send-btn"
-            :disabled="!inputValue.trim() || store.isStreaming"
+            :disabled="isInputDisabled || !inputValue.trim()"
             @click="handleSend"
           >
             <el-icon><Promotion /></el-icon>
@@ -189,5 +202,12 @@ watch(
 
 .chip {
   cursor: pointer;
+}
+
+/* 给禁用状态的输入框加一些样式，增强视觉反馈 */
+textarea:disabled {
+  background-color: #f3f4f6;
+  cursor: not-allowed;
+  color: #9ca3af;
 }
 </style>

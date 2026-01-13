@@ -56,7 +56,7 @@ export interface IntentResult {
  */
 export interface FunctionApprovalRequest {
   callId: string;
-  functionName: string;
+  name: string;
   arguments: string;
 }
 

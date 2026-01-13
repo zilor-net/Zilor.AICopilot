@@ -75,6 +75,9 @@ export const useChatStore = defineStore('chat', () => {
     sessions.value.unshift(newSession);
     currentSessionId.value = newSession.id;
     messagesMap.value[newSession.id] = [];
+
+    isStreaming.value = false;
+    isWaitingForApproval.value = false;
   }
 
   /**
@@ -82,6 +85,8 @@ export const useChatStore = defineStore('chat', () => {
    */
   async function selectSession(id: string) {
     currentSessionId.value = id;
+
+    isStreaming.value = false;
     isWaitingForApproval.value = false;
   }
 
@@ -122,28 +127,7 @@ export const useChatStore = defineStore('chat', () => {
     // 3. 调用 API 服务，开始接收流
     await chatService.sendMessageStream(sessionId, input, {
       onChunkReceived: (chunk: ChatChunk) => {
-        switch (chunk.type)
-        {
-          case ChunkType.Text:
-            addTextChunk(targetMsg, chunk);
-            break;
-          case ChunkType.Intent:
-            addIntentChunk(targetMsg, chunk);
-            break;
-          case ChunkType.FunctionCall:
-            addFunctionCallChunk(targetMsg, chunk);
-            break;
-          case ChunkType.FunctionResult:
-            addFunctionResultChunk(targetMsg, chunk);
-            break;
-          case ChunkType.Widget:
-            addWidgetChunk(targetMsg, chunk);
-            break;
-          // 处理审批请求
-          case ChunkType.ApprovalRequest:
-            addApprovalRequestChunk(targetMsg, chunk);
-            break;
-        }
+        processChunk(targetMsg, chunk);
       },
 
       // 完成时
@@ -158,6 +142,97 @@ export const useChatStore = defineStore('chat', () => {
         isStreaming.value = false;
       }
     });
+  }
+
+  /**
+   * 提交审批
+   * @param callId 审批单 ID
+   * @param chunk 审批数据块
+   */
+  async function submitApproval(callId: string, chunk: ApprovalChunk) {
+    if (!currentSessionId.value) return;
+
+    const sessionId = currentSessionId.value;
+
+    try {
+      // 1. 准备接收新的流
+      isStreaming.value = true;
+
+      // 找到要追加的目标消息（即包含审批请求的那条 AI 消息）
+      let targetMsg = getLastAssistantMessage(sessionId);
+      // 如果找不到（极少见），则创建一条新的
+      if (!targetMsg) {
+        targetMsg = addMessage(sessionId, {
+          sessionId,
+          role: MessageRole.Assistant,
+          chunks: [],
+          isStreaming: true,
+          timestamp: Date.now()
+        });
+      }
+      targetMsg.isStreaming = true; // 重新激活 loading
+
+      // 2. 调用服务
+      const messageText = chunk.status === 'approved' ? "批准" : "拒绝";
+
+      await chatService.sendMessageStream(
+        sessionId,
+        messageText,
+        {
+          onChunkReceived: (chunk: ChatChunk) => {
+            // 回调逻辑复用了之前的 chunk 处理函数
+            // 无论是初始对话还是恢复对话，只要是 ChatChunk，处理方式都是一样的
+            processChunk(targetMsg!, chunk);
+          },
+          onComplete: () => {
+            isStreaming.value = false;
+            if (targetMsg) targetMsg.isStreaming = false;
+
+            // 流结束意味着本次人机交互闭环完成
+            // 解除全局挂起锁，允许用户发送新消息
+            isWaitingForApproval.value = false;
+          },
+          onError: (err) => {
+            console.error('审批响应流中断:', err);
+            isStreaming.value = false;
+            isWaitingForApproval.value = false;
+          }
+        },
+        [callId]
+      );
+
+    } catch (error) {
+      console.error('提交审批失败:', error);
+      isStreaming.value = false;
+    }
+  }
+
+  /**
+   * 将 processChunk 提取为独立函数
+   * 原本在 sendMessage 中的 switch case 逻辑，现在被两个 Action 复用
+   */
+  function processChunk(msg: ChatMessage, chunk: ChatChunk) {
+    switch (chunk.type) {
+      case ChunkType.Text:
+        addTextChunk(msg, chunk);
+        break;
+      case ChunkType.Intent:
+        addIntentChunk(msg, chunk);
+        break;
+      case ChunkType.FunctionCall:
+        addFunctionCallChunk(msg, chunk);
+        break;
+      case ChunkType.FunctionResult:
+        addFunctionResultChunk(msg, chunk);
+        break;
+      case ChunkType.Widget:
+        addWidgetChunk(msg, chunk);
+        break;
+      case ChunkType.ApprovalRequest:
+        addApprovalRequestChunk(msg, chunk);
+        break;
+      // ... 其他类型
+    }
   }
 
   // ================= 辅助函数 (Internal) =================
@@ -268,6 +343,21 @@ export const useChatStore = defineStore('chat', () => {
     isWaitingForApproval.value = true;
   }
 
+  /**
+   * 获取或创建当前正在生成的 AI 消息
+   * 用于审批恢复后，将后续内容追加到同一条消息气泡中
+   */
+  function getLastAssistantMessage(sid: string): ChatMessage | null {
+    const list = messagesMap.value[sid];
+    if (!list || list.length === 0) return null;
+
+    const lastMsg = list[list.length - 1]!;
+    if (lastMsg.role === MessageRole.Assistant) {
+      return lastMsg;
+    }
+    return null;
+  }
+
   // 导出
   return {
     sessions,
@@ -279,6 +369,7 @@ export const useChatStore = defineStore('chat', () => {
     init,
     createNewSession,
     selectSession,
-    sendMessage
+    sendMessage,
+    submitApproval
   };
 });

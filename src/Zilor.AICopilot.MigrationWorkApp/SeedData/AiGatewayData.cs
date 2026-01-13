@@ -17,7 +17,7 @@ public static class AiGatewayData
             "通义千问",
             "qwen-flash",
             "https://dashscope.aliyuncs.com/compatible-mode/v1",
-            "sk-7852136cba46428ea5c6b6bdf47d8f54",
+            "sk-8d0257b4af374dac9975c37dd54a25da",
             new ModelParameters
             {
                 MaxTokens = 1000 * 1000,
@@ -32,7 +32,7 @@ public static class AiGatewayData
             "通义千问",
             "qwen3-max",
             "https://dashscope.aliyuncs.com/compatible-mode/v1",
-            "sk-7852136cba46428ea5c6b6bdf47d8f54",
+            "sk-8d0257b4af374dac9975c37dd54a25da",
             new ModelParameters
             {
                 MaxTokens = 1000 * 1000,
@@ -47,7 +47,7 @@ public static class AiGatewayData
             "Xiaomi",
             "mimo-v2-flash",
             "https://api.xiaomimimo.com/v1",
-            "sk-co4iickg07cy5o9998xhy6eq8mafmdke8b2peyc8emy7xmjk",
+            "sk-cibm6gef7io8wkrciwteo4vwupzz74k3v2qhv25yuirrvpka",
             new ModelParameters
             {
                 MaxTokens = 32 * 1000,
@@ -240,7 +240,7 @@ public static class AiGatewayData
                 "unit": "单位（可选）"
             }
             """,
-            Guids[1], 
+            Guids[2], 
             new TemplateSpecification
             {
                 Temperature = 0.3f
