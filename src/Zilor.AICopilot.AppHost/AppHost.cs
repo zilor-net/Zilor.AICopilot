@@ -1,6 +1,7 @@
 using Projects;
 
 var builder = DistributedApplication.CreateBuilder(args);
+builder.AddDockerComposeEnvironment("compose");
 
 var password = builder.AddParameter("pg-password", secret: true);
 
