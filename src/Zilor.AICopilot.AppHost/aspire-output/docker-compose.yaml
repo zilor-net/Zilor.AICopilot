@@ -1,0 +1,174 @@
+services:
+  compose-dashboard:
+    image: "mcr.microsoft.com/dotnet/nightly/aspire-dashboard:latest"
+    ports:
+      - "18888"
+    expose:
+      - "18889"
+      - "18890"
+    networks:
+      - "aspire"
+    restart: "always"
+  postgres:
+    image: "docker.io/library/postgres:17.6"
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: "scram-sha-256"
+      POSTGRES_INITDB_ARGS: "--auth-host=scram-sha-256 --auth-local=scram-sha-256"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "${PG_PASSWORD}"
+    expose:
+      - "5432"
+    volumes:
+      - type: "volume"
+        target: "/var/lib/postgresql/data"
+        source: "postgres-aicopilot"
+        read_only: false
+      - type: "bind"
+        target: "/docker-entrypoint-initdb.d"
+        source: "${POSTGRES_BINDMOUNT_0}"
+        read_only: false
+    networks:
+      - "aspire"
+  eventbus:
+    image: "docker.io/library/rabbitmq:4.2-management"
+    environment:
+      RABBITMQ_DEFAULT_USER: "guest"
+      RABBITMQ_DEFAULT_PASS: "${EVENTBUS_PASSWORD}"
+    expose:
+      - "5672"
+      - "15672"
+    networks:
+      - "aspire"
+  qdrant:
+    image: "docker.io/qdrant/qdrant:v1.15.5"
+    environment:
+      QDRANT__SERVICE__API_KEY: "${QDRANT_KEY}"
+      QDRANT__SERVICE__ENABLE_STATIC_CONTENT: "0"
+    expose:
+      - "6334"
+      - "6333"
+    volumes:
+      - type: "volume"
+        target: "/qdrant/storage"
+        source: "qdrant-data"
+        read_only: false
+    networks:
+      - "aspire"
+  aicopilot-migration:
+    image: "${AICOPILOT_MIGRATION_IMAGE}"
+    environment:
+      OTEL_DOTNET_EXPERIMENTAL_OTLP_EMIT_EXCEPTION_LOG_ATTRIBUTES: "true"
+      OTEL_DOTNET_EXPERIMENTAL_OTLP_EMIT_EVENT_LOG_ATTRIBUTES: "true"
+      OTEL_DOTNET_EXPERIMENTAL_OTLP_RETRY: "in_memory"
+      ConnectionStrings__ai-copilot: "Host=postgres;Port=5432;Username=postgres;Password=${PG_PASSWORD};Database=ai-copilot"
+      AI_COPILOT_HOST: "postgres"
+      AI_COPILOT_PORT: "5432"
+      AI_COPILOT_USERNAME: "postgres"
+      AI_COPILOT_PASSWORD: "${PG_PASSWORD}"
+      AI_COPILOT_URI: "postgresql://postgres:${PG_PASSWORD}@postgres:5432/ai-copilot"
+      AI_COPILOT_JDBCCONNECTIONSTRING: "jdbc:postgresql://postgres:5432/ai-copilot"
+      AI_COPILOT_DATABASENAME: "ai-copilot"
+      OTEL_EXPORTER_OTLP_ENDPOINT: "http://compose-dashboard:18889"
+      OTEL_EXPORTER_OTLP_PROTOCOL: "grpc"
+      OTEL_SERVICE_NAME: "aicopilot-migration"
+    depends_on:
+      postgres:
+        condition: "service_started"
+    networks:
+      - "aspire"
+  aicopilot-httpapi:
+    image: "${AICOPILOT_HTTPAPI_IMAGE}"
+    environment:
+      OTEL_DOTNET_EXPERIMENTAL_OTLP_EMIT_EXCEPTION_LOG_ATTRIBUTES: "true"
+      OTEL_DOTNET_EXPERIMENTAL_OTLP_EMIT_EVENT_LOG_ATTRIBUTES: "true"
+      OTEL_DOTNET_EXPERIMENTAL_OTLP_RETRY: "in_memory"
+      ASPNETCORE_FORWARDEDHEADERS_ENABLED: "true"
+      HTTP_PORTS: "${AICOPILOT_HTTPAPI_PORT}"
+      ConnectionStrings__ai-copilot: "Host=postgres;Port=5432;Username=postgres;Password=${PG_PASSWORD};Database=ai-copilot"
+      AI_COPILOT_HOST: "postgres"
+      AI_COPILOT_PORT: "5432"
+      AI_COPILOT_USERNAME: "postgres"
+      AI_COPILOT_PASSWORD: "${PG_PASSWORD}"
+      AI_COPILOT_URI: "postgresql://postgres:${PG_PASSWORD}@postgres:5432/ai-copilot"
+      AI_COPILOT_JDBCCONNECTIONSTRING: "jdbc:postgresql://postgres:5432/ai-copilot"
+      AI_COPILOT_DATABASENAME: "ai-copilot"
+      ConnectionStrings__eventbus: "amqp://guest:${EVENTBUS_PASSWORD}@eventbus:5672"
+      EVENTBUS_HOST: "eventbus"
+      EVENTBUS_PORT: "5672"
+      EVENTBUS_USERNAME: "guest"
+      EVENTBUS_PASSWORD: "${EVENTBUS_PASSWORD}"
+      EVENTBUS_URI: "amqp://guest:${EVENTBUS_PASSWORD}@eventbus:5672"
+      ConnectionStrings__qdrant: "Endpoint=http://qdrant:6334;Key=${QDRANT_KEY}"
+      QDRANT_GRPCHOST: "qdrant"
+      QDRANT_GRPCPORT: "6334"
+      QDRANT_HTTPHOST: "qdrant"
+      QDRANT_HTTPPORT: "6333"
+      QDRANT_APIKEY: "${QDRANT_KEY}"
+      QDRANT_URI: "http://qdrant:6334"
+      QDRANT_HTTPURI: "http://qdrant:6333"
+      ConnectionStrings__qdrant_http: "Endpoint=http://qdrant:6333;Key=${QDRANT_KEY}"
+      OTEL_EXPORTER_OTLP_ENDPOINT: "http://compose-dashboard:18889"
+      OTEL_EXPORTER_OTLP_PROTOCOL: "grpc"
+      OTEL_SERVICE_NAME: "aicopilot-httpapi"
+    ports:
+      - "${AICOPILOT_HTTPAPI_PORT}"
+    depends_on:
+      postgres:
+        condition: "service_started"
+      eventbus:
+        condition: "service_started"
+      qdrant:
+        condition: "service_started"
+      aicopilot-migration:
+        condition: "service_completed_successfully"
+    networks:
+      - "aspire"
+  rag-worker:
+    image: "${RAG_WORKER_IMAGE}"
+    environment:
+      OTEL_DOTNET_EXPERIMENTAL_OTLP_EMIT_EXCEPTION_LOG_ATTRIBUTES: "true"
+      OTEL_DOTNET_EXPERIMENTAL_OTLP_EMIT_EVENT_LOG_ATTRIBUTES: "true"
+      OTEL_DOTNET_EXPERIMENTAL_OTLP_RETRY: "in_memory"
+      ConnectionStrings__ai-copilot: "Host=postgres;Port=5432;Username=postgres;Password=${PG_PASSWORD};Database=ai-copilot"
+      AI_COPILOT_HOST: "postgres"
+      AI_COPILOT_PORT: "5432"
+      AI_COPILOT_USERNAME: "postgres"
+      AI_COPILOT_PASSWORD: "${PG_PASSWORD}"
+      AI_COPILOT_URI: "postgresql://postgres:${PG_PASSWORD}@postgres:5432/ai-copilot"
+      AI_COPILOT_JDBCCONNECTIONSTRING: "jdbc:postgresql://postgres:5432/ai-copilot"
+      AI_COPILOT_DATABASENAME: "ai-copilot"
+      ConnectionStrings__eventbus: "amqp://guest:${EVENTBUS_PASSWORD}@eventbus:5672"
+      EVENTBUS_HOST: "eventbus"
+      EVENTBUS_PORT: "5672"
+      EVENTBUS_USERNAME: "guest"
+      EVENTBUS_PASSWORD: "${EVENTBUS_PASSWORD}"
+      EVENTBUS_URI: "amqp://guest:${EVENTBUS_PASSWORD}@eventbus:5672"
+      ConnectionStrings__qdrant: "Endpoint=http://qdrant:6334;Key=${QDRANT_KEY}"
+      QDRANT_GRPCHOST: "qdrant"
+      QDRANT_GRPCPORT: "6334"
+      QDRANT_HTTPHOST: "qdrant"
+      QDRANT_HTTPPORT: "6333"
+      QDRANT_APIKEY: "${QDRANT_KEY}"
+      QDRANT_URI: "http://qdrant:6334"
+      QDRANT_HTTPURI: "http://qdrant:6333"
+      ConnectionStrings__qdrant_http: "Endpoint=http://qdrant:6333;Key=${QDRANT_KEY}"
+      OTEL_EXPORTER_OTLP_ENDPOINT: "http://compose-dashboard:18889"
+      OTEL_EXPORTER_OTLP_PROTOCOL: "grpc"
+      OTEL_SERVICE_NAME: "rag-worker"
+    depends_on:
+      qdrant:
+        condition: "service_started"
+      postgres:
+        condition: "service_started"
+      eventbus:
+        condition: "service_started"
+    networks:
+      - "aspire"
+networks:
+  aspire:
+    driver: "bridge"
+volumes:
+  postgres-aicopilot:
+    driver: "local"
+  qdrant-data:
+    driver: "local"

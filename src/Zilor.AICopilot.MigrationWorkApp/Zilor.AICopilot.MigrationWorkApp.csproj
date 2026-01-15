@@ -5,12 +5,19 @@
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <UserSecretsId>dotnet-Zilor.AICopilot.MigrationService-aff48ac5-5afa-4518-a568-4fe403b7772e</UserSecretsId>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    </PropertyGroup>
+    
+    <PropertyGroup>
+        <ContainerFamily>noble-chiseled-extra</ContainerFamily>
+        <ContainerRepository>zilor/aicopilot-migration</ContainerRepository>
+        <ContainerImageTag>latest</ContainerImageTag>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.Extensions.Hosting" Version="10.0.1" />
+        <ContainerEnvironmentVariable Include="TZ" Value="Asia/Shanghai" />
     </ItemGroup>
-
+    
     <ItemGroup>
         <ProjectReference Include="..\Zilor.AICopilot.EntityFrameworkCore\Zilor.AICopilot.EntityFrameworkCore.csproj"/>
         <ProjectReference Include="..\Zilor.AICopilot.ServiceDefaults\Zilor.AICopilot.ServiceDefaults.csproj"/>

@@ -4,7 +4,19 @@
         <TargetFramework>net10.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     </PropertyGroup>
+
+    <PropertyGroup>
+        <ContainerFamily>noble-chiseled-extra</ContainerFamily>
+        <ContainerRepository>zilor/aicopilot-httpapi</ContainerRepository>
+        <ContainerImageTag>latest</ContainerImageTag>
+    </PropertyGroup>
+    
+    <ItemGroup>
+        <ContainerEnvironmentVariable Include="TZ" Value="Asia/Shanghai" />
+        <ContainerPort Include="8080" Type="tcp" />
+    </ItemGroup>
 
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.1" />
