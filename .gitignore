@@ -1,0 +1,42 @@
+# IDE and local workspace
+.idea/
+.aspire/
+.vs/
+.vscode/
+AGENTS.md
+*.suo
+*.user
+*.DotSettings.user
+
+# Build outputs
+bin/
+obj/
+artifacts/bin/
+artifacts/obj/
+TestResults/
+coverage/
+*.nupkg
+
+# Frontend dependencies and output
+node_modules/
+dist/
+build/
+.vite/
+
+# Environment and secrets
+.env
+.env.*
+*.local
+appsettings.Development.json
+
+# Logs and caches
+*.log
+*.tmp
+*.cache
+.DS_Store
+Thumbs.db
+
+# Docker generated files
+.dockerignore
+artifacts/
+docker-compose.override.yml

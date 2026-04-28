@@ -1,0 +1,33 @@
+<Project Sdk="Aspire.AppHost.Sdk/13.0.0">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net10.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <UserSecretsId>0bf598ac-665f-44e2-a7d3-71381d83c636</UserSecretsId>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Zilor.AICopilot.HttpApi\Zilor.AICopilot.HttpApi.csproj" />
+        <ProjectReference Include="..\Zilor.AICopilot.MigrationWorkApp\Zilor.AICopilot.MigrationWorkApp.csproj" />
+        <ProjectReference Include="..\Zilor.AICopilot.RagWorker\Zilor.AICopilot.RagWorker.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Aspire.Hosting.AppHost" Version="13.1.0" />
+        <PackageReference Include="Aspire.Hosting.Docker" Version="13.1.0-preview.1.25616.3" />
+        <PackageReference Include="Aspire.Hosting.JavaScript" Version="13.1.0" />
+        <PackageReference Include="Aspire.Hosting.PostgreSQL" Version="13.1.0" />
+        <PackageReference Include="Aspire.Hosting.Qdrant" Version="13.1.0" />
+        <PackageReference Include="Aspire.Hosting.RabbitMQ" Version="13.1.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Include="..\..\.dockerignore">
+        <Link>.dockerignore</Link>
+      </Content>
+    </ItemGroup>
+
+</Project>

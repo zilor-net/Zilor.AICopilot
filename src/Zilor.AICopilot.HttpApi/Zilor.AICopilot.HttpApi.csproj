@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <ContainerFamily>noble-chiseled-extra</ContainerFamily>
+        <ContainerRepository>zilor/aicopilot-httpapi</ContainerRepository>
+        <ContainerImageTag>latest</ContainerImageTag>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ContainerEnvironmentVariable Include="ASPNETCORE_ENVIRONMENT" Value="Development" />
+        <ContainerEnvironmentVariable Include="TZ" Value="Asia/Shanghai" />
+        <ContainerPort Include="8080" Type="tcp" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.1" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="10.0.1">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="10.1.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Zilor.AICopilot.AiGatewayService\Zilor.AICopilot.AiGatewayService.csproj"/>
+        <ProjectReference Include="..\Zilor.AICopilot.IdentityService\Zilor.AICopilot.IdentityService.csproj"/>
+        <ProjectReference Include="..\Zilor.AICopilot.Infrastructure\Zilor.AICopilot.Infrastructure.csproj"/>
+        <ProjectReference Include="..\Zilor.AICopilot.McpService\Zilor.AICopilot.McpService.csproj" />
+        <ProjectReference Include="..\Zilor.AICopilot.RagService\Zilor.AICopilot.RagService.csproj" />
+        <ProjectReference Include="..\Zilor.AICopilot.ServiceDefaults\Zilor.AICopilot.ServiceDefaults.csproj"/>
+    </ItemGroup>
+</Project>
